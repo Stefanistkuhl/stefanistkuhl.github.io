@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Naming hard</title>
-    <link>https://stefanistkuhl.github.io/</link>
-    <description>Recent content on Naming hard</description>
+    <title>Silly blog</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Silly blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 10 May 2025 23:53:09 +0200</lastBuildDate>
-    <atom:link href="https://stefanistkuhl.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Test</title>
-      <link>https://stefanistkuhl.github.io/posts/test/</link>
+      <link>http://localhost:1313/posts/test/test/</link>
       <pubDate>Sat, 10 May 2025 23:53:09 +0200</pubDate>
-      <guid>https://stefanistkuhl.github.io/posts/test/</guid>
-      <description>&lt;h1 id=&#34;3&#34;&gt;:3&lt;/h1&gt;</description>
+      <guid>http://localhost:1313/posts/test/test/</guid>
+      <description>&lt;h1 id=&#34;3&#34;&gt;:3&lt;/h1&gt;&#xA;&lt;p&gt;&lt;p class=&#34;imgp&#34;&gt;&#xA;  &lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/test/ynails.png&#34; alt=&#34;ynails&#34;  /&gt;&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p class=&#34;imgp&#34;&gt;&#xA;  &lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/test/UuhCatGIF.gif&#34; alt=&#34;uuh&#34;  /&gt;&#xA;&lt;/p&gt;&#xA;&#xA;&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/images/test/ynails.png&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;h4&gt;Figure 1: ynails&lt;/h4&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;code&gt;\{\{&amp;lt; figure src=&amp;quot;/images/test/ynails.png&amp;quot; title=&amp;quot;Figure 1: ynails&amp;quot; &amp;gt;\}\}&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;p&gt;&lt;p class=&#34;imgp&#34;&gt;&#xA;  &lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/test/UuhCatGIF.gif&#34; alt=&#34;uuh&#34;  /&gt;&#xA;&lt;/p&gt;&#xA;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

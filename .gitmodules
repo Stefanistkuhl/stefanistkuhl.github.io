@@ -1,3 +1,9 @@
 [submodule "themes/dead-simple"]
 	path = themes/dead-simple
 	url = https://github.com/barklan/hugo-dead-simple
+[submodule "themes/paper"]
+	path = themes/paper
+	url = https://github.com/adityatelange/hugo-PaperMod
+[submodule "themes/hi"]
+	path = themes/hi
+	url = https://github.com/rhazdon/hugo-theme-hello-friend-ng

@@ -1,7 +1,21 @@
 baseURL = 'https://stefanistkuhl.github.io'
 languageCode = 'en-us'
-title = 'Naming hard'
+title = 'Silly blog'
+# theme = "paper"
 theme = "dead-simple"
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name       = "About"
+    url        = "about/"
+  [[menu.main]]
+    identifier = "posts"
+    name       = "Posts"
+    url        = "posts/"
+  [[menu.main]]
+    identifier = "root"
+    name       = "root"
+    url        = "/"
