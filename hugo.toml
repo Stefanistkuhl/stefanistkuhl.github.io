@@ -1,8 +1,8 @@
 baseURL = 'https://stefanistkuhl.github.io'
 languageCode = 'en-us'
-title = 'Silly blog'
-# theme = "paper"
-theme = "dead-simple"
+# title = 'Silly blog'
+theme = "paper"
+# theme = "dead-simple"
 [caches]
   [caches.images]
     dir = ':cacheDir/images'

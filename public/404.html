@@ -1,259 +1,193 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<html lang="en" dir="auto">
 
-    <meta http-equiv="cache-control" content="max-age=0" />
-    <meta http-equiv="cache-control" content="no-cache" />
-    <meta http-equiv="expires" content="0" />
-    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-    <meta http-equiv="pragma" content="no-cache" />
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"}>
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1b" />
-
-    <meta name="description" content="404 Page not found">
-
-    
-        <title>404 Page not found | Silly blog</title>
-    
-
-    
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>404 Page not found | </title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/404.html">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/404.html">
+<noscript>
     <style>
-        :root {
-          --background: #ffffff;
+        #theme-toggle,
+        .top-link {
+            display: none;
         }
-        @media (prefers-color-scheme: dark) {
-          :root {
-            --background: #1b1b1b;
-          }
-        }
-        html {
-            background-color: var(--background);
-        }
-        body {
-            background-color: var(--background);
-        }
+
     </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-    
-    <link rel="stylesheet" type="text/css" href="/style.min.a9de976a7573ba1b8227e403bbfab145eef224a3b71a621553428985cf42623c.css" media="all">
+            .list {
+                background: var(--theme);
+            }
 
-    
-    
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-  </head>
-
-  <body>
-        
-        <nav>
-          <ul class="menu">
-            
-                <li><a tabindex="-1" class="menu-link" href="/about/">About</a></li>
-            
-                <li><a tabindex="-1" class="menu-link" href="/posts/">Posts</a></li>
-            
-                <li><a tabindex="-1" class="menu-link" href="/">root</a></li>
-            
-          </ul>
-        </nav>
-        
-
-
-404 NOT FOUND
-
-<br>
-
-<footer>
-
-<script defer>
-  document.addEventListener("keydown", function (e) {
-    if (document.activeElement.isContentEditable) {
-      return false;
-    }
-    if (document.activeElement.tagName == "INPUT") {
-      return false;
-    }
-    if (e.altKey || e.ctrlKey || e.shiftKey) {
-      return false;
-    }
-    var key = e.key;
-    if (key === "h") {
-      e.preventDefault();
-      e.stopPropagation();
-      window.location.href = "/";
-    } else if (key === "t") {
-      e.preventDefault();
-      e.stopPropagation();
-      window.location.href = `https://${location.hostname}/tags`;
-    } else if (key === "i") {
-      e.preventDefault();
-      e.stopPropagation();
-      const inputs = document.querySelectorAll("input");
-      for (let i = 0; i < inputs.length; i++) {
-        if (inputs[i].offsetParent !== null) {
-          inputs[i].selectionStart = inputs[i].selectionEnd =
-            inputs[i].value.length;
-          inputs[i].focus();
-          break;
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
         }
-      }
+
+    </style>
+</noscript>
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
     }
-    return false;
-  });
+
 </script>
 
-
-<script defer>
-  function throttle(fn, wait) {
-    var time = Date.now();
-    return function () {
-      var now = Date.now();
-      if (time + wait - now < 0) {
-        fn();
-        time = now;
-      }
-    };
-  }
-
-  function scrollHandler() {
-    const anchors = Array.from(document.querySelectorAll("body h2, body h3"));
-
-    function scrollCallback() {
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-      
-      for (var i = 0; i < anchors.length; i++) {
-        var anchorId = anchors[i].getAttribute("id");
-        var link = document.querySelector(
-          'nav ul li a[href="#' + anchorId + '"]',
-        );
-        if (link) {
-          link.classList.remove("active-toc");
-        }
-      }
-
-      
-      for (var i = anchors.length - 1; i >= 0; i--) {
-        var offsetTop = anchors[i].offsetTop;
-        if (scrollTop > offsetTop - 75) {
-          var anchorId = anchors[i].getAttribute("id");
-          var link = document.querySelector(
-            'nav ul li a[href="#' + anchorId + '"]',
-          );
-          if (link) {
-            link.classList.add("active-toc");
-            break;
-          }
-        }
-      }
-    }
-
-    window.addEventListener("scroll", throttle(scrollCallback, 200));
-  }
-  setTimeout(scrollHandler, 100);
-</script>
-
-<script defer>
-  function addCopyButtonToCodeBlocks() {
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="root">
+                    <span>root</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+<div class="not-found">404</div>
+    </main>
     
-    
-    const codeBlocks = document.querySelectorAll(
-      'code[class^="language-"]:not(.output):not([class*="language-console"])',
-    );
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/"></a></span> · 
 
-    codeBlocks.forEach((codeBlock) => {
-      const copyButton = document.createElement("button");
-      copyButton.classList.add("copy-code-button");
-      copyButton.innerHTML = "copy";
-
-      
-      copyButton.addEventListener("click", () => {
-        
-        const elements = codeBlock.querySelectorAll(".cl");
-        let codeToCopy = "";
-        elements.forEach((element) => {
-          codeToCopy += element.innerText;
-        });
-        navigator.clipboard.writeText(codeToCopy);
-
-        
-        copyButton.innerHTML = "copied!";
-        setTimeout(() => {
-          copyButton.innerHTML = "copy";
-        }, 1500);
-      });
-
-      
-      codeBlock.parentNode.before(copyButton);
-    });
-  }
-  setTimeout(function () {
-    addCopyButtonToCodeBlocks();
-  }, 100);
-</script>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
 <script>
-window.store = {
-    
-    "http:\/\/localhost:1313\/posts\/": {
-        "title": "Posts",
-        "tags": [],
-        "content": "", 
-        "url": "http:\/\/localhost:1313\/posts\/"
-    },
-    
-    "http:\/\/localhost:1313\/": {
-        "title": "Silly blog",
-        "tags": [],
-        "content": "", 
-        "url": "http:\/\/localhost:1313\/"
-    },
-    
-    "http:\/\/localhost:1313\/posts\/test\/test\/": {
-        "title": "Test",
-        "tags": [],
-        "content": "This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.\nHeadings The following HTML \u0026lt;h1\u0026gt;—\u0026lt;h6\u0026gt; elements represent six levels of section headings. \u0026lt;h1\u0026gt; is the highest section level while \u0026lt;h6\u0026gt; is the lowest.\nH1 H2 H3 H4 H5 H6 Paragraph Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.\nItatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.\nBlockquotes The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a footer or cite element, and optionally with in-line changes such as annotations and abbreviations.\nBlockquote without attribution Tiam, ad mint andaepu dandae nostion secatur sequo quae. Note that you can use Markdown syntax within a blockquote.\nBlockquote with attribution Don\u0026rsquo;t communicate by sharing memory, share memory by communicating. — Rob Pike1\nTables Tables aren\u0026rsquo;t part of the core Markdown spec, but Hugo supports supports them out-of-the-box.\nName Age Bob 27 Alice 23 Inline Markdown within tables Italics Bold Code italics bold code Code Blocks Code block with backticks \u0026lt;!doctype html\u0026gt; \u0026lt;html lang=\u0026#34;en\u0026#34;\u0026gt; \u0026lt;head\u0026gt; \u0026lt;meta charset=\u0026#34;utf-8\u0026#34;\u0026gt; \u0026lt;title\u0026gt;Example HTML5 Document\u0026lt;/title\u0026gt; \u0026lt;/head\u0026gt; \u0026lt;body\u0026gt; \u0026lt;p\u0026gt;Test\u0026lt;/p\u0026gt; \u0026lt;/body\u0026gt; \u0026lt;/html\u0026gt; Code block indented with four spaces \u0026lt;!doctype html\u0026gt; \u0026lt;html lang=\u0026quot;en\u0026quot;\u0026gt; \u0026lt;head\u0026gt; \u0026lt;meta charset=\u0026quot;utf-8\u0026quot;\u0026gt; \u0026lt;title\u0026gt;Example HTML5 Document\u0026lt;/title\u0026gt; \u0026lt;/head\u0026gt; \u0026lt;body\u0026gt; \u0026lt;p\u0026gt;Test\u0026lt;/p\u0026gt; \u0026lt;/body\u0026gt; \u0026lt;/html\u0026gt; Code block with Hugo\u0026rsquo;s internal highlight shortcode \u0026lt;!doctype html\u0026gt; \u0026lt;html lang=\u0026#34;en\u0026#34;\u0026gt; \u0026lt;head\u0026gt; \u0026lt;meta charset=\u0026#34;utf-8\u0026#34;\u0026gt; \u0026lt;title\u0026gt;Example HTML5 Document\u0026lt;/title\u0026gt; \u0026lt;/head\u0026gt; \u0026lt;body\u0026gt; \u0026lt;p\u0026gt;Test\u0026lt;/p\u0026gt; \u0026lt;/body\u0026gt; \u0026lt;/html\u0026gt; List Types Ordered List First item Second item Third item Unordered List List item Another item And another item Nested list Fruit Apple Orange Banana Dairy Milk Cheese Other Elements — abbr, sub, sup, kbd, mark GIF is a bitmap image format.\nH2O\nXn + Yn = Zn\nPress CTRL+ALT+Delete to end the session.\nMost salamanders are nocturnal, and hunt for insects, worms, and other small creatures.\n:3 Figure 1: ynails \\{\\{\u0026lt; figure src=\u0026quot;/images/test/ynails.png\u0026quot; title=\u0026quot;Figure 1: ynails\u0026quot; \u0026gt;\\}\\}\nThe above quote is excerpted from Rob Pike\u0026rsquo;s talk during Gopherfest, November 18, 2015.\u0026#160;\u0026#x21a9;\u0026#xfe0e;\n", 
-        "url": "http:\/\/localhost:1313\/posts\/test\/test\/"
-    },
-    
-    "http:\/\/localhost:1313\/about\/": {
-        "title": "About",
-        "tags": [],
-        "content": " ", 
-        "url": "http:\/\/localhost:1313\/about\/"
-    },
-    
-    "http:\/\/localhost:1313\/categories\/": {
-        "title": "Categories",
-        "tags": [],
-        "content": "", 
-        "url": "http:\/\/localhost:1313\/categories\/"
-    },
-    
-    "http:\/\/localhost:1313\/tags\/": {
-        "title": "Tags",
-        "tags": [],
-        "content": "", 
-        "url": "http:\/\/localhost:1313\/tags\/"
-    },
-    
-}
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
 </script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
-    <script defer src="/js/lunr.js"></script>
-    <script defer src="/js/search.js"></script>
-
-
-</footer>
-
+</script>
 </body>
-</html>
 
+</html>
