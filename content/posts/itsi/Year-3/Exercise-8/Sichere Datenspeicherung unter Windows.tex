@@ -1,0 +1,639 @@
+\documentclass[a4paper]{article}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\usepackage{animate}
+\usepackage{xcolor}
+\usepackage{outlines}
+\usepackage{listings}
+\usepackage{fontspec}
+\lstset{basicstyle=\ttfamily,
+	showstringspaces=false,
+	commentstyle=\color{blue},
+	keywordstyle=\color{red}
+}
+\lstset{emph={
+	iwr,iex,icacls,EXPOSE,RUN,FROM,CMD,nc,tcp,udp,http,docker},emphstyle=\color{purple}
+}
+\lstdefinelanguage{PowerShell}{
+	morekeywords={
+		Add-Content,Add-PSSnapin,Clear-Content,Clear-History,Clear-Host,Clear-Item,Clear-ItemProperty,Clear-Variable,Compare-Object,Connect-PSSession,ConvertFrom-String,Convert-Path,Copy-Item,Copy-ItemProperty,Disable-PSBreakpoint,Disconnect-PSSession,Enable-PSBreakpoint,Enter-PSSession,Exit-PSSession,Export-Alias,Export-Csv,Export-PSSession,ForEach-Object,Format-Custom,Format-Hex,Format-List,Format-Table,Format-Wide,Get-Alias,Get-ChildItem,Get-Clipboard,Get-Command,Get-ComputerInfo,Get-Content,Get-History,Get-Item,Get-ItemProperty,Get-ItemPropertyValue,Get-Job,Get-Location,Get-Member,Get-Module,Get-Process,Get-PSBreakpoint,Get-PSCallStack,Get-PSDrive,Get-PSSession,Get-PSSnapin,Get-Service,Get-TimeZone,Get-Unique,Get-Variable,Get-WmiObject,Group-Object,help,Import-Alias,Import-Csv,Import-Module,Import-PSSession,Invoke-Command,Invoke-Expression,Invoke-History,Invoke-Item,Invoke-RestMethod,Invoke-WebRequest,Invoke-WmiMethod,Measure-Object,mkdir,Move-Item,Move-ItemProperty,New-Alias,New-Item,New-Module,New-PSDrive,New-PSSession,New-PSSessionConfigurationFile,New-Variable,Out-GridView,Out-Host,Out-Printer,Pop-Location,powershell_ise.exe,Push-Location,Receive-Job,Receive-PSSession,Remove-Item,Remove-ItemProperty,Remove-Job,Remove-Module,Remove-PSBreakpoint,Remove-PSDrive,Remove-PSSession,Remove-PSSnapin,Remove-Variable,Remove-WmiObject,Rename-Item,Rename-ItemProperty,Resolve-Path,Resume-Job,Select-Object,Select-String,Set-Alias,Set-Clipboard,Set-Content,Set-Item,Set-ItemProperty,Set-Location,Set-PSBreakpoint,Set-TimeZone,Set-Variable,Set-WmiInstance,Show-Command,Sort-Object,Start-Job,Start-Process,Start-Service,Start-Sleep,Stop-Job,Stop-Process,Stop-Service,Suspend-Job,Tee-Object,Trace-Command,Wait-Job,Where-Object,Write-Output
+	},
+	morekeywords={
+		Add-AppxPackage,Add-AppxProvisionedPackage,Add-AppxVolume,Add-BitsFile,Add-CertificateEnrollmentPolicyServer,Add-Computer,Add-Content,Add-History,Add-JobTrigger,Add-KdsRootKey,Add-LocalGroupMember,Add-Member,Add-PSSnapin,Add-Type,Add-WindowsCapability,Add-WindowsDriver,Add-WindowsImage,Add-WindowsPackage,Checkpoint-Computer,Clear-Content,Clear-EventLog,Clear-History,Clear-Item,Clear-ItemProperty,Clear-KdsCache,Clear-RecycleBin,Clear-Tpm,Clear-Variable,Clear-WindowsCorruptMountPoint,Compare-Object,Complete-BitsTransfer,Complete-DtiagnosticTransaction,Complete-Transaction,Confirm-SecureBootUEFI,Connect-PSSession,Connect-WSMan,ConvertFrom-Csv,ConvertFrom-Json,ConvertFrom-SecureString,ConvertFrom-String,ConvertFrom-StringData,Convert-Path,Convert-String,ConvertTo-Csv,ConvertTo-Html,ConvertTo-Json,ConvertTo-ProcessMitigationPolicy,ConvertTo-SecureString,ConvertTo-TpmOwnerAuth,ConvertTo-Xml,Copy-Item,Copy-ItemProperty,Debug-Job,Debug-Process,Debug-Runspace,Disable-AppBackgroundTaskDiagnosticLog,Disable-ComputerRestore,Disable-JobTrigger,Disable-LocalUser,Disable-PSBreakpoint,Disable-PSRemoting,Disable-PSSessionConfiguration,Disable-RunspaceDebug,Disable-ScheduledJob,Disable-TlsCipherSuite,Disable-TlsEccCurve,Disable-TlsSessionTicketKey,Disable-TpmAutoProvisioning,Disable-WindowsErrorReporting,Disable-WindowsOptionalFeature,Disable-WSManCredSSP,Disconnect-PSSession,Disconnect-WSMan,Dismount-AppxVolume,Dismount-WindowsImage,Enable-AppBackgroundTaskDiagnosticLog,Enable-ComputerRestore,Enable-JobTrigger,Enable-LocalUser,Enable-PSBreakpoint,Enable-PSRemoting,Enable-PSSessionConfiguration,Enable-RunspaceDebug,Enable-ScheduledJob,Enable-TlsCipherSuite,Enable-TlsEccCurve,Enable-TlsSessionTicketKey,Enable-TpmAutoProvisioning,Enable-WindowsErrorReporting,Enable-WindowsOptionalFeature,Enable-WSManCredSSP,Enter-PSHostProcess,Enter-PSSession,Exit-PSHostProcess,Exit-PSSession,Expand-WindowsCustomDataImage,Expand-WindowsImage,Export-Alias,Export-BinaryMiLog,Export-Certificate,Export-Clixml,Export-Console,Export-Counter,Export-Csv,Export-FormatData,Export-ModuleMember,Export-PfxCertificate,Export-ProvisioningPackage,Export-PSSession,Export-StartLayout,Export-StartLayoutEdgeAssets,Export-TlsSessionTicketKey,Export-Trace,Export-WindowsCapabilitySource,Export-WindowsDriver,Export-WindowsImage,Find-Package,Find-PackageProvider,ForEach-Object,Format-Custom,Format-List,Format-SecureBootUEFI,Format-Table,Format-Wide,Get-Acl,Get-Alias,Get-AppxDefaultVolume,Get-AppxPackage,Get-AppxPackageManifest,Get-AppxProvisionedPackage,Get-AppxVolume,Get-AuthenticodeSignature,Get-BitsTransfer,Get-Certificate,Get-CertificateAutoEnrollmentPolicy,Get-CertificateEnrollmentPolicyServer,Get-CertificateNotificationTask,Get-ChildItem,Get-CimAssociatedInstance,Get-CimClass,Get-CimInstance,Get-CimSession,Get-Clipboard,Get-CmsMessage,Get-Command,Get-ComputerInfo,Get-ComputerRestorePoint,Get-Content,Get-ControlPanelItem,Get-Counter,Get-Credential,Get-Culture,Get-DAPolicyChange,Get-Date,Get-DeliveryOptimizationLog,Get-DeliveryOptimizationPerfSnap,Get-DeliveryOptimizationPerfSnapThisMonth,Get-DeliveryOptimizationStatus,Get-DODownloadMode,Get-DOPercentageMaxBackgroundBandwidth,Get-DOPercentageMaxForegroundBandwidth,Get-Event,Get-EventLog,Get-EventSubscriber,Get-ExecutionPolicy,Get-FormatData,Get-Help,Get-History,Get-Host,Get-HotFix,Get-Item,Get-ItemProperty,Get-ItemPropertyValue,Get-Job,Get-JobTrigger,Get-KdsConfiguration,Get-KdsRootKey,Get-LocalGroup,Get-LocalGroupMember,Get-LocalUser,Get-Location,Get-Member,Get-Module,Get-Package,Get-PackageProvider,Get-PackageSource,Get-PfxCertificate,Get-PfxData,Get-PmemDisk,Get-PmemPhysicalDevice,Get-PmemUnusedRegion,Get-Process,Get-ProcessMitigation,Get-ProvisioningPackage,Get-PSBreakpoint,Get-PSCallStack,Get-PSDrive,Get-PSHostProcessInfo,Get-PSProvider,Get-PSReadlineKeyHandler,Get-PSReadlineOption,Get-PSSession,Get-PSSessionCapability,Get-PSSessionConfiguration,Get-PSSnapin,Get-Random,Get-Runspace,Get-RunspaceDebug,Get-ScheduledJob,Get-ScheduledJobOption,Get-SecureBootPolicy,Get-SecureBootUEFI,Get-Service,Get-TimeZone,Get-TlsCipherSuite,Get-TlsEccCurve,Get-Tpm,Get-TpmEndorsementKeyInfo,Get-TpmSupportedFeature,Get-TraceSource,Get-Transaction,Get-TroubleshootingPack,Get-TrustedProvisioningCertificate,Get-TypeData,Get-UICulture,Get-Unique,Get-Variable,Get-WIMBootEntry,Get-WinAcceptLanguageFromLanguageListOptOut,Get-WinCultureFromLanguageListOptOut,Get-WinDefaultInputMethodOverride,Get-WindowsCapability,Get-WindowsDeveloperLicense,Get-WindowsDriver,Get-WindowsEdition,Get-WindowsErrorReporting,Get-WindowsImage,Get-WindowsImageContent,Get-WindowsOptionalFeature,Get-WindowsPackage,Get-WindowsSearchSetting,Get-WinEvent,Get-WinHomeLocation,Get-WinLanguageBarOption,Get-WinSystemLocale,Get-WinUILanguageOverride,Get-WinUserLanguageList,Get-WmiObject,Get-WSManCredSSP,Get-WSManInstance,Group-Object,Import-Alias,Import-BinaryMiLog,Import-Certificate,Import-Clixml,Import-Counter,Import-Csv,Import-LocalizedData,Import-Module,Import-PackageProvider,Import-PfxCertificate,Import-PSSession,Import-StartLayout,Import-TpmOwnerAuth,Initialize-PmemPhysicalDevice,Initialize-Tpm,Install-Package,Install-PackageProvider,Install-ProvisioningPackage,Install-TrustedProvisioningCertificate,Invoke-CimMethod,Invoke-Command,Invoke-CommandInDesktopPackage,Invoke-DscResource,Invoke-Expression,Invoke-History,Invoke-Item,Invoke-RestMethod,Invoke-TroubleshootingPack,Invoke-WebRequest,Invoke-WmiMethod,Invoke-WSManAction,Join-DtiagnosticResourceManager,Join-Path,Limit-EventLog,Measure-Command,Measure-Object,Mount-AppxVolume,Mount-WindowsImage,Move-AppxPackage,Move-Item,Move-ItemProperty,New-Alias,New-CertificateNotificationTask,New-CimInstance,New-CimSession,New-CimSessionOption,New-DtiagnosticTransaction,New-Event,New-EventLog,New-FileCatalog,New-Item,New-ItemProperty,New-JobTrigger,New-LocalGroup,New-LocalUser,New-Module,New-ModuleManifest,New-NetIPsecAuthProposal,New-NetIPsecMainModeCryptoProposal,New-NetIPsecQuickModeCryptoProposal,New-Object,New-PmemDisk,New-ProvisioningRepro,New-PSDrive,New-PSRoleCapabilityFile,New-PSSession,New-PSSessionConfigurationFile,New-PSSessionOption,New-PSTransportOption,New-PSWorkflowExecutionOption,New-ScheduledJobOption,New-SelfSignedCertificate,New-Service,New-TimeSpan,New-TlsSessionTicketKey,New-Variable,New-WebServiceProxy,New-WindowsCustomImage,New-WindowsImage,New-WinEvent,New-WinUserLanguageList,New-WSManInstance,New-WSManSessionOption,Optimize-AppxProvisionedPackages,Optimize-WindowsImage,Out-Default,Out-File,Out-GridView,Out-Host,Out-Null,Out-Printer,Out-String,Pop-Location,Protect-CmsMessage,Publish-DscConfiguration,Push-Location,Read-Host,Receive-DtiagnosticTransaction,Receive-Job,Receive-PSSession,Register-ArgumentCompleter,Register-CimIndicationEvent,Register-EngineEvent,Register-ObjectEvent,Register-PackageSource,Register-PSSessionConfiguration,Register-ScheduledJob,Register-WmiEvent,Remove-AppxPackage,Remove-AppxProvisionedPackage,Remove-AppxVolume,Remove-BitsTransfer,Remove-CertificateEnrollmentPolicyServer,Remove-CertificateNotificationTask,Remove-CimInstance,Remove-CimSession,Remove-Computer,Remove-Event,Remove-EventLog,Remove-Item,Remove-ItemProperty,Remove-Job,Remove-JobTrigger,Remove-LocalGroup,Remove-LocalGroupMember,Remove-LocalUser,Remove-Module,Remove-PmemDisk,Remove-PSBreakpoint,Remove-PSDrive,Remove-PSReadlineKeyHandler,Remove-PSSession,Remove-PSSnapin,Remove-TypeData,Remove-Variable,Remove-WindowsCapability,Remove-WindowsDriver,Remove-WindowsImage,Remove-WindowsPackage,Remove-WmiObject,Remove-WSManInstance,Rename-Computer,Rename-Item,Rename-ItemProperty,Rename-LocalGroup,Rename-LocalUser,Repair-WindowsImage,Reset-ComputerMachinePassword,Resolve-DnsName,Resolve-Path,Restart-Computer,Restart-Service,Restore-Computer,Resume-BitsTransfer,Resume-Job,Resume-ProvisioningSession,Resume-Service,Save-Help,Save-Package,Save-WindowsImage,Select-Object,Select-String,Select-Xml,Send-DtiagnosticTransaction,Send-MailMessage,Set-Acl,Set-Alias,Set-AppBackgroundTaskResourcePolicy,Set-AppxDefaultVolume,Set-AppXProvisionedDataFile,Set-AuthenticodeSignature,Set-BitsTransfer,Set-CertificateAutoEnrollmentPolicy,Set-CimInstance,Set-Clipboard,Set-Content,Set-Culture,Set-Date,Set-DODownloadMode,Set-DOPercentageMaxBackgroundBandwidth,Set-DOPercentageMaxForegroundBandwidth,Set-DscLocalConfigurationManager,Set-ExecutionPolicy,Set-Item,Set-ItemProperty,Set-JobTrigger,Set-KdsConfiguration,Set-LocalGroup,Set-LocalUser,Set-Location,Set-PackageSource,Set-ProcessMitigation,Set-PSBreakpoint,Set-PSDebug,Set-PSReadlineKeyHandler,Set-PSReadlineOption,Set-PSSessionConfiguration,Set-ScheduledJob,Set-ScheduledJobOption,Set-SecureBootUEFI,Set-Service,Set-StrictMode,Set-TimeZone,Set-TpmOwnerAuth,Set-TraceSource,Set-Variable,Set-WinAcceptLanguageFromLanguageListOptOut,Set-WinCultureFromLanguageListOptOut,Set-WinDefaultInputMethodOverride,Set-WindowsEdition,Set-WindowsProductKey,Set-WindowsSearchSetting,Set-WinHomeLocation,Set-WinLanguageBarOption,Set-WinSystemLocale,Set-WinUILanguageOverride,Set-WinUserLanguageList,Set-WmiInstance,Set-WSManInstance,Set-WSManQuickConfig,Show-Command,Show-ControlPanelItem,Show-EventLog,Show-WindowsDeveloperLicenseRegistration,Sort-Object,Split-Path,Split-WindowsImage,Start-BitsTransfer,Start-DscConfiguration,Start-DtiagnosticResourceManager,Start-Job,Start-Process,Start-Service,Start-Sleep,Start-Transaction,Start-Transcript,Stop-Computer,Stop-DtiagnosticResourceManager,Stop-Job,Stop-Process,Stop-Service,Stop-Transcript,Suspend-BitsTransfer,Suspend-Job,Suspend-Service,Switch-Certificate,Tee-Object,Test-Certificate,Test-ComputerSecureChannel,Test-Connection,Test-DscConfiguration,Test-FileCatalog,Test-KdsRootKey,Test-ModuleManifest,Test-Path,Test-PSSessionConfigurationFile,Test-WSMan,Trace-Command,Unblock-File,Unblock-Tpm,Undo-DtiagnosticTransaction,Undo-Transaction,Uninstall-Package,Uninstall-ProvisioningPackage,Uninstall-TrustedProvisioningCertificate,Unprotect-CmsMessage,Unregister-Event,Unregister-PackageSource,Unregister-PSSessionConfiguration,Unregister-ScheduledJob,Unregister-WindowsDeveloperLicense,Update-FormatData,Update-Help,Update-List,Update-TypeData,Update-WIMBootEntry,Use-Transaction,Use-WindowsUnattend,Wait-Debugger,Wait-Event,Wait-Job,Wait-Process,Where-Object,Write-Debug,Write-Error,Write-EventLog,Write-Host,Write-Information,Write-Output,Write-Progress,Write-Verbose,Write-Warning
+	},
+	morekeywords={
+		Add-BitLockerKeyProtector,Add-DnsClientNrptRule,Add-DtcClusterTMMapping,Add-EtwTraceProvider,Add-InitiatorIdToMaskingSet,Add-MpPreference,Add-NetEventNetworkAdapter,Add-NetEventPacketCaptureProvider,Add-NetEventProvider,Add-NetEventVFPProvider,Add-NetEventVmNetworkAdapter,Add-NetEventVmSwitch,Add-NetEventVmSwitchProvider,Add-NetEventWFPCaptureProvider,Add-NetIPHttpsCertBinding,Add-NetLbfoTeamMember,Add-NetLbfoTeamNic,Add-NetNatExternalAddress,Add-NetNatStaticMapping,Add-NetSwitchTeamMember,Add-Odbsn,Add-PartitionAccessPath,Add-PhysicalDisk,Add-Printer,Add-PrinterDriver,Add-PrinterPort,Add-StorageFaultDomain,Add-TargetPortToMaskingSet,Add-VirtualDiskToMaskingSet,Add-VpnConnection,Add-VpnConnectionRoute,Add-VpnConnectionTriggerApplication,Add-VpnConnectionTriggerDnsConfiguration,Add-VpnConnectionTriggerTrustedNetwork,AfterAll,AfterEach,Assert-MockCalled,Assert-VerifiableMocks,Backup-BitLockerKeyProtector,BackupToAAD-BitLockerKeyProtector,BeforeAll,BeforeEach,Block-FileShareAccess,Block-SmbShareAccess,Clear-BitLockerAutoUnlock,Clear-Disk,Clear-DnsClientCache,Clear-FileStorageTier,Clear-Host,Clear-PcsvDeviceLog,Clear-StorageDiagnosticInfo,Close-SmbOpenFile,Close-SmbSession,Compress-Archive,Configuration,Connect-IscsiTarget,Connect-VirtualDisk,Context,convert,ConvertFrom-SddlString,Copy-NetFirewallRule,Copy-NetIPsecMainModeCryptoSet,Copy-NetIPsecMainModeRule,Copy-NetIPsecPhase1AuthSet,Copy-NetIPsecPhase2AuthSet,Copy-NetIPsecQuickModeCryptoSet,Copy-NetIPsecRule,Debug-FileShare,Debug-MMAppPrelaunch,Debug-StorageSubSystem,Debug-Volume,Describe,Disable-BitLocker,Disable-BitLockerAutoUnlock,Disable-DAManualEntryPointSelection,Disable-Dsebug,Disable-MMAgent,Disable-NetAdapter,Disable-NetAdapterBinding,Disable-NetAdapterChecksumOffload,Disable-NetAdapterEncapsulatedPacketTaskOffload,Disable-NetAdapterIPsecOffload,Disable-NetAdapterLso,Disable-NetAdapterPacketDirect,Disable-NetAdapterPowerManagement,Disable-NetAdapterQos,Disable-NetAdapterRdma,Disable-NetAdapterRsc,Disable-NetAdapterRss,Disable-NetAdapterSriov,Disable-NetAdapterVmq,Disable-NetDnsTransitionConfiguration,Disable-NetFirewallRule,Disable-NetIPHttpsProfile,Disable-NetIPsecMainModeRule,Disable-NetIPsecRule,Disable-NetNatTransitionConfiguration,Disable-NetworkSwitchEthernetPort,Disable-NetworkSwitchFeature,Disable-NetworkSwitchVlan,Disable-OdbcPerfCounter,Disable-PhysicalDiskIdentification,Disable-PnpDevice,Disable-PSTrace,Disable-PSWSManCombinedTrace,Disable-ScheduledTask,Disable-SmbDelegation,Disable-StorageEnclosureIdentification,Disable-StorageEnclosurePower,Disable-StorageHighAvailability,Disable-StorageMaintenanceMode,Disable-WdacBidTrace,Disable-WSManTrace,Disconnect-IscsiTarget,Disconnect-VirtualDisk,Dismount-DiskImage,Enable-BitLocker,Enable-BitLockerAutoUnlock,Enable-DAManualEntryPointSelection,Enable-Dsebug,Enable-MMAgent,Enable-NetAdapter,Enable-NetAdapterBinding,Enable-NetAdapterChecksumOffload,Enable-NetAdapterEncapsulatedPacketTaskOffload,Enable-NetAdapterIPsecOffload,Enable-NetAdapterLso,Enable-NetAdapterPacketDirect,Enable-NetAdapterPowerManagement,Enable-NetAdapterQos,Enable-NetAdapterRdma,Enable-NetAdapterRsc,Enable-NetAdapterRss,Enable-NetAdapterSriov,Enable-NetAdapterVmq,Enable-NetDnsTransitionConfiguration,Enable-NetFirewallRule,Enable-NetIPHttpsProfile,Enable-NetIPsecMainModeRule,Enable-NetIPsecRule,Enable-NetNatTransitionConfiguration,Enable-NetworkSwitchEthernetPort,Enable-NetworkSwitchFeature,Enable-NetworkSwitchVlan,Enable-OdbcPerfCounter,Enable-PhysicalDiskIdentification,Enable-PnpDevice,Enable-PSTrace,Enable-PSWSManCombinedTrace,Enable-ScheduledTask,Enable-SmbDelegation,Enable-StorageEnclosureIdentification,Enable-StorageEnclosurePower,Enable-StorageHighAvailability,Enable-StorageMaintenanceMode,Enable-WdacBidTrace,Enable-WSManTrace,Expand-Archive,Export-ODataEndpointProxy,Export-ScheduledTask,Find-Command,Find-DscResource,Find-Module,Find-NetIPsecRule,Find-NetRoute,Find-RoleCapability,Find-Script,Flush-EtwTraceSession,Format-Hex,Format-Volume,Get-AppBackgroundTask,Get-AppxLastError,Get-AppxLog,Get-AutologgerConfig,Get-BitLockerVolume,Get-ClusteredScheduledTask,Get-DAClientExperienceConfiguration,Get-DAConnectionStatus,Get-DAEntryPointTableItem,Get-DedupProperties,Get-Disk,Get-DiskImage,Get-DiskStorageNodeView,Get-DnsClient,Get-DnsClientCache,Get-DnsClientGlobalSetting,Get-DnsClientNrptGlobal,Get-DnsClientNrptPolicy,Get-DnsClientNrptRule,Get-DnsClientServerAddress,Get-DscConfiguration,Get-DscConfigurationStatus,Get-DscLocalConfigurationManager,Get-DscResource,Get-Dtc,Get-DtcAdvancedHostSetting,Get-DtcAdvancedSetting,Get-DtcClusterDefault,Get-DtcClusterTMMapping,Get-Dtefault,Get-DtcLog,Get-DtcNetworkSetting,Get-DtcTransaction,Get-DtcTransactionsStatistics,Get-DtcTransactionsTraceSession,Get-DtcTransactionsTraceSetting,Get-EtwTraceProvider,Get-EtwTraceSession,Get-FileHash,Get-FileIntegrity,Get-FileShare,Get-FileShareAccessControlEntry,Get-FileStorageTier,Get-InitiatorId,Get-InitiatorPort,Get-InstalledModule,Get-InstalledScript,Get-IscsiConnection,Get-IscsiSession,Get-IscsiTarget,Get-IscsiTargetPortal,Get-IseSnippet,Get-LogProperties,Get-MaskingSet,Get-MMAgent,Get-MockDynamicParameters,Get-MpComputerStatus,Get-MpPreference,Get-MpThreat,Get-MpThreatCatalog,Get-MpThreatDetection,Get-NCSIPolicyConfiguration,Get-Net6to4Configuration,Get-NetAdapter,Get-NetAdapterAdvancedProperty,Get-NetAdapterBinding,Get-NetAdapterChecksumOffload,Get-NetAdapterEncapsulatedPacketTaskOffload,Get-NetAdapterHardwareInfo,Get-NetAdapterIPsecOffload,Get-NetAdapterLso,Get-NetAdapterPacketDirect,Get-NetAdapterPowerManagement,Get-NetAdapterQos,Get-NetAdapterRdma,Get-NetAdapterRsc,Get-NetAdapterRss,Get-NetAdapterSriov,Get-NetAdapterSriovVf,Get-NetAdapterStatistics,Get-NetAdapterVmq,Get-NetAdapterVMQQueue,Get-NetAdapterVPort,Get-NetCompartment,Get-NetConnectionProfile,Get-NetDnsTransitionConfiguration,Get-NetDnsTransitionMonitoring,Get-NetEventNetworkAdapter,Get-NetEventPacketCaptureProvider,Get-NetEventProvider,Get-NetEventSession,Get-NetEventVFPProvider,Get-NetEventVmNetworkAdapter,Get-NetEventVmSwitch,Get-NetEventVmSwitchProvider,Get-NetEventWFPCaptureProvider,Get-NetFirewallAddressFilter,Get-NetFirewallApplicationFilter,Get-NetFirewallInterfaceFilter,Get-NetFirewallInterfaceTypeFilter,Get-NetFirewallPortFilter,Get-NetFirewallProfile,Get-NetFirewallRule,Get-NetFirewallSecurityFilter,Get-NetFirewallServiceFilter,Get-NetFirewallSetting,Get-NetIPAddress,Get-NetIPConfiguration,Get-NetIPHttpsConfiguration,Get-NetIPHttpsState,Get-NetIPInterface,Get-NetIPseospSetting,Get-NetIPsecMainModeCryptoSet,Get-NetIPsecMainModeRule,Get-NetIPsecMainModeSA,Get-NetIPsecPhase1AuthSet,Get-NetIPsecPhase2AuthSet,Get-NetIPsecQuickModeCryptoSet,Get-NetIPsecQuickModeSA,Get-NetIPsecRule,Get-NetIPv4Protocol,Get-NetIPv6Protocol,Get-NetIsatapConfiguration,Get-NetLbfoTeam,Get-NetLbfoTeamMember,Get-NetLbfoTeamNic,Get-NetNat,Get-NetNatExternalAddress,Get-NetNatGlobal,Get-NetNatSession,Get-NetNatStaticMapping,Get-NetNatTransitionConfiguration,Get-NetNatTransitionMonitoring,Get-NetNeighbor,Get-NetOffloadGlobalSetting,Get-NetPrefixPolicy,Get-NetQosPolicy,Get-NetRoute,Get-NetSwitchTeam,Get-NetSwitchTeamMember,Get-NetTCPConnection,Get-NetTCPSetting,Get-NetTeredoConfiguration,Get-NetTeredoState,Get-NetTransportFilter,Get-NetUDPEndpoint,Get-NetUDPSetting,Get-NetworkSwitchEthernetPort,Get-NetworkSwitchFeature,Get-NetworkSwitchGlobalData,Get-NetworkSwitchVlan,Get-Odbriver,Get-Odbsn,Get-OdbcPerfCounter,Get-OffloadDataTransferSetting,Get-OperationValidation,Get-Partition,Get-PartitionSupportedSize,Get-PcsvDevice,Get-PcsvDeviceLog,Get-PhysicalDisk,Get-PhysicalDiskStorageNodeView,Get-PhysicalExtent,Get-PhysicalExtentAssociation,Get-PnpDevice,Get-PnpDeviceProperty,Get-PrintConfiguration,Get-Printer,Get-PrinterDriver,Get-PrinterPort,Get-PrinterProperty,Get-PrintJob,Get-PSRepository,Get-ResiliencySetting,Get-ScheduledTask,Get-ScheduledTaskInfo,Get-SmbBandWidthLimit,Get-SmbClientConfiguration,Get-SmbClientNetworkInterface,Get-SmbConnection,Get-SmbDelegation,Get-SmbGlobalMapping,Get-SmbMapping,Get-SmbMultichannelConnection,Get-SmbMultichannelConstraint,Get-SmbOpenFile,Get-SmbServerConfiguration,Get-SmbServerNetworkInterface,Get-SmbSession,Get-SmbShare,Get-SmbShareAccess,Get-SmbWitnessClient,Get-StartApps,Get-StorageAdvancedProperty,Get-StorageDiagnosticInfo,Get-StorageEnclosure,Get-StorageEnclosureStorageNodeView,Get-StorageEnclosureVendorData,Get-StorageExtendedStatus,Get-StorageFaultDomain,Get-StorageFileServer,Get-StorageFirmwareInformation,Get-StorageHealthAction,Get-StorageHealthReport,Get-StorageHealthSetting,Get-StorageJob,Get-StorageNode,Get-StoragePool,Get-StorageProvider,Get-StorageReliabilityCounter,Get-StorageSetting,Get-StorageSubSystem,Get-StorageTier,Get-StorageTierSupportedSize,Get-SupportedClusterSizes,Get-SupportedFileSystems,Get-TargetPort,Get-TargetPortal,Get-TestDriveItem,Get-Verb,Get-VirtualDisk,Get-VirtualDiskSupportedSize,Get-Volume,Get-VolumeCorruptionCount,Get-VolumeScrubPolicy,Get-VpnConnection,Get-VpnConnectionTrigger,Get-WdacBidTrace,Get-WindowsUpdateLog,Get-WUAVersion,Get-WUIsPendingReboot,Get-WULastInstallationDate,Get-WULastScanSuccessDate,Grant-FileShareAccess,Grant-SmbShareAccess,help,Hide-VirtualDisk,Import-IseSnippet,Import-PowerShellDataFile,ImportSystemModules,In,Initialize-Disk,InModuleScope,Install-Dtc,Install-Module,Install-Script,Install-WUUpdates,Invoke-AsWorkflow,Invoke-Mock,Invoke-OperationValidation,Invoke-Pester,It,Lock-BitLocker,mkdir,Mock,more,Mount-DiskImage,Move-SmbWitnessClient,New-AutologgerConfig,New-DAEntryPointTableItem,New-DscChecksum,New-EapConfiguration,New-EtwTraceSession,New-FileShare,New-Fixture,New-Guid,New-IscsiTargetPortal,New-IseSnippet,New-MaskingSet,New-NetAdapterAdvancedProperty,New-NetEventSession,New-NetFirewallRule,New-NetIPAddress,New-NetIPHttpsConfiguration,New-NetIPseospSetting,New-NetIPsecMainModeCryptoSet,New-NetIPsecMainModeRule,New-NetIPsecPhase1AuthSet,New-NetIPsecPhase2AuthSet,New-NetIPsecQuickModeCryptoSet,New-NetIPsecRule,New-NetLbfoTeam,New-NetNat,New-NetNatTransitionConfiguration,New-NetNeighbor,New-NetQosPolicy,New-NetRoute,New-NetSwitchTeam,New-NetTransportFilter,New-NetworkSwitchVlan,New-Partition,New-PesterOption,New-PSWorkflowSession,New-ScheduledTask,New-ScheduledTaskAction,New-ScheduledTaskPrincipal,New-ScheduledTaskSettingsSet,New-ScheduledTaskTrigger,New-ScriptFileInfo,New-SmbGlobalMapping,New-SmbMapping,New-SmbMultichannelConstraint,New-SmbShare,New-StorageFileServer,New-StoragePool,New-StorageSubsystemVirtualDisk,New-StorageTier,New-TemporaryFile,New-VirtualDisk,New-VirtualDiskClone,New-VirtualDiskSnapshot,New-Volume,New-VpnServerAddress,Open-NetGPO,Optimize-StoragePool,Optimize-Volume,oss,Pause,prompt,PSConsoleHostReadline,Publish-Module,Publish-Script,Read-PrinterNfcTag,Register-ClusteredScheduledTask,Register-DnsClient,Register-IscsiSession,Register-PSRepository,Register-ScheduledTask,Register-StorageSubsystem,Remove-AutologgerConfig,Remove-BitLockerKeyProtector,Remove-DAEntryPointTableItem,Remove-DnsClientNrptRule,Remove-DscConfigurationDocument,Remove-DtcClusterTMMapping,Remove-EtwTraceProvider,Remove-FileShare,Remove-InitiatorId,Remove-InitiatorIdFromMaskingSet,Remove-IscsiTargetPortal,Remove-MaskingSet,Remove-MpPreference,Remove-MpThreat,Remove-NetAdapterAdvancedProperty,Remove-NetEventNetworkAdapter,Remove-NetEventPacketCaptureProvider,Remove-NetEventProvider,Remove-NetEventSession,Remove-NetEventVFPProvider,Remove-NetEventVmNetworkAdapter,Remove-NetEventVmSwitch,Remove-NetEventVmSwitchProvider,Remove-NetEventWFPCaptureProvider,Remove-NetFirewallRule,Remove-NetIPAddress,Remove-NetIPHttpsCertBinding,Remove-NetIPHttpsConfiguration,Remove-NetIPseospSetting,Remove-NetIPsecMainModeCryptoSet,Remove-NetIPsecMainModeRule,Remove-NetIPsecMainModeSA,Remove-NetIPsecPhase1AuthSet,Remove-NetIPsecPhase2AuthSet,Remove-NetIPsecQuickModeCryptoSet,Remove-NetIPsecQuickModeSA,Remove-NetIPsecRule,Remove-NetLbfoTeam,Remove-NetLbfoTeamMember,Remove-NetLbfoTeamNic,Remove-NetNat,Remove-NetNatExternalAddress,Remove-NetNatStaticMapping,Remove-NetNatTransitionConfiguration,Remove-NetNeighbor,Remove-NetQosPolicy,Remove-NetRoute,Remove-NetSwitchTeam,Remove-NetSwitchTeamMember,Remove-NetTransportFilter,Remove-NetworkSwitchEthernetPortIPAddress,Remove-NetworkSwitchVlan,Remove-Odbsn,Remove-Partition,Remove-PartitionAccessPath,Remove-PhysicalDisk,Remove-Printer,Remove-PrinterDriver,Remove-PrinterPort,Remove-PrintJob,Remove-SmbBandwidthLimit,Remove-SmbGlobalMapping,Remove-SmbMapping,Remove-SmbMultichannelConstraint,Remove-SmbShare,Remove-StorageFaultDomain,Remove-StorageFileServer,Remove-StorageHealthIntent,Remove-StorageHealthSetting,Remove-StoragePool,Remove-StorageTier,Remove-TargetPortFromMaskingSet,Remove-VirtualDisk,Remove-VirtualDiskFromMaskingSet,Remove-VpnConnection,Remove-VpnConnectionRoute,Remove-VpnConnectionTriggerApplication,Remove-VpnConnectionTriggerDnsConfiguration,Remove-VpnConnectionTriggerTrustedNetwork,Rename-DAEntryPointTableItem,Rename-MaskingSet,Rename-NetAdapter,Rename-NetFirewallRule,Rename-NetIPHttpsConfiguration,Rename-NetIPsecMainModeCryptoSet,Rename-NetIPsecMainModeRule,Rename-NetIPsecPhase1AuthSet,Rename-NetIPsecPhase2AuthSet,Rename-NetIPsecQuickModeCryptoSet,Rename-NetIPsecRule,Rename-NetLbfoTeam,Rename-NetSwitchTeam,Rename-Printer,Repair-FileIntegrity,Repair-VirtualDisk,Repair-Volume,Reset-DAClientExperienceConfiguration,Reset-DAEntryPointTableItem,Reset-DtcLog,Reset-NCSIPolicyConfiguration,Reset-Net6to4Configuration,Reset-NetAdapterAdvancedProperty,Reset-NetDnsTransitionConfiguration,Reset-NetIPHttpsConfiguration,Reset-NetIsatapConfiguration,Reset-NetTeredoConfiguration,Reset-PhysicalDisk,Reset-StorageReliabilityCounter,Resize-Partition,Resize-StorageTier,Resize-VirtualDisk,Restart-NetAdapter,Restart-PcsvDevice,Restart-PrintJob,Restore-DscConfiguration,Restore-NetworkSwitchConfiguration,Resume-BitLocker,Resume-PrintJob,Revoke-FileShareAccess,Revoke-SmbShareAccess,SafeGetCommand,Save-EtwTraceSession,Save-Module,Save-NetGPO,Save-NetworkSwitchConfiguration,Save-Script,Send-EtwTraceSession,Set-AutologgerConfig,Set-ClusteredScheduledTask,Set-DAClientExperienceConfiguration,Set-DAEntryPointTableItem,Set-Disk,Set-DnsClient,Set-DnsClientGlobalSetting,Set-DnsClientNrptGlobal,Set-DnsClientNrptRule,Set-DnsClientServerAddress,Set-DtcAdvancedHostSetting,Set-DtcAdvancedSetting,Set-DtcClusterDefault,Set-DtcClusterTMMapping,Set-Dtefault,Set-DtcLog,Set-DtcNetworkSetting,Set-DtcTransaction,Set-DtcTransactionsTraceSession,Set-DtcTransactionsTraceSetting,Set-DynamicParameterVariables,Set-EtwTraceProvider,Set-FileIntegrity,Set-FileShare,Set-FileStorageTier,Set-InitiatorPort,Set-IscsiChapSecret,Set-LogProperties,Set-MMAgent,Set-MpPreference,Set-NCSIPolicyConfiguration,Set-Net6to4Configuration,Set-NetAdapter,Set-NetAdapterAdvancedProperty,Set-NetAdapterBinding,Set-NetAdapterChecksumOffload,Set-NetAdapterEncapsulatedPacketTaskOffload,Set-NetAdapterIPsecOffload,Set-NetAdapterLso,Set-NetAdapterPacketDirect,Set-NetAdapterPowerManagement,Set-NetAdapterQos,Set-NetAdapterRdma,Set-NetAdapterRsc,Set-NetAdapterRss,Set-NetAdapterSriov,Set-NetAdapterVmq,Set-NetConnectionProfile,Set-NetDnsTransitionConfiguration,Set-NetEventPacketCaptureProvider,Set-NetEventProvider,Set-NetEventSession,Set-NetEventVFPProvider,Set-NetEventVmSwitchProvider,Set-NetEventWFPCaptureProvider,Set-NetFirewallAddressFilter,Set-NetFirewallApplicationFilter,Set-NetFirewallInterfaceFilter,Set-NetFirewallInterfaceTypeFilter,Set-NetFirewallPortFilter,Set-NetFirewallProfile,Set-NetFirewallRule,Set-NetFirewallSecurityFilter,Set-NetFirewallServiceFilter,Set-NetFirewallSetting,Set-NetIPAddress,Set-NetIPHttpsConfiguration,Set-NetIPInterface,Set-NetIPseospSetting,Set-NetIPsecMainModeCryptoSet,Set-NetIPsecMainModeRule,Set-NetIPsecPhase1AuthSet,Set-NetIPsecPhase2AuthSet,Set-NetIPsecQuickModeCryptoSet,Set-NetIPsecRule,Set-NetIPv4Protocol,Set-NetIPv6Protocol,Set-NetIsatapConfiguration,Set-NetLbfoTeam,Set-NetLbfoTeamMember,Set-NetLbfoTeamNic,Set-NetNat,Set-NetNatGlobal,Set-NetNatTransitionConfiguration,Set-NetNeighbor,Set-NetOffloadGlobalSetting,Set-NetQosPolicy,Set-NetRoute,Set-NetTCPSetting,Set-NetTeredoConfiguration,Set-NetUDPSetting,Set-NetworkSwitchEthernetPortIPAddress,Set-NetworkSwitchPortMode,Set-NetworkSwitchPortProperty,Set-NetworkSwitchVlanProperty,Set-Odbriver,Set-Odbsn,Set-Partition,Set-PcsvDeviceBootConfiguration,Set-PcsvDeviceNetworkConfiguration,Set-PcsvDeviceUserPassword,Set-PhysicalDisk,Set-PrintConfiguration,Set-Printer,Set-PrinterProperty,Set-PSRepository,Set-ResiliencySetting,Set-ScheduledTask,Set-SmbBandwidthLimit,Set-SmbClientConfiguration,Set-SmbPathAcl,Set-SmbServerConfiguration,Set-SmbShare,Set-StorageFileServer,Set-StorageHealthSetting,Set-StoragePool,Set-StorageProvider,Set-StorageSetting,Set-StorageSubSystem,Set-StorageTier,Set-TestInconclusive,Setup,Set-VirtualDisk,Set-Volume,Set-VolumeScrubPolicy,Set-VpnConnection,Set-VpnConnectionIPsecConfiguration,Set-VpnConnectionProxy,Set-VpnConnectionTriggerDnsConfiguration,Set-VpnConnectionTriggerTrustedNetwork,Should,Show-NetFirewallRule,Show-NetIPsecRule,Show-VirtualDisk,Start-AppBackgroundTask,Start-AutologgerConfig,Start-Dtc,Start-DtcTransactionsTraceSession,Start-EtwTraceSession,Start-MpScan,Start-MpWDOScan,Start-NetEventSession,Start-PcsvDevice,Start-ScheduledTask,Start-StorageDiagnosticLog,Start-Trace,Start-WUScan,Stop-DscConfiguration,Stop-Dtc,Stop-DtcTransactionsTraceSession,Stop-EtwTraceSession,Stop-NetEventSession,Stop-PcsvDevice,Stop-ScheduledTask,Stop-StorageDiagnosticLog,Stop-StorageJob,Stop-Trace,Suspend-BitLocker,Suspend-PrintJob,Sync-NetIPsecRule,TabExpansion2,Test-Dtc,Test-NetConnection,Test-ScriptFileInfo,Unblock-FileShareAccess,Unblock-SmbShareAccess,Uninstall-Dtc,Uninstall-Module,Uninstall-Script,Unlock-BitLocker,Unregister-AppBackgroundTask,Unregister-ClusteredScheduledTask,Unregister-IscsiSession,Unregister-PSRepository,Unregister-ScheduledTask,Unregister-StorageSubsystem,Update-Disk,Update-DscConfiguration,Update-EtwTraceSession,Update-HostStorageCache,Update-IscsiTarget,Update-IscsiTargetPortal,Update-Module,Update-ModuleManifest,Update-MpSignature,Update-NetIPsecRule,Update-Script,Update-ScriptFileInfo,Update-SmbMultichannelConnection,Update-StorageFirmware,Update-StoragePool,Update-StorageProviderCache,Write-DtcTransactionsTraceSession,Write-PrinterNfcTag,Write-VolumeCache
+	},
+	morekeywords={Do,Else,For,ForEach,Function,If,In,Until,While},
+	alsodigit={-},
+	sensitive=false,
+	morecomment=[l]{\#},
+	morecomment=[n]{<\#}{\#>},
+	morestring=[b]{"},
+	morestring=[b]{'},
+	morestring=[s]{@'}{'@},
+	morestring=[s]{@"}{"@}
+}
+\newcommand{\abc}{\hfill \break}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=20mm,
+	bottom=39mm,
+}
+
+\setlength{\headheight}{82.70538pt}
+
+\fancypagestyle{oida}{
+	\fancyhf{}
+	\fancyhead[L]{\fontsize{7.5}{7.5}htl donaustadt\\ Donaustadtstraße 45\\
+		1220 Wien\\~\\ Abteilung: Informationstechnologie\\ 
+	Schwerpunkt: Netzwerktechnik}
+	\fancyhead[R]{\includegraphics[scale=0.45]{images/logo.png}}
+
+	\fancyfoot[L]{\today}
+	\fancyfoot[C]{\jobname}
+	\fancyfoot[R]{Page: \thepage}
+}
+
+\begin{document}
+\raggedright
+\bibliographystyle{IEEEtran}
+\pagestyle{oida}
+\section*{Secure data storage on Windows}
+\par\noindent\rule{\textwidth}{0.4pt}
+
+Laboratory protocol
+Exercise 8: Secure data storage on Windows
+
+\begin{figure}[h]
+	\includegraphics[scale=0.4]{images/menAAA.png}
+	\centering
+	\caption{Grouplogo}
+\end{figure}
+
+\vspace*{\fill}
+Subject:	ITSI
+
+Class:	3AHITN
+
+Name:	Stefan Fürst, Justin Tremurici
+
+Gruppenname/Nummer: todo/12
+
+Supervisor: 	SPAC, ZIVK
+
+Exercise dates:	14.02.2025 | 21.02.2025 | 28.02.2025 | 7.02.2025
+
+Submission date: 14.3.2025
+
+
+\newpage
+\tableofcontents
+
+\newpage
+
+\section{Task definition}
+\subsection{Task Overview}
+The goal of this exercise is to set up a secure and structured data storage system on a Windows Server, ensuring proper access control and encryption. The tasks include installing the operating system, configuring users and groups, setting up a folder structure, and securing access with permissions.
+
+First, \texttt{Windows Server 2019} or newer must be installed in a virtualized environment, with the \texttt{hostname} and user accounts configured according to a naming convention. A structured folder system should be created based on an assigned fictional company, categorizing data logically and including sample files.
+
+User management involves defining necessary accounts, organizing them into \texttt{organizational groups}, and enforcing a consistent naming scheme. Permissions must be applied using \texttt{NTFS} security settings, restricting access appropriately. \texttt{Network shares} need to be configured to allow remote access while maintaining security through controlled sharing settings.
+
+The storage system must be optimized by creating a new \texttt{partition}, migrating data, and applying \texttt{BitLocker} encryption. All configurations should be verified, and documentation is required throughout the process. \texttt{PowerShell} automation is encouraged where applicable.\footnote{This task definition was generated using ChatGPT.}
+
+\section{Summary}
+This task was fully automated using two \texttt{PowerShell} scripts. The first script set up the environment by configuring the necessary system settings and creating a \texttt{Scheduled Task} using \texttt{New-ScheduledTask} and \texttt{Register-ScheduledTask} to execute the second script at predefined intervals. The second script performed all required operations, including creating and managing \texttt{users}, \texttt{directories}, \texttt{files}, and their \texttt{permissions}.
+
+To manage users, the script utilized commands such as \texttt{New-LocalUser} to create users, \texttt{Add-LocalGroupMember} to assign them to groups, and \texttt{Set-LocalUser} to modify user settings. The script dynamically generated random user accounts and assigned them to groups based on predefined logic. Organizational groups and security groups were structured to align with the fictional company scenario, \texttt{BuildSmart BIM}, a digital building company specializing in \texttt{architecture}, \texttt{material lists}, and \texttt{time plans}.
+
+For managing directories and files, commands like \texttt{New-Item} were used to create directory structures, and \texttt{icacls} was used to configure \texttt{NTFS permissions} for securing access.
+
+The partitioning of the drive was accomplished using \texttt{Resize-Partition} to shrink the primary partition and \texttt{New-Partition} to create a new \texttt{B:} partition, followed by \texttt{Format-Volume} to prepare it for use. The existing directory structure was then migrated using \texttt{Move-Item}.
+
+To enable file sharing, \texttt{New-SmbShare} was employed to create network shares. Additionally, the script encrpyed the partition using \texttt{Enable-BitLocker}.
+
+Through this approach, the entire process was streamlined and executed automatically, significantly reducing manual effort while maintaining a structured and secure environment.
+
+\newpage
+
+\section{Exercise Execution}
+
+\subsection{Introduction}
+This entire exercise was automated with a script that can be invoked with a single command. It is designed to be used after setting up a fresh install of a new version of Windows Server. This script will complete the entire exercise automatically.\abc
+\textbf{Note:} For the script to work, the language of the Windows Server installation must be set to English, since user and group names are localized with no available aliases \cite{localized}.\abc
+I will go through the execution of the script, explaining everything it does and how it works.\abc
+To run it, simply log into the Administrator account, press \textbf{Windows + R} to open the Run dialog, and paste the following command:
+\begin{lstlisting}[language=PowerShell]
+powershell.exe iwr https://tinyurl.com/mr234bdr | iex
+\end{lstlisting}
+This runs \texttt{powershell.exe} and uses the abbreviation \texttt{iwr}, which stands for \texttt{Invoke-WebRequest}. This command makes a web request to the given link, which in this case is \url{https://tinyurl.com/mr234bdr}. \abc
+This URL redirects to the raw file from my GitHub repository, where the first of two PowerShell scripts is downloaded \cite{Invoke-WebRequest}.
+\textbf{Important:} Whenever you run a command like this, always open the URL in your web browser first to verify its contents. Check whether the script has any red flags, such as obfuscation or suspicious behavior that it is not intended to perform.
+The downloaded script is then piped into \texttt{iex}, which is short for \texttt{Invoke-Expression}. This executes the output from \texttt{stdin}, which, in this case, is the contents of the script \cite{abbriviation-table,Invoke-Expression}.
+
+\subsection{Explaining the first script}
+
+\subsubsection{Changing the execution policy}
+The first line of the \texttt{setup.ps1} script is the following:\abc
+\texttt{Set-ExecutionPolicy RemoteSigned -Scope LocalMachine -Force}\abc\abc
+This sets the \texttt{ExecutionPolicy} parameter to the \texttt{RemoteSigned} policy. The \texttt{Scope} parameter specifies the default scope value in this command as \texttt{LocalMachine}. The \texttt{-Force} parameter is used to suppress all confirmation prompts.So that the second script that is downloaded in this script is allowed to run on this device.\cite{Set-ExecutionPolicy}\abc
+This can be verified by running the following command as shown in Figure 2:\abc
+\texttt{Get-ExecutionPolicy -List}
+\begin{figure}[h]
+	\includegraphics[scale=0.4]{images/expolicy.png}
+	\centering
+	\caption{Listing the execution policies of the local machine}
+\end{figure}
+\newpage
+
+\paragraph{Installing BitLocker}\abc
+\texttt{Install-WindowsFeature BitLocker} installs the Windows feature \texttt{BitLocker}, which is used for drive encryption and will be needed later in the exercise. It is included in the setup because its installation requires a reboot \cite{Install-WindowsFeature,BitLocker}.
+
+\paragraph{Changing the Hostname}\abc
+\texttt{Rename-Computer -NewName "fus-win-12" -Force} changes the hostname of the computer to \texttt{fus-win-12}. The \texttt{-Force} parameter ensures the command runs non-interactively. This requires a reboot as well and is therefore included in the setup script \cite{rename-computer}.\abc
+The change of the hostname can be veryfied by using the {hostname} command as displayed in Fiugre 3.
+\begin{figure}[h]
+	\includegraphics[scale=0.8]{images/hostname.png}
+	\centering
+	\caption{Verifying the hostname change}
+\end{figure}
+\paragraph{Downloading the second script}\abc
+To download the second script, \texttt{Invoke-WebRequest} is used again with a \texttt{url} and \texttt{dest} variable to store the desired URL and destination file. The last line executes the \texttt{Invoke-WebRequest} command again.
+\begin{lstlisting}[language=PowerShell]
+#setting the desired url
+$url = "https://raw.githubusercontent.com/Stefanistkuhl/obsidianschule
+	/refs/heads/main/3.Klasse/itsi/aufgaben/windoof/script.ps1"
+#setting the destination file
+$dest = "C:\Users\Administrator\script.ps1"
+#invoking the webrequest
+Invoke-WebRequest -Uri $url -OutFile $dest
+\end{lstlisting}
+\subsubsection{Enabling Remote Desktop}  
+For easier management and testing of users, we choose to enable Remote Desktop. \abc
+This is done by changing a registry key, \texttt{fDenyTSConnections}, and setting its value to 0, allowing remote connections. \abc
+Furthermore, a firewall rule needs to be enabled to allow Remote Desktop connections to be established with this server \cite{Enable-Remote-Dekstop}.
+\begin{lstlisting}[language=PowerShell]
+#changing the registry key
+Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control
+	\Terminal Server' -name "fDenyTSConnections" -value 0
+#allow rdp connections in the firewall
+Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+\end{lstlisting}
+
+\newpage
+\subsubsection{Creating a Scheduled Task}
+Since a restart is needed for the first part, some form of persistence is required for the second script to execute. For this, \texttt{Windows Scheduled Tasks} are used to execute the second script after a reboot with a set trigger.\abc \abc
+The first line defines an action to be run, which is stored in the \texttt{Action} variable. The defined action executes PowerShell with the desired script file path as the argument. \abc
+The second line defines the trigger of the task, stored in the \texttt{Trigger} variable. The set trigger is configured to run once the user "Administrator" logs in. \abc
+The third line defines the settings of the task, stored in the \texttt{Settings} variable. This is boilerplate code to create a settings set, which is required for the command. \abc
+The last line creates the task itself, sets the task name to \texttt{after-setup}, and assigns the previously created trigger, action, and settings variables \cite{New-ScheduledTask}.
+\begin{lstlisting}[language=PowerShell]
+#setting the desired action
+$Action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument 
+          "-file C:\Users\Administrator\script.ps1"
+#setting the trigger
+$Trigger = New-ScheduledTaskTrigger -AtLogon -User "Administrator"
+#creating the setting set
+$Settings = New-ScheduledTaskSettingsSet
+#creating the task
+Register-ScheduledTask -TaskName "after-setup" -Action $Action 
+          -Trigger $Trigger -Settings $Settings
+#reboot
+Restart-Computer
+\end{lstlisting}
+Lastly, the server will be rebooted since the setup script is complete, and the second script will be invoked at login.\abc
+The created task can be viewed in Windows Task Scheduler, as demonstrated in Figure 4.
+\begin{figure}[h]
+	\includegraphics[scale=0.2]{images/tasksh.png}
+	\centering
+	\caption{Inspecting the created task in task scheduler}
+\end{figure}\newpage
+\newpage
+\subsubsection{The secound sript}
+Now that the setup script has finished running, after logging in as the administrator again, the second script will be launched. Let's break it down as well from top to bottom.\footnote{Note that the sequence in the script does not match the order of tasks in the task definitions, but it makes more sense to break the script down and mention the tasks during it.} \abc
+\subsubsection{Creating Users and Adding Them to Groups}
+In this step, two new users will be created: \texttt{fus-admin} and \texttt{fus-user}. These serve as the administrator's low-privileged account and privileged account, respectively, in this scenario. \abc
+The first line of the snippet below generates a securely encrypted string from a set input string using the \texttt{-AsPlainText} parameter. This helps protect confidential plain text. The variable will be used for the passwords of all users. Obviously, hardcoding the password in the script is not secure, but it is fine for this example. This secure string will be used for every command where a password is required \cite{ConvertTo-SecureString}.
+Using the \texttt{New-LocalUser} command, the two mentioned users are created. The \texttt{-Name} parameter is used to set the user's name, and the \texttt{-Password} parameter assigns the password to the previously generated secure string \cite{New-LocalUser}. \abc
+After this, the \texttt{fus-admin} user is added to the \texttt{Administrators} group using the \texttt{Add-LocalGroupMember} command to grant them administrator privileges. Meanwhile, the \texttt{fus-user} is added to the \texttt{Remote Desktop Users} group to allow remote desktop connections. The \texttt{-Group} and \texttt{-Member} parameters are used to specify the group and member to add \cite{Add-LocalGroupMember}. \abc
+\begin{lstlisting}[language=PowerShell]
+$supersurepassword = ConvertTo-SecureString "rafi123_" -AsPlainText
+New-LocalUser -Name 'fus-admin' -Password $supersurepassword
+New-LocalUser -Name 'fus-user' -Password $supersurepassword
+Add-LocalGroupMember -Group "Administrators" -Member fus-admin
+Add-LocalGroupMember -Group "Remote Desktop Users" -Member fus-user
+\end{lstlisting}
+To test the users' functionality, I logged in as the two new users via Remote Desktop and used the \texttt{whoami} command to print the current user, as shown in Figure 5.
+\begin{figure}[h]
+	\includegraphics[scale=0.3]{images/fus-admin&&fus-user.png}
+	\centering
+	\caption{Verifying the functionality of the two users}
+\end{figure}\newpage
+Lastly, to see the groups the users are part of, the \texttt{net user <user>} command can be used to print out information about a given user, as shown in Figure 6.
+\begin{figure}[h]
+	\includegraphics[scale=0.45]{images/fus-net-user.png}
+	\centering
+	\caption{Printing information about the users}
+\end{figure}\newpage
+\subsubsection{Resizing the Disk and Creating a New Partition}
+To resize the main disk, the \texttt{Resize-Partition} command is used. The disk to resize is specified using the \texttt{-DiskNumber} parameter, which in this case is disk 0 (the C: drive). The partition to resize is selected with the \texttt{-PartitionNumber} parameter, which in this case is partition 2, since partition 1 is the reserved Windows boot partition. Finally, the \texttt{-Size} parameter is used to set the new partition size, which is 40GB in this case \cite{Resize-Partition}.
+Next, a new partition\footnote{Both the terms volume and partition are used in Windows. The difference is that a partition is a logical section of the disk, while a volume is created on a partition and formatted with a file system. There are multiple volume types depending on the use case. This volume will be formatted later with the desired file system \cite{Volumes}.} has to be created using the \texttt{New-Partition} command. The \texttt{-DiskNumber} parameter specifies the same disk (disk 0), and the \texttt{-UseMaximumSize} parameter is used to allocate all the remaining free space for this partition. The \texttt{-DriveLetter} parameter assigns a drive letter (B:) to the new partition. The drive letter is what appears in File Explorer under "This PC" and is comparable to how partitions and drive names are handled in Linux, such as \texttt{/dev/sda}, \texttt{/dev/sda1}, \texttt{/dev/nvme0n1}, or \texttt{/dev/nvme0n1p1}.\cite{New-Partition, Volumes}\abc
+Once the volume is created, it must be formatted. The \texttt{Format-Volume} command is used for this purpose. The \texttt{-DriveLetter} parameter specifies the volume to format, and the \texttt{-FileSystem} parameter sets the desired file system, which in this case is \texttt{NTFS}, the default Windows file system. The \texttt{-AllocationUnitSize} parameter sets the allocation (or cluster) size. This defines the minimum space allocated for each file. While one allocation unit can store one file, a file may span multiple allocation units. This means that files smaller than the allocation size waste space. For \texttt{NTFS}, it is generally recommended to use a cluster size of \texttt{4096} bytes, as this allows storing files up to \texttt{16TB} while minimizing wasted space when storing small files \cite{Cluster-Size, Format-Volume, Cluster-Size-2}.
+\begin{lstlisting}[language=PowerShell]
+Resize-Partition -DiskNumber 0 -PartitionNumber 2 -Size (40GB)
+New-Partition -DiskNumber 0 -UseMaximumSize -DriveLetter B
+Format-Volume -DriveLetter B -FileSystem NTFS -AllocationUnitSize 4096
+\end{lstlisting}
+Using the \texttt{Get-Partition} command, the partition table is printed, allowing us to observe the changes, as shown in Figure 7.
+\begin{figure}[h]
+	\includegraphics[scale=0.35]{images/Get-Partition.png}
+	\centering
+	\caption{Printing the partition table}
+\end{figure}\newpage
+\subsubsection{Creating Directories}
+For this scenario, we are supposed to create a directory structure for the imaginary company's server.\abc
+As shown in \textcolor{blue}{\hyperref[fig:tree]{Figure \ref{fig:tree}}}, the structure is visualized using the \texttt{tree} command. The structure consists of a main directory named \texttt{BuildSmart\_BIM}, which represents the company's name. This directory contains four subdirectories:\abc
+- \textbf{Business}: Stores business-related data such as contracts, finances, etc.\abc
+- \textbf{Employees}: Contains employee-related data.\abc
+- \textbf{Projects}: Includes two example projects. Each project has subdirectories for CAD files and cost calculations.\abc
+- \textbf{Templates}: Holds templates for reports and CAD files.\abc
+Refer to Figure 8 for the complete directory structure.\abc
+The directories are created using the snippet below, where an array of directories to create is declared and then looped over to create the directories. Additionally, the \texttt{root} variable allows for easy modification of the location where the structure is created.\abc
+Besides the added comments, no further explanations are required for this section.\footnote{not the entire dir array is shown since it can be viewed on github in section 6 where all the used scripts are linked.}
+\begin{lstlisting}[language=PowerShell]
+#setting the root variable
+$root = "B:\BuildSmart_BIM"
+
+#checking if the root dir already exists
+if (-not (Test-Path -Path $root)){
+    New-Item -ItemType Directory -Path $root | Out-Null
+    Write-Host "'$root' created"
+} else{
+    Write-Host "root '$root' already exists"
+}
+
+#creating the subdirs array
+$subdirs = @(
+    "$root\Projekte\Projekt_A\CAD_Dateien",
+    ...
+)
+
+#looping over the array and creating the dirs
+foreach ($dir in $subdirs){
+    if (-not (Test-Path -Path $dir)){
+        New-Item -ItemType Directory -Path $dir | Out-Null
+        Write-Host "'$dir' created"
+    } else{
+        Write-Host "'$dir' already exists"
+    }
+}
+\end{lstlisting}
+\newpage
+The directory structure that was just created can be viewed using the \texttt{tree} command, whose output is shown in Figure 8.
+\begin{figure}[h]
+	\includegraphics[scale=0.45]{images/show spanning-tree.png}
+	\centering
+	\caption{Printing the directory structure}
+	\label{fig:tree}
+\end{figure}
+\newpage
+\subsubsection{Populating the Directories}
+To populate the directories, an array containing the subdirectories was created along with a file type map. The map's key corresponds to the subdirectory name, and the value is an array of possible file type extensions. These file extensions were generated using AI and represent file formats that would typically be used in those directories.\abc
+The script iterates over each directory, creates a random file with an appropriate file type, and names it using a randomly generated GUID. Additionally, the file's contents are set to a random GUID.\abc
+\begin{lstlisting}[language=PowerShell]
+#creating the subdirectories array
+$subdirs = @(
+    "$root\Projekte\Projekt_A\CAD_Dateien",
+    ...
+)
+
+#creating the file type map
+$fileTypeMap = @{
+    "CAD_Dateien" = @(".dwg", ".CATPart", ".CATProduct", ...)
+}
+
+#iterating over the subdirectories
+foreach ($dir in $subdirs){
+    # Getting the last part of the current directory
+    $currentDirName = Split-Path -Path $dir -Leaf
+    # Checking if the directory matches a key in the map
+    if ($fileTypeMap.ContainsKey($currentDirName)){
+        # Generating a random string for the filename
+        $randomString = [System.Guid]::NewGuid().ToString()
+        # Getting the matching file types for that directory
+        $matchingFileTypes = $fileTypeMap[$currentDirName]
+        # Selecting a random file type from the array
+        $randomValue = Get-Random -InputObject $matchingFileTypes
+        # Constructing the file path for the new file
+        $filePath = Join-Path -Path $dir -ChildPath "$randomString$randomValue"
+        # Writing the random string to the file
+        $randomString | Out-File -FilePath $filePath -Encoding UTF8
+    }
+}
+\end{lstlisting}
+To recursively list all the files that we created in the directory structure, the \texttt{Get-ChildItem} command is used with the \texttt{-Path} parameter set to the desired path and the \texttt{-Recurse} parameter enabled. The output is then piped into \texttt{Select-Object Name} to retrieve only the names of directories and files. A truncated Version of the output of this is shown in Figure 9.
+\begin{figure}[h]
+	\includegraphics[scale=0.2]{images/lsr.png}
+	\centering
+	\caption{Recursively listing the files}
+\end{figure}
+\newpage
+
+
+\subsubsection{Creating Users and Groups}
+To manage users in this fictitious company, both organizational and security groups will be created.\abc
+Organizational groups are used to categorize users based on their department, while security groups are used to control access permissions. For example, users can be added to a security group related to a specific project to grant them read or write access to certain directories.\abc
+When managing a large number of users, it is important to have a consistent naming scheme for both users and groups to ensure easier administration.
+\paragraph{Naming Conventions}\abc
+The naming conventions for groups and users are as follows:
+\begin{itemize}
+    \item \textbf{Organizational groups}: Prefixed with \texttt{BIM-}, e.g., \texttt{BIM-Engineer}.
+    \item \textbf{Security groups}: Prefixed with \texttt{SG\_BIM-}, followed by the specific permission, e.g., \texttt{SG\_BIM-Project\_A\_Read}.
+    \item \textbf{Users}: Follow the format \texttt{BIM-<id>-<Surname>}, where:
+    \begin{itemize}
+        \item The ID consists of 6 digits.
+        \item The first 2 digits correspond to the organizational group.
+        \item The last 4 digits uniquely identify the user.
+        \item Each new user receives an incremented number.
+    \end{itemize}
+\end{itemize}
+This naming convention limits the number of employees to 1,000, which is sufficient for a small business. More digits can be added in the future if necessary.  
+\footnote{Since the maximum length of a Windows username is 20 characters, if a surname is too long, the username will be truncated accordingly.}
+The mapping of organizational groups to their corresponding ID prefixes is as follows:
+\begin{verbatim}
+"Projektleiter"  = "01"
+"Architekten"    = "02"
+"Ingenieure"     = "03"
+"Verwaltung"     = "04"
+"Gaeste"         = "05"
+\end{verbatim}
+\newpage
+\paragraph{Creating Groups}\abc
+The relationship between security and organizational groups is illustrated in Figure 10 below.
+\begin{figure}[h]
+	\includegraphics[scale=0.3]{images/theVoices.png}
+	\centering
+	\caption{Diagramm of the users, groups and their permissions}
+\end{figure}
+
+To create the groups, a list of randomly generated surnames is downloaded and stored in the \texttt{name} variable using the \texttt{Get-Content} command. Additionally, two prefix variables, \texttt{prefix} and \texttt{secPrefix}, are declared for organizational and security groups, respectively.\abc
+Next, arrays containing the organizational and security group names are iterated over to create the groups using the \texttt{New-LocalGroup} command, with names constructed as \texttt{prefix+groupname} or \texttt{secPrefix+secgroupname}.
+\newpage
+\paragraph{Creating Users}\abc
+Creating users based on the defined naming scheme requires slightly more complex logic than creating groups.\abc
+First, a mapping is created where the keys are organizational group names and the values are their corresponding numeric prefixes.\abc
+A \texttt{for-each} loop iterates over the \texttt{name} variable. At the start of each iteration:
+\begin{enumerate}
+    \item A random element from the \texttt{groupnames} array is selected using \texttt{Get-Random}.
+    \item The \texttt{groupName} is then constructed using \texttt{prefix + randomElement}.
+    \item The \texttt{id\_department} variable is set using the \texttt{idMap} dictionary with \texttt{randomElement} as the key.
+    \item The \texttt{id\_idx} variable is generated as a formatted string using \texttt{"{0:0000}"} and the \texttt{-f} parameter, ensuring a four-digit format (e.g., \texttt{69} becomes \texttt{0069}).
+    \item The \texttt{fullID} is constructed by concatenating \texttt{id\_department} and \texttt{id\_idx}.
+    \item The full username is created as \texttt{prefix + fullID + " " + name}.
+    \item If the username exceeds 20 characters, it is truncated.
+\end{enumerate}
+The user is then created using the \texttt{Add-LocalUser} command with the generated username and the previously declared \texttt{supersecurepassword} variable.\abc
+Lastly, the user is added to both the \texttt{Remote Desktop Users} group and the randomly chosen organizational group (\texttt{groupName}).\abc
+To assign users to the appropriate security groups, a switch-case statement is used to define access relationships based on the diagram in Figure 10 above. Additionally, a random factor determines whether users receive additional read access to other projects or documents.
+\newpage
+Below is a shortened version of the relevant code for creating the groups, excluding boilerplate details:
+\begin{lstlisting}[language=PowerShell]
+#url of the file with sirnames
+$url = "https://raw.githubusercontent.com/Stefanistkuhl/obsidianschule/
+        refs/heads/main/3.Klasse/itsi/aufgaben/windoof/sirnames.txt"
+#destination file
+$dest = "C:\Users\Administrator\sirnames.txt"
+Invoke-WebRequest -Uri $url -OutFile $dest
+#reading the file
+$names = Get-Content -Path @($dest)
+#setting the prefixes
+$prefix = "BIM-"
+$secPrefix = "SG_BIM-"
+
+$groupnames = (
+    "Projektleiter",
+    ...
+)
+
+$secGroupNames = (
+    "Projekte_A_Lesen",
+    ...
+)
+
+#creating organizational groups
+foreach ($grpname in $groupnames){
+    $name = $prefix + $grpname
+    New-LocalGroup -Name $name
+}
+
+#creating security groups
+foreach ($secgrpname in $secGroupNames){
+    $name = $secPrefix + $secgrpname
+    New-LocalGroup -Name $name
+}
+
+\end{lstlisting}
+\newpage
+Below is a shortened version of the relevant code for creating users and assigning them to the correct groups, excluding boilerplate details.
+\begin{lstlisting}[language=PowerShell]
+#creating the id map to for the id of the groups
+$idMap = @{
+    "Projektleiter" = "01"
+    ...
+}
+$idx = 0
+$fullID = ""
+
+#itorating over the names
+foreach($name in $names){
+    $username = ""
+    #getting a randoom element of the organizational groups
+    $randomElement = $groupnames | Get-Random
+    #setting the full groupname for the current element
+    $groupName = $prefix + $randomElement
+    #getting the id for set group
+    $id_department = $idMap[$randomElement]
+    #formating the id for the index of the user
+    $id_idx = "{0:0000}" -f $idx
+    #constructing the full id
+    $fullID = $id_department + $id_idx
+    #constructing the full username
+    $userName = $prefix + $fullID + "-" + $name
+    #truncating usernames longer than 20 characters
+    if ($userName.Length -gt 20){
+        $userName = $userName.Substring(0, 20)
+    }
+    #creating the user
+    New-LocalUser -Name $userName -Password $supersurepassword
+    #adding the user to the correct organizational group
+    Add-LocalGroupMember -Group $groupName -Member $userName
+    #adding remote desktop access for the user
+    Add-LocalGroupMember -Group "Remote Desktop Users" -Member $username
+
+    switch ($randomElement){
+        "Projektleiter"{
+            if ((Get-Random -Maximum 2) -eq 0){
+		#add to the predefined security groups
+                if ((Get-Random -Maximum 2) -eq 0){
+			#add to addtional read security groups
+                }
+            } else{
+		#add to the opposite predefined security groups
+                if ((Get-Random -Maximum 2) -eq 0){
+			#add to opposite addtional read security groups
+                }
+	#rest of the cases for the other groups
+    }
+    $idx++
+}
+\end{lstlisting}
+\newpage
+\paragraph{Verifying the Creation of users and groups}\abc
+To show all the groups and users, I opened Computer Management, navigated to Local Users and Groups → Groups, and then opened the preview for every single group, which are all gathered together in Figure 11.
+\begin{figure}[!htb]
+	\includegraphics[scale=0.15]{images/ds2.jpg}
+	\centering
+	\caption{Showing all the groups}
+\end{figure}
+\newpage
+\subsubsection{Managing NTFS Permissions Using icacls}
+The most convenient way to change \texttt{NTFS} permissions via the command line is by using the \texttt{icacls} program.\abc
+\texttt{icacls} has the ability to list, change, remove, back up, and restore \texttt{NTFS} permissions or change the owner of a file system object.\cite{icals, icals2}\abc
+The permissions that will be assigned to the groups are \texttt{Read and Write} and \texttt{Read and Execute} for the read and write security groups, respectively.\abc
+
+Before setting these permissions, the \texttt{Administrator} group is assigned as the owner of the root directory using the following command. The \texttt{/T} option ensures the operation is applied recursively.\cite{icals} \abc
+\begin{lstlisting}[language=PowerShell]
+icacls "$root" /setowner "Administrators" /T
+\end{lstlisting}
+
+Next, the permissions of the directory are reset to prevent inheritance issues. While these issues are unlikely to occur, this step is included as a precaution because mistakes in previous attempts led to incorrect permissions being applied. The following commands accomplish this:
+\begin{lstlisting}[language=PowerShell]
+# Reset permissions of the root directory
+icacls "$root" /reset /T
+# Remove inheritance and apply base permissions
+icacls "$root" /inheritance:d /T
+\end{lstlisting}
+
+Then, permissions for the \texttt{Users} and \texttt{Authenticated Users} groups are recursively removed. This ensures that only explicitly set permissions are applied, avoiding any unnecessary inherited permissions. The \texttt{/remove:g} option removes all granted permissions for the specified group.
+\begin{lstlisting}[language=PowerShell]
+icacls "$root" /remove:g "Users" /T
+icacls "$root" /remove:g "Authenticated Users" /T
+\end{lstlisting}
+
+Now, the \texttt{Administrators} group is granted full control over the root folder and all its subdirectories and files. The \texttt{/grant:r} option grants the specified permissions, replacing any previously granted ones. The following notation is used:
+\begin{itemize}
+    \item \texttt{OI} (Object Inherit) – Files within the directory inherit the specified permissions.
+    \item \texttt{CI} (Container Inherit) – Subdirectories inherit the specified permissions.
+    \item \texttt{F} (Full Control) – Grants complete access to the targeted files and directories.
+\end{itemize}
+\cite{icals, NTFS-Permissions}
+\begin{lstlisting}[language=PowerShell]
+# Grant Administrators full control to the root and all subdirectories
+icacls "$root" /grant:r "Administrators:(OI)(CI)F" /T
+\end{lstlisting}
+The same logic is applied to all subdirectories and the security groups for read and write access. The only difference is that \texttt{RX} (Read and Execute) is used for read access, while \texttt{RW} (Read and Write) is used for write access. This process is repeated for the remaining groups and directories.
+\begin{lstlisting}[language=PowerShell]
+icacls "$root\Projekte\Projekt_A" /grant:r 
+       "$secPrefix-Projekte_A_Lesen:(OI)(CI)RX" /T
+icacls "$root\Projekte\Projekt_A" /grant:r 
+       "$secPrefix-Projekte_A_Schreiben:(OI)(CI)RW" /T
+\end{lstlisting}
+\newpage
+To view the \texttt{NTFS} permissions we set earlier, we can use \texttt{icacls} followed by any directory or file name. This can be used to verify if we set the permissions correctly, as shown for one of the directories in Figure 12.
+\begin{figure}[!htb]
+	\includegraphics[scale=0.35]{images/icals.png}
+	\centering
+	\caption{Viewing the \texttt{NTFS} permissions of a directory}
+\end{figure}
+\subsubsection{Sharing the Directories via SMB}
+To create a new SMB share, an array of parameters must first be defined. These parameters are then used with the \texttt{New-SmbShare} command to create the SMB share.\abc
+The required parameters are straightforward and consistent across all shares, as we only need the following:
+\begin{lstlisting}[language=PowerShell]
+$Projekte = @{
+    Name = "Projekte"
+    Path = "$root\Projekte"
+    FullAccess = "Administrators","Authenticated Users"
+}
+\end{lstlisting}
+
+The share is then created using the following command:
+
+\begin{lstlisting}[language=PowerShell]
+New-SmbShare @Projekte
+\end{lstlisting}
+
+This process is repeated for the following directories, each with its own parameters: \texttt{Projekt\_A}, \texttt{Projekt\_B}, \texttt{Mitarbeiterdaten}, \texttt{Geschaeftsdaten}, and \texttt{Vorlagen}.\cite{New-SmbShare}\abc
+The reason the share permissions are set to \texttt{Full Control} is that Windows follows the principle of least privilege. This means that more restrictive \texttt{NTFS} permissions will override the broader share-level permissions, eliminating the need to set permissions twice. The creation of the shares can be verified using the \texttt{Get-SMBShare} command, as shown in Figure 13.\cite{share-and-ntfs-permissions}
+\begin{figure}[!htb]
+	\includegraphics[scale=0.35]{images/Get-SMBShare.png}
+	\centering
+	\caption{Listing all the active \texttt{SMB} shares}
+\end{figure}
+\newpage
+Now, users can only access the files they need via the network share. Since in Section 3.2.10, permissions to the root directory were removed, users do not have access to the entire file structure. In this scenario, this is a central server where each employee either has a local workstation or a thin client and connects to the server remotely.\abc
+For example HR employees access the server using Remote Desktop, while engineers have dedicated workstations but store and share their files through the network share. Because of this setup, Remote Desktop is enabled for all employees, and local access to storage is both restricted and unnecessary.\abc
+Figures 14 to 18 verify the correct functioning of the permissions.
+\begin{figure}[!htb]
+	\includegraphics[scale=0.68]{images/nettest.jpg}
+	\centering
+	\caption{Showing the groups that the test user is part of}
+\end{figure}
+\begin{figure}[h]
+	\includegraphics[scale=0.35]{images/nolocacc.jpg}
+	\centering
+	\caption{Trying to access the directories locally on the drive}
+\end{figure}\newpage
+\begin{figure}[h]
+	\includegraphics[scale=0.35]{images/sharesadge.png}
+	\centering
+	\caption{Trying to access a share that the user has no permission to open}
+\end{figure}
+\begin{figure}[h]
+	\includegraphics[scale=0.35]{images/readOnly.jpg}
+	\centering
+	\caption{Trying to create a file in a directory where the user only has read permissions}
+\end{figure}
+\begin{figure}[h]
+	\includegraphics[scale=0.35]{images/rw.jpg}
+	\centering
+	\caption{Creating a file in a directory where the user has read and write permissions}
+\end{figure}
+\newpage
+\subsubsection{Encrypting the Volume using BitLocker}
+To encrypt the volume storing company data using BitLocker, the \texttt{Enable-BitLocker} command is used. The \texttt{-MountPoint} parameter specifies the drive letter of the volume to be encrypted, which in this case is "B:". The \texttt{-EncryptionMethod} parameter sets the encryption method, which in our case is \texttt{AES} with a \texttt{128-bit key}. The \texttt{-PasswordProtector} parameter specifies that a password will be used to protect the BitLocker-encrypted drive, with the \texttt{-Password} parameter setting the password to the variable that was created at the start of the script. \cite{Enable-BitLocker}
+\begin{lstlisting}[language=PowerShell]
+Enable-BitLocker -MountPoint "B:" -EncryptionMethod Aes128 
+                 -PasswordProtector -Password $supersurepassword
+\end{lstlisting}
+Now, every time the server is booted, an administrator must unlock the drive before it can be used. This issue could be addressed using Network Unlock or other options, but since the server is intended to run with 24/7 uptime, an administrator can simply unlock it after each reboot, as shown in Figures 19 and 20.\abc
+\begin{figure}[!htbp]
+	\includegraphics[scale=0.1]{images/locked.jpg}
+	\centering
+	\caption{Trying to list the contents of the encrypted volume}
+\end{figure}\newpage
+\begin{figure}[h]
+	\includegraphics[scale=0.1]{images/unlock.jpg}
+	\centering
+	\caption{Trying to list the contents of the encrypted volume after decrypting it}
+\end{figure}
+
+
+\newpage
+\section{References}
+\bibliography{IEEEabrv,quellen}
+\newpage
+\section{List of figures}
+
+\listoffigures
+\newpage
+\section{Attachments}
+Setup script:\abc \url{https://github.com/Stefanistkuhl/obsidianschule/blob/main/3.Klasse/itsi/aufgaben/windoof/setup.ps1}
+Main script:\abc \url{https://github.com/Stefanistkuhl/obsidianschule/blob/main/3.Klasse/itsi/aufgaben/windoof/script.ps1}
+
+\end{document}

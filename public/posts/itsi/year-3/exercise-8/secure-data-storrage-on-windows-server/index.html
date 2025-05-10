@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Secure data storrage on Windows Server | </title>
+<meta name="keywords" content="windows, it sec, school, blue team">
+<meta name="description" content="
+Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found here along with the bibliography.
+
+Secure data storage on Windows
+
+Laboratory protocol
+Exercise 8: Secure data storage on Windows
+
+     
+            Figure: Grouplogo
+        
+
+
+Subject: ITSI
+Class: 3AHITN
+Name: Stefan Fürst, Justin Tremurici
+Group Name/Number: todo/12
+Supervisor: SPAC, ZIVK
+Exercise dates: 14.02.2025 | 21.02.2025 | 28.02.2025 | 7.02.2025
+Submission date: 14.3.2025
+
+Table of Contents
+
+Task definition
+Summary
+Exercise Execution
+References
+
+
+Task definition
+Task Overview
+The goal of this exercise is to set up a secure and structured data storage system on a Windows Server, ensuring proper access control and encryption. The tasks include installing the operating system, configuring users and groups, setting up a folder structure, and securing access with permissions.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/itsi/year-3/exercise-8/secure-data-storrage-on-windows-server/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/itsi/year-3/exercise-8/secure-data-storrage-on-windows-server/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="root">
+                    <span>root</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Secure data storrage on Windows Server
+    </h1>
+    <div class="post-meta"><span title='2025-04-11 03:33:09 +0200 CEST'>April 11, 2025</span>
+
+</div>
+  </header> 
+  <div class="post-content"><blockquote>
+<p>Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex8/Sichere%20Datenspeicherung%20unter%20Windows.pdf">here</a> along with the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex8/quellen.bib">bibliography</a>.</p></blockquote>
+<hr>
+<h1 id="secure-data-storage-on-windows">Secure data storage on Windows<a hidden class="anchor" aria-hidden="true" href="#secure-data-storage-on-windows">#</a></h1>
+<hr>
+<p><strong>Laboratory protocol</strong><br>
+Exercise 8: Secure data storage on Windows<br>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/menAAA.png"/> <figcaption>
+            Figure: Grouplogo
+        </figcaption>
+</figure>
+
+<strong>Subject:</strong> ITSI<br>
+<strong>Class:</strong> 3AHITN<br>
+<strong>Name:</strong> Stefan Fürst, Justin Tremurici<br>
+<strong>Group Name/Number:</strong> todo/12<br>
+<strong>Supervisor:</strong> SPAC, ZIVK<br>
+<strong>Exercise dates:</strong> 14.02.2025 | 21.02.2025 | 28.02.2025 | 7.02.2025<br>
+<strong>Submission date:</strong> 14.3.2025</p>
+<hr>
+<h2 id="table-of-contents">Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h2>
+<ul>
+<li><a href="#task-definition">Task definition</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#exercise-execution">Exercise Execution</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<hr>
+<h2 id="task-definition">Task definition<a hidden class="anchor" aria-hidden="true" href="#task-definition">#</a></h2>
+<h3 id="task-overview">Task Overview<a hidden class="anchor" aria-hidden="true" href="#task-overview">#</a></h3>
+<p>The goal of this exercise is to set up a secure and structured data storage system on a Windows Server, ensuring proper access control and encryption. The tasks include installing the operating system, configuring users and groups, setting up a folder structure, and securing access with permissions.</p>
+<p>First, <code>Windows Server 2019</code> or newer must be installed in a virtualized environment, with the <code>hostname</code> and user accounts configured according to a naming convention. A structured folder system should be created based on an assigned fictional company, categorizing data logically and including sample files.</p>
+<p>User management involves defining necessary accounts, organizing them into <code>organizational groups</code>, and enforcing a consistent naming scheme. Permissions must be applied using <code>NTFS</code> security settings, restricting access appropriately. <code>Network shares</code> need to be configured to allow remote access while maintaining security through controlled sharing settings.</p>
+<p>The storage system must be optimized by creating a new <code>partition</code>, migrating data, and applying <code>BitLocker</code> encryption. All configurations should be verified, and documentation is required throughout the process. <code>PowerShell</code> automation is encouraged where applicable.<!-- raw HTML omitted -->ChatGPT<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><!-- raw HTML omitted --></p>
+<hr>
+<h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
+<p>This task was fully automated using two <code>PowerShell</code> scripts. The first script set up the environment by configuring the necessary system settings and creating a <code>Scheduled Task</code> using <code>New-ScheduledTask</code> and <code>Register-ScheduledTask</code> to execute the second script at predefined intervals. The second script performed all required operations, including creating and managing <code>users</code>, <code>directories</code>, <code>files</code>, and their <code>permissions</code>.</p>
+<p>To manage users, the script utilized commands such as <code>New-LocalUser</code> to create users, <code>Add-LocalGroupMember</code> to assign them to groups, and <code>Set-LocalUser</code> to modify user settings. The script dynamically generated random user accounts and assigned them to groups based on predefined logic. Organizational groups and security groups were structured to align with the fictional company scenario, BuildSmart BIM, a digital building company specializing in architecture, material lists, and time plans.</p>
+<p>For managing directories and files, commands like <code>New-Item</code> were used to create directory structures, and <code>icacls</code> was used to configure <code>NTFS permissions</code> for securing access.</p>
+<p>The partitioning of the drive was accomplished using <code>Resize-Partition</code> to shrink the primary partition and <code>New-Partition</code> to create a new <code>B:</code> partition, followed by <code>Format-Volume</code> to prepare it for use. The existing directory structure was then migrated using <code>Move-Item</code>.</p>
+<p>To enable file sharing, <code>New-SmbShare</code> was employed to create network shares. Additionally, the script encrypted the partition using <code>Enable-BitLocker</code>.</p>
+<p>Through this approach, the entire process was streamlined and executed automatically, significantly reducing manual effort while maintaining a structured and secure environment.</p>
+<hr>
+<h2 id="exercise-execution">Exercise Execution<a hidden class="anchor" aria-hidden="true" href="#exercise-execution">#</a></h2>
+<h3 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h3>
+<p>This entire exercise was automated with a script that can be invoked with a single command. It is designed to be used after setting up a fresh install of a new version of Windows Server. This script will complete the entire exercise automatically.</p>
+<p><strong>Note:</strong> For the script to work, the language of the Windows Server installation must be set to English, since user and group names are localized with no available aliases.<!-- raw HTML omitted -->Nico Boehr<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup><!-- raw HTML omitted --></p>
+<p>To run it, simply log into the Administrator account, press <strong>Windows + R</strong> to open the Run dialog, and paste the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>powershell.exe iwr https<span style="color:#960050;background-color:#1e0010">:</span>//tinyurl.com/mr234bdr | iex
+</span></span></code></pre></div><p>This runs <code>powershell.exe</code> and uses the abbreviation <code>iwr</code>, which stands for <code>Invoke-WebRequest</code>. This command makes a web request to the given link, which in this case is <a href="https://tinyurl.com/mr234bdr">https://tinyurl.com/mr234bdr</a>. This URL redirects to the raw file from my GitHub repository, where the first of two PowerShell scripts is downloaded.<!-- raw HTML omitted -->Invoke-WebRequest<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup><!-- raw HTML omitted --></p>
+<p><strong>Important:</strong> Whenever you run a command like this, always open the URL in your web browser first to verify its contents. Check whether the script has any red flags, such as obfuscation or suspicious behavior that it is not intended to perform.</p>
+<p>The downloaded script is then piped into <code>iex</code>, which is short for <code>Invoke-Expression</code>. This executes the output from <code>stdin</code>, which, in this case, is the contents of the script.<!-- raw HTML omitted -->Abbreviation Table<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup><!-- raw HTML omitted --><!-- raw HTML omitted -->Invoke-Expression<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup><!-- raw HTML omitted --></p>
+<hr>
+<h4 id="explaining-the-first-script">Explaining the first script<a hidden class="anchor" aria-hidden="true" href="#explaining-the-first-script">#</a></h4>
+<h5 id="changing-the-execution-policy">Changing the execution policy<a hidden class="anchor" aria-hidden="true" href="#changing-the-execution-policy">#</a></h5>
+<p>The first line of the <code>setup.ps1</code> script is:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Set-ExecutionPolicy RemoteSigned -Scope LocalMachine -Force
+</span></span></code></pre></div><p>This sets the <code>ExecutionPolicy</code> parameter to the <code>RemoteSigned</code> policy. The <code>Scope</code> parameter specifies the default scope value in this command as <code>LocalMachine</code>. The <code>-Force</code> parameter is used to suppress all confirmation prompts. So that the second script that is downloaded in this script is allowed to run on this device.<!-- raw HTML omitted -->Set-ExecutionPolicy<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup><!-- raw HTML omitted --></p>
+<p>This can be verified by running the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Get-ExecutionPolicy -List
+</span></span></code></pre></div><figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/expolicy.png"/> <figcaption>
+            Figure 1: Listing the execution policies of the local machine
+        </figcaption>
+</figure>
+
+<hr>
+<h5 id="installing-bitlocker">Installing BitLocker<a hidden class="anchor" aria-hidden="true" href="#installing-bitlocker">#</a></h5>
+<p><code>Install-WindowsFeature BitLocker</code> installs the Windows feature BitLocker, which is used for drive encryption and will be needed later in the exercise. It is included in the setup because its installation requires a reboot.<!-- raw HTML omitted -->Install-WindowsFeature<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup><!-- raw HTML omitted --><!-- raw HTML omitted -->BitLocker<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup><!-- raw HTML omitted --></p>
+<hr>
+<h5 id="changing-the-hostname">Changing the Hostname<a hidden class="anchor" aria-hidden="true" href="#changing-the-hostname">#</a></h5>
+<p><code>Rename-Computer -NewName &quot;fus-win-12&quot; -Force</code> changes the hostname of the computer to <code>fus-win-12</code>. The <code>-Force</code> parameter ensures the command runs non-interactively. This requires a reboot as well and is therefore included in the setup script.<!-- raw HTML omitted -->rename-computer<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup><!-- raw HTML omitted --></p>
+<p>The change of the hostname can be verified by using the <code>hostname</code> command:</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/hostname.png"/> <figcaption>
+            Figure 2: Verifying the hostname change
+        </figcaption>
+</figure>
+
+<hr>
+<h5 id="downloading-the-second-script">Downloading the second script<a hidden class="anchor" aria-hidden="true" href="#downloading-the-second-script">#</a></h5>
+<p>To download the second script, <code>Invoke-WebRequest</code> is used again with a <code>url</code> and <code>dest</code> variable to store the desired URL and destination file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>$url = <span style="color:#e6db74">&#34;https://raw.githubusercontent.com/Stefanistkuhl/obsidianschule/refs/heads/main/3.Klasse/itsi/aufgaben/windoof/script.ps1&#34;</span>
+</span></span><span style="display:flex;"><span>$dest = <span style="color:#e6db74">&#34;C:\Users\Administrator\script.ps1&#34;</span>
+</span></span><span style="display:flex;"><span>Invoke-WebRequest -Uri $url -OutFile $dest
+</span></span></code></pre></div><hr>
+<h5 id="enabling-remote-desktop">Enabling Remote Desktop<a hidden class="anchor" aria-hidden="true" href="#enabling-remote-desktop">#</a></h5>
+<p>For easier management and testing of users, we choose to enable Remote Desktop.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Set-ItemProperty -Path <span style="color:#e6db74">&#39;HKLM:\System\CurrentControlSet\Control\Terminal Server&#39;</span> -name <span style="color:#e6db74">&#34;fDenyTSConnections&#34;</span> -value <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>Enable-NetFirewallRule -DisplayGroup <span style="color:#e6db74">&#34;Remote Desktop&#34;</span>
+</span></span></code></pre></div><p><!-- raw HTML omitted -->Enable-Remote-Desktop<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup><!-- raw HTML omitted --></p>
+<hr>
+<h5 id="creating-a-scheduled-task">Creating a Scheduled Task<a hidden class="anchor" aria-hidden="true" href="#creating-a-scheduled-task">#</a></h5>
+<p>Since a restart is needed for the first part, some form of persistence is required for the second script to execute. For this, Windows Scheduled Tasks are used to execute the second script after a reboot with a set trigger.<!-- raw HTML omitted -->New-ScheduledTask<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup><!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>$Action = New-ScheduledTaskAction -Execute <span style="color:#e6db74">&#34;powershell.exe&#34;</span> -Argument <span style="color:#e6db74">&#34;-file C:\Users\Administrator\script.ps1&#34;</span>
+</span></span><span style="display:flex;"><span>$Trigger = New-ScheduledTaskTrigger -AtLogon -User <span style="color:#e6db74">&#34;Administrator&#34;</span>
+</span></span><span style="display:flex;"><span>$Settings = New-ScheduledTaskSettingsSet
+</span></span><span style="display:flex;"><span>Register-ScheduledTask -TaskName <span style="color:#e6db74">&#34;after-setup&#34;</span> -Action $Action -Trigger $Trigger -Settings $Settings
+</span></span><span style="display:flex;"><span>Restart-Computer
+</span></span></code></pre></div><figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/tasksh.png"/> <figcaption>
+            Figure 3: Inspecting the created task in task scheduler
+        </figcaption>
+</figure>
+
+<hr>
+<h4 id="the-second-script">The second script<a hidden class="anchor" aria-hidden="true" href="#the-second-script">#</a></h4>
+<p>Now that the setup script has finished running, after logging in as the administrator again, the second script will be launched.</p>
+<h5 id="creating-users-and-adding-them-to-groups">Creating Users and Adding Them to Groups<a hidden class="anchor" aria-hidden="true" href="#creating-users-and-adding-them-to-groups">#</a></h5>
+<p>In this step, two new users will be created: <code>fus-admin</code> and <code>fus-user</code>. These serve as the administrator&rsquo;s low-privileged account and privileged account, respectively, in this scenario.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>$supersurepassword = ConvertTo-SecureString <span style="color:#e6db74">&#34;rafi123_&#34;</span> -AsPlainText
+</span></span><span style="display:flex;"><span>New-LocalUser -Name <span style="color:#e6db74">&#39;fus-admin&#39;</span> -Password $supersurepassword
+</span></span><span style="display:flex;"><span>New-LocalUser -Name <span style="color:#e6db74">&#39;fus-user&#39;</span> -Password $supersurepassword
+</span></span><span style="display:flex;"><span>Add-LocalGroupMember -Group <span style="color:#e6db74">&#34;Administrators&#34;</span> -Member fus-admin
+</span></span><span style="display:flex;"><span>Add-LocalGroupMember -Group <span style="color:#e6db74">&#34;Remote Desktop Users&#34;</span> -Member fus-user
+</span></span></code></pre></div><p><!-- raw HTML omitted -->ConvertTo-SecureString<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup><!-- raw HTML omitted --><!-- raw HTML omitted -->New-LocalUser<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup><!-- raw HTML omitted --><!-- raw HTML omitted -->Add-LocalGroupMember<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup><!-- raw HTML omitted --></p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/fus-admin&amp;&amp;fus-user.png"/> <figcaption>
+            Figure 4: Verifying the functionality of the two users
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/fus-net-user.png"/> <figcaption>
+            Figure 5: Printing information about the users
+        </figcaption>
+</figure>
+</p>
+<hr>
+<h5 id="resizing-the-disk-and-creating-a-new-partition">Resizing the Disk and Creating a New Partition<a hidden class="anchor" aria-hidden="true" href="#resizing-the-disk-and-creating-a-new-partition">#</a></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Resize-Partition -DiskNumber <span style="color:#ae81ff">0</span> -PartitionNumber <span style="color:#ae81ff">2</span> -Size (<span style="color:#ae81ff">40</span>GB)
+</span></span><span style="display:flex;"><span>New-Partition -DiskNumber <span style="color:#ae81ff">0</span> -UseMaximumSize -DriveLetter B
+</span></span><span style="display:flex;"><span>Format-Volume -DriveLetter B -FileSystem NTFS -AllocationUnitSize <span style="color:#ae81ff">4096</span>
+</span></span></code></pre></div><p><!-- raw HTML omitted -->Resize-Partition<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup><!-- raw HTML omitted --><!-- raw HTML omitted -->New-Partition<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup><!-- raw HTML omitted --><!-- raw HTML omitted -->Volumes<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup><!-- raw HTML omitted --><!-- raw HTML omitted -->Cluster-Size<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup><!-- raw HTML omitted --><!-- raw HTML omitted -->Format-Volume<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup><!-- raw HTML omitted --><!-- raw HTML omitted -->Cluster-Size-2<sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup><!-- raw HTML omitted --></p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/Get-Partition.png"/> <figcaption>
+            Figure 6: Printing the partition table
+        </figcaption>
+</figure>
+
+<hr>
+<h5 id="creating-directories">Creating Directories<a hidden class="anchor" aria-hidden="true" href="#creating-directories">#</a></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>$baseDir = <span style="color:#e6db74">&#34;B:\CompanyData&#34;</span>
+</span></span><span style="display:flex;"><span>$folders = @(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Administration&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Finance&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;HumanResources&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;IT&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Legal&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Marketing&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Sales&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">foreach</span> ($folder <span style="color:#66d9ef">in</span> $folders) {
+</span></span><span style="display:flex;"><span>    New-Item -Path $baseDir -Name $folder -ItemType Directory
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/show%20spanning-tree.png"/> <figcaption>
+            Figure 7: Printing the directory structure
+        </figcaption>
+</figure>
+
+<hr>
+<h5 id="populating-the-directories">Populating the Directories<a hidden class="anchor" aria-hidden="true" href="#populating-the-directories">#</a></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>$sampleFiles = @(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Budget.xlsx&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;EmployeeList.csv&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ProjectPlan.pptx&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Report.docx&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">foreach</span> ($file <span style="color:#66d9ef">in</span> $sampleFiles) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">foreach</span> ($folder <span style="color:#66d9ef">in</span> $folders) {
+</span></span><span style="display:flex;"><span>        New-Item -Path <span style="color:#e6db74">&#34;</span>$baseDir<span style="color:#e6db74">\</span>$folder<span style="color:#e6db74">&#34;</span> -Name $file -ItemType File
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/lsr.png"/> <figcaption>
+            Figure 8: Recursively listing the files
+        </figcaption>
+</figure>
+
+<hr>
+<h5 id="creating-users-and-groups">Creating Users and Groups<a hidden class="anchor" aria-hidden="true" href="#creating-users-and-groups">#</a></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>$groups = @(<span style="color:#e6db74">&#34;Admins&#34;</span>, <span style="color:#e6db74">&#34;Users&#34;</span>, <span style="color:#e6db74">&#34;Guests&#34;</span>)
+</span></span><span style="display:flex;"><span>$users = @(<span style="color:#e6db74">&#34;alice&#34;</span>, <span style="color:#e6db74">&#34;bob&#34;</span>, <span style="color:#e6db74">&#34;charlie&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">foreach</span> ($group <span style="color:#66d9ef">in</span> $groups) {
+</span></span><span style="display:flex;"><span>    New-LocalGroup -Name $group
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">foreach</span> ($user <span style="color:#66d9ef">in</span> $users) {
+</span></span><span style="display:flex;"><span>    $password = ConvertTo-SecureString <span style="color:#e6db74">&#34;P@ssw0rd&#34;</span> -AsPlainText
+</span></span><span style="display:flex;"><span>    New-LocalUser -Name $user -Password $password
+</span></span><span style="display:flex;"><span>    Add-LocalGroupMember -Group <span style="color:#e6db74">&#34;Users&#34;</span> -Member $user
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/theVoices.png"/> <figcaption>
+            Figure 9: Diagram of the users, groups and their permissions
+        </figcaption>
+</figure>
+
+<hr>
+<h5 id="verifying-the-creation-of-users-and-groups">Verifying the Creation of users and groups<a hidden class="anchor" aria-hidden="true" href="#verifying-the-creation-of-users-and-groups">#</a></h5>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/ds2.jpg"/> <figcaption>
+            Figure 10: Showing all the groups
+        </figcaption>
+</figure>
+
+<hr>
+<h5 id="managing-ntfs-permissions-using-icacls">Managing NTFS Permissions Using icacls<a hidden class="anchor" aria-hidden="true" href="#managing-ntfs-permissions-using-icacls">#</a></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>icacls <span style="color:#e6db74">&#34;B:\CompanyData&#34;</span> /grant<span style="color:#960050;background-color:#1e0010">:</span>r <span style="color:#e6db74">&#34;Administrators:(OI)(CI)F&#34;</span> /T
+</span></span><span style="display:flex;"><span>icacls <span style="color:#e6db74">&#34;B:\CompanyData&#34;</span> /grant<span style="color:#960050;background-color:#1e0010">:</span>r <span style="color:#e6db74">&#34;Users:(OI)(CI)RX&#34;</span> /T
+</span></span><span style="display:flex;"><span>icacls <span style="color:#e6db74">&#34;B:\CompanyData&#34;</span> /grant<span style="color:#960050;background-color:#1e0010">:</span>r <span style="color:#e6db74">&#34;Guests:(OI)(CI)R&#34;</span> /T
+</span></span></code></pre></div><figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/icals.png"/> <figcaption>
+            Figure 11: Viewing the NTFS permissions of a directory
+        </figcaption>
+</figure>
+
+<hr>
+<h5 id="sharing-the-directories-via-smb">Sharing the Directories via SMB<a hidden class="anchor" aria-hidden="true" href="#sharing-the-directories-via-smb">#</a></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>New-SmbShare -Name <span style="color:#e6db74">&#34;CompanyData&#34;</span> -Path <span style="color:#e6db74">&#34;B:\CompanyData&#34;</span> -FullAccess <span style="color:#e6db74">&#34;Administrators&#34;</span>,<span style="color:#e6db74">&#34;Users&#34;</span> -ReadAccess <span style="color:#e6db74">&#34;Guests&#34;</span>
+</span></span></code></pre></div><figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/Get-SMBShare.png"/> <figcaption>
+            Figure 12: Listing all the active SMB shares
+        </figcaption>
+</figure>
+
+<hr>
+<p>Now, users can only access the files they need via the network share. Since in Section 3.2.10, permissions to the root directory were removed, users do not have access to the entire file structure. In this scenario, this is a central server where each employee either has a local workstation or a thin client and connects to the server remotely.</p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/nettest.jpg"/> <figcaption>
+            Figure 13: Showing the groups that the test user is part of
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/nolocacc.jpg"/> <figcaption>
+            Figure 14: Trying to access the directories locally on the drive
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/sharesadge.png"/> <figcaption>
+            Figure 15: Trying to access a share that the user has no permission to open
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/readOnly.jpg"/> <figcaption>
+            Figure 16: Trying to create a file in a directory where the user only has read permissions
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/rw.jpg"/> <figcaption>
+            Figure 17: Creating a file in a directory where the user has read and write permissions
+        </figcaption>
+</figure>
+</p>
+<hr>
+<h5 id="encrypting-the-volume-using-bitlocker">Encrypting the Volume using BitLocker<a hidden class="anchor" aria-hidden="true" href="#encrypting-the-volume-using-bitlocker">#</a></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Enable-BitLocker -MountPoint <span style="color:#e6db74">&#34;B:&#34;</span> -EncryptionMethod Aes128 -PasswordProtector -Password $supersurepassword
+</span></span></code></pre></div><p><!-- raw HTML omitted -->Enable-BitLocker<sup id="fnref:21"><a href="#fn:21" class="footnote-ref" role="doc-noteref">21</a></sup><!-- raw HTML omitted --></p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/locked.jpg"/> <figcaption>
+            Figure 18: Trying to list the contents of the encrypted volume
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex8/images/unlock.jpg"/> <figcaption>
+            Figure 19: Trying to list the contents of the encrypted volume after decrypting it
+        </figcaption>
+</figure>
+</p>
+<hr>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<p><em>For a full bibliography, see the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex8/quellen.bib">original BibTeX file</a>.</em></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>This task definition was generated using ChatGPT.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Nico Boehr. Localized Names of Users and Groups in Windows. <a href="https://blog.nicoboehr.de/2014/08/20/localized-names-of-users-and-groups-in-windows">source</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>sdwheeler. Invoke-WebRequest (Microsoft.PowerShell.Utility) - PowerShell. <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7.5">source</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Agoston, Zsolt. PowerShell Abbreviation Table | OpenTechTips. <a href="https://opentechtips.com/powershell-abbreviation-table">source</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>sdwheeler. Invoke-Expression (Microsoft.PowerShell.Utility) - PowerShell. <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/invoke-expression?view=powershell-7.5">source</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>sdwheeler. Set-ExecutionPolicy (Microsoft.PowerShell.Security) - PowerShell. <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.5">source</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>JasonGerend. Install-WindowsFeature (ServerManager). <a href="https://learn.microsoft.com/en-us/powershell/module/servermanager/install-windowsfeature?view=windowsserver2025-ps">source</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>JasonGerend. BitLocker Module. <a href="https://learn.microsoft.com/en-us/powershell/module/bitlocker/?view=windowsserver2025-ps">source</a>&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>sdwheeler. Rename-Computer (Microsoft.PowerShell.Management) - PowerShell. <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/rename-computer?view=powershell-7.5">source</a>&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>PowerShell FAQs. How to Enable Remote Desktop Using PowerShell? <a href="https://powershellfaqs.com/enable-remote-desktop-using-powershell">source</a>&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p>JasonGerend. New-ScheduledTask (ScheduledTasks). <a href="https://learn.microsoft.com/en-us/powershell/module/scheduledtasks/new-scheduledtask?view=windowsserver2025-ps">source</a>&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:12">
+<p>sdwheeler. ConvertTo-SecureString (Microsoft.PowerShell.Security) - PowerShell. <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-7.5">source</a>&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:13">
+<p>sdwheeler. New-LocalUser (Microsoft.PowerShell.LocalAccounts) - PowerShell. <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/new-localuser?view=powershell-5.1">source</a>&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:14">
+<p>sdwheeler. Add-LocalGroupMember (Microsoft.PowerShell.LocalAccounts) - PowerShell. <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/add-localgroupmember?view=powershell-5.1">source</a>&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:15">
+<p>JasonGerend. Resize-Partition (Storage). <a href="https://learn.microsoft.com/en-us/powershell/module/storage/resize-partition?view=windowsserver2025-ps">source</a>&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:16">
+<p>JasonGerend. New-Partition (Storage). <a href="https://learn.microsoft.com/en-us/powershell/module/storage/new-partition?view=windowsserver2025-ps">source</a>&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:17">
+<p>Laxmansingh@twc. What is difference between Partition, Volume and Logical Drive. <a href="https://www.thewindowsclub.com/difference-between-partition-volume-logical-drive">source</a>&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:18">
+<p>Watumull, Garrett. Cluster size recommendations for ReFS and NTFS. <a href="https://techcommunity.microsoft.com/blog/filecab/cluster-size-recommendations-for-refs-and-ntfs/425960">source</a>&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:19">
+<p>JasonGerend. Format-Volume (Storage). <a href="https://learn.microsoft.com/en-us/powershell/module/storage/format-volume?view=windowsserver2025-ps">source</a>&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:20">
+<p>Amanda. What Is Allocation Unit Size &amp; How to Change It - MiniTool Partition Wizard. <a href="https://www.partitionwizard.com/partitionmanager/file-allocation-unit-size.html">source</a>&#160;<a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:21">
+<p>JasonGerend. Enable-BitLocker (BitLocker). <a href="https://learn.microsoft.com/en-us/powershell/module/bitlocker/enable-bitlocker?view=windowsserver2025-ps">source</a>&#160;<a href="#fnref:21" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/windows/">Windows</a></li>
+      <li><a href="http://localhost:1313/tags/it-sec/">It Sec</a></li>
+      <li><a href="http://localhost:1313/tags/school/">School</a></li>
+      <li><a href="http://localhost:1313/tags/blue-team/">Blue Team</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/"></a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

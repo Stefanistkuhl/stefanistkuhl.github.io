@@ -15,8 +15,18 @@
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
+    <loc>http://localhost:1313/categories/it-sec/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/it-sec/</loc>
+  </url><url>
+    <loc>http://localhost:1313/categories/school/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/school/</loc>
+  </url><url>
     <loc>http://localhost:1313/posts/itsi/year-3/exercise-9/security-test-of-windows-server/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/windows/</loc>
   </url>
 </urlset>

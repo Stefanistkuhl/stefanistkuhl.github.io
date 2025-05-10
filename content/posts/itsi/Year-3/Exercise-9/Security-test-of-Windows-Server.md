@@ -1,5 +1,8 @@
 +++
+date = '2025-04-11T03:33:09+02:00'
 title = 'Security test of Windows Server'
+categories = ["school", "it sec"]
+tags = ["windows","it sec","school", "red team"]
 +++
 
 > Note: this was converted using from LaTeX to Markdown using Chat GPT 4.1 the original pdf can be found [here](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex9/Sicherheitstests%20von%20Windows%20Server.pdf) along with the [bibliography](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex9/zotero.bib)
