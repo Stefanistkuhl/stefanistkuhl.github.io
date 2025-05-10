@@ -1,0 +1,7 @@
+baseURL = 'https://stefanistkuhl.github.io'
+languageCode = 'en-us'
+title = 'Naming hard'
+theme = "dead-simple"
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'

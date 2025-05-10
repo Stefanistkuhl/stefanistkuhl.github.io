@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Naming hard</title>
+    <link>https://stefanistkuhl.github.io/</link>
+    <description>Recent content on Naming hard</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 10 May 2025 23:53:09 +0200</lastBuildDate>
+    <atom:link href="https://stefanistkuhl.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test</title>
+      <link>https://stefanistkuhl.github.io/posts/test/</link>
+      <pubDate>Sat, 10 May 2025 23:53:09 +0200</pubDate>
+      <guid>https://stefanistkuhl.github.io/posts/test/</guid>
+      <description>&lt;h1 id=&#34;3&#34;&gt;:3&lt;/h1&gt;</description>
+    </item>
+  </channel>
+</rss>
