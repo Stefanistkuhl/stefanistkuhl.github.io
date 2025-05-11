@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Hardening a Linux Webserver | silly blog</title>
+<meta name="keywords" content="linux, it sec, school, blue team">
+<meta name="description" content="
+Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found here along with the bibliography.
+
+Exercise 6: GNU/Linux - Securing active components
+
+Laboratory protocol
+Exercise 6: GNU/Linux - Securing active components
+
+     
+            Figure: Grouplogo
+        
+
+
+Subject: ITSI
+Class: 3AHITN
+Name: Stefan Fürst, Marcel Raichle
+Group Name/Number: Team 7/7
+Supervisor: SPAC, ZIVK
+Exercise dates: 6.12.2024, 13.12.2024, 20.12.2024, 3.1.2025, 4.1.2025, 5.1.2025
+Submission date: 4.1.2025
+
+Table of Contents
+
+Task definition
+
+Task 0 - Preparation
+Task 1 – Installing a Web Server
+Task 2 – Securing with Basic Authentication
+Task 3 – Encrypting with HTTPS
+Bonus Task – Local DNS Setup (Optional)
+
+
+Summary
+Complete network topology of the exercise
+Exercise Execution
+
+Preparation
+
+Testing the SSH connectivity
+Changes to the Docker setup
+
+
+Installing an active component
+
+Setting up PHP-FPM with Nginx
+
+
+Securing Nginx with Basic Authentication
+
+Creating a Password File
+Configuring the authentication in Nginx and testing it
+
+
+Configuring HTTPS with Self-Signed Certificates
+Adding a Domain
+
+
+References
+
+
+Task definition
+Task 0 - Preparation
+Ensure your server from Exercises 4 and 5 is configured with SSH. Verify that you can connect to the server via SSH using a client with a GUI.">
+<meta name="author" content="stefi">
+<link rel="canonical" href="http://localhost:1313/posts/itsi/year-3/exercise-6/linux-hadening-nginx/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/itsi/year-3/exercise-6/linux-hadening-nginx/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="silly blog (Alt + H)">silly blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="root">
+                    <span>root</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Hardening a Linux Webserver
+    </h1>
+    <div class="post-meta"><span title='2025-01-04 03:33:09 +0100 CET'>January 4, 2025</span>&nbsp;·&nbsp;stefi
+
+</div>
+  </header> 
+  <div class="post-content"><blockquote>
+<p>Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex6/GNU_Linux_Securing_Active_Components.pdf">here</a> along with the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex6/quellen.bib">bibliography</a>.</p></blockquote>
+<hr>
+<h1 id="exercise-6-gnulinux---securing-active-components">Exercise 6: GNU/Linux - Securing active components<a hidden class="anchor" aria-hidden="true" href="#exercise-6-gnulinux---securing-active-components">#</a></h1>
+<hr>
+<p><strong>Laboratory protocol</strong><br>
+Exercise 6: GNU/Linux - Securing active components<br>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/mika.png"/> <figcaption>
+            Figure: Grouplogo
+        </figcaption>
+</figure>
+
+<strong>Subject:</strong> ITSI<br>
+<strong>Class:</strong> 3AHITN<br>
+<strong>Name:</strong> Stefan Fürst, Marcel Raichle<br>
+<strong>Group Name/Number:</strong> Team 7/7<br>
+<strong>Supervisor:</strong> SPAC, ZIVK<br>
+<strong>Exercise dates:</strong> 6.12.2024, 13.12.2024, 20.12.2024, 3.1.2025, 4.1.2025, 5.1.2025<br>
+<strong>Submission date:</strong> 4.1.2025</p>
+<hr>
+<h2 id="table-of-contents">Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h2>
+<ul>
+<li><a href="#task-definition">Task definition</a>
+<ul>
+<li><a href="#task-0---preparation">Task 0 - Preparation</a></li>
+<li><a href="#task-1--installing-a-web-server">Task 1 – Installing a Web Server</a></li>
+<li><a href="#task-2--securing-with-basic-authentication">Task 2 – Securing with Basic Authentication</a></li>
+<li><a href="#task-3--encrypting-with-https">Task 3 – Encrypting with HTTPS</a></li>
+<li><a href="#bonus-task--local-dns-setup-optional">Bonus Task – Local DNS Setup (Optional)</a></li>
+</ul>
+</li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#complete-network-topology-of-the-exercise">Complete network topology of the exercise</a></li>
+<li><a href="#exercise-execution">Exercise Execution</a>
+<ul>
+<li><a href="#preparation">Preparation</a>
+<ul>
+<li><a href="#testing-the-ssh-connectivity">Testing the SSH connectivity</a></li>
+<li><a href="#changes-to-the-docker-setup">Changes to the Docker setup</a></li>
+</ul>
+</li>
+<li><a href="#installing-an-active-component">Installing an active component</a>
+<ul>
+<li><a href="#setting-up-php-fpm-with-nginx">Setting up PHP-FPM with Nginx</a></li>
+</ul>
+</li>
+<li><a href="#securing-nginx-with-basic-authentication">Securing Nginx with Basic Authentication</a>
+<ul>
+<li><a href="#creating-a-password-file">Creating a Password File</a></li>
+<li><a href="#configuring-the-authentication-in-nginx-and-testing-it">Configuring the authentication in Nginx and testing it</a></li>
+</ul>
+</li>
+<li><a href="#configuring-https-with-self-signed-certificates">Configuring HTTPS with Self-Signed Certificates</a></li>
+<li><a href="#adding-a-domain">Adding a Domain</a></li>
+</ul>
+</li>
+<li><a href="#references">References</a></li>
+</ul>
+<hr>
+<h2 id="task-definition">Task definition<a hidden class="anchor" aria-hidden="true" href="#task-definition">#</a></h2>
+<p><strong>Task 0 - Preparation</strong><br>
+Ensure your server from Exercises 4 and 5 is configured with SSH. Verify that you can connect to the server via SSH using a client with a GUI.</p>
+<p><strong>Task 1 – Installing a Web Server</strong><br>
+Install a web server (e.g., Apache or Nginx) and deploy a static HTML page displaying your group number, team members, and an AI-generated image. (Bonus: Deploy a dynamic PHP page.) Demonstrate access to the page from a client browser.</p>
+<p><strong>Task 2 – Securing with Basic Authentication</strong><br>
+Set up Basic Authentication on the server. Create user accounts in the format <code>nnv-webuser</code> and for your instructors (e.g., <code>zivk-webuser</code>). Demonstrate authentication functionality. (Bonus: Capture the password using Wireshark.)</p>
+<p><strong>Task 3 – Encrypting with HTTPS</strong><br>
+Enable HTTPS with a self-signed certificate, including your group number. Demonstrate encrypted access and explain potential issues. Install the certificate on a client to show why this action is not required in the public internet.</p>
+<p><strong>Bonus Task – Local DNS Setup (Optional)</strong><br>
+Set up DNS on the server using <code>bind9</code> for local access via <code>xxx.itsi3.local</code>. Demonstrate DNS resolution and access the website by domain name.<!-- raw HTML omitted -->ChatGPT<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><!-- raw HTML omitted --></p>
+<hr>
+<h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
+<p>As preparation for the exercise, I optimized the Docker workflow by using Docker Compose for easier management, improved the readability of the Dockerfile, and, most importantly, created a <code>.env</code> file along with a build script that utilizes it, so I no longer hardcode my passwords in the Dockerfile. Additionally, I disabled password authentication and now copy the <code>authorized_keys</code> file into the container, allowing for key-based authentication from the start and enabling me to disable password authentication.</p>
+<p>We need to install a web server, for which I chose <code>nginx</code>. I used it in conjunction with <code>php-fpm</code> to deploy a dynamic PHP webpage. The webpage includes our group number, names, and an AI-generated image. However, since this information should only be accessible with credentials, I implemented Basic Authentication to secure it. For this, the <code>apache2-utils</code> package was used to generate a <code>.htpasswd</code> file containing the credentials.</p>
+<p>We demonstrated with Wireshark that the credentials were transmitted in plain text while using HTTP. To address this, a self-signed SSL certificate was generated using <code>openssl</code>, with the group number included in the <code>OU</code> field of the certificate. The server was then configured to use HTTPS. We showed that the credentials could no longer be read with Wireshark, as the traffic was now encrypted.</p>
+<p>Lastly, we set up a domain, created a DNS record to point to the server, and generated a proper SSL certificate with Let&rsquo;s Encrypt, ensuring it is trusted and does not display a warning in the browser.</p>
+<hr>
+<h2 id="complete-network-topology-of-the-exercise">Complete network topology of the exercise<a hidden class="anchor" aria-hidden="true" href="#complete-network-topology-of-the-exercise">#</a></h2>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/topology.png"/> <figcaption>
+            Figure 1: Network topology of this exercise
+        </figcaption>
+</figure>
+
+<hr>
+<h2 id="exercise-execution">Exercise Execution<a hidden class="anchor" aria-hidden="true" href="#exercise-execution">#</a></h2>
+<h3 id="preparation">Preparation<a hidden class="anchor" aria-hidden="true" href="#preparation">#</a></h3>
+<p>The requirements for this exercise are a headless Linux server with hardened SSH, which only allows connections via key pairs. However, I removed the OTP authentication added in the last exercise, as it was overkill for this use case and became a burden to use.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/sshnopw.png"/> <figcaption>
+            Figure 2: Password authentication disabled
+        </figcaption>
+</figure>
+
+<h4 id="testing-the-ssh-connectivity">Testing the SSH connectivity<a hidden class="anchor" aria-hidden="true" href="#testing-the-ssh-connectivity">#</a></h4>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/nokey.png"/> <figcaption>
+            Figure 3: No SSH key available
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/yeskey.png"/> <figcaption>
+            Figure 4: ram-fus authenticating via SSH key
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/yeskey2.png"/> <figcaption>
+            Figure 5: ram-ram authenticating via SSH key
+        </figcaption>
+</figure>
+</p>
+<hr>
+<h4 id="changes-to-the-docker-setup">Changes to the Docker setup<a hidden class="anchor" aria-hidden="true" href="#changes-to-the-docker-setup">#</a></h4>
+<p>To improve the quality of life when working on this project, I switched from aliasing a long and hard-to-read run command to using Docker Compose, which allows you to define and run multi-container applications. Since it&rsquo;s in a YAML file, it is more readable and easier to work with, even in this use case where I only have one container.<!-- raw HTML omitted -->Docker-Compose<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup><!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">webserver</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">itsi</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">itsi:latest</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">restart</span>: <span style="color:#66d9ef">no</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;38452:38452&#34;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;80:80&#34;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;443:443&#34;</span>
+</span></span></code></pre></div><p>Furthermore, instead of having all of the credentials in the Dockerfile, I created a <code>.env</code> file in which the passwords are set. To utilize that, I made a build script that passes the variables from the file to the Dockerfile.<!-- raw HTML omitted -->docker-arg<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup><!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>export <span style="color:#66d9ef">$(</span>cat .env | xargs<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker buildx build -t itsi:latest<span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	--build-arg ROOT_PW<span style="color:#f92672">=</span>$ROOT_PW <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	--build-arg RAM_WEBUSER_PW<span style="color:#f92672">=</span>$RAM_WEBUSER_PW <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	--build-arg ZIVK_WEBUSER_PW<span style="color:#f92672">=</span>$ZIVK_WEBUSER_PW <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	--build-arg RAM_FUS_PW<span style="color:#f92672">=</span>$RAM_FUS_PW <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	--build-arg RAM_RAM_PW<span style="color:#f92672">=</span>$RAM_RAM_PW <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	--build-arg RAM_ALOIS_PW<span style="color:#f92672">=</span>$RAM_ALOIS_PW <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	--build-arg RAM_CHRIS_PW<span style="color:#f92672">=</span>$RAM_CHRIS_PW <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	--build-arg RAM_BERTA_PW<span style="color:#f92672">=</span>$RAM_BERTA_PW .
+</span></span></code></pre></div><p>These build-time arguments are referenced in the Dockerfile like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">ARG</span> ROOT_PW<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ARG</span> RAM_WEBUSER_PW<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ARG</span> ZIVK_WEBUSER_PW<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ARG</span> RAM_FUS_PW<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ARG</span> RAM_RAM_PW<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ARG</span> RAM_ALOIS_PW<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ARG</span> RAM_CHRIS_PW<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ARG</span> RAM_BERTA_PW<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>...<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#39;root:$ROOT_PW&#39;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>...<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>Here is what the <code>.env</code> file looks like for this project:</p>
+<pre tabindex="0"><code>ROOT_PW=&#39;some password&#39;
+...
+</code></pre><p>Note that the quotes are only necessary if the password contains characters like <code>&amp;</code>, which the shell will interpret.</p>
+<p>With this change, I can add the <code>.env</code> file to my <code>.gitignore</code> file so I don&rsquo;t accidentally commit my passwords again and handle passwords in a Dockerfile properly.</p>
+<p>To still utilize my alias script, I changed every instance of <code>docker run</code> to <code>docker compose up -d</code>, <code>docker stop itsi &amp;&amp; docker rm itsi</code> to <code>docker compose down</code>, and added the use of the build script to it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>alias relaunch<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sh -c &#39;docker stop itsi &amp;&amp; docker rm itsi &amp;&amp;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		       ./build.sh &amp;&amp;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		       docker compose up -d &amp;&amp; docker exec -it itsi /bin/bash&#39;&#34;</span>
+</span></span><span style="display:flex;"><span>alias rebuild<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sh -c &#39;./build.sh &amp;&amp;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                      docker compose up -d &amp;&amp; docker exec -it itsi /bin/bash&#39;&#34;</span>
+</span></span><span style="display:flex;"><span>alias stop<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sh -c &#39;docker compose down&#39;&#34;</span>
+</span></span></code></pre></div><p>Furthermore, instead of having to upload my container every time I rebuild, I added these three lines to copy the <code>authorized_keys</code> file with the devices I use to the container, so that every time I relaunch, I can just immediately SSH into it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">COPY</span> ./mapped-files/authorized_keys /root/.ssh/authorized_keys<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./mapped-files/authorized_keys /home/ram-fus/.ssh/authorized_keys<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./mapped-files/authorized_keys /home/ram-ram/.ssh/authorized_keys<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>Lastly, the line in the Dockerfile that specifies the exposed ports is edited to expose ports 80 and 443, as they will be required for this exercise.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 38452 80 443</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><hr>
+<h3 id="installing-an-active-component">Installing an active component<a hidden class="anchor" aria-hidden="true" href="#installing-an-active-component">#</a></h3>
+<p>Now, it&rsquo;s required to install a web server. I chose Nginx because I am most familiar with it, and due to its high performance and simplicity of use.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> apt install -y nginx<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>...<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> service ssh start <span style="color:#f92672">&amp;&amp;</span> service nginx start <span style="color:#f92672">&amp;&amp;</span> tail -F /dev/null<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>After modifying the Dockerfile, rebuilding, and redeploying, if we now open the web browser and go to the server&rsquo;s IP, we see the following.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/nginx.png"/> <figcaption>
+            Figure 6: Default nginx site
+        </figcaption>
+</figure>
+
+<p>The HTML site displayed is located at <code>/var/www/html/index.nginx-debian.html</code>.<br>
+Additionally, I replaced the <code>/var/www/html</code> directory with <code>/var/www/metyr.xyz</code>, in which I have the following file structure:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">`</span>-- html
+</span></span><span style="display:flex;"><span>   |-- private
+</span></span><span style="display:flex;"><span>   |   <span style="color:#e6db74">`</span>-- private.php
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">`</span>-- public
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">`</span>-- index.php
+</span></span></code></pre></div><p>These two directories are mapped onto the Docker container in the <code>docker-compose.yml</code> file, as shown below. Since they are mapped, every time the files are changed on the host, the changes carry over to the container, allowing for an easy and fast development workflow without the need to exec into the container or copy the files when creating the image.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">./mapped-files/public:/var/www/html/public:rw</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">./mapped-files/private:/var/www/html/private:rw</span>
+</span></span></code></pre></div><p>Additionally, I edited the Dockerfile to delete the default Nginx configuration file, located at <code>/etc/nginx/sites-enabled/default</code>, a symlink to the file <code>/etc/nginx/sites-available/default.conf</code>, and replaced it with one matching my domain name for better readability.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> rm -rf /var/www/html/<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> mkdir -p /var/www/metyr.xyz/html<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> rm /etc/nginx/sites-available/default<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> rm /etc/nginx/sites-enabled/default<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./mapped-files/metyr.xyz /etc/nginx/sites-available/metyr.xyz<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> ln -s /etc/nginx/sites-available/metyr.xyz /etc/nginx/sites-enabled/metyr.xyz<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><hr>
+<h4 id="setting-up-php-fpm-with-nginx">Setting up PHP-FPM with Nginx<a hidden class="anchor" aria-hidden="true" href="#setting-up-php-fpm-with-nginx">#</a></h4>
+<p>To give Nginx the ability to serve PHP files, the <code>php-fpm</code> (FastCGI Process Manager) package is required.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">server{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">...</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">index</span> <span style="color:#e6db74">public/index.php</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">location</span> ~ <span style="color:#e6db74">\.php$</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">include</span> <span style="color:#e6db74">snippets/fastcgi-php.conf</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">fastcgi_pass</span> <span style="color:#e6db74">unix:/run/php/php8.3-fpm.sock</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div><p>Additionally, the <code>php-fpm</code> service has to be started, so the default command of the container is edited.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">CMD</span> service ssh start <span style="color:#f92672">&amp;&amp;</span> service nginx start <span style="color:#f92672">&amp;&amp;</span> service php8.3-fpm start <span style="color:#f92672">&amp;&amp;</span> tail -F /dev/null<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>If we now rebuild the container, deploy it, and go to the IP address of the server in the browser, we can see the PHP page displayed.</p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/indexphp.png"/> <figcaption>
+            Figure 7: Viewing the index of the website
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/privatphp.png"/> <figcaption>
+            Figure 8: Viewing the private part of the website
+        </figcaption>
+</figure>
+</p>
+<hr>
+<h3 id="securing-nginx-with-basic-authentication">Securing Nginx with Basic Authentication<a hidden class="anchor" aria-hidden="true" href="#securing-nginx-with-basic-authentication">#</a></h3>
+<p>To restrict access to the website or certain parts of it by implementing username/password authentication, a file containing usernames and passwords is required. This file can be generated using tools such as <code>apache2-utils</code>, which I will use for this exercise.<!-- raw HTML omitted -->nginx-basic-auth<sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup><!-- raw HTML omitted --></p>
+<h4 id="creating-a-password-file">Creating a Password File<a hidden class="anchor" aria-hidden="true" href="#creating-a-password-file">#</a></h4>
+<p>With <code>apache2-utils</code> installed, we can now generate a password file by using the <code>htpasswd</code> command with the <code>-c</code> flag to create a new file. The file path is specified as the first argument, and the username is specified as the second argument. However, to avoid having to manually type in the password, the <code>-i</code> flag is used to take the password from <code>stdin</code>, which we pass using <code>echo</code>, while using the <code>-n</code> flag to remove the trailing newline.<!-- raw HTML omitted -->htpasswd<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup><!-- raw HTML omitted --><!-- raw HTML omitted -->echo-mangapge<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup><!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>RUN echo -n <span style="color:#e6db74">&#34;</span>$RAM_WEBUSER_PW<span style="color:#e6db74">&#34;</span> | htpasswd -i -c /etc/apache2/.htpasswd ram-webuser
+</span></span><span style="display:flex;"><span>RUN echo -n <span style="color:#e6db74">&#34;</span>$ZIVK_WEBUSER_PW<span style="color:#e6db74">&#34;</span> | htpasswd -i /etc/apache2/.htpasswd zivk-webuser
+</span></span></code></pre></div><h4 id="configuring-the-authentication-in-nginx-and-testing-it">Configuring the authentication in Nginx and testing it<a hidden class="anchor" aria-hidden="true" href="#configuring-the-authentication-in-nginx-and-testing-it">#</a></h4>
+<p>To require authentication for a specific area on the website, we need to create a location block that matches everything in the <code>/private</code> directory. To do this, Nginx URL matching is used.<!-- raw HTML omitted -->Nginx-url-matching<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup><!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">location</span> <span style="color:#e6db74">^~</span> <span style="color:#e6db74">/private</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">include</span> <span style="color:#e6db74">snippets/fastcgi-php.conf</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">fastcgi_pass</span> <span style="color:#e6db74">unix:/run/php/php8.3-fpm.sock</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">auth_basic</span> <span style="color:#e6db74">&#34;Private</span> <span style="color:#e6db74">Area&#34;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">auth_basic_user_file</span> <span style="color:#e6db74">/etc/apache2/.htpasswd</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>To visualize testing the login, I added this to the private PHP page to show the currently logged-in user:<br>
+<code>&lt;h3&gt;Hello &lt;?php echo $_SERVER['PHP_AUTH_USER']; ?&gt;&lt;/h3&gt;</code>.<!-- raw HTML omitted -->php-show-basic-auth<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup><!-- raw HTML omitted --></p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/siginprompt.png"/> <figcaption>
+            Figure 9: Showing the sign-in prompt
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/noauth.png"/> <figcaption>
+            Figure 10: Failed authentication
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/zivk_webuser.png"/> <figcaption>
+            Figure 11: Logged in as zivk-webuser
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/ram_webuser.png"/> <figcaption>
+            Figure 12: Logged in as ram-webuser
+        </figcaption>
+</figure>
+</p>
+<p>This is still only an HTTP site, though, which means that everything is transmitted in plain text. As a result, with a packet analyzer like Wireshark, the clear-text login credentials can be viewed. To fix this, HTTPS needs to be enabled, which will be covered in the next section.</p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/zivk_snifa.png"/> <figcaption>
+            Figure 13: Reading the plaintext credentials of zivk-webuser
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/ram_snifa.png"/> <figcaption>
+            Figure 14: Reading the plaintext credentials of ram-webuser
+        </figcaption>
+</figure>
+</p>
+<hr>
+<h3 id="configuring-https-with-self-signed-certificates">Configuring HTTPS with Self-Signed Certificates<a hidden class="anchor" aria-hidden="true" href="#configuring-https-with-self-signed-certificates">#</a></h3>
+<p>To stop an attacker from being able to read the credentials, HTTPS needs to be enabled on the server to encrypt the HTTP traffic with TLS (Transport Layer Security). Before this can be set up, an SSL certificate must first be created.<!-- raw HTML omitted -->self-signed-ssl<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup><!-- raw HTML omitted --><!-- raw HTML omitted -->non-interactive-ssl-gen<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup><!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>RUN openssl req -x509 -nodes -days <span style="color:#ae81ff">365</span> -newkey rsa:2048 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -keyout /etc/ssl/private/nginx-selfsigned.key <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -out /etc/ssl/certs/nginx-selfsigned.crt <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -subj <span style="color:#e6db74">&#34;/C=AT/ST=Vienna/L=Vienna/O=RAM/OU=7/CN=metyr.xyz/emailAddress=wedm1ebmf@mozmail.com&#34;</span>
+</span></span></code></pre></div><p>Now, in the Nginx configuration file, we need to make the server listen on port 443 and add the SSL certificate and key.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">server{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">...</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">listen</span> <span style="color:#ae81ff">443</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">listen</span> <span style="color:#e6db74">[::]:443</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">ssl_certificate</span> <span style="color:#e6db74">/etc/ssl/certs/nginx-selfsigned.crt</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">ssl_certificate_key</span> <span style="color:#e6db74">/etc/ssl/private/nginx-selfsigned.key</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div><p>After setting up HTTPS, it&rsquo;s recommended to set up a 301 HTTP redirect to direct HTTP traffic to the HTTPS site. This is done by adding a second server block at the end of the nginx config file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">server</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">listen</span> <span style="color:#ae81ff">80</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">listen</span> <span style="color:#e6db74">[::]:80</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">server_name</span> <span style="color:#e6db74">_</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">return</span> <span style="color:#ae81ff">301</span> <span style="color:#e6db74">https://</span>$server_name$request_uri;	
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>If we reload the Nginx configuration, our browser is going to give us a security warning since it recognizes that the certificate was not signed by a trusted organization but by ourselves.</p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/unseccert.png"/> <figcaption>
+            Figure 15: Browser warning for untrusted certificate
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/selfcert.png"/> <figcaption>
+            Figure 16: Viewing the self-signed certificate
+        </figcaption>
+</figure>
+</p>
+<p>If we open up Wireshark and inspect our traffic, we can see that we can&rsquo;t view any HTTP traffic. Instead, we only see TLS packets, which contain the encrypted HTTP data, and therefore the credentials can&rsquo;t be viewed anymore.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/nohaxxor.png"/> <figcaption>
+            Figure 17: Not being able to see the credentials anymore
+        </figcaption>
+</figure>
+
+<hr>
+<h3 id="adding-a-domain">Adding a Domain<a hidden class="anchor" aria-hidden="true" href="#adding-a-domain">#</a></h3>
+<p>Since I am doing this on a public VPS, I can&rsquo;t use a local DNS and need to use a real domain instead. I bought <code>metyr.xyz</code> from <a href="https://www.namecheap.com/">Namecheap</a>.</p>
+<p>To make Nginx use the domain name, you have to set the <code>server_name</code> in the configuration from <code>server_name _;</code> to <code>server_name metyr.xyz www.metyr.xyz;</code>.</p>
+<p>Now we need to create a DNS record for our domain.</p>
+<p>This record needs to be of the <code>A</code> type, which returns a 32-bit IPv4 address and is commonly used to map hostnames to an IP address.<!-- raw HTML omitted -->dns-record-types<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup><!-- raw HTML omitted --> The <code>@</code> in the Host field is used to denote the current origin, which represents the current domain. In this case, it would be <code>metyr.xyz</code>.<!-- raw HTML omitted -->rfc<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup><!-- raw HTML omitted --></p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/dnsentry.png"/> <figcaption>
+            Figure 18: Setting up the DNS record
+        </figcaption>
+</figure>
+
+<p>Lastly, I want to switch from using a self-signed certificate to using an officially signed one by Let&rsquo;s Encrypt. For this, the <code>certbot</code> and <code>python3-certbot-nginx</code> packages need to be added to our system.</p>
+<p>Now we can run this command to generate an SSL certificate, which will be signed by Let&rsquo;s Encrypt, so the browser won&rsquo;t give us a security warning anymore.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>certbot --nginx -d metyr.xyz --non-interactive --agree-tos -m wedm1ebmf@mozmail.com
+</span></span></code></pre></div><p><!-- raw HTML omitted -->certbot-options<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup><!-- raw HTML omitted --></p>
+<p>After running this command for the first time and replying if you haven&rsquo;t saved the certificate, you can use the <code>--force-renewal</code> flag to forcefully renew the certificate in case you lost it or don&rsquo;t want to set up importing it on a rebuild.<!-- raw HTML omitted -->cerbot-force-newnew<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup><!-- raw HTML omitted --></p>
+<p>If we visit the website now, we can see that we won&rsquo;t be prompted with a security warning. If we inspect the certificate, it will show that it was issued by Let&rsquo;s Encrypt and is trusted.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex6/images/nobs.png"/> <figcaption>
+            Figure 19: Showing the trusted certificate signed by Let&#39;s Encrypt
+        </figcaption>
+</figure>
+
+<hr>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<p><em>For a full bibliography, see the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex6/quellen.bib">original BibTeX file</a>.</em></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>This task definition was summarized by ChatGPT using the prompt: &ldquo;Summarize this task definition in English and LaTeX and make it short and abstract.&rdquo;&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Docker Documentation. Docker Compose. <a href="https://docs.docker.com/compose">source</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Vsupalov. Docker ARG, ENV and .env - a Complete Guide. <a href="https://vsupalov.com/docker-arg-env-variable-guide">source</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Apache HTTP Server. htpasswd - Manage user files for basic authentication. <a href="https://httpd.apache.org/docs/current/programs/htpasswd.html">source</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>man7.org. echo(1) - Linux manual page. <a href="https://man7.org/linux/man-pages/man1/echo.1.html">source</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Sling Academy. NGINX location blocks: Understanding and Utilizing URL Matching. <a href="https://www.slingacademy.com/article/nginx-location-block-the-complete-guide">source</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>Stack Overflow. Getting basic-auth username in php. <a href="https://stackoverflow.com/questions/316847/getting-basic-auth-username-in-php">source</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>DigitalOcean. How To Create a Self-Signed SSL Certificate for Nginx in Ubuntu 20.04. <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-20-04-1">source</a>&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>ShellHacks. HowTo: Create CSR using OpenSSL Without Prompt (Non-Interactive). <a href="https://www.shellhacks.com/create-csr-openssl-without-prompt-non-interactive">source</a>&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>Wikipedia. List of DNS record types. <a href="https://en.wikipedia.org/w/index.php?title=List_of_DNS_record_types&amp;oldid=1260647885">source</a>&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p>IETF Datatracker. RFC 1035: Domain names - implementation and specification. <a href="https://datatracker.ietf.org/doc/html/rfc1035#page-35">source</a>&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:12">
+<p>Certbot. certbot — Certbot 3.1.0.dev0 documentation. <a href="https://eff-certbot.readthedocs.io/en/latest/man/certbot.html">source</a>&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:13">
+<p>nixCraft. How to forcefully renew Let&rsquo;s Encrypt certificate on Linux or Unix. <a href="https://www.cyberciti.biz/faq/how-to-forcefully-renew-lets-encrypt-certificate">source</a>&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/linux/">Linux</a></li>
+      <li><a href="http://localhost:1313/tags/it-sec/">It Sec</a></li>
+      <li><a href="http://localhost:1313/tags/school/">School</a></li>
+      <li><a href="http://localhost:1313/tags/blue-team/">Blue Team</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">silly blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

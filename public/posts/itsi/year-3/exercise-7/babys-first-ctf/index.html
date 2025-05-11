@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Babys first CTF | </title>
+<title>Babys first CTF | silly blog</title>
 <meta name="keywords" content="linux, it sec, school, red team, ctf">
 <meta name="description" content="
 Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found here along with the bibliography.
@@ -34,12 +34,42 @@ Task definition
 Summary
 Complete network topology of the exercise
 Exercise Execution
+
+Setting up the virtual machines
+Reconnaissance: Scanning the Network
+Reconnaissance: Exploring the websites
+Weaponization: Evaluating the needed tools
+Exploitation: Using Hydra to break HTTP basic authentication
+Exploitation: Using Hydra to brute force SSH login
+Exploring the system
+
+Listing all the files
+Investigating the listening service
+Investigating the process flag
+Further investigating the webserver
+Investigating secret_flag.txt
+Exploring the new user
+Finding the history flag
+
+
+It should be over now, right?
+Privilege escalation on Linux
+
+Using a smart enumeration tool
+Trying a kernel level exploit
+Trying to get privileges using Metasploit and Meterpreter
+
+
+Getting root access through editing the GRUB boot options
+Obtaining the final flag
+
+
 References
 
 
 Task definition
 This task is based on a Capture the Flag (CTF) challenge, where multiple flags are hidden across an environment and can be found either through exploits or by navigating the system. Two virtual machines are provided: an Ubuntu server, which hosts the flags, and a Kali Linux machine for offensive actions. Both machines operate in a Host-only network, meaning they can communicate with each other but not with the external internet or other devices.">
-<meta name="author" content="">
+<meta name="author" content="stefi">
 <link rel="canonical" href="http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
@@ -104,6 +134,7 @@ This task is based on a Capture the Flag (CTF) challenge, where multiple flags a
 <header class="header">
     <nav class="nav">
         <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="silly blog (Alt + H)">silly blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -154,7 +185,7 @@ This task is based on a Capture the Flag (CTF) challenge, where multiple flags a
     <h1 class="post-title entry-hint-parent">
       Babys first CTF
     </h1>
-    <div class="post-meta"><span title='2025-04-11 03:33:09 +0200 CEST'>April 11, 2025</span>
+    <div class="post-meta"><span title='2025-01-20 03:33:09 +0100 CET'>January 20, 2025</span>&nbsp;·&nbsp;stefi
 
 </div>
   </header> 
@@ -184,7 +215,37 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <li><a href="#task-definition">Task definition</a></li>
 <li><a href="#summary">Summary</a></li>
 <li><a href="#complete-network-topology-of-the-exercise">Complete network topology of the exercise</a></li>
-<li><a href="#exercise-execution">Exercise Execution</a></li>
+<li><a href="#exercise-execution">Exercise Execution</a>
+<ul>
+<li><a href="#setting-up-the-virtual-machines">Setting up the virtual machines</a></li>
+<li><a href="#reconnaissance-scanning-the-network">Reconnaissance: Scanning the Network</a></li>
+<li><a href="#reconnaissance-exploring-the-websites">Reconnaissance: Exploring the websites</a></li>
+<li><a href="#weaponization-evaluating-the-needed-tools">Weaponization: Evaluating the needed tools</a></li>
+<li><a href="#exploitation-using-hydra-to-break-http-basic-authentication">Exploitation: Using Hydra to break HTTP basic authentication</a></li>
+<li><a href="#exploitation-using-hydra-to-brute-force-ssh-login">Exploitation: Using Hydra to brute force SSH login</a></li>
+<li><a href="#exploring-the-system">Exploring the system</a>
+<ul>
+<li><a href="#listing-all-the-files">Listing all the files</a></li>
+<li><a href="#investigating-the-listening-service">Investigating the listening service</a></li>
+<li><a href="#investigating-the-process-flag">Investigating the process flag</a></li>
+<li><a href="#further-investigating-the-webserver">Further investigating the webserver</a></li>
+<li><a href="#investigating-secret_flagtxt">Investigating secret_flag.txt</a></li>
+<li><a href="#exploring-the-new-user">Exploring the new user</a></li>
+<li><a href="#finding-the-history-flag">Finding the history flag</a></li>
+</ul>
+</li>
+<li><a href="#it-should-be-over-now-right">It should be over now, right?</a></li>
+<li><a href="#privilege-escalation-on-linux">Privilege escalation on Linux</a>
+<ul>
+<li><a href="#using-a-smart-enumeration-tool">Using a smart enumeration tool</a></li>
+<li><a href="#trying-a-kernel-level-exploit">Trying a kernel level exploit</a></li>
+<li><a href="#trying-to-get-privileges-using-metasploit-and-meterpreter">Trying to get privileges using Metasploit and Meterpreter</a></li>
+</ul>
+</li>
+<li><a href="#getting-root-access-through-editing-the-grub-boot-options">Getting root access through editing the GRUB boot options</a></li>
+<li><a href="#obtaining-the-final-flag">Obtaining the final flag</a></li>
+</ul>
+</li>
 <li><a href="#references">References</a></li>
 </ul>
 <hr>
@@ -621,7 +682,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/"></a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">silly blog</a></span> · 
 
     <span>
         Powered by

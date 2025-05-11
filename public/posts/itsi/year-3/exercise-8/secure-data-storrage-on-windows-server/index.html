@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Secure data storrage on Windows Server | </title>
+<title>Secure data storrage on Windows Server | silly blog</title>
 <meta name="keywords" content="windows, it sec, school, blue team">
 <meta name="description" content="
 Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found here along with the bibliography.
@@ -31,15 +31,46 @@ Submission date: 14.3.2025
 Table of Contents
 
 Task definition
+
+Task Overview
+
+
 Summary
 Exercise Execution
+
+Introduction
+Explaining the first script
+
+Changing the execution policy
+Installing BitLocker
+Changing the Hostname
+Downloading the second script
+Enabling Remote Desktop
+Creating a Scheduled Task
+
+
+The second script
+
+Creating Users and Adding Them to Groups
+Resizing the Disk and Creating a New Partition
+Creating Directories
+Populating the Directories
+Creating Users and Groups
+Verifying the Creation of users and groups
+Managing NTFS Permissions Using icacls
+Sharing the Directories via SMB
+Encrypting the Volume using BitLocker
+
+
+
+
 References
 
 
 Task definition
 Task Overview
 The goal of this exercise is to set up a secure and structured data storage system on a Windows Server, ensuring proper access control and encryption. The tasks include installing the operating system, configuring users and groups, setting up a folder structure, and securing access with permissions.">
-<meta name="author" content="">
+<meta name="author" content="stefi">
 <link rel="canonical" href="http://localhost:1313/posts/itsi/year-3/exercise-8/secure-data-storrage-on-windows-server/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
@@ -104,6 +135,7 @@ The goal of this exercise is to set up a secure and structured data storage syst
 <header class="header">
     <nav class="nav">
         <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="silly blog (Alt + H)">silly blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -154,7 +186,7 @@ The goal of this exercise is to set up a secure and structured data storage syst
     <h1 class="post-title entry-hint-parent">
       Secure data storrage on Windows Server
     </h1>
-    <div class="post-meta"><span title='2025-04-11 03:33:09 +0200 CEST'>April 11, 2025</span>
+    <div class="post-meta"><span title='2025-03-14 02:22:09 +0100 CET'>March 14, 2025</span>&nbsp;·&nbsp;stefi
 
 </div>
   </header> 
@@ -181,9 +213,40 @@ Exercise 8: Secure data storage on Windows<br>
 <hr>
 <h2 id="table-of-contents">Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h2>
 <ul>
-<li><a href="#task-definition">Task definition</a></li>
+<li><a href="#task-definition">Task definition</a>
+<ul>
+<li><a href="#task-overview">Task Overview</a></li>
+</ul>
+</li>
 <li><a href="#summary">Summary</a></li>
-<li><a href="#exercise-execution">Exercise Execution</a></li>
+<li><a href="#exercise-execution">Exercise Execution</a>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#explaining-the-first-script">Explaining the first script</a>
+<ul>
+<li><a href="#changing-the-execution-policy">Changing the execution policy</a></li>
+<li><a href="#installing-bitlocker">Installing BitLocker</a></li>
+<li><a href="#changing-the-hostname">Changing the Hostname</a></li>
+<li><a href="#downloading-the-second-script">Downloading the second script</a></li>
+<li><a href="#enabling-remote-desktop">Enabling Remote Desktop</a></li>
+<li><a href="#creating-a-scheduled-task">Creating a Scheduled Task</a></li>
+</ul>
+</li>
+<li><a href="#the-second-script">The second script</a>
+<ul>
+<li><a href="#creating-users-and-adding-them-to-groups">Creating Users and Adding Them to Groups</a></li>
+<li><a href="#resizing-the-disk-and-creating-a-new-partition">Resizing the Disk and Creating a New Partition</a></li>
+<li><a href="#creating-directories">Creating Directories</a></li>
+<li><a href="#populating-the-directories">Populating the Directories</a></li>
+<li><a href="#creating-users-and-groups">Creating Users and Groups</a></li>
+<li><a href="#verifying-the-creation-of-users-and-groups">Verifying the Creation of users and groups</a></li>
+<li><a href="#managing-ntfs-permissions-using-icacls">Managing NTFS Permissions Using icacls</a></li>
+<li><a href="#sharing-the-directories-via-smb">Sharing the Directories via SMB</a></li>
+<li><a href="#encrypting-the-volume-using-bitlocker">Encrypting the Volume using BitLocker</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#references">References</a></li>
 </ul>
 <hr>
@@ -524,7 +587,7 @@ Exercise 8: Secure data storage on Windows<br>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/"></a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">silly blog</a></span> · 
 
     <span>
         Powered by

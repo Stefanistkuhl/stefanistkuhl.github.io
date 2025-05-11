@@ -1,51 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Red Team on </title>
+    <title>Red Team on silly blog</title>
     <link>http://localhost:1313/tags/red-team/</link>
-    <description>Recent content in Red Team on </description>
+    <description>Recent content in Red Team on silly blog</description>
     <generator>Hugo -- 0.147.2</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 11 Apr 2025 03:33:09 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/red-team/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Babys first CTF</title>
-      <link>http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/</link>
-      <pubDate>Fri, 11 Apr 2025 03:33:09 +0200</pubDate>
-      <guid>http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/UE7_CTF.pdf&#34;&gt;here&lt;/a&gt; along with the &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/quellen.bib&#34;&gt;bibliography&lt;/a&gt;.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;ethical-hacking-of-a-ctf-vm&#34;&gt;Ethical hacking of a CTF-VM&lt;/h1&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Laboratory protocol&lt;/strong&gt;&lt;br&gt;
-Exercise 7: Ethical hacking of a CTF-VM&lt;br&gt;
-&lt;figure&gt;
-    &lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/itsi/y3/ex7/images/menheraMagnifier.png&#34;/&gt; &lt;figcaption&gt;
-            Figure: Grouplogo
-        &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;strong&gt;Subject:&lt;/strong&gt; ITSI&lt;br&gt;
-&lt;strong&gt;Class:&lt;/strong&gt; 3AHITN&lt;br&gt;
-&lt;strong&gt;Name:&lt;/strong&gt; Stefan Fürst, Justin Tremurici&lt;br&gt;
-&lt;strong&gt;Group Name/Number:&lt;/strong&gt; todo/12&lt;br&gt;
-&lt;strong&gt;Supervisor:&lt;/strong&gt; SPAC, ZIVK&lt;br&gt;
-&lt;strong&gt;Exercise dates:&lt;/strong&gt; 17-19.1.2025&lt;br&gt;
-&lt;strong&gt;Submission date:&lt;/strong&gt; 20.1.2025&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#task-definition&#34;&gt;Task definition&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#complete-network-topology-of-the-exercise&#34;&gt;Complete network topology of the exercise&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#exercise-execution&#34;&gt;Exercise Execution&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;task-definition&#34;&gt;Task definition&lt;/h2&gt;
-&lt;p&gt;This task is based on a Capture the Flag (CTF) challenge, where multiple flags are hidden across an environment and can be found either through exploits or by navigating the system. Two virtual machines are provided: an Ubuntu server, which hosts the flags, and a Kali Linux machine for offensive actions. Both machines operate in a &lt;code&gt;Host-only network&lt;/code&gt;, meaning they can communicate with each other but not with the external internet or other devices.&lt;/p&gt;</description>
-    </item>
     <item>
       <title>Security test of Windows Server</title>
       <link>http://localhost:1313/posts/itsi/year-3/exercise-9/security-test-of-windows-server/</link>
@@ -77,12 +39,115 @@ Exercise 9: Testing Windows server security&lt;br&gt;
 &lt;li&gt;&lt;a href=&#34;#task-definition&#34;&gt;Task definition&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#complete-network-topology-of-the-exercise&#34;&gt;Complete network topology of the exercise&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#exercise-execution&#34;&gt;Exercise Execution&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exercise-execution&#34;&gt;Exercise Execution&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#setting-up-the-exercise-environment&#34;&gt;Setting Up the Exercise Environment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#brute-forcing-smb-with-hydra&#34;&gt;Brute-Forcing SMB with Hydra&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#analyzing-network-traffic-with-wireshark&#34;&gt;Analyzing Network Traffic with Wireshark&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#brute-forcing-rdp&#34;&gt;Brute-Forcing RDP&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#explaining-my-own-rdp-brute-forcing-script&#34;&gt;Explaining My Own RDP Brute-Forcing Script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#analyzing-network-traffic-with-wireshark-rdp&#34;&gt;Analyzing Network Traffic with Wireshark (RDP)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#hardening-windows-against-brute-force-attacks&#34;&gt;Hardening Windows Against Brute-Force Attacks&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#using-evlwatcher-for-rate-limiting&#34;&gt;Using EvLWatcher for Rate Limiting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#disabling-ntlm-authentication&#34;&gt;Disabling NTLM Authentication&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#configuring-login-timeout-settings&#34;&gt;Configuring Login Timeout Settings&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#mimikatz-an-introduction&#34;&gt;Mimikatz: An Introduction&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#what-can-mimikatz-do&#34;&gt;What Can Mimikatz Do?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#how-to-use-mimikatz&#34;&gt;How to Use Mimikatz&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#running-mimikatz&#34;&gt;Running Mimikatz&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#using-polyglot-files-to-conceal-mimikatz&#34;&gt;Using Polyglot Files to Conceal Mimikatz&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#dll-side-loading-to-attempt-to-bypass-windows-defender&#34;&gt;DLL Side-Loading to Attempt to Bypass Windows Defender&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#how-to-detect-and-block-mimikatz&#34;&gt;How to Detect and Block Mimikatz&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;task-definition&#34;&gt;Task definition&lt;/h2&gt;
 &lt;p&gt;This task was conducted using a combination of manual configuration and automated attack tools to evaluate the security posture of a Windows Server environment. The environment setup involved preparing both the target system and an attacker system running Kali Linux, which was equipped with tools such as Hydra for brute-force attacks and Wireshark for network traffic analysis.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Babys first CTF</title>
+      <link>http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/</link>
+      <pubDate>Mon, 20 Jan 2025 03:33:09 +0100</pubDate>
+      <guid>http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/UE7_CTF.pdf&#34;&gt;here&lt;/a&gt; along with the &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/quellen.bib&#34;&gt;bibliography&lt;/a&gt;.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;ethical-hacking-of-a-ctf-vm&#34;&gt;Ethical hacking of a CTF-VM&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Laboratory protocol&lt;/strong&gt;&lt;br&gt;
+Exercise 7: Ethical hacking of a CTF-VM&lt;br&gt;
+&lt;figure&gt;
+    &lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/itsi/y3/ex7/images/menheraMagnifier.png&#34;/&gt; &lt;figcaption&gt;
+            Figure: Grouplogo
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;strong&gt;Subject:&lt;/strong&gt; ITSI&lt;br&gt;
+&lt;strong&gt;Class:&lt;/strong&gt; 3AHITN&lt;br&gt;
+&lt;strong&gt;Name:&lt;/strong&gt; Stefan Fürst, Justin Tremurici&lt;br&gt;
+&lt;strong&gt;Group Name/Number:&lt;/strong&gt; todo/12&lt;br&gt;
+&lt;strong&gt;Supervisor:&lt;/strong&gt; SPAC, ZIVK&lt;br&gt;
+&lt;strong&gt;Exercise dates:&lt;/strong&gt; 17-19.1.2025&lt;br&gt;
+&lt;strong&gt;Submission date:&lt;/strong&gt; 20.1.2025&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#task-definition&#34;&gt;Task definition&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#complete-network-topology-of-the-exercise&#34;&gt;Complete network topology of the exercise&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exercise-execution&#34;&gt;Exercise Execution&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#setting-up-the-virtual-machines&#34;&gt;Setting up the virtual machines&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reconnaissance-scanning-the-network&#34;&gt;Reconnaissance: Scanning the Network&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reconnaissance-exploring-the-websites&#34;&gt;Reconnaissance: Exploring the websites&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#weaponization-evaluating-the-needed-tools&#34;&gt;Weaponization: Evaluating the needed tools&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exploitation-using-hydra-to-break-http-basic-authentication&#34;&gt;Exploitation: Using Hydra to break HTTP basic authentication&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exploitation-using-hydra-to-brute-force-ssh-login&#34;&gt;Exploitation: Using Hydra to brute force SSH login&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exploring-the-system&#34;&gt;Exploring the system&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#listing-all-the-files&#34;&gt;Listing all the files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#investigating-the-listening-service&#34;&gt;Investigating the listening service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#investigating-the-process-flag&#34;&gt;Investigating the process flag&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#further-investigating-the-webserver&#34;&gt;Further investigating the webserver&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#investigating-secret_flagtxt&#34;&gt;Investigating secret_flag.txt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exploring-the-new-user&#34;&gt;Exploring the new user&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#finding-the-history-flag&#34;&gt;Finding the history flag&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#it-should-be-over-now-right&#34;&gt;It should be over now, right?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#privilege-escalation-on-linux&#34;&gt;Privilege escalation on Linux&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#using-a-smart-enumeration-tool&#34;&gt;Using a smart enumeration tool&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#trying-a-kernel-level-exploit&#34;&gt;Trying a kernel level exploit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#trying-to-get-privileges-using-metasploit-and-meterpreter&#34;&gt;Trying to get privileges using Metasploit and Meterpreter&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#getting-root-access-through-editing-the-grub-boot-options&#34;&gt;Getting root access through editing the GRUB boot options&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#obtaining-the-final-flag&#34;&gt;Obtaining the final flag&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;task-definition&#34;&gt;Task definition&lt;/h2&gt;
+&lt;p&gt;This task is based on a Capture the Flag (CTF) challenge, where multiple flags are hidden across an environment and can be found either through exploits or by navigating the system. Two virtual machines are provided: an Ubuntu server, which hosts the flags, and a Kali Linux machine for offensive actions. Both machines operate in a &lt;code&gt;Host-only network&lt;/code&gt;, meaning they can communicate with each other but not with the external internet or other devices.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

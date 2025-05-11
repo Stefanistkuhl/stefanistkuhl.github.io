@@ -1,5 +1,5 @@
 +++
-date = '2025-04-11T03:33:09+02:00'
+date = '2025-03-14T02:22:09+01:00'
 title = 'Secure data storrage on Windows Server'
 categories = ["school", "it sec"]
 tags = ["windows","it sec","school","blue team"]
@@ -29,8 +29,27 @@ Exercise 8: Secure data storage on Windows
 ## Table of Contents
 
 - [Task definition](#task-definition)
+  - [Task Overview](#task-overview)
 - [Summary](#summary)
 - [Exercise Execution](#exercise-execution)
+  - [Introduction](#introduction)
+  - [Explaining the first script](#explaining-the-first-script)
+    - [Changing the execution policy](#changing-the-execution-policy)
+    - [Installing BitLocker](#installing-bitlocker)
+    - [Changing the Hostname](#changing-the-hostname)
+    - [Downloading the second script](#downloading-the-second-script)
+    - [Enabling Remote Desktop](#enabling-remote-desktop)
+    - [Creating a Scheduled Task](#creating-a-scheduled-task)
+  - [The second script](#the-second-script)
+    - [Creating Users and Adding Them to Groups](#creating-users-and-adding-them-to-groups)
+    - [Resizing the Disk and Creating a New Partition](#resizing-the-disk-and-creating-a-new-partition)
+    - [Creating Directories](#creating-directories)
+    - [Populating the Directories](#populating-the-directories)
+    - [Creating Users and Groups](#creating-users-and-groups)
+    - [Verifying the Creation of users and groups](#verifying-the-creation-of-users-and-groups)
+    - [Managing NTFS Permissions Using icacls](#managing-ntfs-permissions-using-icacls)
+    - [Sharing the Directories via SMB](#sharing-the-directories-via-smb)
+    - [Encrypting the Volume using BitLocker](#encrypting-the-volume-using-bitlocker)
 - [References](#references)
 
 ---

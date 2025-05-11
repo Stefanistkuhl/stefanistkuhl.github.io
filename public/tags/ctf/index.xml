@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Ctf on </title>
+    <title>Ctf on silly blog</title>
     <link>http://localhost:1313/tags/ctf/</link>
-    <description>Recent content in Ctf on </description>
+    <description>Recent content in Ctf on silly blog</description>
     <generator>Hugo -- 0.147.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 Apr 2025 03:33:09 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jan 2025 03:33:09 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Babys first CTF</title>
       <link>http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/</link>
-      <pubDate>Fri, 11 Apr 2025 03:33:09 +0200</pubDate>
+      <pubDate>Mon, 20 Jan 2025 03:33:09 +0100</pubDate>
       <guid>http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/UE7_CTF.pdf&#34;&gt;here&lt;/a&gt; along with the &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/quellen.bib&#34;&gt;bibliography&lt;/a&gt;.&lt;/p&gt;&lt;/blockquote&gt;
@@ -39,7 +39,37 @@ Exercise 7: Ethical hacking of a CTF-VM&lt;br&gt;
 &lt;li&gt;&lt;a href=&#34;#task-definition&#34;&gt;Task definition&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#complete-network-topology-of-the-exercise&#34;&gt;Complete network topology of the exercise&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#exercise-execution&#34;&gt;Exercise Execution&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exercise-execution&#34;&gt;Exercise Execution&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#setting-up-the-virtual-machines&#34;&gt;Setting up the virtual machines&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reconnaissance-scanning-the-network&#34;&gt;Reconnaissance: Scanning the Network&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reconnaissance-exploring-the-websites&#34;&gt;Reconnaissance: Exploring the websites&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#weaponization-evaluating-the-needed-tools&#34;&gt;Weaponization: Evaluating the needed tools&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exploitation-using-hydra-to-break-http-basic-authentication&#34;&gt;Exploitation: Using Hydra to break HTTP basic authentication&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exploitation-using-hydra-to-brute-force-ssh-login&#34;&gt;Exploitation: Using Hydra to brute force SSH login&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exploring-the-system&#34;&gt;Exploring the system&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#listing-all-the-files&#34;&gt;Listing all the files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#investigating-the-listening-service&#34;&gt;Investigating the listening service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#investigating-the-process-flag&#34;&gt;Investigating the process flag&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#further-investigating-the-webserver&#34;&gt;Further investigating the webserver&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#investigating-secret_flagtxt&#34;&gt;Investigating secret_flag.txt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exploring-the-new-user&#34;&gt;Exploring the new user&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#finding-the-history-flag&#34;&gt;Finding the history flag&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#it-should-be-over-now-right&#34;&gt;It should be over now, right?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#privilege-escalation-on-linux&#34;&gt;Privilege escalation on Linux&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#using-a-smart-enumeration-tool&#34;&gt;Using a smart enumeration tool&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#trying-a-kernel-level-exploit&#34;&gt;Trying a kernel level exploit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#trying-to-get-privileges-using-metasploit-and-meterpreter&#34;&gt;Trying to get privileges using Metasploit and Meterpreter&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#getting-root-access-through-editing-the-grub-boot-options&#34;&gt;Getting root access through editing the GRUB boot options&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#obtaining-the-final-flag&#34;&gt;Obtaining the final flag&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;

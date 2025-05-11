@@ -32,6 +32,23 @@ Exercise 9: Testing Windows server security
 - [Summary](#summary)
 - [Complete network topology of the exercise](#complete-network-topology-of-the-exercise)
 - [Exercise Execution](#exercise-execution)
+  - [Setting Up the Exercise Environment](#setting-up-the-exercise-environment)
+  - [Brute-Forcing SMB with Hydra](#brute-forcing-smb-with-hydra)
+    - [Analyzing Network Traffic with Wireshark](#analyzing-network-traffic-with-wireshark)
+  - [Brute-Forcing RDP](#brute-forcing-rdp)
+    - [Explaining My Own RDP Brute-Forcing Script](#explaining-my-own-rdp-brute-forcing-script)
+    - [Analyzing Network Traffic with Wireshark (RDP)](#analyzing-network-traffic-with-wireshark-rdp)
+  - [Hardening Windows Against Brute-Force Attacks](#hardening-windows-against-brute-force-attacks)
+    - [Using EvLWatcher for Rate Limiting](#using-evlwatcher-for-rate-limiting)
+    - [Disabling NTLM Authentication](#disabling-ntlm-authentication)
+    - [Configuring Login Timeout Settings](#configuring-login-timeout-settings)
+  - [Mimikatz: An Introduction](#mimikatz-an-introduction)
+    - [What Can Mimikatz Do?](#what-can-mimikatz-do)
+    - [How to Use Mimikatz](#how-to-use-mimikatz)
+  - [Running Mimikatz](#running-mimikatz)
+    - [Using Polyglot Files to Conceal Mimikatz](#using-polyglot-files-to-conceal-mimikatz)
+    - [DLL Side-Loading to Attempt to Bypass Windows Defender](#dll-side-loading-to-attempt-to-bypass-windows-defender)
+    - [How to Detect and Block Mimikatz](#how-to-detect-and-block-mimikatz)
 - [References](#references)
 
 ---
@@ -54,7 +71,8 @@ A second brute-force attack was executed against the Remote Desktop Protocol (RD
 
 Following the attacks, two mitigation techniques were researched and implemented to harden the system. Group Policy Objects (GPOs) were configured to enforce account lockout policies and limit RDP access. These changes were validated by re-running attacks and observing reduced effectiveness due to increased security controls.
 
-Additionally, privilege escalation techniques were examined using Mimikatz. Requirements for successful execution were researched, including necessary privileges and system policies. As a bonus, Mimikatz was tested on the server to extract credentials and security tokens. The analysis revealed sensitive credential information, underscoring the importance of disabling credential caching and applying strict administrative controls.
+Additionally, privilege escalation techniques were examined using Mimikatz. Requirements for successful execution were researched, including necessary privileges and system policies. As a bonus, Mimikatz was tested on the server to extract credentials and security tokens. The analysis revealed sensitive credential information, underscoring the importance of disabling credential caching and applying strict administrative controls.  
+[^LaTeXTaskDef]: The task definition was created by ChatGPT.
 
 ---
 
@@ -66,7 +84,8 @@ To enhance the security of the target system, we adjusted Group Policy settings,
 
 We also deployed `EvWatcher` to monitor and limit attack attempts, ensuring that further malicious actions would be detected and blocked. For privilege escalation, we used `MSHTA` in combination with an MP3 file to bypass security and deploy `Mimikatz` onto the target system. To ensure `Mimikatz` could function, we disabled Windows Defender.
 
-`Mimikatz` is a powerful tool used to extract credentials, manipulate security tokens, and perform privilege escalation on Windows systems. It can dump plaintext passwords, password hashes, and Kerberos tickets from memory, providing an attacker with sensitive information. This exercise highlighted the importance of securing systems against such attacks by using strong policies, disabling insecure protocols like `NTLM`, and employing endpoint protection to prevent tools like `Mimikatz` from successfully exploiting the system.
+`Mimikatz` is a powerful tool used to extract credentials, manipulate security tokens, and perform privilege escalation on Windows systems. It can dump plaintext passwords, password hashes, and Kerberos tickets from memory, providing an attacker with sensitive information. This exercise highlighted the importance of securing systems against such attacks by using strong policies, disabling insecure protocols like `NTLM`, and employing endpoint protection to prevent tools like `Mimikatz` from successfully exploiting the system.  
+[^LaTeXSummary]: The summary was created after providing a draft of bullet points of what we did to ChatGPT.
 
 ---
 
@@ -109,21 +128,22 @@ After running the command, we can see that `password123_` is not a secure passwo
 By filtering for `tcp.port == 445`, we can examine the SMB-related network traffic being sent and received, and analyze the authentication process taking place alongside it.
 
 - The first SMB packet is sent using version 1 instead of version 2, despite version 2 being specified in the command. This is explained in the SMB specification <cite>Microsoft Corporation[^1]</cite>.
-- The `Negotiate Protocol Request` informs the server of the SMB dialects (i.e., versions) the client supports, which is essentially an array of supported versions. <cite>Microsoft Community Hub[^2]</cite>
 
 {{< figure src="/itsi/y3/ex9/images/smb1.png" title="Figure 6: Inspecting the first Negotiate Protocol Request" >}}
 
-- The server responds with a `Negotiate Protocol Response`, replying with the preferred SMB dialect and an array of capabilities.
+- The `Negotiate Protocol Request` informs the server of the SMB dialects (i.e., versions) the client supports, which is essentially an array of supported versions. <cite>Microsoft Community Hub[^2]</cite>
 
 {{< figure src="/itsi/y3/ex9/images/smb2.png" title="Figure 7: Viewing the Negotiate Protocol Response" >}}
 
-- The client responds with its own list of supported capabilities.
+- The server responds with a `Negotiate Protocol Response`, replying with the preferred SMB dialect and an array of capabilities. In this case, the server responds with the `SMB2 Wildcard`, indicating that it supports at least `SMB 2.1` or a newer version. This prompts the client to send another `SMB2 Negotiate Request` specifying the exact revision of the SMB 2 protocol to be used.
 
 {{< figure src="/itsi/y3/ex9/images/smb3.png" title="Figure 8: Viewing the second Negotiate Protocol Request" >}}
 
-- The server specifies the preferred dialect from the client’s dialect array—here, `SMB 3.1.1`.
+- Now the client responds with its own list of supported capabilities.
 
 {{< figure src="/itsi/y3/ex9/images/smb4.png" title="Figure 9: Viewing the second Negotiate Protocol Response" >}}
+
+- The server follows up by specifying the preferred dialect from the client’s dialect array—which in this case is `SMB 3.1.1`—and additionally updates the listed capabilities based on the selected version. This version will now be used for the connection.
 
 - After a dialect and capabilities have been selected, a `Session Setup Request` is sent, initiating the authentication process using the GSS-API (Generic Security Service Application Program Interface). This is used alongside NTLMSSP, which stands for NT LAN Manager Security Support Provider—a binary messaging protocol developed by Microsoft to facilitate NTLM challenge-response authentication and to negotiate integrity and confidentiality options. <cite>Wikipedia[^3]</cite>
 
@@ -145,13 +165,16 @@ By filtering for `tcp.port == 445`, we can examine the SMB-related network traff
 
 {{< figure src="/itsi/y3/ex9/images/smb9.png" title="Figure 14: Viewing the successful Session Setup Response" >}}
 {{< figure src="/itsi/y3/ex9/images/smb10.png" title="Figure 15: Viewing the Tree Connect Request" >}}
+
+- The `Tree Connect Request` is followed by a `Tree Connect Response`, which includes an Access Mask field for the requested share, showing the permissions our user has on this share.
+
 {{< figure src="/itsi/y3/ex9/images/smb11.png" title="Figure 16: Viewing the Tree Connect Response" >}}
 
 ---
 
 ### Brute-Forcing RDP
 
-`RDP` is a proprietary protocol developed by Microsoft that allows a user to connect to another computer with a graphical interface. <cite>Wikipedia[^6]</cite>
+`RDP` is a proprietary protocol developed by Microsoft that allows a user to connect to another computer with a graphical interface. <cite>Wikipedia[^6]</cite> <cite>Microsoft Docs[^7]</cite>
 
 However, Hydra did not detect my installation of `libfreerdp3`, so I created a custom Python RDP brute-forcing script based on the `xfreerdp3` command.
 
@@ -212,15 +235,23 @@ def main():
 
 ---
 
-#### Analyzing Network Traffic with Wireshark
+#### Analyzing Network Traffic with Wireshark (RDP)
 
-When inspecting the traffic of an `RDP` connection, only two RDP requests are sent: a `Negotiate Request` and a `Negotiate Response`. The server replies with the protocol to use, e.g., `CredSSP` (Credential Security Support Provider). <cite>Microsoft Docs[^7]</cite>
+When inspecting the traffic of an `RDP` connection, only two RDP requests are sent: a `Negotiate Request` and a `Negotiate Response`. The `Negotiate Request` is used by the client to advertise the supported security protocols.
 
 {{< figure src="/itsi/y3/ex9/images/rdpneg req.png" title="Figure 20: Viewing the RDP Negotiate Request" >}}
+
+The server replies with the protocol to use based on the client’s advertisement, which in this case is `CredSSP` (Credential Security Support Provider). `CredSSP` provides an encrypted TLS channel, over which the client authenticates using the Simple and Protected Negotiate (SPNEGO) protocol with either Microsoft Kerberos or Microsoft NTLM.
+
 {{< figure src="/itsi/y3/ex9/images/rdp neg res.png" title="Figure 21: Viewing the RDP Negotiate Response" >}}
+
+After selecting the protocol, a TLS handshake occurs between the client and the server. During this handshake, both parties agree on the TLS version, choose a cipher suite, authenticate the server’s identity via its public key and the digital signature of an SSL certificate authority, and generate session keys in order to use symmetric encryption after the handshake is complete.
+
 {{< figure src="/itsi/y3/ex9/images/tlshandshake.png" title="Figure 22: Viewing the Handshake and Termination of the Connection" >}}
 
-- After selecting the protocol, a TLS handshake occurs between the client and the server. During this handshake, both parties agree on the TLS version, choose a cipher suite, authenticate the server’s identity via its public key and the digital signature of an SSL certificate authority, and generate session keys in order to use symmetric encryption after the handshake is complete. <cite>Cloudflare[^8]</cite>
+Whether or not the RDP authentication was successful cannot be directly observed, as all communication is wrapped inside encrypted TLS packets, making it appear identical in Wireshark. The only indicator is the amount of application data transmitted, from which it can be inferred whether the client briefly connected for authentication only or simply transmitted credentials over the TLS connection before the authentication failed.
+
+The main difference isn't just the authentication mechanisms (CSPP/TLS vs. GSS-API/NTLMSSP). A crucial distinction is how encryption is handled. RDP can use TLS to encrypt all traffic, including application data, whereas SMB uses GSS-API to negotiate authentication (often using Kerberos or NTLM) and can encrypt SMB packets directly, especially in newer versions (SMB 3.0+). When RDP uses TLS, it creates a TLS tunnel. SMB encryption is integrated within the SMB protocol itself. <cite>Microsoft Corporation[^1]</cite> <cite>Wikipedia[^6]</cite>
 
 ---
 
@@ -234,7 +265,7 @@ To set up rate limiting, I used a `fail2ban`-style tool for Windows called EvLWa
 
 #### Disabling NTLM Authentication
 
-NTLM is a legacy authentication protocol that dates back to Windows NT. Although Microsoft introduced a more secure alternative called Kerberos in 1989, NTLM is still used in some domain networks and remains enabled for backward compatibility. One of NTLM's major flaws is that it stores password hashes in plaintext in the memory of its servers, which can be extracted using pass-the-hash tools such as Mimikatz. <cite>Windows OS Hub[^10]</cite>
+NTLM is a legacy authentication protocol that dates back to Windows NT. Although Microsoft introduced a more secure alternative called Kerberos in 1989, NTLM is still used in some domain networks and remains enabled for backward compatibility. One of NTLM's major flaws is that it stores password hashes in plaintext in the memory of its servers, which can be extracted using pass-the-hash tools such as Mimikatz. <cite>Windows OS Hub[^10]</cite> <cite>Wikipedia[^3]</cite>
 
 {{< figure src="/itsi/y3/ex9/images/disablentlm.png" title="Figure 24: Disabling NTLM authentication for all accounts" >}}
 {{< figure src="/itsi/y3/ex9/images/nontlm.png" title="Figure 25: Hydra failing without being able to use NTLM" >}}
@@ -253,7 +284,7 @@ Mimikatz is a post-exploitation tool designed to extract credential information.
 
 #### What Can Mimikatz Do?
 
-The main features of Mimikatz include extracting credentials from memory or disk-based password stores. This includes plaintext passwords, PINs, Kerberos tickets, and NTLM password hashes. Mimikatz achieves this through a variety of techniques, such as Pass-the-Hash, which allows attackers to use captured NTLM hashes to create new authenticated sessions on the network—without needing to know the user’s actual password. <cite>CrowdStrike[^13]</cite>
+The main features of Mimikatz include extracting credentials from memory or disk-based password stores. This includes plaintext passwords, PINs, Kerberos tickets, and NTLM password hashes. Mimikatz achieves this through a variety of techniques, such as Pass-the-Hash, which allows attackers to use captured NTLM hashes to create new authenticated sessions on the network—without needing to know the user’s actual password. <cite>CrowdStrike[^13]</cite> <cite>MITRE ATT&CK[^14]</cite>
 
 - **Pass-the-Hash:** Allows attackers to use captured NTLM hashes to create new authenticated sessions.
 - **Pass-the-ticket:** Bypasses normal system access controls by stealing a valid Kerberos ticket.
@@ -366,5 +397,7 @@ There are a multitude of ways to prevent Mimikatz, most of which come down to re
 [^15]: PowerSploit. PowerShellMafia/PowerSploit. [source](https://github.com/PowerShellMafia/PowerSploit)
 [^16]: John Hammond. this MP3 file is malware. [source](https://www.youtube.com/watch?v=25NvCdFSkA4)
 [^17]: HijackLibs. dismcore.dll on HijackLibs. [source](https://hijacklibs.net/entries/microsoft/built-in/dismcore.html)
+[^LaTeXTaskDef]: The task definition was created by ChatGPT.
+[^LaTeXSummary]: The summary was created after providing a draft of bullet points of what we did to ChatGPT.
 
 

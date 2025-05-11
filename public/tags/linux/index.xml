@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Linux on </title>
+    <title>Linux on silly blog</title>
     <link>http://localhost:1313/tags/linux/</link>
-    <description>Recent content in Linux on </description>
+    <description>Recent content in Linux on silly blog</description>
     <generator>Hugo -- 0.147.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 Apr 2025 03:33:09 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jan 2025 03:33:09 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Secure data storrage on Windows Server</title>
+      <title>Babys first CTF</title>
       <link>http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/</link>
-      <pubDate>Fri, 11 Apr 2025 03:33:09 +0200</pubDate>
+      <pubDate>Mon, 20 Jan 2025 03:33:09 +0100</pubDate>
       <guid>http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex8/Sichere%20Datenspeicherung%20unter%20Windows.pdf&#34;&gt;here&lt;/a&gt; along with the &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex8/quellen.bib&#34;&gt;bibliography&lt;/a&gt;.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/UE7_CTF.pdf&#34;&gt;here&lt;/a&gt; along with the &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/quellen.bib&#34;&gt;bibliography&lt;/a&gt;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;secure-data-storage-on-windows&#34;&gt;Secure data storage on Windows&lt;/h1&gt;
+&lt;h1 id=&#34;ethical-hacking-of-a-ctf-vm&#34;&gt;Ethical hacking of a CTF-VM&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Laboratory protocol&lt;/strong&gt;&lt;br&gt;
-Exercise 8: Secure data storage on Windows&lt;br&gt;
+Exercise 7: Ethical hacking of a CTF-VM&lt;br&gt;
 &lt;figure&gt;
-    &lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/itsi/y3/ex8/images/menAAA.png&#34;/&gt; &lt;figcaption&gt;
+    &lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/itsi/y3/ex7/images/menheraMagnifier.png&#34;/&gt; &lt;figcaption&gt;
             Figure: Grouplogo
         &lt;/figcaption&gt;
 &lt;/figure&gt;
@@ -31,20 +31,119 @@ Exercise 8: Secure data storage on Windows&lt;br&gt;
 &lt;strong&gt;Name:&lt;/strong&gt; Stefan Fürst, Justin Tremurici&lt;br&gt;
 &lt;strong&gt;Group Name/Number:&lt;/strong&gt; todo/12&lt;br&gt;
 &lt;strong&gt;Supervisor:&lt;/strong&gt; SPAC, ZIVK&lt;br&gt;
-&lt;strong&gt;Exercise dates:&lt;/strong&gt; 14.02.2025 | 21.02.2025 | 28.02.2025 | 7.02.2025&lt;br&gt;
-&lt;strong&gt;Submission date:&lt;/strong&gt; 14.3.2025&lt;/p&gt;
+&lt;strong&gt;Exercise dates:&lt;/strong&gt; 17-19.1.2025&lt;br&gt;
+&lt;strong&gt;Submission date:&lt;/strong&gt; 20.1.2025&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#task-definition&#34;&gt;Task definition&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#exercise-execution&#34;&gt;Exercise Execution&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#complete-network-topology-of-the-exercise&#34;&gt;Complete network topology of the exercise&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exercise-execution&#34;&gt;Exercise Execution&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#setting-up-the-virtual-machines&#34;&gt;Setting up the virtual machines&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reconnaissance-scanning-the-network&#34;&gt;Reconnaissance: Scanning the Network&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reconnaissance-exploring-the-websites&#34;&gt;Reconnaissance: Exploring the websites&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#weaponization-evaluating-the-needed-tools&#34;&gt;Weaponization: Evaluating the needed tools&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exploitation-using-hydra-to-break-http-basic-authentication&#34;&gt;Exploitation: Using Hydra to break HTTP basic authentication&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exploitation-using-hydra-to-brute-force-ssh-login&#34;&gt;Exploitation: Using Hydra to brute force SSH login&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exploring-the-system&#34;&gt;Exploring the system&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#listing-all-the-files&#34;&gt;Listing all the files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#investigating-the-listening-service&#34;&gt;Investigating the listening service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#investigating-the-process-flag&#34;&gt;Investigating the process flag&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#further-investigating-the-webserver&#34;&gt;Further investigating the webserver&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#investigating-secret_flagtxt&#34;&gt;Investigating secret_flag.txt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exploring-the-new-user&#34;&gt;Exploring the new user&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#finding-the-history-flag&#34;&gt;Finding the history flag&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#it-should-be-over-now-right&#34;&gt;It should be over now, right?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#privilege-escalation-on-linux&#34;&gt;Privilege escalation on Linux&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#using-a-smart-enumeration-tool&#34;&gt;Using a smart enumeration tool&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#trying-a-kernel-level-exploit&#34;&gt;Trying a kernel level exploit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#trying-to-get-privileges-using-metasploit-and-meterpreter&#34;&gt;Trying to get privileges using Metasploit and Meterpreter&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#getting-root-access-through-editing-the-grub-boot-options&#34;&gt;Getting root access through editing the GRUB boot options&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#obtaining-the-final-flag&#34;&gt;Obtaining the final flag&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;task-definition&#34;&gt;Task definition&lt;/h2&gt;
-&lt;h3 id=&#34;task-overview&#34;&gt;Task Overview&lt;/h3&gt;
-&lt;p&gt;The goal of this exercise is to set up a secure and structured data storage system on a Windows Server, ensuring proper access control and encryption. The tasks include installing the operating system, configuring users and groups, setting up a folder structure, and securing access with permissions.&lt;/p&gt;</description>
+&lt;p&gt;This task is based on a Capture the Flag (CTF) challenge, where multiple flags are hidden across an environment and can be found either through exploits or by navigating the system. Two virtual machines are provided: an Ubuntu server, which hosts the flags, and a Kali Linux machine for offensive actions. Both machines operate in a &lt;code&gt;Host-only network&lt;/code&gt;, meaning they can communicate with each other but not with the external internet or other devices.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hardening a Linux Webserver</title>
+      <link>http://localhost:1313/posts/itsi/year-3/exercise-6/linux-hadening-nginx/</link>
+      <pubDate>Sat, 04 Jan 2025 03:33:09 +0100</pubDate>
+      <guid>http://localhost:1313/posts/itsi/year-3/exercise-6/linux-hadening-nginx/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex6/GNU_Linux_Securing_Active_Components.pdf&#34;&gt;here&lt;/a&gt; along with the &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex6/quellen.bib&#34;&gt;bibliography&lt;/a&gt;.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;exercise-6-gnulinux---securing-active-components&#34;&gt;Exercise 6: GNU/Linux - Securing active components&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Laboratory protocol&lt;/strong&gt;&lt;br&gt;
+Exercise 6: GNU/Linux - Securing active components&lt;br&gt;
+&lt;figure&gt;
+    &lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/itsi/y3/ex6/images/mika.png&#34;/&gt; &lt;figcaption&gt;
+            Figure: Grouplogo
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;strong&gt;Subject:&lt;/strong&gt; ITSI&lt;br&gt;
+&lt;strong&gt;Class:&lt;/strong&gt; 3AHITN&lt;br&gt;
+&lt;strong&gt;Name:&lt;/strong&gt; Stefan Fürst, Marcel Raichle&lt;br&gt;
+&lt;strong&gt;Group Name/Number:&lt;/strong&gt; Team 7/7&lt;br&gt;
+&lt;strong&gt;Supervisor:&lt;/strong&gt; SPAC, ZIVK&lt;br&gt;
+&lt;strong&gt;Exercise dates:&lt;/strong&gt; 6.12.2024, 13.12.2024, 20.12.2024, 3.1.2025, 4.1.2025, 5.1.2025&lt;br&gt;
+&lt;strong&gt;Submission date:&lt;/strong&gt; 4.1.2025&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#task-definition&#34;&gt;Task definition&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#task-0---preparation&#34;&gt;Task 0 - Preparation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#task-1--installing-a-web-server&#34;&gt;Task 1 – Installing a Web Server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#task-2--securing-with-basic-authentication&#34;&gt;Task 2 – Securing with Basic Authentication&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#task-3--encrypting-with-https&#34;&gt;Task 3 – Encrypting with HTTPS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#bonus-task--local-dns-setup-optional&#34;&gt;Bonus Task – Local DNS Setup (Optional)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#complete-network-topology-of-the-exercise&#34;&gt;Complete network topology of the exercise&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exercise-execution&#34;&gt;Exercise Execution&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#preparation&#34;&gt;Preparation&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#testing-the-ssh-connectivity&#34;&gt;Testing the SSH connectivity&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#changes-to-the-docker-setup&#34;&gt;Changes to the Docker setup&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#installing-an-active-component&#34;&gt;Installing an active component&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#setting-up-php-fpm-with-nginx&#34;&gt;Setting up PHP-FPM with Nginx&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#securing-nginx-with-basic-authentication&#34;&gt;Securing Nginx with Basic Authentication&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-a-password-file&#34;&gt;Creating a Password File&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#configuring-the-authentication-in-nginx-and-testing-it&#34;&gt;Configuring the authentication in Nginx and testing it&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#configuring-https-with-self-signed-certificates&#34;&gt;Configuring HTTPS with Self-Signed Certificates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#adding-a-domain&#34;&gt;Adding a Domain&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;task-definition&#34;&gt;Task definition&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Task 0 - Preparation&lt;/strong&gt;&lt;br&gt;
+Ensure your server from Exercises 4 and 5 is configured with SSH. Verify that you can connect to the server via SSH using a client with a GUI.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

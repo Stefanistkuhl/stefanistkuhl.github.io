@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Windows on </title>
+    <title>Windows on silly blog</title>
     <link>http://localhost:1313/tags/windows/</link>
-    <description>Recent content in Windows on </description>
+    <description>Recent content in Windows on silly blog</description>
     <generator>Hugo -- 0.147.2</generator>
     <language>en-us</language>
+    <lastBuildDate>Fri, 11 Apr 2025 03:33:09 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Security test of Windows Server</title>
       <link>http://localhost:1313/posts/itsi/year-3/exercise-9/security-test-of-windows-server/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 11 Apr 2025 03:33:09 +0200</pubDate>
       <guid>http://localhost:1313/posts/itsi/year-3/exercise-9/security-test-of-windows-server/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Note: this was converted using from LaTeX to Markdown using Chat GPT 4.1 the original pdf can be found &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex9/Sicherheitstests%20von%20Windows%20Server.pdf&#34;&gt;here&lt;/a&gt; along with the &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex9/zotero.bib&#34;&gt;bibliography&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
@@ -38,12 +39,116 @@ Exercise 9: Testing Windows server security&lt;br&gt;
 &lt;li&gt;&lt;a href=&#34;#task-definition&#34;&gt;Task definition&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#complete-network-topology-of-the-exercise&#34;&gt;Complete network topology of the exercise&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#exercise-execution&#34;&gt;Exercise Execution&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exercise-execution&#34;&gt;Exercise Execution&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#setting-up-the-exercise-environment&#34;&gt;Setting Up the Exercise Environment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#brute-forcing-smb-with-hydra&#34;&gt;Brute-Forcing SMB with Hydra&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#analyzing-network-traffic-with-wireshark&#34;&gt;Analyzing Network Traffic with Wireshark&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#brute-forcing-rdp&#34;&gt;Brute-Forcing RDP&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#explaining-my-own-rdp-brute-forcing-script&#34;&gt;Explaining My Own RDP Brute-Forcing Script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#analyzing-network-traffic-with-wireshark-rdp&#34;&gt;Analyzing Network Traffic with Wireshark (RDP)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#hardening-windows-against-brute-force-attacks&#34;&gt;Hardening Windows Against Brute-Force Attacks&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#using-evlwatcher-for-rate-limiting&#34;&gt;Using EvLWatcher for Rate Limiting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#disabling-ntlm-authentication&#34;&gt;Disabling NTLM Authentication&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#configuring-login-timeout-settings&#34;&gt;Configuring Login Timeout Settings&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#mimikatz-an-introduction&#34;&gt;Mimikatz: An Introduction&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#what-can-mimikatz-do&#34;&gt;What Can Mimikatz Do?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#how-to-use-mimikatz&#34;&gt;How to Use Mimikatz&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#running-mimikatz&#34;&gt;Running Mimikatz&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#using-polyglot-files-to-conceal-mimikatz&#34;&gt;Using Polyglot Files to Conceal Mimikatz&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#dll-side-loading-to-attempt-to-bypass-windows-defender&#34;&gt;DLL Side-Loading to Attempt to Bypass Windows Defender&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#how-to-detect-and-block-mimikatz&#34;&gt;How to Detect and Block Mimikatz&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;task-definition&#34;&gt;Task definition&lt;/h2&gt;
 &lt;p&gt;This task was conducted using a combination of manual configuration and automated attack tools to evaluate the security posture of a Windows Server environment. The environment setup involved preparing both the target system and an attacker system running Kali Linux, which was equipped with tools such as Hydra for brute-force attacks and Wireshark for network traffic analysis.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Secure data storrage on Windows Server</title>
+      <link>http://localhost:1313/posts/itsi/year-3/exercise-8/secure-data-storrage-on-windows-server/</link>
+      <pubDate>Fri, 14 Mar 2025 02:22:09 +0100</pubDate>
+      <guid>http://localhost:1313/posts/itsi/year-3/exercise-8/secure-data-storrage-on-windows-server/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex8/Sichere%20Datenspeicherung%20unter%20Windows.pdf&#34;&gt;here&lt;/a&gt; along with the &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex8/quellen.bib&#34;&gt;bibliography&lt;/a&gt;.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;secure-data-storage-on-windows&#34;&gt;Secure data storage on Windows&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Laboratory protocol&lt;/strong&gt;&lt;br&gt;
+Exercise 8: Secure data storage on Windows&lt;br&gt;
+&lt;figure&gt;
+    &lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/itsi/y3/ex8/images/menAAA.png&#34;/&gt; &lt;figcaption&gt;
+            Figure: Grouplogo
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;strong&gt;Subject:&lt;/strong&gt; ITSI&lt;br&gt;
+&lt;strong&gt;Class:&lt;/strong&gt; 3AHITN&lt;br&gt;
+&lt;strong&gt;Name:&lt;/strong&gt; Stefan Fürst, Justin Tremurici&lt;br&gt;
+&lt;strong&gt;Group Name/Number:&lt;/strong&gt; todo/12&lt;br&gt;
+&lt;strong&gt;Supervisor:&lt;/strong&gt; SPAC, ZIVK&lt;br&gt;
+&lt;strong&gt;Exercise dates:&lt;/strong&gt; 14.02.2025 | 21.02.2025 | 28.02.2025 | 7.02.2025&lt;br&gt;
+&lt;strong&gt;Submission date:&lt;/strong&gt; 14.3.2025&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#task-definition&#34;&gt;Task definition&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#task-overview&#34;&gt;Task Overview&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exercise-execution&#34;&gt;Exercise Execution&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#explaining-the-first-script&#34;&gt;Explaining the first script&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#changing-the-execution-policy&#34;&gt;Changing the execution policy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#installing-bitlocker&#34;&gt;Installing BitLocker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#changing-the-hostname&#34;&gt;Changing the Hostname&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#downloading-the-second-script&#34;&gt;Downloading the second script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#enabling-remote-desktop&#34;&gt;Enabling Remote Desktop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-a-scheduled-task&#34;&gt;Creating a Scheduled Task&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#the-second-script&#34;&gt;The second script&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-users-and-adding-them-to-groups&#34;&gt;Creating Users and Adding Them to Groups&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#resizing-the-disk-and-creating-a-new-partition&#34;&gt;Resizing the Disk and Creating a New Partition&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-directories&#34;&gt;Creating Directories&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#populating-the-directories&#34;&gt;Populating the Directories&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-users-and-groups&#34;&gt;Creating Users and Groups&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#verifying-the-creation-of-users-and-groups&#34;&gt;Verifying the Creation of users and groups&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#managing-ntfs-permissions-using-icacls&#34;&gt;Managing NTFS Permissions Using icacls&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#sharing-the-directories-via-smb&#34;&gt;Sharing the Directories via SMB&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#encrypting-the-volume-using-bitlocker&#34;&gt;Encrypting the Volume using BitLocker&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;task-definition&#34;&gt;Task definition&lt;/h2&gt;
+&lt;h3 id=&#34;task-overview&#34;&gt;Task Overview&lt;/h3&gt;
+&lt;p&gt;The goal of this exercise is to set up a secure and structured data storage system on a Windows Server, ensuring proper access control and encryption. The tasks include installing the operating system, configuring users and groups, setting up a folder structure, and securing access with permissions.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

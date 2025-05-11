@@ -1,6 +1,6 @@
 baseURL = 'https://stefanistkuhl.github.io'
 languageCode = 'en-us'
-# title = 'Silly blog'
+title = 'silly blog'
 theme = "paper"
 # theme = "dead-simple"
 [caches]
@@ -19,3 +19,12 @@ theme = "paper"
     identifier = "root"
     name       = "root"
     url        = "/"
+[params]
+  ShowSocialIcons = true
+  ShowSocialIconsInFooter = true
+  author = "stefi"
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/stefanistkuhl"
+

@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Blue Team on </title>
+    <title>Blue Team on silly blog</title>
     <link>http://localhost:1313/tags/blue-team/</link>
-    <description>Recent content in Blue Team on </description>
+    <description>Recent content in Blue Team on silly blog</description>
     <generator>Hugo -- 0.147.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 Apr 2025 03:33:09 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 14 Mar 2025 02:22:09 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/blue-team/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Secure data storrage on Windows Server</title>
       <link>http://localhost:1313/posts/itsi/year-3/exercise-8/secure-data-storrage-on-windows-server/</link>
-      <pubDate>Fri, 11 Apr 2025 03:33:09 +0200</pubDate>
+      <pubDate>Fri, 14 Mar 2025 02:22:09 +0100</pubDate>
       <guid>http://localhost:1313/posts/itsi/year-3/exercise-8/secure-data-storrage-on-windows-server/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;Note: this was converted using from LaTeX to Markdown using Chat GPT 4.1 the original pdf can be found &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex9/Sicherheitstests%20von%20Windows%20Server.pdf&#34;&gt;here&lt;/a&gt; along with the &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex9/zotero.bib&#34;&gt;bibliography&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex8/Sichere%20Datenspeicherung%20unter%20Windows.pdf&#34;&gt;here&lt;/a&gt; along with the &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex8/quellen.bib&#34;&gt;bibliography&lt;/a&gt;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;testing-windows-server-security&#34;&gt;Testing Windows server security&lt;/h1&gt;
+&lt;h1 id=&#34;secure-data-storage-on-windows&#34;&gt;Secure data storage on Windows&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Laboratory protocol&lt;/strong&gt;&lt;br&gt;
-Exercise 9: Testing Windows server security&lt;br&gt;
+Exercise 8: Secure data storage on Windows&lt;br&gt;
 &lt;figure&gt;
-    &lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/itsi/y3/ex9/images/menthing.png&#34;/&gt; &lt;figcaption&gt;
+    &lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/itsi/y3/ex8/images/menAAA.png&#34;/&gt; &lt;figcaption&gt;
             Figure: Grouplogo
         &lt;/figcaption&gt;
 &lt;/figure&gt;
@@ -29,22 +29,122 @@ Exercise 9: Testing Windows server security&lt;br&gt;
 &lt;strong&gt;Subject:&lt;/strong&gt; ITSI&lt;br&gt;
 &lt;strong&gt;Class:&lt;/strong&gt; 3AHITN&lt;br&gt;
 &lt;strong&gt;Name:&lt;/strong&gt; Stefan Fürst, Justin Tremurici&lt;br&gt;
-&lt;strong&gt;Group Name/Number:&lt;/strong&gt; Name here/12&lt;br&gt;
+&lt;strong&gt;Group Name/Number:&lt;/strong&gt; todo/12&lt;br&gt;
 &lt;strong&gt;Supervisor:&lt;/strong&gt; SPAC, ZIVK&lt;br&gt;
-&lt;strong&gt;Exercise dates:&lt;/strong&gt; 14.03.2025 | 21.03.2025 | 28.03.2025 | 04.04.2025&lt;br&gt;
-&lt;strong&gt;Submission date:&lt;/strong&gt; 11.04.2025&lt;/p&gt;
+&lt;strong&gt;Exercise dates:&lt;/strong&gt; 14.02.2025 | 21.02.2025 | 28.02.2025 | 7.02.2025&lt;br&gt;
+&lt;strong&gt;Submission date:&lt;/strong&gt; 14.3.2025&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#task-definition&#34;&gt;Task definition&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#task-definition&#34;&gt;Task definition&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#task-overview&#34;&gt;Task Overview&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#complete-network-topology-of-the-exercise&#34;&gt;Complete network topology of the exercise&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#exercise-execution&#34;&gt;Exercise Execution&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exercise-execution&#34;&gt;Exercise Execution&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#explaining-the-first-script&#34;&gt;Explaining the first script&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#changing-the-execution-policy&#34;&gt;Changing the execution policy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#installing-bitlocker&#34;&gt;Installing BitLocker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#changing-the-hostname&#34;&gt;Changing the Hostname&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#downloading-the-second-script&#34;&gt;Downloading the second script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#enabling-remote-desktop&#34;&gt;Enabling Remote Desktop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-a-scheduled-task&#34;&gt;Creating a Scheduled Task&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#the-second-script&#34;&gt;The second script&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-users-and-adding-them-to-groups&#34;&gt;Creating Users and Adding Them to Groups&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#resizing-the-disk-and-creating-a-new-partition&#34;&gt;Resizing the Disk and Creating a New Partition&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-directories&#34;&gt;Creating Directories&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#populating-the-directories&#34;&gt;Populating the Directories&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-users-and-groups&#34;&gt;Creating Users and Groups&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#verifying-the-creation-of-users-and-groups&#34;&gt;Verifying the Creation of users and groups&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#managing-ntfs-permissions-using-icacls&#34;&gt;Managing NTFS Permissions Using icacls&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#sharing-the-directories-via-smb&#34;&gt;Sharing the Directories via SMB&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#encrypting-the-volume-using-bitlocker&#34;&gt;Encrypting the Volume using BitLocker&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;task-definition&#34;&gt;Task definition&lt;/h2&gt;
-&lt;p&gt;This task was conducted using a combination of manual configuration and automated attack tools to evaluate the security posture of a Windows Server environment. The environment setup involved preparing both the target system and an attacker system running Kali Linux, which was equipped with tools such as Hydra for brute-force attacks and Wireshark for network traffic analysis.&lt;/p&gt;</description>
+&lt;h3 id=&#34;task-overview&#34;&gt;Task Overview&lt;/h3&gt;
+&lt;p&gt;The goal of this exercise is to set up a secure and structured data storage system on a Windows Server, ensuring proper access control and encryption. The tasks include installing the operating system, configuring users and groups, setting up a folder structure, and securing access with permissions.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hardening a Linux Webserver</title>
+      <link>http://localhost:1313/posts/itsi/year-3/exercise-6/linux-hadening-nginx/</link>
+      <pubDate>Sat, 04 Jan 2025 03:33:09 +0100</pubDate>
+      <guid>http://localhost:1313/posts/itsi/year-3/exercise-6/linux-hadening-nginx/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex6/GNU_Linux_Securing_Active_Components.pdf&#34;&gt;here&lt;/a&gt; along with the &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex6/quellen.bib&#34;&gt;bibliography&lt;/a&gt;.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;exercise-6-gnulinux---securing-active-components&#34;&gt;Exercise 6: GNU/Linux - Securing active components&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Laboratory protocol&lt;/strong&gt;&lt;br&gt;
+Exercise 6: GNU/Linux - Securing active components&lt;br&gt;
+&lt;figure&gt;
+    &lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/itsi/y3/ex6/images/mika.png&#34;/&gt; &lt;figcaption&gt;
+            Figure: Grouplogo
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;strong&gt;Subject:&lt;/strong&gt; ITSI&lt;br&gt;
+&lt;strong&gt;Class:&lt;/strong&gt; 3AHITN&lt;br&gt;
+&lt;strong&gt;Name:&lt;/strong&gt; Stefan Fürst, Marcel Raichle&lt;br&gt;
+&lt;strong&gt;Group Name/Number:&lt;/strong&gt; Team 7/7&lt;br&gt;
+&lt;strong&gt;Supervisor:&lt;/strong&gt; SPAC, ZIVK&lt;br&gt;
+&lt;strong&gt;Exercise dates:&lt;/strong&gt; 6.12.2024, 13.12.2024, 20.12.2024, 3.1.2025, 4.1.2025, 5.1.2025&lt;br&gt;
+&lt;strong&gt;Submission date:&lt;/strong&gt; 4.1.2025&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#task-definition&#34;&gt;Task definition&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#task-0---preparation&#34;&gt;Task 0 - Preparation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#task-1--installing-a-web-server&#34;&gt;Task 1 – Installing a Web Server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#task-2--securing-with-basic-authentication&#34;&gt;Task 2 – Securing with Basic Authentication&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#task-3--encrypting-with-https&#34;&gt;Task 3 – Encrypting with HTTPS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#bonus-task--local-dns-setup-optional&#34;&gt;Bonus Task – Local DNS Setup (Optional)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#complete-network-topology-of-the-exercise&#34;&gt;Complete network topology of the exercise&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exercise-execution&#34;&gt;Exercise Execution&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#preparation&#34;&gt;Preparation&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#testing-the-ssh-connectivity&#34;&gt;Testing the SSH connectivity&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#changes-to-the-docker-setup&#34;&gt;Changes to the Docker setup&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#installing-an-active-component&#34;&gt;Installing an active component&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#setting-up-php-fpm-with-nginx&#34;&gt;Setting up PHP-FPM with Nginx&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#securing-nginx-with-basic-authentication&#34;&gt;Securing Nginx with Basic Authentication&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-a-password-file&#34;&gt;Creating a Password File&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#configuring-the-authentication-in-nginx-and-testing-it&#34;&gt;Configuring the authentication in Nginx and testing it&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#configuring-https-with-self-signed-certificates&#34;&gt;Configuring HTTPS with Self-Signed Certificates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#adding-a-domain&#34;&gt;Adding a Domain&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;task-definition&#34;&gt;Task definition&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Task 0 - Preparation&lt;/strong&gt;&lt;br&gt;
+Ensure your server from Exercises 4 and 5 is configured with SSH. Verify that you can connect to the server via SSH using a client with a GUI.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

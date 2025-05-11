@@ -1,5 +1,5 @@
 +++
-date = '2025-04-11T03:33:09+02:00'
+date = '2025-01-20T03:33:09+01:00'
 title = 'Babys first CTF'
 categories = ["school", "it sec"]
 tags = ["linux","it sec","school","red team","ctf"]
@@ -32,6 +32,27 @@ Exercise 7: Ethical hacking of a CTF-VM
 - [Summary](#summary)
 - [Complete network topology of the exercise](#complete-network-topology-of-the-exercise)
 - [Exercise Execution](#exercise-execution)
+  - [Setting up the virtual machines](#setting-up-the-virtual-machines)
+  - [Reconnaissance: Scanning the Network](#reconnaissance-scanning-the-network)
+  - [Reconnaissance: Exploring the websites](#reconnaissance-exploring-the-websites)
+  - [Weaponization: Evaluating the needed tools](#weaponization-evaluating-the-needed-tools)
+  - [Exploitation: Using Hydra to break HTTP basic authentication](#exploitation-using-hydra-to-break-http-basic-authentication)
+  - [Exploitation: Using Hydra to brute force SSH login](#exploitation-using-hydra-to-brute-force-ssh-login)
+  - [Exploring the system](#exploring-the-system)
+    - [Listing all the files](#listing-all-the-files)
+    - [Investigating the listening service](#investigating-the-listening-service)
+    - [Investigating the process flag](#investigating-the-process-flag)
+    - [Further investigating the webserver](#further-investigating-the-webserver)
+    - [Investigating secret_flag.txt](#investigating-secret_flagtxt)
+    - [Exploring the new user](#exploring-the-new-user)
+    - [Finding the history flag](#finding-the-history-flag)
+  - [It should be over now, right?](#it-should-be-over-now-right)
+  - [Privilege escalation on Linux](#privilege-escalation-on-linux)
+    - [Using a smart enumeration tool](#using-a-smart-enumeration-tool)
+    - [Trying a kernel level exploit](#trying-a-kernel-level-exploit)
+    - [Trying to get privileges using Metasploit and Meterpreter](#trying-to-get-privileges-using-metasploit-and-meterpreter)
+  - [Getting root access through editing the GRUB boot options](#getting-root-access-through-editing-the-grub-boot-options)
+  - [Obtaining the final flag](#obtaining-the-final-flag)
 - [References](#references)
 
 ---
