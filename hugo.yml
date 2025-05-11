@@ -1,0 +1,49 @@
+baseURL: 'https://stefanistkuhl.github.io'
+languageCode: 'en-us'
+title: 'silly blog'
+theme: 'paper'
+enableRobotsTXT: true
+
+caches:
+  images:
+    dir: ':cacheDir/images'
+
+menu:
+  main:
+    - identifier: 'about'
+      name: 'About'
+      url: 'about/'
+    - identifier: 'posts'
+      name: 'Posts'
+      url: 'posts/'
+    - identifier: 'root'
+      name: 'root'
+      url: '/'
+
+pagination:
+  disableAliases: false
+  pagerSize: 5
+
+params:
+  ShowSocialIcons: true
+  ShowSocialIconsInFooter: true
+  author: 'stefi'
+  ShowCodeCopyButtons: true
+  ShowPageNums: true
+  ShowReadingTime: true
+
+  homeInfoParams:
+    Title: "stefi's silly website i guess"
+    Content: >
+      - Mirroring the documentation from school exercises in Markdown format for easier access that seem worth putting here, I guess.
+      Other stuff might be here aswell if i feel like writing about them.
+
+      - Original files for most things can be found [here](https://github.com/Stefanistkuhl/goobering/tree/master/itsi)
+
+      - Other useful links: [school obsidan repo](https://github.com/Stefanistkuhl/obsidianschule), [static page mirror of it](https://stefanistkuhl.github.io/obsidian/), [coding class repo](https://github.com/Stefanistkuhl/Schule_Sew_etc)
+
+
+  socialIcons:
+    - name: 'github'
+      url: 'https://github.com/stefanistkuhl'
+

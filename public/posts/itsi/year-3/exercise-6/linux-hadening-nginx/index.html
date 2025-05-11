@@ -186,7 +186,7 @@ Ensure your server from Exercises 4 and 5 is configured with SSH. Verify that yo
     <h1 class="post-title entry-hint-parent">
       Hardening a Linux Webserver
     </h1>
-    <div class="post-meta"><span title='2025-01-04 03:33:09 +0100 CET'>January 4, 2025</span>&nbsp;·&nbsp;stefi
+    <div class="post-meta"><span title='2025-01-04 03:33:09 +0100 CET'>January 4, 2025</span>&nbsp;·&nbsp;12 min&nbsp;·&nbsp;stefi
 
 </div>
   </header> 
@@ -669,6 +669,53 @@ Additionally, I replaced the <code>/var/www/html</code> directory with <code>/va
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 
