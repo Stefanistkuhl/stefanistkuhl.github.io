@@ -33,7 +33,7 @@ params:
   ShowReadingTime: true
 
   homeInfoParams:
-    Title: "stefi's silly website i guess"
+    Title: "silly little website i guess"
     Content: >
       - Mirroring the documentation from school exercises in Markdown format for easier access that seem worth putting here, I guess.
       Other stuff might be here aswell if i feel like writing about them.
