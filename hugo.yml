@@ -20,6 +20,18 @@ menu:
       name: 'root'
       url: '/'
 
+outputs:
+  home:
+  - html
+  - rss
+  section:
+  - html
+  - rss
+  taxonomy:
+  - html
+  term:
+  - html
+
 pagination:
   disableAliases: false
   pagerSize: 5
@@ -31,6 +43,7 @@ params:
   ShowCodeCopyButtons: true
   ShowPageNums: true
   ShowReadingTime: true
+  ShowFullTextinRSS: true
 
   homeInfoParams:
     Title: "silly little website i guess"
@@ -46,4 +59,6 @@ params:
   socialIcons:
     - name: 'github'
       url: 'https://github.com/stefanistkuhl'
+    - name: rss
+      url: "index.xml"
 
