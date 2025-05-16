@@ -6,8 +6,286 @@
     <description>Recent content in Posts on silly blog</description>
     <generator>Hugo -- 0.147.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 14 May 2025 19:40:14 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 May 2025 02:36:09 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Capturing Network traffic</title>
+      <link>http://localhost:1313/posts/itsi/year-3/exercise-10/capturing-networn-traffic/</link>
+      <pubDate>Fri, 16 May 2025 02:36:09 +0200</pubDate>
+      <guid>http://localhost:1313/posts/itsi/year-3/exercise-10/capturing-networn-traffic/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Note: this was converted using from LaTeX to Markdown using Chat GPT 4.1 the original pdf can be found &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex10/capturing-network-traffic-in-a-LAN.pdf&#34;&gt;here&lt;/a&gt; along with the &lt;a href=&#34;https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex10/quellen.bib&#34;&gt;bibliography&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Laboratory protocol&lt;/strong&gt;&lt;br&gt;
+Exercise 10: Capturing of network traffic in the local network&lt;br&gt;
+&lt;figure&gt;
+    &lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/itsi/y3/ex10/images/mencicle.png&#34;/&gt; &lt;figcaption&gt;
+            Figure: Grouplogo
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;strong&gt;Subject:&lt;/strong&gt; ITSI&lt;br&gt;
+&lt;strong&gt;Class:&lt;/strong&gt; 3AHITN&lt;br&gt;
+&lt;strong&gt;Name:&lt;/strong&gt; Stefan Fürst, Justin Tremurici&lt;br&gt;
+&lt;strong&gt;Group Name/Number:&lt;/strong&gt; Name here/12&lt;br&gt;
+&lt;strong&gt;Supervisor:&lt;/strong&gt; SPAC, ZIVK&lt;br&gt;
+&lt;strong&gt;Exercise dates:&lt;/strong&gt; 11.04.2025 | 25.04.2025 | 09.05.2025&lt;br&gt;
+&lt;strong&gt;Submission date:&lt;/strong&gt; 16.05.2025&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#task-definition&#34;&gt;Task definition&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#complete-network-topology-of-the-exercise&#34;&gt;Complete network topology of the exercise&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exercise-execution&#34;&gt;Exercise Execution&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#building-the-topologies&#34;&gt;Building the Topologies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#mirroring-traffic-in-routeros-v7&#34;&gt;Mirroring traffic in RouterOS v7&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#comparing-the-traffic-before-and-after-the-configuration&#34;&gt;Comparing the traffic before and after the configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#packet-sniffing-on-the-local-device&#34;&gt;Packet Sniffing on the Local Device&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#capturing-a-ping-between-two-targets&#34;&gt;Capturing a Ping Between Two Targets&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#capturing-plain-text-passwords&#34;&gt;Capturing Plain Text Passwords&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#capturing-a-voip-call&#34;&gt;Capturing a VoIP Call&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;task-definition&#34;&gt;Task definition&lt;/h2&gt;
+&lt;p&gt;This task focused on the passive interception of network traffic in a local network using either a hub or a managed switch with mirror ports. The objective was to analyze unaltered communications using &lt;code&gt;Wireshark&lt;/code&gt; on both attacker and victim machines. Two topologies were tested: a hub-based setup, which allowed full traffic visibility, and a switch-based setup, where traffic was mirrored from victim ports to the attacker’s port. Devices were assigned static IP addresses from a private range, and VoIP communication was simulated using either software-based or physical IP phones.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<blockquote>
+<p>Note: this was converted using from LaTeX to Markdown using Chat GPT 4.1 the original pdf can be found <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex10/capturing-network-traffic-in-a-LAN.pdf">here</a> along with the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex10/quellen.bib">bibliography</a></p></blockquote>
+<hr>
+<p><strong>Laboratory protocol</strong><br>
+Exercise 10: Capturing of network traffic in the local network<br>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/mencicle.png"/> <figcaption>
+            Figure: Grouplogo
+        </figcaption>
+</figure>
+
+<strong>Subject:</strong> ITSI<br>
+<strong>Class:</strong> 3AHITN<br>
+<strong>Name:</strong> Stefan Fürst, Justin Tremurici<br>
+<strong>Group Name/Number:</strong> Name here/12<br>
+<strong>Supervisor:</strong> SPAC, ZIVK<br>
+<strong>Exercise dates:</strong> 11.04.2025 | 25.04.2025 | 09.05.2025<br>
+<strong>Submission date:</strong> 16.05.2025</p>
+<hr>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#task-definition">Task definition</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#complete-network-topology-of-the-exercise">Complete network topology of the exercise</a></li>
+<li><a href="#exercise-execution">Exercise Execution</a>
+<ul>
+<li><a href="#building-the-topologies">Building the Topologies</a></li>
+<li><a href="#mirroring-traffic-in-routeros-v7">Mirroring traffic in RouterOS v7</a></li>
+<li><a href="#comparing-the-traffic-before-and-after-the-configuration">Comparing the traffic before and after the configuration</a></li>
+<li><a href="#packet-sniffing-on-the-local-device">Packet Sniffing on the Local Device</a></li>
+<li><a href="#capturing-a-ping-between-two-targets">Capturing a Ping Between Two Targets</a></li>
+<li><a href="#capturing-plain-text-passwords">Capturing Plain Text Passwords</a></li>
+<li><a href="#capturing-a-voip-call">Capturing a VoIP Call</a></li>
+</ul>
+</li>
+<li><a href="#references">References</a></li>
+</ul>
+<hr>
+<h2 id="task-definition">Task definition</h2>
+<p>This task focused on the passive interception of network traffic in a local network using either a hub or a managed switch with mirror ports. The objective was to analyze unaltered communications using <code>Wireshark</code> on both attacker and victim machines. Two topologies were tested: a hub-based setup, which allowed full traffic visibility, and a switch-based setup, where traffic was mirrored from victim ports to the attacker’s port. Devices were assigned static IP addresses from a private range, and VoIP communication was simulated using either software-based or physical IP phones.</p>
+<p>Three types of traffic were examined: ICMP echo requests (Ping), HTTP authentication involving plaintext credentials, and VoIP calls between two endpoints. Each case was recorded in a separate Wireshark capture. In the hub scenario, the focus was on visibility and potential stability issues under high traffic. For the switch, mirroring was configured and traffic was captured before and after to assess changes.</p>
+<p>Further tasks involved filtering ICMP traffic by attacker IP, observing ping communication between victim devices from the attacker’s perspective, capturing HTTP login attempts to extract credentials, and intercepting a VoIP call, which was exported as an MP3 file. All relevant captures and the audio file were submitted as part of the final documentation.</p>
+<hr>
+<h2 id="summary">Summary</h2>
+<p>In this exercise, two distinct network topologies were implemented to investigate passive network traffic interception. The first topology utilized personal hardware, specifically a Mikrotik RB5009 router, to configure port mirroring. The client devices were older laptops running Proxmox, with one laptop hosting an nginx container configured to demonstrate basic HTTP authentication. The attacker device was another laptop connected to the mirrored ports on the router, which allowed it to receive a complete copy of the network traffic between the clients and the server.</p>
+<p>The initial step involved performing local ICMP ping requests from the attacker to the clients to observe the captured traffic and verify network connectivity. Following this, the two client laptops pinged each other, while the attacker monitored and recorded the exchanged packets. This demonstrated the attacker&rsquo;s ability to intercept traffic not directly addressed to it due to the port mirroring setup. Furthermore, the attacker was able to capture and analyze the HTTP basic authentication process, successfully extracting plaintext credentials transmitted from the client to the nginx server.</p>
+<p>In the second part of the exercise, a VoIP call was established using two IP phones connected via a network hub instead of a switch with port mirroring. This topology allowed the attacker laptop to capture the audio stream of the call directly from the network traffic. The recorded audio was then exported and post-processed using Audacity and Adobe Podcast Speech Enhancer to clean and enhance the recording, resulting in a clear and intelligible audio file.</p>
+<p>Throughout the exercise, Wireshark was extensively used to capture, filter, and analyze the network traffic from the attacker’s perspective. This practical approach provided insight into how network devices like hubs and switches with port mirroring impact the visibility of traffic and the feasibility of passive interception attacks within a local network environment.</p>
+<hr>
+<h2 id="complete-network-topology-of-the-exercise">Complete network topology of the exercise</h2>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/topo1.png"/> <figcaption>
+            Figure 1: Complete network topology of the exercise using a switch
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/topo2.png"/> <figcaption>
+            Figure 2: Complete network topology of the exercise using a Hub
+        </figcaption>
+</figure>
+</p>
+<hr>
+<h2 id="exercise-execution">Exercise Execution</h2>
+<h3 id="building-the-topologies">Building the Topologies</h3>
+<p>To build the topology from Figure 1, I chose the following hardware: a Mikrotik RB 5009 to act as the main &ldquo;switch&rdquo; due to RouterOS offering extensive settings in what I consider the best GUI to manage any network device.</p>
+<p>For the server and clients, I used two old laptops running Proxmox, one of which has a Debian server VM running an Nginx web server with basic authentication set up. All of the devices have static IPs configured in the range <code>10.30.0.0/24</code>. The attacker simply runs Linux with Wireshark to capture the traffic. The used IP addresses can be found in the addressing table below.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Device</th>
+          <th>IP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Attacker</td>
+          <td>10.30.0.69</td>
+      </tr>
+      <tr>
+          <td>Server</td>
+          <td>10.30.0.179</td>
+      </tr>
+      <tr>
+          <td>Webserver</td>
+          <td>10.30.0.10</td>
+      </tr>
+      <tr>
+          <td>Client</td>
+          <td>10.30.0.179</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="mirroring-traffic-in-routeros-v7">Mirroring traffic in RouterOS v7</h3>
+<p>To configure the router, there are three options: either use the WebGUI, SSH into it, or use their program called WinBox, which is the option I went with. After connecting a port on the router, it automatically detects available ports, and I can simply select one of them and configure everything as needed via the MAC address.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/winbox.png"/> <figcaption>
+            Figure 3: Connecting to the Router via Winbox
+        </figcaption>
+</figure>
+
+<p>Now that we are in the router&rsquo;s configuration, we see a number of top-level options to choose from. To mirror traffic, we go to the Switch section and head to the Port tab, where we select the ports we want to mirror. If we double-click on an interface, it opens the port window, where we can choose whether to mirror only ingress traffic, egress traffic, or both.</p>
+<p>We also specify an ingress target, which in this case is ether6, where the attacker&rsquo;s laptop is plugged in so that it receives all the mirrored traffic. The configuration for both ether7 and ether8 is the same, which is why only one is shown below. Lastly, under the &ldquo;Mirror Ingress&rdquo;/&ldquo;Mirror Egress&rdquo; columns in the switch window table, we can see a &ldquo;yes&rdquo; in both columns, indicating that the configuration has been successfully applied.  <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/routerconf.png"/> <figcaption>
+            Figure 4: Examining the traffic mirror configuration
+        </figcaption>
+</figure>
+
+<hr>
+<h3 id="comparing-the-traffic-before-and-after-the-configuration">Comparing the traffic before and after the configuration</h3>
+<p>Now we can use Wireshark on the attacker&rsquo;s laptop to compare the traffic captured with and without mirroring.</p>
+<p>When everything is idle and only ARP traffic is occurring in the background, the only difference is that instead of receiving each broadcast once, it is received twice—once from the connection itself and once from the mirroring.</p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/nomirr.png"/> <figcaption>
+            Figure 5: Examining the arp traffic without a mirror configuration
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/yesmirr.png"/> <figcaption>
+            Figure 6: Examining the arp traffic with a mirror configuration
+        </figcaption>
+</figure>
+</p>
+<hr>
+<h3 id="packet-sniffing-on-the-local-device">Packet Sniffing on the Local Device</h3>
+<p>Now, with mirroring enabled, every device on the network is pinged so we can examine the behavior using the following filter: <code>ip.src == 10.30.0.69 &amp;&amp; icmp</code>. This filter shows only ICMP frames with the source IP of the attacker&rsquo;s laptop.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/ws2_1.png"/> <figcaption>
+            Figure 7: Displaying the pings to every device on the Network
+        </figcaption>
+</figure>
+
+<p>To display only the full connection between the two devices, the following filter can be used to show only the complete exchange, including replies: <code>icmp &amp;&amp; ip.addr == 10.30.0.69 &amp;&amp; ip.addr == 10.30.0.178</code>.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/filter%20for%20cumm.png"/> <figcaption>
+            Figure 8: Displaying the full ping between the attacker and a client
+        </figcaption>
+</figure>
+
+<hr>
+<h3 id="capturing-a-ping-between-two-targets">Capturing a Ping Between Two Targets</h3>
+<p>Since all ingress and egress traffic is being mirrored to the attacker&rsquo;s port, it is possible to observe the entire ICMP exchange between the two victim machines directly from the attacker&rsquo;s PC using Wireshark. If a ping is initiated between the two devices, we can apply the same filter as before—replacing the IP addresses with those of the communicating victims—to capture and analyze the exchanged packets.</p>
+<pre tabindex="0"><code>ip.addr == &lt;Victim1_IP&gt; &amp;&amp; ip.addr == &lt;Victim2_IP&gt;
+</code></pre><p>As shown below, this traffic is visible only from the attacker&rsquo;s Wireshark capture. The source and destination fields in the packets correspond to the two victim machines—at no point does the attacker’s IP address appear in the captured communication. This interception is possible solely due to port mirroring: all network traffic to and from the mirrored ports is duplicated to the attacker&rsquo;s port. The two clients are unaware of this and communicate normally, while the attacker silently captures their traffic.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/whistBaa.png"/> <figcaption>
+            Figure 9: Observing a Ping Between Two Clients That Don&#39;t Involve the Attacker
+        </figcaption>
+</figure>
+
+<hr>
+<h3 id="capturing-plain-text-passwords">Capturing Plain Text Passwords</h3>
+<p>But let&rsquo;s not stop at having two targets ping each other—we can also make use of the web server VM, which is simply the default Nginx page protected with basic authentication. If we make a request to the HTTP server—using either a web browser, curl, or any other method—and pass the Authorization header, it will contain Basic, which is the scheme name, followed by a Base64-encoded UTF-8 string of the username and password separated by a colon <code>:</code>.  <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>The server then checks whether the provided credentials match an entry in the credentials file. If no match is found, an HTTP status code 401 Unauthorized is returned.  <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<p>Later, a successful authentication is made, where the server instead returns status code 200, which indicates that the request has succeeded.  <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
+<p>Again, we can see the credentials used in the request headers and now know that the credentials for this web server are <code>user3:password123</code>, as shown below. In addition, we receive the entire HTML code returned in the response from the server, which we can also view in plain text—essentially allowing us to see the same content as the client.</p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/headhgoog.png"/> <figcaption>
+            Figure 11: Viewing the correct plain text password from the authentication
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/eniterufcijsdigjsdg.png"/> <figcaption>
+            Figure 12: Viewing the returned HTML
+        </figcaption>
+</figure>
+</p>
+<p><em>See also: <a href="https://stefanistkuhl.github.io/posts/itsi/year-3/exercise-6/linux-hadening-nginx">Exercise 6: Hardening a Linux Webserver</a> for details on setting up Nginx with basic authentication.</em><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
+<hr>
+<h3 id="capturing-a-voip-call">Capturing a VoIP Call</h3>
+<p>Lastly, VoIP traffic was captured and analyzed using Wireshark. For this, a different topology was used, as shown in Figure 2, since I do not own any VoIP phones. This part of the experiment was conducted in the school&rsquo;s networking lab, where we used a hub and the address range <code>10.0.0.0/24</code>. The attacker had the address <code>10.0.0.69</code>, while the two phones had <code>10.0.0.1</code> and <code>10.0.0.2</code>. Since a hub was used, no port mirroring had to be configured.</p>
+<p>Voice over IP is an unencrypted protocol that uses the Real-time Transport Protocol (RTP) to transmit application data, which Wireshark has built-in tools to follow and even convert back into audio.  <sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> <sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></p>
+<p>Wireshark provides these tools under Telephony → VoIP, which automatically detects the relevant streams and identifies the speakers. In the window that opens, we have several options, such as viewing the Flow Sequence, which shows when the call was ringing and who was speaking when. However, we are more interested in the &ldquo;Play Streams&rdquo; button, which displays the waveform of the call and allows us to export the audio as an MP3 file.</p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/phonedge.png"/> <figcaption>
+            Figure 13: Viewing the VoIP menu in Wireshark
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/waow.png"/> <figcaption>
+            Figure 14: Viewing the Waveform of the call
+        </figcaption>
+</figure>
+</p>
+<p>However, the audio levels of the MP3 were initially unbalanced—the beginning was far too quiet—so I boosted the volume using Audacity to normalize the audio levels. I then used the Adobe Podcast AI Audio Enhancer to remove background noise and isolate the conversation. The result was a surprisingly clean and understandable audio file, even though the microphone of the other phone was quite far away when I was speaking.</p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/fixing%20levels.png"/> <figcaption>
+            Figure 15: Fixing the Audio Levels in Audacity
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/adobe%20podcast.png"/> <figcaption>
+            Figure 16: Removing Background Noise Using Adobe&#39;s Podcast Tool
+        </figcaption>
+</figure>
+</p>
+<hr>
+<h2 id="references">References</h2>
+<p><em>For a full bibliography, see the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex10/quellen.bib">original BibTeX file</a>.</em></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Joey. Mirroring ports on Mikrotik. Blogger, 2015. <a href="https://www.technicallyinsane.com/2015/10/mirroring-ports-on-mikrotik.html">link</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>RFC 7617. <a href="https://www.rfc-editor.org/rfc/rfc7617.txt">link</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>401 Unauthorized - HTTP | MDN. <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/401">link</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>200 OK - HTTP | MDN. <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/200">link</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Hardening a Linux Webserver, Exercise 6. <a href="https://stefanistkuhl.github.io/posts/itsi/year-3/exercise-6/linux-hadening-nginx">link</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>VoIP_calls - Wireshark Wiki. <a href="https://wiki.wireshark.org/VoIP_calls">link</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>RTP - Wireshark Wiki. <a href="https://wiki.wireshark.org/RTP">link</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></content:encoded>
+    </item>
     <item>
       <title>Docker Things</title>
       <link>http://localhost:1313/posts/docker-things/</link>

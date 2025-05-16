@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Capturing Network traffic | silly blog</title>
+<meta name="keywords" content="networking, it sec, school, red team">
+<meta name="description" content="
+Note: this was converted using from LaTeX to Markdown using Chat GPT 4.1 the original pdf can be found here along with the bibliography
+
+Capturing of network traffic in the local network
+
+Laboratory protocol
+Exercise 10: Capturing of network traffic in the local network
+
+     
+            Figure: Grouplogo
+        
+
+
+Subject: ITSI
+Class: 3AHITN
+Name: Stefan Fürst, Justin Tremurici
+Group Name/Number: Name here/12
+Supervisor: SPAC, ZIVK
+Exercise dates: 11.04.2025 | 25.04.2025 | 09.05.2025
+Submission date: 16.05.2025">
+<meta name="author" content="stefi">
+<link rel="canonical" href="http://localhost:1313/posts/itsi/year-3/exercise-10/capturing-networn-traffi/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/itsi/year-3/exercise-10/capturing-networn-traffi/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="silly blog (Alt + H)">silly blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="root">
+                    <span>root</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Capturing Network traffic
+    </h1>
+    <div class="post-meta"><span title='2025-05-16 02:36:09 +0200 CEST'>May 16, 2025</span>&nbsp;·&nbsp;10 min&nbsp;·&nbsp;stefi
+
+</div>
+  </header> 
+  <div class="post-content"><blockquote>
+<p>Note: this was converted using from LaTeX to Markdown using Chat GPT 4.1 the original pdf can be found <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex10/capturing-network-traffic-in-a-LAN.pdf">here</a> along with the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex10/quellen.bib">bibliography</a></p></blockquote>
+<hr>
+<h1 id="capturing-of-network-traffic-in-the-local-network">Capturing of network traffic in the local network<a hidden class="anchor" aria-hidden="true" href="#capturing-of-network-traffic-in-the-local-network">#</a></h1>
+<hr>
+<p><strong>Laboratory protocol</strong><br>
+Exercise 10: Capturing of network traffic in the local network<br>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/mencicle.png"/> <figcaption>
+            Figure: Grouplogo
+        </figcaption>
+</figure>
+
+<strong>Subject:</strong> ITSI<br>
+<strong>Class:</strong> 3AHITN<br>
+<strong>Name:</strong> Stefan Fürst, Justin Tremurici<br>
+<strong>Group Name/Number:</strong> Name here/12<br>
+<strong>Supervisor:</strong> SPAC, ZIVK<br>
+<strong>Exercise dates:</strong> 11.04.2025 | 25.04.2025 | 09.05.2025<br>
+<strong>Submission date:</strong> 16.05.2025</p>
+<hr>
+<h2 id="table-of-contents">Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h2>
+<ul>
+<li><a href="#task-definition">Task definition</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#complete-network-topology-of-the-exercise">Complete network topology of the exercise</a></li>
+<li><a href="#exercise-execution">Exercise Execution</a>
+<ul>
+<li><a href="#building-the-topologies">Building the Topologies</a></li>
+<li><a href="#mirroring-traffic-in-routeros-v7">Mirroring traffic in RouterOS v7</a></li>
+<li><a href="#comparing-the-traffic-before-and-after-the-configuration">Comparing the traffic before and after the configuration</a></li>
+<li><a href="#packet-sniffing-on-the-local-device">Packet Sniffing on the Local Device</a></li>
+<li><a href="#capturing-a-ping-between-two-targets">Capturing a Ping Between Two Targets</a></li>
+<li><a href="#capturing-plain-text-passwords">Capturing Plain Text Passwords</a></li>
+<li><a href="#capturing-a-voip-call">Capturing a VoIP Call</a></li>
+</ul>
+</li>
+<li><a href="#references">References</a></li>
+</ul>
+<hr>
+<h2 id="task-definition">Task definition<a hidden class="anchor" aria-hidden="true" href="#task-definition">#</a></h2>
+<p>This task focused on the passive interception of network traffic in a local network using either a hub or a managed switch with mirror ports. The objective was to analyze unaltered communications using <code>Wireshark</code> on both attacker and victim machines. Two topologies were tested: a hub-based setup, which allowed full traffic visibility, and a switch-based setup, where traffic was mirrored from victim ports to the attacker’s port. Devices were assigned static IP addresses from a private range, and VoIP communication was simulated using either software-based or physical IP phones.</p>
+<p>Three types of traffic were examined: ICMP echo requests (Ping), HTTP authentication involving plaintext credentials, and VoIP calls between two endpoints. Each case was recorded in a separate Wireshark capture. In the hub scenario, the focus was on visibility and potential stability issues under high traffic. For the switch, mirroring was configured and traffic was captured before and after to assess changes.</p>
+<p>Further tasks involved filtering ICMP traffic by attacker IP, observing ping communication between victim devices from the attacker’s perspective, capturing HTTP login attempts to extract credentials, and intercepting a VoIP call, which was exported as an MP3 file. All relevant captures and the audio file were submitted as part of the final documentation.</p>
+<hr>
+<h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
+<p>In this exercise, two distinct network topologies were implemented to investigate passive network traffic interception. The first topology utilized personal hardware, specifically a Mikrotik RB5009 router, to configure port mirroring. The client devices were older laptops running Proxmox, with one laptop hosting an nginx container configured to demonstrate basic HTTP authentication. The attacker device was another laptop connected to the mirrored ports on the router, which allowed it to receive a complete copy of the network traffic between the clients and the server.</p>
+<p>The initial step involved performing local ICMP ping requests from the attacker to the clients to observe the captured traffic and verify network connectivity. Following this, the two client laptops pinged each other, while the attacker monitored and recorded the exchanged packets. This demonstrated the attacker&rsquo;s ability to intercept traffic not directly addressed to it due to the port mirroring setup. Furthermore, the attacker was able to capture and analyze the HTTP basic authentication process, successfully extracting plaintext credentials transmitted from the client to the nginx server.</p>
+<p>In the second part of the exercise, a VoIP call was established using two IP phones connected via a network hub instead of a switch with port mirroring. This topology allowed the attacker laptop to capture the audio stream of the call directly from the network traffic. The recorded audio was then exported and post-processed using Audacity and Adobe Podcast Speech Enhancer to clean and enhance the recording, resulting in a clear and intelligible audio file.</p>
+<p>Throughout the exercise, Wireshark was extensively used to capture, filter, and analyze the network traffic from the attacker’s perspective. This practical approach provided insight into how network devices like hubs and switches with port mirroring impact the visibility of traffic and the feasibility of passive interception attacks within a local network environment.</p>
+<hr>
+<h2 id="complete-network-topology-of-the-exercise">Complete network topology of the exercise<a hidden class="anchor" aria-hidden="true" href="#complete-network-topology-of-the-exercise">#</a></h2>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/topo1.png"/> <figcaption>
+            Figure 1: Complete network topology of the exercise using a switch
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/topo2.png"/> <figcaption>
+            Figure 2: Complete network topology of the exercise using a Hub
+        </figcaption>
+</figure>
+</p>
+<hr>
+<h2 id="exercise-execution">Exercise Execution<a hidden class="anchor" aria-hidden="true" href="#exercise-execution">#</a></h2>
+<h3 id="building-the-topologies">Building the Topologies<a hidden class="anchor" aria-hidden="true" href="#building-the-topologies">#</a></h3>
+<p>To build the topology from Figure 1, I chose the following hardware: a Mikrotik RB 5009 to act as the main &ldquo;switch&rdquo; due to RouterOS offering extensive settings in what I consider the best GUI to manage any network device.</p>
+<p>For the server and clients, I used two old laptops running Proxmox, one of which has a Debian server VM running an Nginx web server with basic authentication set up. All of the devices have static IPs configured in the range <code>10.30.0.0/24</code>. The attacker simply runs Linux with Wireshark to capture the traffic. The used IP addresses can be found in the addressing table below.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Device</th>
+          <th>IP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Attacker</td>
+          <td>10.30.0.69</td>
+      </tr>
+      <tr>
+          <td>Server</td>
+          <td>10.30.0.179</td>
+      </tr>
+      <tr>
+          <td>Webserver</td>
+          <td>10.30.0.10</td>
+      </tr>
+      <tr>
+          <td>Client</td>
+          <td>10.30.0.179</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="mirroring-traffic-in-routeros-v7">Mirroring traffic in RouterOS v7<a hidden class="anchor" aria-hidden="true" href="#mirroring-traffic-in-routeros-v7">#</a></h3>
+<p>To configure the router, there are three options: either use the WebGUI, SSH into it, or use their program called WinBox, which is the option I went with. After connecting a port on the router, it automatically detects available ports, and I can simply select one of them and configure everything as needed via the MAC address.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/winbox.png"/> <figcaption>
+            Figure 3: Connecting to the Router via Winbox
+        </figcaption>
+</figure>
+
+<p>Now that we are in the router&rsquo;s configuration, we see a number of top-level options to choose from. To mirror traffic, we go to the Switch section and head to the Port tab, where we select the ports we want to mirror. If we double-click on an interface, it opens the port window, where we can choose whether to mirror only ingress traffic, egress traffic, or both.</p>
+<p>We also specify an ingress target, which in this case is ether6, where the attacker&rsquo;s laptop is plugged in so that it receives all the mirrored traffic. The configuration for both ether7 and ether8 is the same, which is why only one is shown below. Lastly, under the &ldquo;Mirror Ingress&rdquo;/&ldquo;Mirror Egress&rdquo; columns in the switch window table, we can see a &ldquo;yes&rdquo; in both columns, indicating that the configuration has been successfully applied.  <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/routerconf.png"/> <figcaption>
+            Figure 4: Examining the traffic mirror configuration
+        </figcaption>
+</figure>
+
+<hr>
+<h3 id="comparing-the-traffic-before-and-after-the-configuration">Comparing the traffic before and after the configuration<a hidden class="anchor" aria-hidden="true" href="#comparing-the-traffic-before-and-after-the-configuration">#</a></h3>
+<p>Now we can use Wireshark on the attacker&rsquo;s laptop to compare the traffic captured with and without mirroring.</p>
+<p>When everything is idle and only ARP traffic is occurring in the background, the only difference is that instead of receiving each broadcast once, it is received twice—once from the connection itself and once from the mirroring.</p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/nomirr.png"/> <figcaption>
+            Figure 5: Examining the arp traffic without a mirror configuration
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/yesmirr.png"/> <figcaption>
+            Figure 6: Examining the arp traffic with a mirror configuration
+        </figcaption>
+</figure>
+</p>
+<hr>
+<h3 id="packet-sniffing-on-the-local-device">Packet Sniffing on the Local Device<a hidden class="anchor" aria-hidden="true" href="#packet-sniffing-on-the-local-device">#</a></h3>
+<p>Now, with mirroring enabled, every device on the network is pinged so we can examine the behavior using the following filter: <code>ip.src == 10.30.0.69 &amp;&amp; icmp</code>. This filter shows only ICMP frames with the source IP of the attacker&rsquo;s laptop.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/ws2_1.png"/> <figcaption>
+            Figure 7: Displaying the pings to every device on the Network
+        </figcaption>
+</figure>
+
+<p>To display only the full connection between the two devices, the following filter can be used to show only the complete exchange, including replies: <code>icmp &amp;&amp; ip.addr == 10.30.0.69 &amp;&amp; ip.addr == 10.30.0.178</code>.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/filter%20for%20cumm.png"/> <figcaption>
+            Figure 8: Displaying the full ping between the attacker and a client
+        </figcaption>
+</figure>
+
+<hr>
+<h3 id="capturing-a-ping-between-two-targets">Capturing a Ping Between Two Targets<a hidden class="anchor" aria-hidden="true" href="#capturing-a-ping-between-two-targets">#</a></h3>
+<p>Since all ingress and egress traffic is being mirrored to the attacker&rsquo;s port, it is possible to observe the entire ICMP exchange between the two victim machines directly from the attacker&rsquo;s PC using Wireshark. If a ping is initiated between the two devices, we can apply the same filter as before—replacing the IP addresses with those of the communicating victims—to capture and analyze the exchanged packets.</p>
+<pre tabindex="0"><code>ip.addr == &lt;Victim1_IP&gt; &amp;&amp; ip.addr == &lt;Victim2_IP&gt;
+</code></pre><p>As shown below, this traffic is visible only from the attacker&rsquo;s Wireshark capture. The source and destination fields in the packets correspond to the two victim machines—at no point does the attacker’s IP address appear in the captured communication. This interception is possible solely due to port mirroring: all network traffic to and from the mirrored ports is duplicated to the attacker&rsquo;s port. The two clients are unaware of this and communicate normally, while the attacker silently captures their traffic.</p>
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/whistBaa.png"/> <figcaption>
+            Figure 9: Observing a Ping Between Two Clients That Don&#39;t Involve the Attacker
+        </figcaption>
+</figure>
+
+<hr>
+<h3 id="capturing-plain-text-passwords">Capturing Plain Text Passwords<a hidden class="anchor" aria-hidden="true" href="#capturing-plain-text-passwords">#</a></h3>
+<p>But let&rsquo;s not stop at having two targets ping each other—we can also make use of the web server VM, which is simply the default Nginx page protected with basic authentication. If we make a request to the HTTP server—using either a web browser, curl, or any other method—and pass the Authorization header, it will contain Basic, which is the scheme name, followed by a Base64-encoded UTF-8 string of the username and password separated by a colon <code>:</code>.  <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>The server then checks whether the provided credentials match an entry in the credentials file. If no match is found, an HTTP status code 401 Unauthorized is returned.  <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<p>Later, a successful authentication is made, where the server instead returns status code 200, which indicates that the request has succeeded.  <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
+<p>Again, we can see the credentials used in the request headers and now know that the credentials for this web server are <code>user3:password123</code>, as shown below. In addition, we receive the entire HTML code returned in the response from the server, which we can also view in plain text—essentially allowing us to see the same content as the client.</p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/headhgoog.png"/> <figcaption>
+            Figure 11: Viewing the correct plain text password from the authentication
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/eniterufcijsdigjsdg.png"/> <figcaption>
+            Figure 12: Viewing the returned HTML
+        </figcaption>
+</figure>
+</p>
+<p><em>See also: <a href="https://stefanistkuhl.github.io/posts/itsi/year-3/exercise-6/linux-hadening-nginx">Exercise 6: Hardening a Linux Webserver</a> for details on setting up Nginx with basic authentication.</em><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
+<hr>
+<h3 id="capturing-a-voip-call">Capturing a VoIP Call<a hidden class="anchor" aria-hidden="true" href="#capturing-a-voip-call">#</a></h3>
+<p>Lastly, VoIP traffic was captured and analyzed using Wireshark. For this, a different topology was used, as shown in Figure 2, since I do not own any VoIP phones. This part of the experiment was conducted in the school&rsquo;s networking lab, where we used a hub and the address range <code>10.0.0.0/24</code>. The attacker had the address <code>10.0.0.69</code>, while the two phones had <code>10.0.0.1</code> and <code>10.0.0.2</code>. Since a hub was used, no port mirroring had to be configured.</p>
+<p>Voice over IP is an unencrypted protocol that uses the Real-time Transport Protocol (RTP) to transmit application data, which Wireshark has built-in tools to follow and even convert back into audio.  <sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> <sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></p>
+<p>Wireshark provides these tools under Telephony → VoIP, which automatically detects the relevant streams and identifies the speakers. In the window that opens, we have several options, such as viewing the Flow Sequence, which shows when the call was ringing and who was speaking when. However, we are more interested in the &ldquo;Play Streams&rdquo; button, which displays the waveform of the call and allows us to export the audio as an MP3 file.</p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/phonedge.png"/> <figcaption>
+            Figure 13: Viewing the VoIP menu in Wireshark
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/waow.png"/> <figcaption>
+            Figure 14: Viewing the Waveform of the call
+        </figcaption>
+</figure>
+</p>
+<p>However, the audio levels of the MP3 were initially unbalanced—the beginning was far too quiet—so I boosted the volume using Audacity to normalize the audio levels. I then used the Adobe Podcast AI Audio Enhancer to remove background noise and isolate the conversation. The result was a surprisingly clean and understandable audio file, even though the microphone of the other phone was quite far away when I was speaking.</p>
+<p><figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/fixing%20levels.png"/> <figcaption>
+            Figure 15: Fixing the Audio Levels in Audacity
+        </figcaption>
+</figure>
+
+<figure>
+    <img loading="lazy" src="/itsi/y3/ex10/images/adobe%20podcast.png"/> <figcaption>
+            Figure 16: Removing Background Noise Using Adobe&#39;s Podcast Tool
+        </figcaption>
+</figure>
+</p>
+<hr>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<p><em>For a full bibliography, see the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex10/quellen.bib">original BibTeX file</a>.</em></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Joey. Mirroring ports on Mikrotik. Blogger, 2015. <a href="https://www.technicallyinsane.com/2015/10/mirroring-ports-on-mikrotik.html">link</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>RFC 7617. <a href="https://www.rfc-editor.org/rfc/rfc7617.txt">link</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>401 Unauthorized - HTTP | MDN. <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/401">link</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>200 OK - HTTP | MDN. <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/200">link</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>stefi. Hardening a Linux Webserver, Exercise 6. silly blog, 2025. <a href="https://stefanistkuhl.github.io/posts/itsi/year-3/exercise-6/linux-hadening-nginx">link</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>VoIP_calls - Wireshark Wiki. <a href="https://wiki.wireshark.org/VoIP_calls">link</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>RTP - Wireshark Wiki. <a href="https://wiki.wireshark.org/RTP">link</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/networking/">Networking</a></li>
+      <li><a href="http://localhost:1313/tags/it-sec/">It Sec</a></li>
+      <li><a href="http://localhost:1313/tags/school/">School</a></li>
+      <li><a href="http://localhost:1313/tags/red-team/">Red Team</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">silly blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
