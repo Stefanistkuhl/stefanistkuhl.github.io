@@ -4,7 +4,7 @@
     <title>Posts on silly blog</title>
     <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on silly blog</description>
-    <generator>Hugo -- 0.147.3</generator>
+    <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 16 May 2025 02:36:09 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
@@ -104,13 +104,13 @@ Exercise 10: Capturing of network traffic in the local network<br>
 <hr>
 <h2 id="complete-network-topology-of-the-exercise">Complete network topology of the exercise</h2>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex10/images/topo1.png"/> <figcaption>
+    <img loading="lazy" src="/itsi/y3/ex10/images/topo11.png"/> <figcaption>
             Figure 1: Complete network topology of the exercise using a switch
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex10/images/topo2.png"/> <figcaption>
+    <img loading="lazy" src="/itsi/y3/ex10/images/topo22.png"/> <figcaption>
             Figure 2: Complete network topology of the exercise using a Hub
         </figcaption>
 </figure>
