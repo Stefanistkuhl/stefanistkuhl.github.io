@@ -1,36 +1,36 @@
-baseURL: 'https://stefanistkuhl.github.io'
-languageCode: 'en-us'
-title: 'silly blog'
-theme: 'paper'
+baseURL: "https://stefanistkuhl.github.io"
+languageCode: "en-us"
+title: "silly blog"
+theme: "paper"
 enableRobotsTXT: true
 
 caches:
   images:
-    dir: ':cacheDir/images'
+    dir: ":cacheDir/images"
 
 menu:
   main:
-    - identifier: 'about'
-      name: 'About'
-      url: 'about/'
-    - identifier: 'posts'
-      name: 'Posts'
-      url: 'posts/'
-    - identifier: 'root'
-      name: 'root'
-      url: '/'
+    - identifier: "about"
+      name: "About"
+      url: "about/"
+    - identifier: "posts"
+      name: "Posts"
+      url: "posts/"
+    - identifier: "root"
+      name: "root"
+      url: "/"
 
 outputs:
   home:
-  - html
-  - rss
+    - html
+    - rss
   section:
-  - html
-  - rss
+    - html
+    - rss
   taxonomy:
-  - html
+    - html
   term:
-  - html
+    - html
 
 pagination:
   disableAliases: false
@@ -39,7 +39,7 @@ pagination:
 params:
   ShowSocialIcons: true
   ShowSocialIconsInFooter: true
-  author: 'stefi'
+  author: "veya"
   ShowCodeCopyButtons: true
   ShowPageNums: true
   ShowReadingTime: true
@@ -55,10 +55,8 @@ params:
 
       - Other useful links: [school obsidan repo](https://github.com/Stefanistkuhl/obsidianschule), [static page mirror of it](https://stefanistkuhl.github.io/obsidianschule/), [coding class repo](https://github.com/Stefanistkuhl/Schule_Sew_etc)
 
-
   socialIcons:
-    - name: 'github'
-      url: 'https://github.com/stefanistkuhl'
+    - name: "github"
+      url: "https://github.com/stefanistkuhl"
     - name: rss
       url: "index.xml"
-
