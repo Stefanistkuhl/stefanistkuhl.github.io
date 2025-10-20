@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=39857&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
@@ -9,6 +9,7 @@
 <meta name="keywords" content="windows, it sec, school, red team">
 <meta name="description" content="
 Note: this was converted using from LaTeX to Markdown using Chat GPT 4.1 the original pdf can be found here along with the bibliography
+
 
 Testing Windows server security
 
@@ -74,17 +75,17 @@ References
 
 Task definition
 This task was conducted using a combination of manual configuration and automated attack tools to evaluate the security posture of a Windows Server environment. The environment setup involved preparing both the target system and an attacker system running Kali Linux, which was equipped with tools such as Hydra for brute-force attacks and Wireshark for network traffic analysis.">
-<meta name="author" content="stefi">
-<link rel="canonical" href="http://localhost:1313/posts/itsi/year-3/exercise-9/security-test-of-windows-server/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.93f625d739f1d6a5c6f20c146bc6a8d26b233492b34b2220c54b12fd46a04ded.css" integrity="sha256-k/Yl1znx1qXG8gwUa8ao0msjNJKzSyIgxUsS/UagTe0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="author" content="veya">
+<link rel="canonical" href="http://localhost:39857/posts/itsi/year-3/exercise-9/security-test-of-windows-server/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:39857/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:39857/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:39857/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:39857/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:39857/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/itsi/year-3/exercise-9/security-test-of-windows-server/">
+<link rel="alternate" hreflang="en" href="http://localhost:39857/posts/itsi/year-3/exercise-9/security-test-of-windows-server/">
 <noscript>
     <style>
         #theme-toggle,
@@ -139,7 +140,7 @@ This task was conducted using a combination of manual configuration and automate
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="silly blog (Alt + H)">silly blog</a>
+            <a href="http://localhost:39857/" accesskey="h" title="silly blog (Alt + H)">silly blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -165,17 +166,17 @@ This task was conducted using a combination of manual configuration and automate
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about/" title="About">
+                <a href="http://localhost:39857/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
+                <a href="http://localhost:39857/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/" title="root">
+                <a href="http://localhost:39857/" title="root">
                     <span>root</span>
                 </a>
             </li>
@@ -190,12 +191,13 @@ This task was conducted using a combination of manual configuration and automate
     <h1 class="post-title entry-hint-parent">
       Security test of Windows Server
     </h1>
-    <div class="post-meta"><span title='2025-04-11 03:33:09 +0200 CEST'>April 11, 2025</span>&nbsp;·&nbsp;15 min&nbsp;·&nbsp;stefi
+    <div class="post-meta"><span title='2025-04-11 03:33:09 +0200 CEST'>April 11, 2025</span>&nbsp;·&nbsp;15 min&nbsp;·&nbsp;veya
 
 </div>
   </header> 
   <div class="post-content"><blockquote>
-<p>Note: this was converted using from LaTeX to Markdown using Chat GPT 4.1 the original pdf can be found <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex9/Sicherheitstests%20von%20Windows%20Server.pdf">here</a> along with the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex9/zotero.bib">bibliography</a></p></blockquote>
+<p>Note: this was converted using from LaTeX to Markdown using Chat GPT 4.1 the original pdf can be found <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex9/Sicherheitstests%20von%20Windows%20Server.pdf">here</a> along with the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex9/zotero.bib">bibliography</a></p>
+</blockquote>
 <hr>
 <h1 id="testing-windows-server-security">Testing Windows server security<a hidden class="anchor" aria-hidden="true" href="#testing-windows-server-security">#</a></h1>
 <hr>
@@ -320,7 +322,7 @@ Exercise 9: Testing Windows server security<br>
 <h4 id="analyzing-network-traffic-with-wireshark">Analyzing Network Traffic with Wireshark<a hidden class="anchor" aria-hidden="true" href="#analyzing-network-traffic-with-wireshark">#</a></h4>
 <p>By filtering for <code>tcp.port == 445</code>, we can examine the SMB-related network traffic being sent and received, and analyze the authentication process taking place alongside it.</p>
 <ul>
-<li>The first SMB packet is sent using version 1 instead of version 2, despite version 2 being specified in the command. This is explained in the SMB specification <!-- raw HTML omitted -->Microsoft Corporation<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><!-- raw HTML omitted -->.</li>
+<li>The first SMB packet is sent using version 1 instead of version 2, despite version 2 being specified in the command. This is explained in the SMB specification <cite>Microsoft Corporation<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite>.</li>
 </ul>
 <figure>
     <img loading="lazy" src="/itsi/y3/ex9/images/smb1.png"/> <figcaption>
@@ -329,7 +331,7 @@ Exercise 9: Testing Windows server security<br>
 </figure>
 
 <ul>
-<li>The <code>Negotiate Protocol Request</code> informs the server of the SMB dialects (i.e., versions) the client supports, which is essentially an array of supported versions. <!-- raw HTML omitted -->Microsoft Community Hub<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup><!-- raw HTML omitted --></li>
+<li>The <code>Negotiate Protocol Request</code> informs the server of the SMB dialects (i.e., versions) the client supports, which is essentially an array of supported versions. <cite>Microsoft Community Hub<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></cite></li>
 </ul>
 <figure>
     <img loading="lazy" src="/itsi/y3/ex9/images/smb2.png"/> <figcaption>
@@ -360,7 +362,7 @@ Exercise 9: Testing Windows server security<br>
 <p>The server follows up by specifying the preferred dialect from the client’s dialect array—which in this case is <code>SMB 3.1.1</code>—and additionally updates the listed capabilities based on the selected version. This version will now be used for the connection.</p>
 </li>
 <li>
-<p>After a dialect and capabilities have been selected, a <code>Session Setup Request</code> is sent, initiating the authentication process using the GSS-API (Generic Security Service Application Program Interface). This is used alongside NTLMSSP, which stands for NT LAN Manager Security Support Provider—a binary messaging protocol developed by Microsoft to facilitate NTLM challenge-response authentication and to negotiate integrity and confidentiality options. <!-- raw HTML omitted -->Wikipedia<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup><!-- raw HTML omitted --></p>
+<p>After a dialect and capabilities have been selected, a <code>Session Setup Request</code> is sent, initiating the authentication process using the GSS-API (Generic Security Service Application Program Interface). This is used alongside NTLMSSP, which stands for NT LAN Manager Security Support Provider—a binary messaging protocol developed by Microsoft to facilitate NTLM challenge-response authentication and to negotiate integrity and confidentiality options. <cite>Wikipedia<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite></p>
 </li>
 </ul>
 <figure>
@@ -370,7 +372,7 @@ Exercise 9: Testing Windows server security<br>
 </figure>
 
 <ul>
-<li>The server responds with <code>STATUS_MORE_PROCESSING_REQUIRED</code>, indicating that guest access is disabled and authentication is required to connect to this SMB share. <!-- raw HTML omitted -->Microsoft Docs<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup><!-- raw HTML omitted --></li>
+<li>The server responds with <code>STATUS_MORE_PROCESSING_REQUIRED</code>, indicating that guest access is disabled and authentication is required to connect to this SMB share. <cite>Microsoft Docs<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></cite></li>
 </ul>
 <figure>
     <img loading="lazy" src="/itsi/y3/ex9/images/smb6.png"/> <figcaption>
@@ -397,7 +399,7 @@ Exercise 9: Testing Windows server security<br>
 </figure>
 
 <ul>
-<li>If the authentication succeeds, the NT Status field in the header of the <code>Session Setup Response</code> is set to <code>STATUS_SUCCESS</code>. This is followed by a <code>Tree Connect Request</code> to access a share on the server. Since I did not specify a share, Hydra defaults to the administrative share <code>$IPC</code>, which is used to communicate with programs via named pipes over the network. <!-- raw HTML omitted -->Windows OS Hub<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup><!-- raw HTML omitted --></li>
+<li>If the authentication succeeds, the NT Status field in the header of the <code>Session Setup Response</code> is set to <code>STATUS_SUCCESS</code>. This is followed by a <code>Tree Connect Request</code> to access a share on the server. Since I did not specify a share, Hydra defaults to the administrative share <code>$IPC</code>, which is used to communicate with programs via named pipes over the network. <cite>Windows OS Hub<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></cite></li>
 </ul>
 <p><figure>
     <img loading="lazy" src="/itsi/y3/ex9/images/smb9.png"/> <figcaption>
@@ -422,7 +424,7 @@ Exercise 9: Testing Windows server security<br>
 
 <hr>
 <h3 id="brute-forcing-rdp">Brute-Forcing RDP<a hidden class="anchor" aria-hidden="true" href="#brute-forcing-rdp">#</a></h3>
-<p><code>RDP</code> is a proprietary protocol developed by Microsoft that allows a user to connect to another computer with a graphical interface. <!-- raw HTML omitted -->Wikipedia<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup><!-- raw HTML omitted --> <!-- raw HTML omitted -->Microsoft Docs<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup><!-- raw HTML omitted --></p>
+<p><code>RDP</code> is a proprietary protocol developed by Microsoft that allows a user to connect to another computer with a graphical interface. <cite>Wikipedia<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite> <cite>Microsoft Docs<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></cite></p>
 <p>However, Hydra did not detect my installation of <code>libfreerdp3</code>, so I created a custom Python RDP brute-forcing script based on the <code>xfreerdp3</code> command.</p>
 <p><figure>
     <img loading="lazy" src="/itsi/y3/ex9/images/hydranordp.png"/> <figcaption>
@@ -510,11 +512,11 @@ Exercise 9: Testing Windows server security<br>
 </figure>
 
 <p>Whether or not the RDP authentication was successful cannot be directly observed, as all communication is wrapped inside encrypted TLS packets, making it appear identical in Wireshark. The only indicator is the amount of application data transmitted, from which it can be inferred whether the client briefly connected for authentication only or simply transmitted credentials over the TLS connection before the authentication failed.</p>
-<p>The main difference isn&rsquo;t just the authentication mechanisms (CSPP/TLS vs. GSS-API/NTLMSSP). A crucial distinction is how encryption is handled. RDP can use TLS to encrypt all traffic, including application data, whereas SMB uses GSS-API to negotiate authentication (often using Kerberos or NTLM) and can encrypt SMB packets directly, especially in newer versions (SMB 3.0+). When RDP uses TLS, it creates a TLS tunnel. SMB encryption is integrated within the SMB protocol itself. <!-- raw HTML omitted -->Microsoft Corporation<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><!-- raw HTML omitted --> <!-- raw HTML omitted -->Wikipedia<sup id="fnref1:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup><!-- raw HTML omitted --></p>
+<p>The main difference isn&rsquo;t just the authentication mechanisms (CSPP/TLS vs. GSS-API/NTLMSSP). A crucial distinction is how encryption is handled. RDP can use TLS to encrypt all traffic, including application data, whereas SMB uses GSS-API to negotiate authentication (often using Kerberos or NTLM) and can encrypt SMB packets directly, especially in newer versions (SMB 3.0+). When RDP uses TLS, it creates a TLS tunnel. SMB encryption is integrated within the SMB protocol itself. <cite>Microsoft Corporation<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite> <cite>Wikipedia<sup id="fnref1:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite></p>
 <hr>
 <h3 id="hardening-windows-against-brute-force-attacks">Hardening Windows Against Brute-Force Attacks<a hidden class="anchor" aria-hidden="true" href="#hardening-windows-against-brute-force-attacks">#</a></h3>
 <h4 id="using-evlwatcher-for-rate-limiting">Using EvLWatcher for Rate Limiting<a hidden class="anchor" aria-hidden="true" href="#using-evlwatcher-for-rate-limiting">#</a></h4>
-<p>To set up rate limiting, I used a <code>fail2ban</code>-style tool for Windows called EvLWatcher. After running the setup executable, no additional configuration is necessary, and it can essentially be left to run in the background. <!-- raw HTML omitted -->GitHub<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup><!-- raw HTML omitted --></p>
+<p>To set up rate limiting, I used a <code>fail2ban</code>-style tool for Windows called EvLWatcher. After running the setup executable, no additional configuration is necessary, and it can essentially be left to run in the background. <cite>GitHub<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></cite></p>
 <figure>
     <img loading="lazy" src="/itsi/y3/ex9/images/evlwatcherf.png"/> <figcaption>
             Figure 23: Observing The Attackers IP-Address getting temporarily banned
@@ -522,7 +524,7 @@ Exercise 9: Testing Windows server security<br>
 </figure>
 
 <h4 id="disabling-ntlm-authentication">Disabling NTLM Authentication<a hidden class="anchor" aria-hidden="true" href="#disabling-ntlm-authentication">#</a></h4>
-<p>NTLM is a legacy authentication protocol that dates back to Windows NT. Although Microsoft introduced a more secure alternative called Kerberos in 1989, NTLM is still used in some domain networks and remains enabled for backward compatibility. One of NTLM&rsquo;s major flaws is that it stores password hashes in plaintext in the memory of its servers, which can be extracted using pass-the-hash tools such as Mimikatz. <!-- raw HTML omitted -->Windows OS Hub<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup><!-- raw HTML omitted --> <!-- raw HTML omitted -->Wikipedia<sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup><!-- raw HTML omitted --></p>
+<p>NTLM is a legacy authentication protocol that dates back to Windows NT. Although Microsoft introduced a more secure alternative called Kerberos in 1989, NTLM is still used in some domain networks and remains enabled for backward compatibility. One of NTLM&rsquo;s major flaws is that it stores password hashes in plaintext in the memory of its servers, which can be extracted using pass-the-hash tools such as Mimikatz. <cite>Windows OS Hub<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></cite> <cite>Wikipedia<sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite></p>
 <p><figure>
     <img loading="lazy" src="/itsi/y3/ex9/images/disablentlm.png"/> <figcaption>
             Figure 24: Disabling NTLM authentication for all accounts
@@ -536,7 +538,7 @@ Exercise 9: Testing Windows server security<br>
 </figure>
 </p>
 <h4 id="configuring-login-timeout-settings">Configuring Login Timeout Settings<a hidden class="anchor" aria-hidden="true" href="#configuring-login-timeout-settings">#</a></h4>
-<p>To slow down RDP brute-forcing, account lockout can be configured in the Local Security Policy editor under Account Lockout Policy. <!-- raw HTML omitted -->The Windows Club<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup><!-- raw HTML omitted --></p>
+<p>To slow down RDP brute-forcing, account lockout can be configured in the Local Security Policy editor under Account Lockout Policy. <cite>The Windows Club<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></cite></p>
 <figure>
     <img loading="lazy" src="/itsi/y3/ex9/images/lockout.png"/> <figcaption>
             Figure 26: Showing the lockout policy
@@ -545,19 +547,19 @@ Exercise 9: Testing Windows server security<br>
 
 <hr>
 <h3 id="mimikatz-an-introduction">Mimikatz: An Introduction<a hidden class="anchor" aria-hidden="true" href="#mimikatz-an-introduction">#</a></h3>
-<p>Mimikatz is a post-exploitation tool designed to extract credential information. <!-- raw HTML omitted -->Medium<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup><!-- raw HTML omitted --></p>
+<p>Mimikatz is a post-exploitation tool designed to extract credential information. <cite>Medium<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></cite></p>
 <h4 id="what-can-mimikatz-do">What Can Mimikatz Do?<a hidden class="anchor" aria-hidden="true" href="#what-can-mimikatz-do">#</a></h4>
-<p>The main features of Mimikatz include extracting credentials from memory or disk-based password stores. This includes plaintext passwords, PINs, Kerberos tickets, and NTLM password hashes. Mimikatz achieves this through a variety of techniques, such as Pass-the-Hash, which allows attackers to use captured NTLM hashes to create new authenticated sessions on the network—without needing to know the user’s actual password. <!-- raw HTML omitted -->CrowdStrike<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup><!-- raw HTML omitted --> <!-- raw HTML omitted -->MITRE ATT&amp;CK<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup><!-- raw HTML omitted --></p>
+<p>The main features of Mimikatz include extracting credentials from memory or disk-based password stores. This includes plaintext passwords, PINs, Kerberos tickets, and NTLM password hashes. Mimikatz achieves this through a variety of techniques, such as Pass-the-Hash, which allows attackers to use captured NTLM hashes to create new authenticated sessions on the network—without needing to know the user’s actual password. <cite>CrowdStrike<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup></cite> <cite>MITRE ATT&amp;CK<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup></cite></p>
 <ul>
 <li><strong>Pass-the-Hash:</strong> Allows attackers to use captured NTLM hashes to create new authenticated sessions.</li>
 <li><strong>Pass-the-ticket:</strong> Bypasses normal system access controls by stealing a valid Kerberos ticket.</li>
 </ul>
-<p>There are two notable types of forged Kerberos tickets: Silver and Golden tickets. <!-- raw HTML omitted -->Medium<sup id="fnref1:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup><!-- raw HTML omitted --> <!-- raw HTML omitted -->MITRE ATT&amp;CK<sup id="fnref1:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup><!-- raw HTML omitted --></p>
+<p>There are two notable types of forged Kerberos tickets: Silver and Golden tickets. <cite>Medium<sup id="fnref1:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></cite> <cite>MITRE ATT&amp;CK<sup id="fnref1:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup></cite></p>
 <h4 id="how-to-use-mimikatz">How to Use Mimikatz<a hidden class="anchor" aria-hidden="true" href="#how-to-use-mimikatz">#</a></h4>
-<p>There are multiple ways to invoke Mimikatz on a target system. The simplest method is to download a compiled release from the official GitHub repository. However, there are also pre-built PowerShell scripts and commands that streamline its execution, such as Invoke-Mimikatz from the PowerSploit framework. <!-- raw HTML omitted -->PowerSploit<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup><!-- raw HTML omitted --></p>
+<p>There are multiple ways to invoke Mimikatz on a target system. The simplest method is to download a compiled release from the official GitHub repository. However, there are also pre-built PowerShell scripts and commands that streamline its execution, such as Invoke-Mimikatz from the PowerSploit framework. <cite>PowerSploit<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup></cite></p>
 <hr>
 <h3 id="running-mimikatz">Running Mimikatz<a hidden class="anchor" aria-hidden="true" href="#running-mimikatz">#</a></h3>
-<p>To run Mimikatz on the target system, I wanted to try a unique or more creative method rather than simply downloading and executing the Mimikatz binary directly. Inspired by a video from security professional and YouTuber John Hammond, where he analyzes a malware sample hidden inside an MP3 file that uses mshta.exe to execute a payload, I explored a similar idea. <!-- raw HTML omitted -->John Hammond<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup><!-- raw HTML omitted --></p>
+<p>To run Mimikatz on the target system, I wanted to try a unique or more creative method rather than simply downloading and executing the Mimikatz binary directly. Inspired by a video from security professional and YouTuber John Hammond, where he analyzes a malware sample hidden inside an MP3 file that uses mshta.exe to execute a payload, I explored a similar idea. <cite>John Hammond<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></cite></p>
 <p>To do this, I used an MP3 file in which I embedded the plain text of an HTA script that downloads Mimikatz. The MP3 file appears normal and can be played, but if executed using <code>mshta</code>, it executes the script.</p>
 <figure>
     <img loading="lazy" src="/itsi/y3/ex9/images/payload.png"/> <figcaption>
@@ -625,7 +627,7 @@ Exercise 9: Testing Windows server security<br>
 
 <hr>
 <h4 id="dll-side-loading-to-attempt-to-bypass-windows-defender">DLL Side-Loading to Attempt to Bypass Windows Defender<a hidden class="anchor" aria-hidden="true" href="#dll-side-loading-to-attempt-to-bypass-windows-defender">#</a></h4>
-<p>DLL sideloading is a technique in which a built-in Windows binary is copied to a different path, and a custom-compiled DLL is placed in the same directory, hoping that the binary will load the malicious DLL instead of the intended one. To find such vulnerable binaries, there is a website called hijacklibs.net, which allows filtering DLLs by vendor and provides detection rules for each specific DLL. <!-- raw HTML omitted -->HijackLibs<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup><!-- raw HTML omitted --></p>
+<p>DLL sideloading is a technique in which a built-in Windows binary is copied to a different path, and a custom-compiled DLL is placed in the same directory, hoping that the binary will load the malicious DLL instead of the intended one. To find such vulnerable binaries, there is a website called hijacklibs.net, which allows filtering DLLs by vendor and provides detection rules for each specific DLL. <cite>HijackLibs<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup></cite></p>
 <p>To create your own DLL, you need the Microsoft x64 Native Developer Tools. You can then write the code for your DLL and compile it using:</p>
 <pre tabindex="0"><code>cl /LD DismCore.c user32.lib 
 </code></pre><p>I tried bundling Mimikatz into the DLL and sideloading it via a built-in Windows executable in an attempt to bypass Windows Defender. However, it was detected anyway.</p>
@@ -706,17 +708,17 @@ Exercise 9: Testing Windows server security<br>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/windows/">Windows</a></li>
-      <li><a href="http://localhost:1313/tags/it-sec/">It Sec</a></li>
-      <li><a href="http://localhost:1313/tags/school/">School</a></li>
-      <li><a href="http://localhost:1313/tags/red-team/">Red Team</a></li>
+      <li><a href="http://localhost:39857/tags/windows/">Windows</a></li>
+      <li><a href="http://localhost:39857/tags/it-sec/">It-Sec</a></li>
+      <li><a href="http://localhost:39857/tags/school/">School</a></li>
+      <li><a href="http://localhost:39857/tags/red-team/">Red Team</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">silly blog</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:39857/">silly blog</a></span> · 
 
     <span>
         Powered by

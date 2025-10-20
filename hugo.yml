@@ -36,6 +36,18 @@ pagination:
   disableAliases: false
   pagerSize: 5
 
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      footnote: true
+      definitionList: true
+      table: true
+      strikethrough: true
+      taskList: true
+      typographer: true
+
 params:
   ShowSocialIcons: true
   ShowSocialIconsInFooter: true

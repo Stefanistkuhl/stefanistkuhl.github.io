@@ -1,0 +1,5000 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="640"
+   height="98.536682"
+   viewBox="0 0 640 98.536682"
+   version="1.1"
+   id="svg19992"
+   sodipodi:docname="test-doas-perms.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs19992" />
+  <sodipodi:namedview
+     id="namedview19992"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="640"
+       height="98.536682"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <text
+     xml:space="preserve"
+     x="0"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11565"> </text>
+  <text
+     xml:space="preserve"
+     x="8"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11566"> </text>
+  <text
+     xml:space="preserve"
+     x="16"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11567"> </text>
+  <text
+     xml:space="preserve"
+     x="24"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11568"> </text>
+  <text
+     xml:space="preserve"
+     x="32"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11569"> </text>
+  <text
+     xml:space="preserve"
+     x="40"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11570"> </text>
+  <text
+     xml:space="preserve"
+     x="48"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11571"> </text>
+  <text
+     xml:space="preserve"
+     x="56"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11572"> </text>
+  <text
+     xml:space="preserve"
+     x="64"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11573"> </text>
+  <text
+     xml:space="preserve"
+     x="72"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11574"> </text>
+  <text
+     xml:space="preserve"
+     x="80"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11575"> </text>
+  <text
+     xml:space="preserve"
+     x="88"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11576"> </text>
+  <text
+     xml:space="preserve"
+     x="96"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11577"> </text>
+  <text
+     xml:space="preserve"
+     x="104"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11578"> </text>
+  <text
+     xml:space="preserve"
+     x="112"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11579"> </text>
+  <text
+     xml:space="preserve"
+     x="120"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11580"> </text>
+  <text
+     xml:space="preserve"
+     x="128"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11581"> </text>
+  <text
+     xml:space="preserve"
+     x="136"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11582"> </text>
+  <text
+     xml:space="preserve"
+     x="144"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11583"> </text>
+  <text
+     xml:space="preserve"
+     x="152"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11584"> </text>
+  <text
+     xml:space="preserve"
+     x="160"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11585"> </text>
+  <text
+     xml:space="preserve"
+     x="168"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11586"> </text>
+  <text
+     xml:space="preserve"
+     x="176"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11587"> </text>
+  <text
+     xml:space="preserve"
+     x="184"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11588"> </text>
+  <text
+     xml:space="preserve"
+     x="192"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11589"> </text>
+  <text
+     xml:space="preserve"
+     x="200"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11590"> </text>
+  <text
+     xml:space="preserve"
+     x="208"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11591"> </text>
+  <text
+     xml:space="preserve"
+     x="216"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11592"> </text>
+  <text
+     xml:space="preserve"
+     x="224"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11593"> </text>
+  <text
+     xml:space="preserve"
+     x="232"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11594"> </text>
+  <text
+     xml:space="preserve"
+     x="240"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11595"> </text>
+  <text
+     xml:space="preserve"
+     x="248"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11596"> </text>
+  <text
+     xml:space="preserve"
+     x="256"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11597"> </text>
+  <text
+     xml:space="preserve"
+     x="264"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11598"> </text>
+  <text
+     xml:space="preserve"
+     x="272"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11599"> </text>
+  <text
+     xml:space="preserve"
+     x="280"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11600"> </text>
+  <text
+     xml:space="preserve"
+     x="288"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11601"> </text>
+  <text
+     xml:space="preserve"
+     x="296"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11602"> </text>
+  <text
+     xml:space="preserve"
+     x="304"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11603"> </text>
+  <text
+     xml:space="preserve"
+     x="312"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11604"> </text>
+  <text
+     xml:space="preserve"
+     x="320"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11605"> </text>
+  <text
+     xml:space="preserve"
+     x="328"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11606"> </text>
+  <text
+     xml:space="preserve"
+     x="336"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11607"> </text>
+  <text
+     xml:space="preserve"
+     x="344"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11608"> </text>
+  <text
+     xml:space="preserve"
+     x="352"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11609"> </text>
+  <text
+     xml:space="preserve"
+     x="360"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11610"> </text>
+  <text
+     xml:space="preserve"
+     x="368"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11611"> </text>
+  <text
+     xml:space="preserve"
+     x="376"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11612"> </text>
+  <text
+     xml:space="preserve"
+     x="384"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11613"> </text>
+  <text
+     xml:space="preserve"
+     x="392"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11614"> </text>
+  <text
+     xml:space="preserve"
+     x="400"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11615"> </text>
+  <text
+     xml:space="preserve"
+     x="408"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11616"> </text>
+  <text
+     xml:space="preserve"
+     x="416"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11617"> </text>
+  <text
+     xml:space="preserve"
+     x="424"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11618"> </text>
+  <text
+     xml:space="preserve"
+     x="432"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11619"> </text>
+  <text
+     xml:space="preserve"
+     x="440"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11620"> </text>
+  <text
+     xml:space="preserve"
+     x="448"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11621"> </text>
+  <text
+     xml:space="preserve"
+     x="456"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11622"> </text>
+  <text
+     xml:space="preserve"
+     x="464"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11623"> </text>
+  <text
+     xml:space="preserve"
+     x="472"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11624"> </text>
+  <text
+     xml:space="preserve"
+     x="480"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11625"> </text>
+  <text
+     xml:space="preserve"
+     x="488"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11626"> </text>
+  <text
+     xml:space="preserve"
+     x="496"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11627"> </text>
+  <text
+     xml:space="preserve"
+     x="504"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11628"> </text>
+  <text
+     xml:space="preserve"
+     x="512"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11629"> </text>
+  <text
+     xml:space="preserve"
+     x="520"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11630"> </text>
+  <text
+     xml:space="preserve"
+     x="528"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11631"> </text>
+  <text
+     xml:space="preserve"
+     x="536"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11632"> </text>
+  <text
+     xml:space="preserve"
+     x="544"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11633"> </text>
+  <text
+     xml:space="preserve"
+     x="552"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11634"> </text>
+  <text
+     xml:space="preserve"
+     x="560"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11635"> </text>
+  <text
+     xml:space="preserve"
+     x="568"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11636"> </text>
+  <text
+     xml:space="preserve"
+     x="576"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11637"> </text>
+  <text
+     xml:space="preserve"
+     x="584"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11638"> </text>
+  <text
+     xml:space="preserve"
+     x="592"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11639"> </text>
+  <text
+     xml:space="preserve"
+     x="600"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11640"> </text>
+  <text
+     xml:space="preserve"
+     x="608"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11641"> </text>
+  <text
+     xml:space="preserve"
+     x="616"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11642"> </text>
+  <text
+     xml:space="preserve"
+     x="624"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11643"> </text>
+  <text
+     xml:space="preserve"
+     x="632"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11644"> </text>
+  <text
+     xml:space="preserve"
+     x="640"
+     y="-1.2495982e-06"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11645"> </text>
+  <text
+     xml:space="preserve"
+     x="0"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11761">e</text>
+  <text
+     xml:space="preserve"
+     x="8"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11762">x</text>
+  <text
+     xml:space="preserve"
+     x="16"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11763">1</text>
+  <text
+     xml:space="preserve"
+     x="24"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11764">-</text>
+  <text
+     xml:space="preserve"
+     x="32"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11765">a</text>
+  <text
+     xml:space="preserve"
+     x="40"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11766">l</text>
+  <text
+     xml:space="preserve"
+     x="48"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11767">p</text>
+  <text
+     xml:space="preserve"
+     x="56"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11768">i</text>
+  <text
+     xml:space="preserve"
+     x="64"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11769">n</text>
+  <text
+     xml:space="preserve"
+     x="72"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11770">e</text>
+  <text
+     xml:space="preserve"
+     x="80"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11771">-</text>
+  <text
+     xml:space="preserve"
+     x="88"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11772">e</text>
+  <text
+     xml:space="preserve"
+     x="96"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11773">x</text>
+  <text
+     xml:space="preserve"
+     x="104"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11774">a</text>
+  <text
+     xml:space="preserve"
+     x="112"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11775">m</text>
+  <text
+     xml:space="preserve"
+     x="120"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11776">p</text>
+  <text
+     xml:space="preserve"
+     x="128"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11777">l</text>
+  <text
+     xml:space="preserve"
+     x="136"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11778">e</text>
+  <text
+     xml:space="preserve"
+     x="144"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11779">:</text>
+  <text
+     xml:space="preserve"
+     x="152"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11780">~</text>
+  <text
+     xml:space="preserve"
+     x="160"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11781">#</text>
+  <text
+     xml:space="preserve"
+     x="168"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11782"> </text>
+  <text
+     xml:space="preserve"
+     x="176"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11783">e</text>
+  <text
+     xml:space="preserve"
+     x="184"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11784">c</text>
+  <text
+     xml:space="preserve"
+     x="192"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11785">h</text>
+  <text
+     xml:space="preserve"
+     x="200"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11786">o</text>
+  <text
+     xml:space="preserve"
+     x="208"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11787"> </text>
+  <text
+     xml:space="preserve"
+     x="216"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11788">&quot;</text>
+  <text
+     xml:space="preserve"
+     x="224"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11789">p</text>
+  <text
+     xml:space="preserve"
+     x="232"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11790">e</text>
+  <text
+     xml:space="preserve"
+     x="240"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11791">r</text>
+  <text
+     xml:space="preserve"
+     x="248"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11792">m</text>
+  <text
+     xml:space="preserve"
+     x="256"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11793">i</text>
+  <text
+     xml:space="preserve"
+     x="264"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11794">t</text>
+  <text
+     xml:space="preserve"
+     x="272"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11795"> </text>
+  <text
+     xml:space="preserve"
+     x="280"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11796">p</text>
+  <text
+     xml:space="preserve"
+     x="288"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11797">e</text>
+  <text
+     xml:space="preserve"
+     x="296"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11798">r</text>
+  <text
+     xml:space="preserve"
+     x="304"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11799">s</text>
+  <text
+     xml:space="preserve"
+     x="312"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11800">i</text>
+  <text
+     xml:space="preserve"
+     x="320"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11801">s</text>
+  <text
+     xml:space="preserve"
+     x="328"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11802">t</text>
+  <text
+     xml:space="preserve"
+     x="336"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11803"> </text>
+  <text
+     xml:space="preserve"
+     x="344"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11804">:</text>
+  <text
+     xml:space="preserve"
+     x="352"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11805">w</text>
+  <text
+     xml:space="preserve"
+     x="360"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11806">h</text>
+  <text
+     xml:space="preserve"
+     x="368"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11807">e</text>
+  <text
+     xml:space="preserve"
+     x="376"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11808">e</text>
+  <text
+     xml:space="preserve"
+     x="384"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11809">l</text>
+  <text
+     xml:space="preserve"
+     x="392"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11810">&quot;</text>
+  <text
+     xml:space="preserve"
+     x="400"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11811"> </text>
+  <text
+     xml:space="preserve"
+     x="408"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11812">&gt;</text>
+  <text
+     xml:space="preserve"
+     x="416"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11813">&gt;</text>
+  <text
+     xml:space="preserve"
+     x="424"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11814"> </text>
+  <text
+     xml:space="preserve"
+     x="432"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11815">/</text>
+  <text
+     xml:space="preserve"
+     x="440"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11816">e</text>
+  <text
+     xml:space="preserve"
+     x="448"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11817">t</text>
+  <text
+     xml:space="preserve"
+     x="456"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11818">c</text>
+  <text
+     xml:space="preserve"
+     x="464"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11819">/</text>
+  <text
+     xml:space="preserve"
+     x="472"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11820">d</text>
+  <text
+     xml:space="preserve"
+     x="480"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11821">o</text>
+  <text
+     xml:space="preserve"
+     x="488"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11822">a</text>
+  <text
+     xml:space="preserve"
+     x="496"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11823">s</text>
+  <text
+     xml:space="preserve"
+     x="504"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11824">.</text>
+  <text
+     xml:space="preserve"
+     x="512"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11825">d</text>
+  <text
+     xml:space="preserve"
+     x="520"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11826">/</text>
+  <text
+     xml:space="preserve"
+     x="528"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11827">2</text>
+  <text
+     xml:space="preserve"
+     x="536"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11828">0</text>
+  <text
+     xml:space="preserve"
+     x="544"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11829">-</text>
+  <text
+     xml:space="preserve"
+     x="552"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11830">w</text>
+  <text
+     xml:space="preserve"
+     x="560"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11831">h</text>
+  <text
+     xml:space="preserve"
+     x="568"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11832">e</text>
+  <text
+     xml:space="preserve"
+     x="576"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11833">e</text>
+  <text
+     xml:space="preserve"
+     x="584"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11834">l</text>
+  <text
+     xml:space="preserve"
+     x="592"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11835">.</text>
+  <text
+     xml:space="preserve"
+     x="600"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11836">c</text>
+  <text
+     xml:space="preserve"
+     x="608"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11837">o</text>
+  <text
+     xml:space="preserve"
+     x="616"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11838">n</text>
+  <text
+     xml:space="preserve"
+     x="624"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11839">f</text>
+  <text
+     xml:space="preserve"
+     x="632"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11840"> </text>
+  <text
+     xml:space="preserve"
+     x="640"
+     y="15.999999"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11841"> </text>
+  <text
+     xml:space="preserve"
+     x="0"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11957">e</text>
+  <text
+     xml:space="preserve"
+     x="8"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11958">x</text>
+  <text
+     xml:space="preserve"
+     x="16"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11959">1</text>
+  <text
+     xml:space="preserve"
+     x="24"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11960">-</text>
+  <text
+     xml:space="preserve"
+     x="32"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11961">a</text>
+  <text
+     xml:space="preserve"
+     x="40"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11962">l</text>
+  <text
+     xml:space="preserve"
+     x="48"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11963">p</text>
+  <text
+     xml:space="preserve"
+     x="56"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11964">i</text>
+  <text
+     xml:space="preserve"
+     x="64"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11965">n</text>
+  <text
+     xml:space="preserve"
+     x="72"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11966">e</text>
+  <text
+     xml:space="preserve"
+     x="80"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11967">-</text>
+  <text
+     xml:space="preserve"
+     x="88"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11968">e</text>
+  <text
+     xml:space="preserve"
+     x="96"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11969">x</text>
+  <text
+     xml:space="preserve"
+     x="104"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11970">a</text>
+  <text
+     xml:space="preserve"
+     x="112"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11971">m</text>
+  <text
+     xml:space="preserve"
+     x="120"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11972">p</text>
+  <text
+     xml:space="preserve"
+     x="128"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11973">l</text>
+  <text
+     xml:space="preserve"
+     x="136"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11974">e</text>
+  <text
+     xml:space="preserve"
+     x="144"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11975">:</text>
+  <text
+     xml:space="preserve"
+     x="152"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11976">~</text>
+  <text
+     xml:space="preserve"
+     x="160"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11977">#</text>
+  <text
+     xml:space="preserve"
+     x="168"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11978"> </text>
+  <text
+     xml:space="preserve"
+     x="176"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11979">s</text>
+  <text
+     xml:space="preserve"
+     x="184"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11980">u</text>
+  <text
+     xml:space="preserve"
+     x="192"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11981"> </text>
+  <text
+     xml:space="preserve"
+     x="200"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11982">f</text>
+  <text
+     xml:space="preserve"
+     x="208"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11983">u</text>
+  <text
+     xml:space="preserve"
+     x="216"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11984">s</text>
+  <text
+     xml:space="preserve"
+     x="224"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11985">-</text>
+  <text
+     xml:space="preserve"
+     x="232"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11986">a</text>
+  <text
+     xml:space="preserve"
+     x="240"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11987">d</text>
+  <text
+     xml:space="preserve"
+     x="248"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11988">m</text>
+  <text
+     xml:space="preserve"
+     x="256"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11989">i</text>
+  <text
+     xml:space="preserve"
+     x="264"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11990">n</text>
+  <text
+     xml:space="preserve"
+     x="272"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11991"> </text>
+  <text
+     xml:space="preserve"
+     x="280"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11992"> </text>
+  <text
+     xml:space="preserve"
+     x="288"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11993"> </text>
+  <text
+     xml:space="preserve"
+     x="296"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11994"> </text>
+  <text
+     xml:space="preserve"
+     x="304"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11995"> </text>
+  <text
+     xml:space="preserve"
+     x="312"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11996"> </text>
+  <text
+     xml:space="preserve"
+     x="320"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11997"> </text>
+  <text
+     xml:space="preserve"
+     x="328"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11998"> </text>
+  <text
+     xml:space="preserve"
+     x="336"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text11999"> </text>
+  <text
+     xml:space="preserve"
+     x="344"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12000"> </text>
+  <text
+     xml:space="preserve"
+     x="352"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12001"> </text>
+  <text
+     xml:space="preserve"
+     x="360"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12002"> </text>
+  <text
+     xml:space="preserve"
+     x="368"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12003"> </text>
+  <text
+     xml:space="preserve"
+     x="376"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12004"> </text>
+  <text
+     xml:space="preserve"
+     x="384"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12005"> </text>
+  <text
+     xml:space="preserve"
+     x="392"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12006"> </text>
+  <text
+     xml:space="preserve"
+     x="400"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12007"> </text>
+  <text
+     xml:space="preserve"
+     x="408"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12008"> </text>
+  <text
+     xml:space="preserve"
+     x="416"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12009"> </text>
+  <text
+     xml:space="preserve"
+     x="424"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12010"> </text>
+  <text
+     xml:space="preserve"
+     x="432"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12011"> </text>
+  <text
+     xml:space="preserve"
+     x="440"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12012"> </text>
+  <text
+     xml:space="preserve"
+     x="448"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12013"> </text>
+  <text
+     xml:space="preserve"
+     x="456"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12014"> </text>
+  <text
+     xml:space="preserve"
+     x="464"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12015"> </text>
+  <text
+     xml:space="preserve"
+     x="472"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12016"> </text>
+  <text
+     xml:space="preserve"
+     x="480"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12017"> </text>
+  <text
+     xml:space="preserve"
+     x="488"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12018"> </text>
+  <text
+     xml:space="preserve"
+     x="496"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12019"> </text>
+  <text
+     xml:space="preserve"
+     x="504"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12020"> </text>
+  <text
+     xml:space="preserve"
+     x="512"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12021"> </text>
+  <text
+     xml:space="preserve"
+     x="520"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12022"> </text>
+  <text
+     xml:space="preserve"
+     x="528"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12023"> </text>
+  <text
+     xml:space="preserve"
+     x="536"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12024"> </text>
+  <text
+     xml:space="preserve"
+     x="544"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12025"> </text>
+  <text
+     xml:space="preserve"
+     x="552"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12026"> </text>
+  <text
+     xml:space="preserve"
+     x="560"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12027"> </text>
+  <text
+     xml:space="preserve"
+     x="568"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12028"> </text>
+  <text
+     xml:space="preserve"
+     x="576"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12029"> </text>
+  <text
+     xml:space="preserve"
+     x="584"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12030"> </text>
+  <text
+     xml:space="preserve"
+     x="592"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12031"> </text>
+  <text
+     xml:space="preserve"
+     x="600"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12032"> </text>
+  <text
+     xml:space="preserve"
+     x="608"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12033"> </text>
+  <text
+     xml:space="preserve"
+     x="616"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12034"> </text>
+  <text
+     xml:space="preserve"
+     x="624"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12035"> </text>
+  <text
+     xml:space="preserve"
+     x="632"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12036"> </text>
+  <text
+     xml:space="preserve"
+     x="640"
+     y="31.999998"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12037"> </text>
+  <text
+     xml:space="preserve"
+     x="392"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12202"> </text>
+  <text
+     xml:space="preserve"
+     x="400"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12203"> </text>
+  <text
+     xml:space="preserve"
+     x="408"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12204"> </text>
+  <text
+     xml:space="preserve"
+     x="416"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12205"> </text>
+  <text
+     xml:space="preserve"
+     x="424"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12206"> </text>
+  <text
+     xml:space="preserve"
+     x="432"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12207"> </text>
+  <text
+     xml:space="preserve"
+     x="440"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12208"> </text>
+  <text
+     xml:space="preserve"
+     x="448"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12209"> </text>
+  <text
+     xml:space="preserve"
+     x="456"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12210"> </text>
+  <text
+     xml:space="preserve"
+     x="464"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12211"> </text>
+  <text
+     xml:space="preserve"
+     x="472"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12212"> </text>
+  <text
+     xml:space="preserve"
+     x="480"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12213"> </text>
+  <text
+     xml:space="preserve"
+     x="488"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12214"> </text>
+  <text
+     xml:space="preserve"
+     x="496"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12215"> </text>
+  <text
+     xml:space="preserve"
+     x="504"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12216"> </text>
+  <text
+     xml:space="preserve"
+     x="512"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12217"> </text>
+  <text
+     xml:space="preserve"
+     x="520"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12218"> </text>
+  <text
+     xml:space="preserve"
+     x="528"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12219"> </text>
+  <text
+     xml:space="preserve"
+     x="536"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12220"> </text>
+  <text
+     xml:space="preserve"
+     x="544"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12221"> </text>
+  <text
+     xml:space="preserve"
+     x="552"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12222"> </text>
+  <text
+     xml:space="preserve"
+     x="560"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12223"> </text>
+  <text
+     xml:space="preserve"
+     x="568"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12224"> </text>
+  <text
+     xml:space="preserve"
+     x="576"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12225"> </text>
+  <text
+     xml:space="preserve"
+     x="584"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12226"> </text>
+  <text
+     xml:space="preserve"
+     x="592"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12227"> </text>
+  <text
+     xml:space="preserve"
+     x="600"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12228"> </text>
+  <text
+     xml:space="preserve"
+     x="608"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12229"> </text>
+  <text
+     xml:space="preserve"
+     x="616"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12230"> </text>
+  <text
+     xml:space="preserve"
+     x="624"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12231"> </text>
+  <text
+     xml:space="preserve"
+     x="632"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12232"> </text>
+  <text
+     xml:space="preserve"
+     x="640"
+     y="48"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12233"> </text>
+  <text
+     xml:space="preserve"
+     x="393.48227"
+     y="50.381592"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12398"> </text>
+  <text
+     xml:space="preserve"
+     x="401.48227"
+     y="50.381592"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12399"> </text>
+  <text
+     xml:space="preserve"
+     x="409.48227"
+     y="50.381592"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12400"> </text>
+  <text
+     xml:space="preserve"
+     x="417.48227"
+     y="50.381592"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12401"> </text>
+  <text
+     xml:space="preserve"
+     x="425.48227"
+     y="50.381592"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12402"> </text>
+  <text
+     xml:space="preserve"
+     x="433.48227"
+     y="50.381592"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12403"> </text>
+  <text
+     xml:space="preserve"
+     x="441.48227"
+     y="50.381592"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12404"> </text>
+  <text
+     xml:space="preserve"
+     x="449.48227"
+     y="50.381592"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12405"> </text>
+  <text
+     xml:space="preserve"
+     x="457.48227"
+     y="50.381592"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12406"> </text>
+  <text
+     xml:space="preserve"
+     x="465.48227"
+     y="50.381592"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12407"> </text>
+  <text
+     xml:space="preserve"
+     x="472"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12408"> </text>
+  <text
+     xml:space="preserve"
+     x="480"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12409"> </text>
+  <text
+     xml:space="preserve"
+     x="488"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12410"> </text>
+  <text
+     xml:space="preserve"
+     x="496"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12411"> </text>
+  <text
+     xml:space="preserve"
+     x="504"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12412"> </text>
+  <text
+     xml:space="preserve"
+     x="512"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12413"> </text>
+  <text
+     xml:space="preserve"
+     x="520"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12414"> </text>
+  <text
+     xml:space="preserve"
+     x="528"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12415"> </text>
+  <text
+     xml:space="preserve"
+     x="536"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12416"> </text>
+  <text
+     xml:space="preserve"
+     x="544"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12417"> </text>
+  <text
+     xml:space="preserve"
+     x="552"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12418"> </text>
+  <text
+     xml:space="preserve"
+     x="560"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12419"> </text>
+  <text
+     xml:space="preserve"
+     x="568"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12420"> </text>
+  <text
+     xml:space="preserve"
+     x="576"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12421"> </text>
+  <text
+     xml:space="preserve"
+     x="584"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12422"> </text>
+  <text
+     xml:space="preserve"
+     x="592"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12423"> </text>
+  <text
+     xml:space="preserve"
+     x="600"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12424"> </text>
+  <text
+     xml:space="preserve"
+     x="608"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12425"> </text>
+  <text
+     xml:space="preserve"
+     x="616"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12426"> </text>
+  <text
+     xml:space="preserve"
+     x="624"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12427"> </text>
+  <text
+     xml:space="preserve"
+     x="632"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12428"> </text>
+  <text
+     xml:space="preserve"
+     x="640"
+     y="64"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12429"> </text>
+  <text
+     xml:space="preserve"
+     x="393.48227"
+     y="66.38147"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12594"> </text>
+  <text
+     xml:space="preserve"
+     x="401.48227"
+     y="66.38147"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12595"> </text>
+  <text
+     xml:space="preserve"
+     x="409.48227"
+     y="66.38147"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12596"> </text>
+  <text
+     xml:space="preserve"
+     x="417.48227"
+     y="66.38147"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12597"> </text>
+  <text
+     xml:space="preserve"
+     x="425.48227"
+     y="66.38147"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12598"> </text>
+  <text
+     xml:space="preserve"
+     x="433.48227"
+     y="66.38147"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12599"> </text>
+  <text
+     xml:space="preserve"
+     x="441.48227"
+     y="66.38147"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12600"> </text>
+  <text
+     xml:space="preserve"
+     x="449.48227"
+     y="66.38147"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12601"> </text>
+  <text
+     xml:space="preserve"
+     x="457.48227"
+     y="66.38147"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12602"> </text>
+  <text
+     xml:space="preserve"
+     x="465.48227"
+     y="66.38147"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12603"> </text>
+  <text
+     xml:space="preserve"
+     x="472"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12604"> </text>
+  <text
+     xml:space="preserve"
+     x="480"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12605"> </text>
+  <text
+     xml:space="preserve"
+     x="488"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12606"> </text>
+  <text
+     xml:space="preserve"
+     x="496"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12607"> </text>
+  <text
+     xml:space="preserve"
+     x="504"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12608"> </text>
+  <text
+     xml:space="preserve"
+     x="512"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12609"> </text>
+  <text
+     xml:space="preserve"
+     x="520"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12610"> </text>
+  <text
+     xml:space="preserve"
+     x="528"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12611"> </text>
+  <text
+     xml:space="preserve"
+     x="536"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12612"> </text>
+  <text
+     xml:space="preserve"
+     x="544"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12613"> </text>
+  <text
+     xml:space="preserve"
+     x="552"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12614"> </text>
+  <text
+     xml:space="preserve"
+     x="560"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12615"> </text>
+  <text
+     xml:space="preserve"
+     x="568"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12616"> </text>
+  <text
+     xml:space="preserve"
+     x="576"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12617"> </text>
+  <text
+     xml:space="preserve"
+     x="584"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12618"> </text>
+  <text
+     xml:space="preserve"
+     x="592"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12619"> </text>
+  <text
+     xml:space="preserve"
+     x="600"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12620"> </text>
+  <text
+     xml:space="preserve"
+     x="608"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12621"> </text>
+  <text
+     xml:space="preserve"
+     x="616"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12622"> </text>
+  <text
+     xml:space="preserve"
+     x="624"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12623"> </text>
+  <text
+     xml:space="preserve"
+     x="632"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12624"> </text>
+  <text
+     xml:space="preserve"
+     x="640"
+     y="79.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12625"> </text>
+  <text
+     xml:space="preserve"
+     x="393.48227"
+     y="82.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12790"> </text>
+  <text
+     xml:space="preserve"
+     x="401.48227"
+     y="82.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12791"> </text>
+  <text
+     xml:space="preserve"
+     x="409.48227"
+     y="82.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12792"> </text>
+  <text
+     xml:space="preserve"
+     x="417.48227"
+     y="82.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12793"> </text>
+  <text
+     xml:space="preserve"
+     x="425.48227"
+     y="82.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12794"> </text>
+  <text
+     xml:space="preserve"
+     x="433.48227"
+     y="82.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12795"> </text>
+  <text
+     xml:space="preserve"
+     x="441.48227"
+     y="82.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12796"> </text>
+  <text
+     xml:space="preserve"
+     x="449.48227"
+     y="82.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12797"> </text>
+  <text
+     xml:space="preserve"
+     x="457.48227"
+     y="82.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12798"> </text>
+  <text
+     xml:space="preserve"
+     x="465.48227"
+     y="82.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12799"> </text>
+  <text
+     xml:space="preserve"
+     x="472"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12800"> </text>
+  <text
+     xml:space="preserve"
+     x="480"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12801"> </text>
+  <text
+     xml:space="preserve"
+     x="488"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12802"> </text>
+  <text
+     xml:space="preserve"
+     x="496"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12803"> </text>
+  <text
+     xml:space="preserve"
+     x="504"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12804"> </text>
+  <text
+     xml:space="preserve"
+     x="512"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12805"> </text>
+  <text
+     xml:space="preserve"
+     x="520"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12806"> </text>
+  <text
+     xml:space="preserve"
+     x="528"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12807"> </text>
+  <text
+     xml:space="preserve"
+     x="536"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12808"> </text>
+  <text
+     xml:space="preserve"
+     x="544"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12809"> </text>
+  <text
+     xml:space="preserve"
+     x="552"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12810"> </text>
+  <text
+     xml:space="preserve"
+     x="560"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12811"> </text>
+  <text
+     xml:space="preserve"
+     x="568"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12812"> </text>
+  <text
+     xml:space="preserve"
+     x="576"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12813"> </text>
+  <text
+     xml:space="preserve"
+     x="584"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12814"> </text>
+  <text
+     xml:space="preserve"
+     x="592"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12815"> </text>
+  <text
+     xml:space="preserve"
+     x="600"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12816"> </text>
+  <text
+     xml:space="preserve"
+     x="608"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12817"> </text>
+  <text
+     xml:space="preserve"
+     x="616"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12818"> </text>
+  <text
+     xml:space="preserve"
+     x="624"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12819"> </text>
+  <text
+     xml:space="preserve"
+     x="632"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12820"> </text>
+  <text
+     xml:space="preserve"
+     x="640"
+     y="95.999939"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12821"> </text>
+  <text
+     xml:space="preserve"
+     x="393.48227"
+     y="98.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12986"> </text>
+  <text
+     xml:space="preserve"
+     x="401.48227"
+     y="98.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12987"> </text>
+  <text
+     xml:space="preserve"
+     x="409.48227"
+     y="98.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12988"> </text>
+  <text
+     xml:space="preserve"
+     x="417.48227"
+     y="98.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12989"> </text>
+  <text
+     xml:space="preserve"
+     x="425.48227"
+     y="98.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12990"> </text>
+  <text
+     xml:space="preserve"
+     x="433.48227"
+     y="98.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12991"> </text>
+  <text
+     xml:space="preserve"
+     x="441.48227"
+     y="98.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12992"> </text>
+  <text
+     xml:space="preserve"
+     x="449.48227"
+     y="98.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12993"> </text>
+  <text
+     xml:space="preserve"
+     x="457.48227"
+     y="98.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12994"> </text>
+  <text
+     xml:space="preserve"
+     x="465.48227"
+     y="98.381531"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text12995"> </text>
+  <text
+     xml:space="preserve"
+     x="392.13101"
+     y="14.195067"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text13770"> </text>
+  <text
+     xml:space="preserve"
+     x="400.13101"
+     y="14.195067"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text13771"> </text>
+  <text
+     xml:space="preserve"
+     x="408.13101"
+     y="14.195067"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text13772"> </text>
+  <text
+     xml:space="preserve"
+     x="416.13101"
+     y="14.195067"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text13773"> </text>
+  <text
+     xml:space="preserve"
+     x="392.13101"
+     y="30.195066"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text13966"> </text>
+  <text
+     xml:space="preserve"
+     x="400.13101"
+     y="30.195066"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text13967"> </text>
+  <text
+     xml:space="preserve"
+     x="408.13101"
+     y="30.195066"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text13968"> </text>
+  <text
+     xml:space="preserve"
+     x="416.13101"
+     y="30.195066"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text13969"> </text>
+  <text
+     xml:space="preserve"
+     x="280.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14148"> </text>
+  <text
+     xml:space="preserve"
+     x="288.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14149"> </text>
+  <text
+     xml:space="preserve"
+     x="296.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14150"> </text>
+  <text
+     xml:space="preserve"
+     x="304.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14151"> </text>
+  <text
+     xml:space="preserve"
+     x="312.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14152"> </text>
+  <text
+     xml:space="preserve"
+     x="320.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14153"> </text>
+  <text
+     xml:space="preserve"
+     x="328.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14154"> </text>
+  <text
+     xml:space="preserve"
+     x="336.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14155"> </text>
+  <text
+     xml:space="preserve"
+     x="344.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14156"> </text>
+  <text
+     xml:space="preserve"
+     x="352.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14157"> </text>
+  <text
+     xml:space="preserve"
+     x="360.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14158"> </text>
+  <text
+     xml:space="preserve"
+     x="368.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14159"> </text>
+  <text
+     xml:space="preserve"
+     x="376.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14160"> </text>
+  <text
+     xml:space="preserve"
+     x="384.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14161"> </text>
+  <text
+     xml:space="preserve"
+     x="392.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14162"> </text>
+  <text
+     xml:space="preserve"
+     x="400.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14163"> </text>
+  <text
+     xml:space="preserve"
+     x="408.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14164"> </text>
+  <text
+     xml:space="preserve"
+     x="416.13101"
+     y="46.195068"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14165"> </text>
+  <text
+     xml:space="preserve"
+     x="1.6132934"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14309">/</text>
+  <text
+     xml:space="preserve"
+     x="9.6132936"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14310">r</text>
+  <text
+     xml:space="preserve"
+     x="17.613293"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14311">o</text>
+  <text
+     xml:space="preserve"
+     x="25.613293"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14312">o</text>
+  <text
+     xml:space="preserve"
+     x="33.613293"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14313">t</text>
+  <text
+     xml:space="preserve"
+     x="41.613293"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14314"> </text>
+  <text
+     xml:space="preserve"
+     x="49.613293"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14315">$</text>
+  <text
+     xml:space="preserve"
+     x="57.613293"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14316"> </text>
+  <text
+     xml:space="preserve"
+     x="65.613297"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14317">c</text>
+  <text
+     xml:space="preserve"
+     x="73.613297"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14318">d</text>
+  <text
+     xml:space="preserve"
+     x="81.613297"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14319"> </text>
+  <text
+     xml:space="preserve"
+     x="89.613297"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14320"> </text>
+  <text
+     xml:space="preserve"
+     x="97.613297"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14321"> </text>
+  <text
+     xml:space="preserve"
+     x="105.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14322"> </text>
+  <text
+     xml:space="preserve"
+     x="113.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14323"> </text>
+  <text
+     xml:space="preserve"
+     x="121.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14324"> </text>
+  <text
+     xml:space="preserve"
+     x="129.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14325"> </text>
+  <text
+     xml:space="preserve"
+     x="137.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14326"> </text>
+  <text
+     xml:space="preserve"
+     x="145.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14327"> </text>
+  <text
+     xml:space="preserve"
+     x="153.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14328"> </text>
+  <text
+     xml:space="preserve"
+     x="161.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14329"> </text>
+  <text
+     xml:space="preserve"
+     x="169.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14330"> </text>
+  <text
+     xml:space="preserve"
+     x="177.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14331"> </text>
+  <text
+     xml:space="preserve"
+     x="185.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14332"> </text>
+  <text
+     xml:space="preserve"
+     x="193.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14333"> </text>
+  <text
+     xml:space="preserve"
+     x="201.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14334"> </text>
+  <text
+     xml:space="preserve"
+     x="209.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14335"> </text>
+  <text
+     xml:space="preserve"
+     x="217.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14336"> </text>
+  <text
+     xml:space="preserve"
+     x="225.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14337"> </text>
+  <text
+     xml:space="preserve"
+     x="233.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14338"> </text>
+  <text
+     xml:space="preserve"
+     x="241.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14339"> </text>
+  <text
+     xml:space="preserve"
+     x="249.6133"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14340"> </text>
+  <text
+     xml:space="preserve"
+     x="257.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14341"> </text>
+  <text
+     xml:space="preserve"
+     x="265.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14342"> </text>
+  <text
+     xml:space="preserve"
+     x="273.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14343"> </text>
+  <text
+     xml:space="preserve"
+     x="281.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14344"> </text>
+  <text
+     xml:space="preserve"
+     x="289.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14345"> </text>
+  <text
+     xml:space="preserve"
+     x="297.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14346"> </text>
+  <text
+     xml:space="preserve"
+     x="305.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14347"> </text>
+  <text
+     xml:space="preserve"
+     x="313.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14348"> </text>
+  <text
+     xml:space="preserve"
+     x="321.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14349"> </text>
+  <text
+     xml:space="preserve"
+     x="329.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14350"> </text>
+  <text
+     xml:space="preserve"
+     x="337.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14351"> </text>
+  <text
+     xml:space="preserve"
+     x="345.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14352"> </text>
+  <text
+     xml:space="preserve"
+     x="353.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14353"> </text>
+  <text
+     xml:space="preserve"
+     x="361.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14354"> </text>
+  <text
+     xml:space="preserve"
+     x="369.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14355"> </text>
+  <text
+     xml:space="preserve"
+     x="377.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14356"> </text>
+  <text
+     xml:space="preserve"
+     x="385.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14357"> </text>
+  <text
+     xml:space="preserve"
+     x="393.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14358"> </text>
+  <text
+     xml:space="preserve"
+     x="401.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14359"> </text>
+  <text
+     xml:space="preserve"
+     x="409.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14360"> </text>
+  <text
+     xml:space="preserve"
+     x="417.61328"
+     y="48.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14361"> </text>
+  <text
+     xml:space="preserve"
+     x="1.6132934"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14505">~</text>
+  <text
+     xml:space="preserve"
+     x="9.6132936"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14506"> </text>
+  <text
+     xml:space="preserve"
+     x="17.613293"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14507">$</text>
+  <text
+     xml:space="preserve"
+     x="25.613293"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14508"> </text>
+  <text
+     xml:space="preserve"
+     x="33.613293"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14509">d</text>
+  <text
+     xml:space="preserve"
+     x="41.613293"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14510">o</text>
+  <text
+     xml:space="preserve"
+     x="49.613293"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14511">a</text>
+  <text
+     xml:space="preserve"
+     x="57.613293"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14512">s</text>
+  <text
+     xml:space="preserve"
+     x="65.613297"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14513"> </text>
+  <text
+     xml:space="preserve"
+     x="73.613297"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14514">l</text>
+  <text
+     xml:space="preserve"
+     x="81.613297"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14515">s</text>
+  <text
+     xml:space="preserve"
+     x="89.613297"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14516"> </text>
+  <text
+     xml:space="preserve"
+     x="97.613297"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14517">/</text>
+  <text
+     xml:space="preserve"
+     x="105.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14518">r</text>
+  <text
+     xml:space="preserve"
+     x="113.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14519">o</text>
+  <text
+     xml:space="preserve"
+     x="121.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14520">o</text>
+  <text
+     xml:space="preserve"
+     x="129.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14521">t</text>
+  <text
+     xml:space="preserve"
+     x="137.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14522"> </text>
+  <text
+     xml:space="preserve"
+     x="145.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14523"> </text>
+  <text
+     xml:space="preserve"
+     x="153.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14524"> </text>
+  <text
+     xml:space="preserve"
+     x="161.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14525"> </text>
+  <text
+     xml:space="preserve"
+     x="169.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14526"> </text>
+  <text
+     xml:space="preserve"
+     x="177.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14527"> </text>
+  <text
+     xml:space="preserve"
+     x="185.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14528"> </text>
+  <text
+     xml:space="preserve"
+     x="193.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14529"> </text>
+  <text
+     xml:space="preserve"
+     x="201.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14530"> </text>
+  <text
+     xml:space="preserve"
+     x="209.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14531"> </text>
+  <text
+     xml:space="preserve"
+     x="217.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14532"> </text>
+  <text
+     xml:space="preserve"
+     x="225.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14533"> </text>
+  <text
+     xml:space="preserve"
+     x="233.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14534"> </text>
+  <text
+     xml:space="preserve"
+     x="241.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14535"> </text>
+  <text
+     xml:space="preserve"
+     x="249.6133"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14536"> </text>
+  <text
+     xml:space="preserve"
+     x="257.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14537"> </text>
+  <text
+     xml:space="preserve"
+     x="265.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14538"> </text>
+  <text
+     xml:space="preserve"
+     x="273.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14539"> </text>
+  <text
+     xml:space="preserve"
+     x="281.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14540"> </text>
+  <text
+     xml:space="preserve"
+     x="289.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14541"> </text>
+  <text
+     xml:space="preserve"
+     x="297.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14542"> </text>
+  <text
+     xml:space="preserve"
+     x="305.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14543"> </text>
+  <text
+     xml:space="preserve"
+     x="313.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14544"> </text>
+  <text
+     xml:space="preserve"
+     x="321.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14545"> </text>
+  <text
+     xml:space="preserve"
+     x="329.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14546"> </text>
+  <text
+     xml:space="preserve"
+     x="337.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14547"> </text>
+  <text
+     xml:space="preserve"
+     x="345.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14548"> </text>
+  <text
+     xml:space="preserve"
+     x="353.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14549"> </text>
+  <text
+     xml:space="preserve"
+     x="361.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14550"> </text>
+  <text
+     xml:space="preserve"
+     x="369.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14551"> </text>
+  <text
+     xml:space="preserve"
+     x="377.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14552"> </text>
+  <text
+     xml:space="preserve"
+     x="385.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14553"> </text>
+  <text
+     xml:space="preserve"
+     x="393.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14554"> </text>
+  <text
+     xml:space="preserve"
+     x="401.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14555"> </text>
+  <text
+     xml:space="preserve"
+     x="409.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14556"> </text>
+  <text
+     xml:space="preserve"
+     x="417.61328"
+     y="64.57666"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14557"> </text>
+  <text
+     xml:space="preserve"
+     x="1.6132934"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14701">d</text>
+  <text
+     xml:space="preserve"
+     x="9.6132936"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14702">o</text>
+  <text
+     xml:space="preserve"
+     x="17.613293"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14703">a</text>
+  <text
+     xml:space="preserve"
+     x="25.613293"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14704">s</text>
+  <text
+     xml:space="preserve"
+     x="33.613293"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14705"> </text>
+  <text
+     xml:space="preserve"
+     x="41.613293"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14706">(</text>
+  <text
+     xml:space="preserve"
+     x="49.613293"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14707">f</text>
+  <text
+     xml:space="preserve"
+     x="57.613293"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14708">u</text>
+  <text
+     xml:space="preserve"
+     x="65.613297"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14709">s</text>
+  <text
+     xml:space="preserve"
+     x="73.613297"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14710">-</text>
+  <text
+     xml:space="preserve"
+     x="81.613297"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14711">a</text>
+  <text
+     xml:space="preserve"
+     x="89.613297"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14712">d</text>
+  <text
+     xml:space="preserve"
+     x="97.613297"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14713">m</text>
+  <text
+     xml:space="preserve"
+     x="105.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14714">i</text>
+  <text
+     xml:space="preserve"
+     x="113.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14715">n</text>
+  <text
+     xml:space="preserve"
+     x="121.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14716">@</text>
+  <text
+     xml:space="preserve"
+     x="129.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14717">e</text>
+  <text
+     xml:space="preserve"
+     x="137.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14718">x</text>
+  <text
+     xml:space="preserve"
+     x="145.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14719">1</text>
+  <text
+     xml:space="preserve"
+     x="153.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14720">-</text>
+  <text
+     xml:space="preserve"
+     x="161.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14721">a</text>
+  <text
+     xml:space="preserve"
+     x="169.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14722">l</text>
+  <text
+     xml:space="preserve"
+     x="177.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14723">p</text>
+  <text
+     xml:space="preserve"
+     x="185.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14724">i</text>
+  <text
+     xml:space="preserve"
+     x="193.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14725">n</text>
+  <text
+     xml:space="preserve"
+     x="201.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14726">e</text>
+  <text
+     xml:space="preserve"
+     x="209.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14727">-</text>
+  <text
+     xml:space="preserve"
+     x="217.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14728">e</text>
+  <text
+     xml:space="preserve"
+     x="225.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14729">x</text>
+  <text
+     xml:space="preserve"
+     x="233.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14730">a</text>
+  <text
+     xml:space="preserve"
+     x="241.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14731">m</text>
+  <text
+     xml:space="preserve"
+     x="249.6133"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14732">p</text>
+  <text
+     xml:space="preserve"
+     x="257.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14733">l</text>
+  <text
+     xml:space="preserve"
+     x="265.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14734">e</text>
+  <text
+     xml:space="preserve"
+     x="273.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14735">)</text>
+  <text
+     xml:space="preserve"
+     x="281.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14736"> </text>
+  <text
+     xml:space="preserve"
+     x="289.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14737">p</text>
+  <text
+     xml:space="preserve"
+     x="297.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14738">a</text>
+  <text
+     xml:space="preserve"
+     x="305.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14739">s</text>
+  <text
+     xml:space="preserve"
+     x="313.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14740">s</text>
+  <text
+     xml:space="preserve"
+     x="321.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14741">w</text>
+  <text
+     xml:space="preserve"
+     x="329.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14742">o</text>
+  <text
+     xml:space="preserve"
+     x="337.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14743">r</text>
+  <text
+     xml:space="preserve"
+     x="345.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14744">d</text>
+  <text
+     xml:space="preserve"
+     x="353.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14745">:</text>
+  <text
+     xml:space="preserve"
+     x="361.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14746"> </text>
+  <text
+     xml:space="preserve"
+     x="369.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14747"> </text>
+  <text
+     xml:space="preserve"
+     x="377.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14748"> </text>
+  <text
+     xml:space="preserve"
+     x="385.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14749"> </text>
+  <text
+     xml:space="preserve"
+     x="393.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14750"> </text>
+  <text
+     xml:space="preserve"
+     x="401.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14751"> </text>
+  <text
+     xml:space="preserve"
+     x="409.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14752"> </text>
+  <text
+     xml:space="preserve"
+     x="417.61328"
+     y="80.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14753"> </text>
+  <text
+     xml:space="preserve"
+     x="1.6132934"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14897">~</text>
+  <text
+     xml:space="preserve"
+     x="9.6132936"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14898"> </text>
+  <text
+     xml:space="preserve"
+     x="17.613293"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14899">$</text>
+  <text
+     xml:space="preserve"
+     x="25.613293"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14900"> </text>
+  <text
+     xml:space="preserve"
+     x="33.613293"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14901"> </text>
+  <text
+     xml:space="preserve"
+     x="41.613293"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14902"> </text>
+  <text
+     xml:space="preserve"
+     x="49.613293"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14903"> </text>
+  <text
+     xml:space="preserve"
+     x="57.613293"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14904"> </text>
+  <text
+     xml:space="preserve"
+     x="65.613297"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14905"> </text>
+  <text
+     xml:space="preserve"
+     x="73.613297"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14906"> </text>
+  <text
+     xml:space="preserve"
+     x="81.613297"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14907"> </text>
+  <text
+     xml:space="preserve"
+     x="89.613297"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14908"> </text>
+  <text
+     xml:space="preserve"
+     x="97.613297"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14909"> </text>
+  <text
+     xml:space="preserve"
+     x="105.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14910"> </text>
+  <text
+     xml:space="preserve"
+     x="113.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14911"> </text>
+  <text
+     xml:space="preserve"
+     x="121.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14912"> </text>
+  <text
+     xml:space="preserve"
+     x="129.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14913"> </text>
+  <text
+     xml:space="preserve"
+     x="137.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14914"> </text>
+  <text
+     xml:space="preserve"
+     x="145.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14915"> </text>
+  <text
+     xml:space="preserve"
+     x="153.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14916"> </text>
+  <text
+     xml:space="preserve"
+     x="161.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14917"> </text>
+  <text
+     xml:space="preserve"
+     x="169.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14918"> </text>
+  <text
+     xml:space="preserve"
+     x="177.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14919"> </text>
+  <text
+     xml:space="preserve"
+     x="185.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14920"> </text>
+  <text
+     xml:space="preserve"
+     x="193.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14921"> </text>
+  <text
+     xml:space="preserve"
+     x="201.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14922"> </text>
+  <text
+     xml:space="preserve"
+     x="209.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14923"> </text>
+  <text
+     xml:space="preserve"
+     x="217.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14924"> </text>
+  <text
+     xml:space="preserve"
+     x="225.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14925"> </text>
+  <text
+     xml:space="preserve"
+     x="233.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14926"> </text>
+  <text
+     xml:space="preserve"
+     x="241.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14927"> </text>
+  <text
+     xml:space="preserve"
+     x="249.6133"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14928"> </text>
+  <text
+     xml:space="preserve"
+     x="257.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14929"> </text>
+  <text
+     xml:space="preserve"
+     x="265.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14930"> </text>
+  <text
+     xml:space="preserve"
+     x="273.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14931"> </text>
+  <text
+     xml:space="preserve"
+     x="281.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14932"> </text>
+  <text
+     xml:space="preserve"
+     x="289.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14933"> </text>
+  <text
+     xml:space="preserve"
+     x="297.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14934"> </text>
+  <text
+     xml:space="preserve"
+     x="305.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14935"> </text>
+  <text
+     xml:space="preserve"
+     x="313.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14936"> </text>
+  <text
+     xml:space="preserve"
+     x="321.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14937"> </text>
+  <text
+     xml:space="preserve"
+     x="329.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14938"> </text>
+  <text
+     xml:space="preserve"
+     x="337.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14939"> </text>
+  <text
+     xml:space="preserve"
+     x="345.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14940"> </text>
+  <text
+     xml:space="preserve"
+     x="353.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14941"> </text>
+  <text
+     xml:space="preserve"
+     x="361.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14942"> </text>
+  <text
+     xml:space="preserve"
+     x="369.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14943"> </text>
+  <text
+     xml:space="preserve"
+     x="377.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14944"> </text>
+  <text
+     xml:space="preserve"
+     x="385.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14945"> </text>
+  <text
+     xml:space="preserve"
+     x="393.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14946"> </text>
+  <text
+     xml:space="preserve"
+     x="401.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14947"> </text>
+  <text
+     xml:space="preserve"
+     x="409.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14948"> </text>
+  <text
+     xml:space="preserve"
+     x="417.61328"
+     y="96.576721"
+     font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', 'Fira Code', 'Source Code Pro', monospace"
+     font-size="14px"
+     fill="#575279"
+     id="text14949"> </text>
+  <rect
+     style="opacity:0.2;fill:#ff55dd"
+     id="rect19992"
+     width="460.12836"
+     height="17.294117"
+     x="174.14279"
+     y="-19.808226"
+     transform="scale(1,-1)" />
+  <rect
+     style="opacity:0.2;fill:#ff55dd"
+     id="rect19993"
+     width="109.31796"
+     height="15.934482"
+     x="30.942539"
+     y="51.359009" />
+</svg>

