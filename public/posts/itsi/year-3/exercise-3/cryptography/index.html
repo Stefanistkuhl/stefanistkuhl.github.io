@@ -5,66 +5,18 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Cryptography | silly blog</title>
-<meta name="keywords" content="cryptography, it sec, school, encryption, openssl, aes, rsa">
-<meta name="description" content="
-Note: this was converted from PDF to Markdown using pdftotext and manual formatting. The original PDF can be found here along with the bibliography.
-
-
-Cryptography
-Laboratory Protocol
-Exercise 3: Cryptography
-
-     
-            Figure: Wunderbares Gruppenbild
-        
-
-
-Subject: ITSI|ZIVK
-Class: 3AHITN
-Name: Stefan Fürst, Marcel Raichle
-Group Name/Number: Dumm und Dümmer/7
-Supervisor: ZIVK
-Exercise dates: 4.10.2024, 11.10.2024, 18.10.2024
-Submission date: 7.6.2024
-
-Table of Contents
-
-Task Definition
-Summary
-
-Symmetric Encryption
-Asymmetric Encryption
-Integrity Check
-
-
-Exercise Execution
-
-Symmetric Encryption
-
-Calculate Password for Symmetric Encryption
-Encrypt File Symmetrically with AES256
-
-
-Asymmetric Encryption
-Check Integrity
-
-
-References
-List of Figures
-
-
-Task Definition
-First, we deal with symmetric encryption, where a file is encrypted with a calculated password and then decrypted again. The same password is used for both encryption and decryption to verify and validate the process.">
+<title>Cryptography | veya&#39;s silly little website</title>
+<meta name="keywords" content="cryptography, it-sec, school, encryption, openssl, aes, rsa">
+<meta name="description" content="A practical introduction to symmetric and asymmetric encryption, hashing, integrity checks, and OpenSSL.">
 <meta name="author" content="veya">
 <link rel="canonical" href="http://localhost:1313/posts/itsi/year-3/exercise-3/cryptography/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f22caeb8fa017ba8a722900a376f8b736adeb3549e2aeca3cc9f292a3cdf6e9e.css" integrity="sha256-8iyuuPoBe6inIpAKN2&#43;Lc2res1SeKuyjzJ8pKjzfbp4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/apple-touch-icon.png">
+<link rel="mask-icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/safari-pinned-tab.svg">
+<meta name="theme-color" content="#080808">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="en" href="http://localhost:1313/posts/itsi/year-3/exercise-3/cryptography/">
 <noscript>
@@ -121,7 +73,7 @@ First, we deal with symmetric encryption, where a file is encrypted with a calcu
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="silly blog (Alt + H)">silly blog</a>
+            <a href="http://localhost:1313/" accesskey="h" title="veya&#39;s silly little website (Alt + H)">veya&#39;s silly little website</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -152,6 +104,11 @@ First, we deal with symmetric encryption, where a file is encrypted with a calcu
                 </a>
             </li>
             <li>
+                <a href="http://localhost:1313/networking-security/" title="Networking &amp; Security">
+                    <span>Networking &amp; Security</span>
+                </a>
+            </li>
+            <li>
                 <a href="http://localhost:1313/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
@@ -172,26 +129,29 @@ First, we deal with symmetric encryption, where a file is encrypted with a calcu
     <h1 class="post-title entry-hint-parent">
       Cryptography
     </h1>
+    <div class="post-description">
+      A practical introduction to symmetric and asymmetric encryption, hashing, integrity checks, and OpenSSL.
+    </div>
     <div class="post-meta"><span title='2024-10-18 00:00:00 +0200 CEST'>October 18, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;veya
 
 </div>
   </header> 
   <div class="post-content"><blockquote>
-<p>Note: this was converted from PDF to Markdown using pdftotext and manual formatting. The original PDF can be found <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex3/Raichle_F%C3%BCrst_Kryptographie.pdf">here</a> along with the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex3/quellen.bib">bibliography</a>.</p>
+<p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex3/Raichle_F%C3%BCrst_Kryptographie.pdf">original PDF</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex3/quellen.bib">bibliography</a> are available on GitHub.</p>
 </blockquote>
 <hr>
 <h1 id="cryptography">Cryptography<a hidden class="anchor" aria-hidden="true" href="#cryptography">#</a></h1>
 <p><strong>Laboratory Protocol</strong><br>
 Exercise 3: Cryptography<br>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex3/images/mika.jpeg"/> <figcaption>
-            Figure: Wunderbares Gruppenbild
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex3/images/mika.jpeg"/> <figcaption>
+            Original report cover image
         </figcaption>
 </figure>
 
 <strong>Subject:</strong> ITSI|ZIVK<br>
 <strong>Class:</strong> 3AHITN<br>
-<strong>Name:</strong> Stefan Fürst, Marcel Raichle<br>
+<strong>Name:</strong> Veya Fürst, Marcel Raichle<br>
 <strong>Group Name/Number:</strong> Dumm und Dümmer/7<br>
 <strong>Supervisor:</strong> ZIVK<br>
 <strong>Exercise dates:</strong> 4.10.2024, 11.10.2024, 18.10.2024<br>
@@ -256,19 +216,19 @@ Exercise 3: Cryptography<br>
 <p>For this, openssl is used, a cryptographic toolkit <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 <p>To encrypt the file with AES256 in this case, aes256 is used as an argument and the -in/-out flags specify the input/output file. After entering the command, a password must be entered.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex3/images/aes-encrypt.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex3/images/aes-encrypt.png"/> <figcaption>
             Figure: AES encryption
         </figcaption>
 </figure>
 
 <p>For decryption, the -d flag is used, which stands for decrypt. This and swapping input and output are needed to decrypt the file. When the command is executed, the password is requested.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex3/images/aes-decrypt.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex3/images/aes-decrypt.png"/> <figcaption>
             Figure: AES decryption
         </figcaption>
 </figure>
 
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># encrypt</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># encrypt</span>
 </span></span><span style="display:flex;"><span>openssl aes256 -in Raichle.txt -out Raichle.encrypted
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># decrypt</span>
@@ -277,34 +237,34 @@ Exercise 3: Cryptography<br>
 <p>For asymmetric encryption, a key pair must first be generated. Two commands are needed for this, one for the private and one for the public key.</p>
 <p>When creating the public key, the algorithm, key bits and filename are specified.</p>
 <p>For encryption, the -encrypt flag is used, along with other flags for key and file input to encrypt the file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># generate private key</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># generate private key</span>
 </span></span><span style="display:flex;"><span>openssl genpkey -algorithm RSA <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-pkeyopt rsa_keygen_bits:4096 <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-out private-key.pem
+</span></span></span><span style="display:flex;"><span>-pkeyopt rsa_keygen_bits:4096 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>-out private-key.pem
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># extract public key</span>
 </span></span><span style="display:flex;"><span>openssl pkey -in private-key.pem -out public-key.pem -pubout
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># encrypt file</span>
 </span></span><span style="display:flex;"><span>openssl rsautl -encrypt <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-inkey zivk.pem <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-pubin -in Raichle-Fuerst-RSA.txt <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-out Raichle-Fuerst-RSA.txt.zivk.enc
+</span></span></span><span style="display:flex;"><span>-inkey zivk.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>-pubin -in Raichle-Fuerst-RSA.txt <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>-out Raichle-Fuerst-RSA.txt.zivk.enc
 </span></span></code></pre></div><h3 id="check-integrity">Check Integrity<a hidden class="anchor" aria-hidden="true" href="#check-integrity">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># required command</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># required command</span>
 </span></span><span style="display:flex;"><span>sha256sum &lt;filename&gt;
 </span></span></code></pre></div><figure>
-    <img loading="lazy" src="/itsi/y3/ex3/images/hashes.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex3/images/hashes.png"/> <figcaption>
             Figure: Hashes
         </figcaption>
 </figure>
 
 <hr>
 <h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
-<p><em>For a full bibliography, see the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex3/quellen.bib">original BibTeX file</a>.</em></p>
+<p><em>For a full bibliography, see the <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex3/quellen.bib">original BibTeX file</a>.</em></p>
 <h2 id="list-of-figures">List of Figures<a hidden class="anchor" aria-hidden="true" href="#list-of-figures">#</a></h2>
 <ol>
-<li>Wunderbares Gruppenbild</li>
+<li>Original report cover image</li>
 <li>AES encryption</li>
 <li>AES decryption</li>
 <li>Hashes</li>
@@ -336,7 +296,7 @@ Exercise 3: Cryptography<br>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">silly blog</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/">veya&#39;s silly little website</a></span> · 
 
     <span>
         Powered by

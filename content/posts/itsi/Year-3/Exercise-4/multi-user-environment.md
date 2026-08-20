@@ -1,11 +1,12 @@
 +++
 date = '2024-11-06T00:00:00+01:00'
 title = 'GNU/Linux - Setting up a multi-user environment'
-categories = ["school", "it sec"]
-tags = ["linux", "it sec", "school", "docker", "ssh", "users", "permissions"]
+description = 'Building and securing a multi-user Linux environment with containers, permissions, networking, and SSH keys.'
+categories = ["school", "it-sec"]
+tags = ["linux", "it-sec", "school", "docker", "ssh", "users", "permissions"]
 +++
 
-> Note: this was converted from LaTeX to Markdown using manual formatting. The original TeX file can be found [here](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex4/Einrichten%20einer%20Multi-User-Umgebung.tex) along with the [bibliography](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex4/quellen.bib).
+> This is an HTL Donaustadt laboratory report converted from the original document. The [original LaTeX source](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex4/Einrichten%20einer%20Multi-User-Umgebung.tex) and [bibliography](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex4/quellen.bib) are available on GitHub.
 
 ---
 
@@ -13,10 +14,10 @@ tags = ["linux", "it sec", "school", "docker", "ssh", "users", "permissions"]
 
 **Laboratory Protocol**  
 GNU/Linux - Setting up a multi-user environment  
-{{< figure src="/itsi/y3/ex4/images/mika.jpeg" title="Figure: Grouplogo" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/mika.jpeg" title="Original report cover image" >}}
 **Subject:** ITSI|ZIVK  
 **Class:** 3AHITN  
-**Name:** Stefan Fürst, Marcel Raichle  
+**Name:** Veya Fürst, Marcel Raichle  
 **Group Name/Number:** Dumm und Dümmer/7  
 **Supervisor:** ZIVK  
 **Exercise dates:** 25.10.2024, 1.11.2024, 3.11.2024, 6.11.2024  
@@ -115,18 +116,18 @@ RUN apt install iproute2 iputils-ping zsh net-tools vim -y
 
 Now we can finally test the connectivity since we have the `iputils-ping` package installed. Everything works out of the box using the default bridge [^5]
 
-{{< figure src="/itsi/y3/ex4/images/ping_internet.png" title="Figure: Ping to the Internet" >}}
-{{< figure src="/itsi/y3/ex4/images/ping_lokal.png" title="Figure: Ping the local machine" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/ping_internet.png" title="Figure: Ping to the Internet" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/ping_lokal.png" title="Figure: Ping the local machine" >}}
 
 #### It works, but why?
 
 If we inspect our container using `docker inspect container-name`, we see that its IP is different from that of the lan.
 
-{{< figure src="/itsi/y3/ex4/images/docker_inspect_nw.png" title="Figure: docker inspect" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/docker_inspect_nw.png" title="Figure: docker inspect" >}}
 
 This happens because when you install Docker, it creates a virtual interface `docker0` that is used as a network bridge to allow the container to communicate with the Internet and LAN [^6].
 
-{{< figure src="/itsi/y3/ex4/images/ipadocker.png" title="Figure: ip a | grep docker0" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/ipadocker.png" title="Figure: ip a | grep docker0" >}}
 
 There are other types of Docker networks, but they are not relevant for this exercise [^6].
 
@@ -159,7 +160,7 @@ RUN usermod --shell /bin/zsh ram-chris
 
 To log in as another user, use the `su` command.
 
-{{< figure src="/itsi/y3/ex4/images/logggingin.png" title="Figure: Login as Berta and Chris" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/logggingin.png" title="Figure: Login as Berta and Chris" >}}
 
 Each user has their own history, which is stored in their home directory in either the `.bash_history` or `.zsh_history` file. You end the session with the `exit` command or by pressing `<C-d>`.
 
@@ -214,7 +215,7 @@ chmod -R u+wrx,g=,o= /data/fus/chris/
 chmod -R u+wrx,g+wrx,o=r /data/fus/public/
 ```
 
-{{< figure src="/itsi/y3/ex4/images/testing_perms.png" title="Figure: Testing permissions" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/testing_perms.png" title="Figure: Testing permissions" >}}
 
 If we log in as the users, we can see that everything is working as intended.
 
@@ -254,7 +255,7 @@ This is done with the command `netstat -tunlp | grep ssh`. The options of the co
 -p show the PID of the listener's process
 ```
 
-{{< figure src="/itsi/y3/ex4/images/netstatssh.png" title="Figure: Search for port with netstat" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/netstatssh.png" title="Figure: Search for port with netstat" >}}
 
 Apparently it is a "good practice" to switch from the default ssh port to a different port to avoid bots and script kiddies that scan the internet for public servers with ssh and test default passwords. I think this is snake oil to change ports for better security, because if you disable password authentication, have a strong password, or ban failing ips with tools like fail2ban, all the problems are solved anyway [^11].
 
@@ -276,7 +277,7 @@ When we try to ssh in with the created user, we cannot yet, since we have not pu
 
 #### Logging On to the SSH Server
 
-{{< figure src="/itsi/y3/ex4/images/loggingin-before-expsing-the-port.png" title="Figure: Connection refused" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/loggingin-before-expsing-the-port.png" title="Figure: Connection refused" >}}
 
 To do this, we need to add a line to the Dockerfile and edit the docker run command.
 
@@ -290,7 +291,7 @@ docker run -d -p 38452 --name container-name
 
 Even if we log in now, it still won't work because the user doesn't have a password.
 
-{{< figure src="/itsi/y3/ex4/images/failingtologin.png" title="Figure: Logging in without a password" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/failingtologin.png" title="Figure: Logging in without a password" >}}
 
 To fix this we add this line to our Dockerfile:
 
@@ -300,7 +301,7 @@ RUN echo 'root:youresecurepasswordhere' | chpasswd
 
 We change the root password instead of the user password because we do not have `sudo` setup, and having to type sudo for every command when we are the only user is both unnecessary and annoying.
 
-{{< figure src="/itsi/y3/ex4/images/workinglogin.png" title="Figure: working login" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/workinglogin.png" title="Figure: working login" >}}
 
 #### Enabling keypair authentication
 
@@ -308,15 +309,15 @@ To generate a key pair, we go back to our host system and run the command `ssh-k
 
 On Linux, the keys are stored in the `~/.ssh` directory, but you can specify a location with `-f`. The file that ends with `.pub` is the public key, and the other is the private key.
 
-{{< figure src="/itsi/y3/ex4/images/keys-in-the-dir.png" title="Figure: keys in the directory" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/keys-in-the-dir.png" title="Figure: keys in the directory" >}}
 
 To copy the public key to the server we want to use it on, we use the command `ssh-copy-id` on Linux and `scp` on Windows and Mac.
 
-{{< figure src="/itsi/y3/ex4/images/ssh-copy-id.png" title="Figure: ssh-copy-id" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/ssh-copy-id.png" title="Figure: ssh-copy-id" >}}
 
 After this we will not need to enter a password to authenticate.
 
-{{< figure src="/itsi/y3/ex4/images/login-with-key.png" title="Figure: logging with a key" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/login-with-key.png" title="Figure: logging with a key" >}}
 
 #### Disable password authentication
 
@@ -333,13 +334,13 @@ PasswordAuthentication no
 
 If we try to log in as another user for which we do not have a key, we cannot connect.
 
-{{< figure src="/itsi/y3/ex4/images/nokey.png" title="Figure: Not having a key" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/nokey.png" title="Figure: Not having a key" >}}
 
 ---
 
 ## References
 
-*For a full bibliography, see the [original BibTeX file](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex4/quellen.bib).*
+*For a full bibliography, see the [original BibTeX file](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex4/quellen.bib).*
 
 [^1]: Docker Glossary - FROM. [link](https://docs.docker.com/glossary/#from)
 [^2]: Ubuntu Official Image. [link](https://hub.docker.com/_/ubuntu)
@@ -357,7 +358,7 @@ If we try to log in as another user for which we do not have a key, we cannot co
 
 ## List of Figures
 
-1. Grouplogo
+1. Original report cover image
 2. Ping to the Internet
 3. Ping the local machine
 4. docker inspect

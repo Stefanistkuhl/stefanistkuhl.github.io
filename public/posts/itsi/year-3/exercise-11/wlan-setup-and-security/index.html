@@ -1,83 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=39857&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>WLAN Setup and Security | silly blog</title>
-<meta name="keywords" content="networking, it sec, school, red team, blue team">
-<meta name="description" content="
-Note: this was converted using from LaTeX to Markdown using ChatGPT and Gemini. The original PDF and bibliography can be found here and here.
-
-
-WLAN setup and security
-
-Laboratory protocol
-Exercise 11: WLAN setup and security
-
-     
-            Figure: Grouplogo
-        
-
-
-Subject: ITSI/NWT
-Class: 3AHITN
-Name: Stefan Fürst, Justin Tremurici
-Group Name/Number: GROUPNAME/12
-Supervisor: ANGE, ZIVK
-Exercise dates: 16.05.2025 | 06.06.2025
-Submission date: 10.06.2025
-
-Table of Contents
-
-Task definition
-Summary
-Complete network topology of the exercise
-Exercise Execution
-
-Setting up the Network
-
-Configuring the Router
-Configuring the Access Point
-Testing connectivity and DHCP addresses
-Access Point Isolation
-
-
-Attacking the Wi-Fi Network
-
-Setting up the Wi-Fi Adapter
-Starting the attack
-Sending Deauthentication Frames
-Analyzing the 4-Way Handshake in Wireshark
-Cracking the Password
-Testing My Own Wi-Fi
-
-
-Mitigations of This Attack
-
-How WPA3 improves security
-Possible WPA3 Attacks
-
-
-
-
-References
-
-
-Task definition
-This task focuses on the setup and subsequent attack of a WLAN network. The initial phase, &ldquo;Übung 10: Einrichten eines WLAN-Netzwerks,&rdquo; guides students through provisioning a WLAN. This involves configuring an Access Point (AP), planning channel usage, setting up Network Address Translation (NAT) and a DHCP service, and ensuring full connectivity between wireless and wired clients. Students configure a router with NAT, establish a DHCP server, and set up the AP with WPA2 security, assessing password strength and measuring channel utilization. Connectivity tests confirm communication within the network and to the internet. Access Point Isolation is also explored, with a bonus task involving its configuration and demonstration of its effects.">
+<title>WLAN Setup and Security | veya&#39;s silly little website</title>
+<meta name="keywords" content="networking, it-sec, school, red-team, blue-team">
+<meta name="description" content="Wireless network configuration and security analysis covering DHCP, client isolation, WPA handshakes, and Wireshark.">
 <meta name="author" content="veya">
-<link rel="canonical" href="http://localhost:39857/posts/itsi/year-3/exercise-11/wlan-setup-and-security/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:39857/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:39857/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:39857/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:39857/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:39857/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
+<link rel="canonical" href="http://localhost:1313/posts/itsi/year-3/exercise-11/wlan-setup-and-security/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f22caeb8fa017ba8a722900a376f8b736adeb3549e2aeca3cc9f292a3cdf6e9e.css" integrity="sha256-8iyuuPoBe6inIpAKN2&#43;Lc2res1SeKuyjzJ8pKjzfbp4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/apple-touch-icon.png">
+<link rel="mask-icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/safari-pinned-tab.svg">
+<meta name="theme-color" content="#080808">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:39857/posts/itsi/year-3/exercise-11/wlan-setup-and-security/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/itsi/year-3/exercise-11/wlan-setup-and-security/">
 <noscript>
     <style>
         #theme-toggle,
@@ -132,7 +73,7 @@ This task focuses on the setup and subsequent attack of a WLAN network. The init
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:39857/" accesskey="h" title="silly blog (Alt + H)">silly blog</a>
+            <a href="http://localhost:1313/" accesskey="h" title="veya&#39;s silly little website (Alt + H)">veya&#39;s silly little website</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -158,17 +99,22 @@ This task focuses on the setup and subsequent attack of a WLAN network. The init
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:39857/about/" title="About">
+                <a href="http://localhost:1313/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:39857/posts/" title="Posts">
+                <a href="http://localhost:1313/networking-security/" title="Networking &amp; Security">
+                    <span>Networking &amp; Security</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:39857/" title="root">
+                <a href="http://localhost:1313/" title="root">
                     <span>root</span>
                 </a>
             </li>
@@ -183,12 +129,15 @@ This task focuses on the setup and subsequent attack of a WLAN network. The init
     <h1 class="post-title entry-hint-parent">
       WLAN Setup and Security
     </h1>
+    <div class="post-description">
+      Wireless network configuration and security analysis covering DHCP, client isolation, WPA handshakes, and Wireshark.
+    </div>
     <div class="post-meta"><span title='2025-06-10 07:10:35 +0200 CEST'>June 10, 2025</span>&nbsp;·&nbsp;26 min&nbsp;·&nbsp;veya
 
 </div>
   </header> 
   <div class="post-content"><blockquote>
-<p>Note: this was converted using from LaTeX to Markdown using ChatGPT and Gemini. The original PDF and bibliography can be found <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex11/WLAN-setup-and-security.pdf">here</a> and <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex11/zotero.bib">here</a>.</p>
+<p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex11/WLAN-setup-and-security.pdf">original PDF</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex11/zotero.bib">bibliography</a> are available on GitHub.</p>
 </blockquote>
 <hr>
 <h1 id="wlan-setup-and-security">WLAN setup and security<a hidden class="anchor" aria-hidden="true" href="#wlan-setup-and-security">#</a></h1>
@@ -196,15 +145,14 @@ This task focuses on the setup and subsequent attack of a WLAN network. The init
 <p><strong>Laboratory protocol</strong><br>
 Exercise 11: WLAN setup and security<br>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/miniheraDogDoorbell.png"/> <figcaption>
-            Figure: Grouplogo
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/miniheraDogDoorbell.png"/> <figcaption>
+            Original report cover image
         </figcaption>
 </figure>
 
 <strong>Subject:</strong> ITSI/NWT<br>
 <strong>Class:</strong> 3AHITN<br>
-<strong>Name:</strong> Stefan Fürst, Justin Tremurici<br>
-<strong>Group Name/Number:</strong> GROUPNAME/12<br>
+<strong>Name:</strong> Veya Fürst, Justin Tremurici<br>
 <strong>Supervisor:</strong> ANGE, ZIVK<br>
 <strong>Exercise dates:</strong> 16.05.2025 | 06.06.2025<br>
 <strong>Submission date:</strong> 10.06.2025</p>
@@ -257,7 +205,7 @@ Exercise 11: WLAN setup and security<br>
 <hr>
 <h2 id="complete-network-topology-of-the-exercise">Complete network topology of the exercise<a hidden class="anchor" aria-hidden="true" href="#complete-network-topology-of-the-exercise">#</a></h2>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/topo.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/topo.png"/> <figcaption>
             Figure 1: Complete network topology
         </figcaption>
 </figure>
@@ -270,7 +218,7 @@ Exercise 11: WLAN setup and security<br>
 <p>There are multiple approaches to creating NAT, which include Overloading or Port Address Translation (PAT), Static Port Address Translation (Port Redirection), or Static NAT.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><br>
 Here, the most frequently used approach will be employed, which is PAT, where multiple connections from internal hosts are <strong>multiplexed</strong> into a single registered public IP address using different source port numbers. This allows for 65,536 translations per public IP and is used by basically every home since they typically have a single router that serves as the only gateway and has NAT to the ISP. Rarely do non-enterprise customers get their own static IP, and thus sometimes even multiple homes are NATed together into a single public IP which is called CGNAT (Carrier-Grade NAT).<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
 <p>This approach also works inside an already NATed network, as we did here. Inside the school network, we used our router to create a NAT with the school network, giving us internet access. For this, we used the following commands:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># allowing addresses in the 172.28.0.0/24 subnet to be translated</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># allowing addresses in the 172.28.0.0/24 subnet to be translated</span>
 </span></span><span style="display:flex;"><span>access-list <span style="color:#ae81ff">1</span> permit 172.28.0.0 0.0.0.255
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># using the above list of addresses to be allowed to get translated and </span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># specifying the interface on which the school network comes in and </span>
@@ -285,7 +233,7 @@ Here, the most frequently used approach will be employed, which is PAT, where mu
 </span></span><span style="display:flex;"><span>ip nat inside
 </span></span></code></pre></div><p>This configuration can be verified by running the command <code>ip address dhcp</code> to obtain an IP address from the school&rsquo;s DHCP server for our router, which can then be viewed using <code>show ip int br</code>. From the DHCP server, we also received a gateway and static routes to reach the internet, which are displayed using <code>show ip route</code>. Lastly, Google is pinged to demonstrate connectivity. All of these steps can be examined in Figure 2.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/nat.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/nat.png"/> <figcaption>
             Figure 2: Verifying the NAT configuration
         </figcaption>
 </figure>
@@ -293,7 +241,7 @@ Here, the most frequently used approach will be employed, which is PAT, where mu
 <p>Next, DHCP needs to be configured on the router so that clients can obtain IP addresses. To do this, first, a DHCP pool has to be created using the <code>ip dhcp pool</code> command along with a desired name for the pool in global configuration mode.<br>
 Then, the network from which to hand out IP addresses is specified using the <code>network</code> command along with the network address and the subnet mask.<br>
 The default router and DNS server are set afterward, as well as excluding three addresses to align with the topology using the <code>ip dhcp excluded-address</code> command. The commands used are as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># creating the pool</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># creating the pool</span>
 </span></span><span style="display:flex;"><span>ip dhcp pool R1_Intern_LAN
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># setting the network</span>
 </span></span><span style="display:flex;"><span>network 172.28.0.0 255.255.255.0
@@ -312,20 +260,20 @@ Once it has been reset, it is plugged into the switch, which does not need to be
 To access the access point&rsquo;s configuration, a computer is connected to the same switch, and its IP address is changed to the <code>192.168.1.0/24</code> subnet. Then, at <code>192.168.1.252</code>, its configuration can be accessed as stated in the manual on pages 7 and 8.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup><br>
 To set the correct IP address of the access point, the configuration tab is opened, and under <code>LAN → Network Setup</code>, the IP is set to static and configured to the correct address according to the topology, as can be seen in Figure 3.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/A2.1-AP1-ip.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/A2.1-AP1-ip.PNG"/> <figcaption>
             Figure 3: Changing the network settings of the access point
         </figcaption>
 </figure>
 
 <p>The Wi-Fi network to set up is configured in the <code>Wireless → Basic Settings</code> tab for <code>Radio 1</code>, which means configuring the 2.4 GHz radio. Below, under <code>SSID</code>, the desired SSID is set, and importantly, the isolation checkbox is unchecked so that wireless devices are not isolated and can ping each other. In section 4.1.4, isolation will be discussed further, but for now, it remains off. Lastly, the channel is set to auto, which can be seen with the other configurations in Figure 4. On the day of the lab, the two rooms were filled with access points, and the entire 2.4 GHz spectrum was congested, leaving no free channel to select. This can be observed in Figure 5, where NetSpot was used to analyze the usage of the channels.</p>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/A2.1-AP1.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/A2.1-AP1.PNG"/> <figcaption>
             Figure 4: Setting up the Wi-Fi Network
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/wifichan.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/wifichan.png"/> <figcaption>
             Figure 5: Viewing the usage of the channels in the 2.4 GHz spectrum
         </figcaption>
 </figure>
@@ -334,13 +282,13 @@ To set the correct IP address of the access point, the configuration tab is open
 As stated in the access point&rsquo;s manual on pages 32 to 43, it offers WEP, WPA2-Personal, WPA/WPA2-Personal, WPA2-Enterprise, WPA/WPA2-Enterprise, and RADIUS. The only two relevant options are WPA2-Personal and WPA2-Enterprise, since the other options that use WPA or WEP are obsolete and can be easily compromised with minimal computational effort. The most secure of the relevant options is WPA2-Enterprise, as the pairwise master key is regenerated for each session compared to WPA2-Personal.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> <sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup><br>
 The password <code>Passwort2025!</code> is also not very secure, as an attacker could use a wordlist and automatically generate variants of it. This could be cracked quickly by adding human-like variants, such as appending the current year and a random special character, and then repeating this for every entry in the wordlist. Bitwarden&rsquo;s password test tool estimates that this password would be cracked in 18 hours, as seen in Figure 7.</p>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/A2.1-AP1-wpa.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/A2.1-AP1-wpa.png"/> <figcaption>
             Figure 6: Setting up the Security settings for the Wi-Fi Network
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/pwthingtest.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/pwthingtest.png"/> <figcaption>
             Figure 7: Testing the password&#39;s strength
         </figcaption>
 </figure>
@@ -348,13 +296,13 @@ The password <code>Passwort2025!</code> is also not very secure, as an attacker 
 <h4 id="testing-connectivity-and-dhcp-addresses">Testing connectivity and DHCP addresses<a hidden class="anchor" aria-hidden="true" href="#testing-connectivity-and-dhcp-addresses">#</a></h4>
 <p>To verify the DHCP assignments and the connectivity, the IP of the attacker&rsquo;s laptop, which at the time was plugged in instead of using the wireless network, received the <code>.1</code> address assigned, as shown in Figure 8. This figure also displays two phones as wireless clients and their assigned IPs. Figure 9 shows one of the phones pinging the other phone, the laptop, and Google to verify the connectivity of a wireless device to a wired one, between two wireless devices, and from a wireless device to the internet. To ping with the phone, the <code>ping</code> command was used inside the Termux mobile app, which is available on the Google Play Store or on F-Droid for Android phones.</p>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/phoenedge.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/phoenedge.png"/> <figcaption>
             Figure 8: DHCP assigned addresses of the devices
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/conntest.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/conntest.png"/> <figcaption>
             Figure 9: Testing the connectivity
         </figcaption>
 </figure>
@@ -362,20 +310,20 @@ The password <code>Passwort2025!</code> is also not very secure, as an attacker 
 <h4 id="access-point-isolation">Access Point Isolation<a hidden class="anchor" aria-hidden="true" href="#access-point-isolation">#</a></h4>
 <p>Access Point isolation is a feature that prevents wireless clients from communicating with other wireless clients; they cannot see each other nor ping each other. This is used for shared Wi-Fi networks, such as those found in airports. Having this feature enabled can break functionality like screen mirroring and controlling local IoT devices. In Figure 10, the topology of a home network, where a Pixel 8a device is used as a phone and Steckdose is a smart power plug, both connected to the access point, which has isolation turned on. As can be seen in Figure 11, the phone cannot ping the power plug due to the isolation, but control of the power plug is still possible since TP-Link made the great decision to provide it with internet access in the app.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/steckdose_ip.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/steckdose_ip.png"/> <figcaption>
             Figure 10: Topology for AP isolation example
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/steckdose_ping.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/steckdose_ping.png"/> <figcaption>
             Figure 11: Trying to ping the Powerplug
         </figcaption>
 </figure>
 </p>
 <p>Isolation might sound like a feature that could prevent Wi-Fi hacking and sniffing handshakes, but as shown in Figure 12, even with isolation turned on, it does not stop an attacker from capturing all of the wireless traffic with a Wi-Fi adapter that supports monitoring mode, since the frames are transmitted through the air anyway and can therefore be stored.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/islolateuseless.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/islolateuseless.png"/> <figcaption>
             Figure 12: Isolation does not prevent sniffing
         </figcaption>
 </figure>
@@ -387,13 +335,13 @@ The password <code>Passwort2025!</code> is also not very secure, as an attacker 
 <p>One of the most popular Wi-Fi chipsets that supports Monitoring Mode is the Realtek rtw88 series, for which drivers are available for Linux in this repository. For this exercise, a USB Wi-Fi adapter with the RTL8821AU chipset was used. The needed drivers were downloaded and installed following the instructions in the README from <a href="https://github.com/lwfinger/rtw88">lwfinger/rtw88</a>.</p>
 <p>To activate Monitoring Mode, the command <code>iw dev &lt;interface&gt; set type monitor</code> is used, and <code>iw dev &lt;interface&gt; info</code> can be used to verify the configuration. This command can also be used to check if the device supports Monitoring Mode or not, as can be seen in Figure 13. Additionally, the program <code>wifite</code> can be used to check whether the device supports Monitoring Mode or not, as showcased in Figure 14. Wifite is a Python script that automates wireless auditing using aircrack-ng tools.<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></p>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/iwdev.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/iwdev.png"/> <figcaption>
             Figure 13: Activating Monitoring Mode via iw
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/wifite.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/wifite.png"/> <figcaption>
             Figure 14: Activating Monitoring Mode via wifite
         </figcaption>
 </figure>
@@ -402,7 +350,7 @@ The password <code>Passwort2025!</code> is also not very secure, as an attacker 
 <p>For the attack, the Aircrack-ng toolset is used to test the security of Wi-Fi networks. It supports monitoring, attacking, testing, cracking, and maintains patches for packet injection of Linux Wi-Fi drivers.<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></p>
 <p>To get started, its <code>airmon-ng</code> script is used to enable monitor mode on the Wi-Fi adapter. The command used is <code>airmon-ng start &lt;interface&gt;</code>. It also checks for conflicting processes, such as network managers, and offers options to kill them to avoid interrupting the attack. However, I found that simply ignoring this warning has no effect if it&rsquo;s not the only Wi-Fi adapter in the system, as shown in Figure 15.<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/airmon.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/airmon.png"/> <figcaption>
             Figure 15: Activating Monitoring Mode via airmon-ng
         </figcaption>
 </figure>
@@ -410,18 +358,18 @@ The password <code>Passwort2025!</code> is also not very secure, as an attacker 
 <p>To start the attack, the BSSID/MAC address of the access point, as well as the wireless channel, needs to be obtained. To do this, <code>airodump-ng</code> is used to capture raw 802.11 frames.</p>
 <p>To obtain all of that information, <code>airodump-ng &lt;interface&gt;</code> is used to get all the data from the detected active Wi-Fi networks and clients. Figure 16 shows the output, where the top half displays all of the detected access points while the bottom half shows the clients. It displays information such as MAC Address, signal strength, number of beacon and data frames, channel, encryption standard, cipher set, authentication method, and ESSID.<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/aridodump1.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/aridodump1.png"/> <figcaption>
             Figure 16: Gathering information via airodump-ng
         </figcaption>
 </figure>
 
 <p>With the information from Figure 16, we now know that the channel of the target Wi-Fi <code>3AHITN-GRP-12</code> is <code>11</code>, the MAC Address of the access point is <code>B4:75:0E:1A:7F:A5</code>, and that it uses WPA2-Personal with the CCMP cipher set. A new command can be used that specifies the correct channel and BSSID, and also writes the captured data to files using the <code>-w</code> option.</p>
 <p>The command used was:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo airodump-ng -c <span style="color:#ae81ff">11</span> --bssid B4:75:0E:1A:7F:A5 -w thing wlan1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo airodump-ng -c <span style="color:#ae81ff">11</span> --bssid B4:75:0E:1A:7F:A5 -w thing wlan1
 </span></span></code></pre></div><p>where the <code>-c</code> option sets the channel to use, the <code>--bssid</code> option specifies the BSSID of the desired access point, the <code>-w</code> option writes the capture to files starting with the name <code>thing</code>, and finally, the interface to use is specified, which in this case is <code>wlan1</code>.<sup id="fnref1:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></p>
 <p>Now, only the desired access point is captured, and all its clients can be seen in the bottom half of the screen, as shown in Figure 17.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/airodump2.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/airodump2.png"/> <figcaption>
             Figure 17: Capturing frames from the target AP
         </figcaption>
 </figure>
@@ -430,20 +378,20 @@ The password <code>Passwort2025!</code> is also not very secure, as an attacker 
 <p>To capture a 4-Way WPA2 handshake, there are two options: wait for a client to connect or send a deauthentication frame with the MAC Address of a client to disconnect it. This can easily be captured using packet sniffing, and if the client has automatic reconnect enabled, the handshake can be captured.<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup></p>
 <p>This is called a deauthentication attack, which is a type of denial-of-service attack, as it actively stops the connection of a client. This method can also be used on the entire network if a tool like <code>aireplay-ng</code> is used to send the frame with the MAC Address of all the clients, allowing the attacker to take down the entire Wi-Fi network. This is useful for either an Evil Twin attack or, as in our case, a password attack to capture the handshake for decryption.<sup id="fnref1:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup> <sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup></p>
 <p>To deauthenticate one of the clients, the following command was used:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo aireplay-ng -0 <span style="color:#ae81ff">1</span> -a B4:75:0E:1A:7F:A5 -c 6A:F7:AD:2F:C6:32 wlan1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo aireplay-ng -0 <span style="color:#ae81ff">1</span> -a B4:75:0E:1A:7F:A5 -c 6A:F7:AD:2F:C6:32 wlan1
 </span></span></code></pre></div><p>This uses <code>aireplay-ng</code> to generate traffic for later use with <code>aircrack-ng</code>. One of its uses is to send deauthentication frames. The first option of the above command is <code>-0</code> with <code>1</code> as the value. Here, <code>-0</code> means deauthentication, and the number sets the number of deauthentication frames to send. If that value is <code>0</code>, deauthentication frames are sent until the program is exited. In this case, only one is sent to hopefully prompt the client to reconnect. Multiple frames are only necessary if the goal is to keep the connection down for an Evil Twin attack or just a denial-of-service attack in general. The <code>-a</code> option is used to specify the MAC Address of the access point to which the deauthentication frame will be sent, while <code>-c</code> is the client whose MAC address will be spoofed in the packet to disconnect them. If the <code>-c</code> option is not set, <code>aireplay-ng</code> will try to disconnect all clients by sending the deauthentication frames to the broadcast, which is a more effective denial-of-service method. However, as my goal is only to get one handshake, I chose a specific client. Disconnecting multiple devices is not wise if the goal is only to capture one handshake, as it could raise suspicion that someone is trying to perform a DoS attack on the Wi-Fi network. The output of the command can be examined in Figure 18.[^deauth]</p>
 <p>To filter for deauthentication frames in Wireshark, the following filter can be used:<br>
 <code>(wlan.fc.type eq 0) &amp;&amp; (wlan.fc.type_subtype eq 12)</code><br>
 The part in the first parentheses filters only for Management frames, and the second one checks if the Frame Type/Subtype is equal to 12, which is the code for a deauthentication frame.<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup></p>
 <p>Looking at the frame itself, as shown in Figure 19, nothing special or complicated is going on; it is just the frame that <code>aireplay-ng</code> created, and it contains the receiver, destination, transmitter, source address, and BSSID.</p>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/deauth.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/deauth.png"/> <figcaption>
             Figure 18: Sending a deauthentication frame
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/deauth%20frame.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/deauth%20frame.png"/> <figcaption>
             Figure 19: Viewing a deauthentication frame in Wireshark
         </figcaption>
 </figure>
@@ -451,7 +399,7 @@ The part in the first parentheses filters only for Management frames, and the se
 <p>Now that the client has been disconnected, if we look back at the running capture from before, we can see that once a handshake has occurred, it is printed out in the first line for which BSSID it was captured, as well as in the Notes section of the client, which gets populated with the EAPOL value. EAPOL stands for Extensible Authentication Protocol over LANs (IEEE P802.1X-REV) and is the protocol over which the WPA2 handshake is carried out, as stated on page 7 in the Definitions section of the 802.11i (WPA2) standard.<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></p>
 <p>This can be examined in Figure 20.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/thing.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/thing.png"/> <figcaption>
             Figure 20: Visual confirmation of the captured handshake
         </figcaption>
 </figure>
@@ -465,7 +413,7 @@ This filter only displays frames with EAPOL, which are responsible for authentic
 <h4 id="eapol-frame-fields">EAPOL Frame Fields<a hidden class="anchor" aria-hidden="true" href="#eapol-frame-fields">#</a></h4>
 <p>As stated in section 4.2.3, EAPOL is used to carry authentication data between the supplicant and the authenticator, resulting in the exchange of cryptographic keys and synchronization of the security association state. To understand a breakdown of the 4 frames of the handshake, the relevant fields of an EAPOL frame will be explained.<sup id="fnref1:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/eapolframe.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/eapolframe.png"/> <figcaption>
             Figure 21: Layout of an EAPOL frame
         </figcaption>
 </figure>
@@ -484,7 +432,7 @@ This filter only displays frames with EAPOL, which are responsible for authentic
 <h4 id="4-way-handshake-message-1">4-Way Handshake Message 1<a hidden class="anchor" aria-hidden="true" href="#4-way-handshake-message-1">#</a></h4>
 <p>The authenticator sends an ANonce to the client, which is a pseudo-random number generated by it. This ANonce will be used by the supplicant to generate its SNonce. This can be seen in Figure 22 below, where the replay counter has also been incremented due to the R flag being set in the Wi-Fi header, since the first packet was dropped and is being replayed.<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup> <sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup></p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/hadnshake1.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/hadnshake1.png"/> <figcaption>
             Figure 22: First frame of the 4-Way Handshake
         </figcaption>
 </figure>
@@ -492,7 +440,7 @@ This filter only displays frames with EAPOL, which are responsible for authentic
 <h4 id="4-way-handshake-message-2">4-Way Handshake Message 2<a hidden class="anchor" aria-hidden="true" href="#4-way-handshake-message-2">#</a></h4>
 <p>The supplicant sends its SNonce with a MIC (which also changes the Key Information Field and sets the Key MIC flag to 1) to the authenticator. After the AP receives this, the PTK (Pairwise Transient Key) is verified. If the MIC is not valid, the MLME-DEAUTHENTICATE.request primitive is used to terminate the association.<sup id="fnref1:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup> <sup id="fnref1:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup></p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/handskahe2.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/handskahe2.png"/> <figcaption>
             Figure 23: Second frame of the 4-Way Handshake
         </figcaption>
 </figure>
@@ -500,7 +448,7 @@ This filter only displays frames with EAPOL, which are responsible for authentic
 <h4 id="4-way-handshake-message-3">4-Way Handshake Message 3<a hidden class="anchor" aria-hidden="true" href="#4-way-handshake-message-3">#</a></h4>
 <p>The authenticator checks the MIC, and if it is valid, it generates the GTK (Group Transient Key), which gets encapsulated in the Key Data field. The replay counter is incremented, and the install flag in the Key Information field is set to 1, along with the Key ACK and Key MIC fields. Upon receiving this, the supplicant verifies the MIC and ANonce, and if successful, constructs Message 4.<sup id="fnref2:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup></p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/handshake3.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/handshake3.png"/> <figcaption>
             Figure 24: Third frame of the 4-Way Handshake
         </figcaption>
 </figure>
@@ -508,7 +456,7 @@ This filter only displays frames with EAPOL, which are responsible for authentic
 <h4 id="4-way-handshake-message-4">4-Way Handshake Message 4<a hidden class="anchor" aria-hidden="true" href="#4-way-handshake-message-4">#</a></h4>
 <p>The supplicant sends a frame with the Key ACK field set to 0 and only a MIC as a final OK, indicating that everything needed for the communication is installed.<sup id="fnref2:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup></p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/handshake4.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/handshake4.png"/> <figcaption>
             Figure 25: Fourth frame of the 4-Way Handshake
         </figcaption>
 </figure>
@@ -516,10 +464,10 @@ This filter only displays frames with EAPOL, which are responsible for authentic
 <hr>
 <h3 id="cracking-the-password">Cracking the Password<a hidden class="anchor" aria-hidden="true" href="#cracking-the-password">#</a></h3>
 <p>To finally crack the password, the following aircrack-ng command was used:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aircrack-ng -w pwlist -b B4:75:0E:1A:7F:A5 thing*.cap
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aircrack-ng -w pwlist -b B4:75:0E:1A:7F:A5 thing*.cap
 </span></span></code></pre></div><p>This command uses the <code>-w</code> option to set a wordlist, which is the top 100k used password list, to which I append the correct password, as seen in Figure 26. The <code>-b</code> option sets the BSSID to use, and lastly, <code>thing*.cap</code> tells aircrack-ng to use all <code>.cap</code> files starting with <code>thing</code> as the name. Once the command is run and the password is found, it will be displayed, which can also be seen in Figure 26.<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup></p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/pwlist.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/pwlist.png"/> <figcaption>
             Figure 26: Showing the cracked password
         </figcaption>
 </figure>
@@ -528,20 +476,20 @@ This filter only displays frames with EAPOL, which are responsible for authentic
 <p>Now I wanted to do something extra to test my home Wi-Fi to see if it holds up.</p>
 <p>To do this, I reran the same commands as in the sections above.</p>
 <p>After obtaining the hash, I used:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hcxpcapngtool -o home.22000 -E WLAN-homeF2 pcap/mehrstuff.pcapng
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hcxpcapngtool -o home.22000 -E WLAN-homeF2 pcap/mehrstuff.pcapng
 </span></span></code></pre></div><p>to convert the Wireshark capture from the background to a <code>.22000</code> file so I could use hashcat on my PC to crack my password without simply adding the password to the list and see how long it takes. This command uses hcxtools to extract the hashed password for a given SSID from a capture file so it can be used for hashcat. To do this, the <code>-o</code> option was used to set the output file, as well as the <code>-E</code> option to set the SSID, and lastly, the location of the input file to use.</p>
 <p>On my Windows PC, I used the following hashcat command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hashcat -m <span style="color:#ae81ff">22000</span> home.22000 -a <span style="color:#ae81ff">3</span> -w <span style="color:#ae81ff">3</span> ?u?u?u?u?u?u?u?u?u?u?u?u?u?u?u?u?u
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hashcat -m <span style="color:#ae81ff">22000</span> home.22000 -a <span style="color:#ae81ff">3</span> -w <span style="color:#ae81ff">3</span> ?u?u?u?u?u?u?u?u?u?u?u?u?u?u?u?u?u
 </span></span></code></pre></div><p>This command uses the <code>-m</code> option to determine the type of hash, which in this case is a WPA-PBKDF2-PMKID+EAPOL hash. The <code>-a 3</code> option sets the attack mode to 3, which is a brute force mask attack, and <code>-w 3</code> sets the workload profile to be aggressive and use as many system resources as possible. Lastly, the <code>?u</code> is a placeholder for uppercase alphanumeric characters (A-Z), since my password is not in a wordlist and only consists of 17 alphanumeric uppercase characters.<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup> <sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup></p>
 <p>However, as seen in Figures 27 and 28, the length of the password caused hashcat to overflow on my system, and the Bitwarden password strength calculator indicates it would take centuries to crack. Therefore, I see this as a success for my security.</p>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/hashcat.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/hashcat.png"/> <figcaption>
             Figure 27: Output of the hashcat command
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex11/images/wlanpwtest.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/wlanpwtest.png"/> <figcaption>
             Figure 28: Time estimation for password cracking
         </figcaption>
 </figure>
@@ -586,7 +534,7 @@ This filter only displays frames with EAPOL, which are responsible for authentic
 <p>Lastly, due to the increased complexity of the Dragonfly handshake, simply flooding the access point with commit frames can lead to high CPU usage and potentially slow the access point down.<sup id="fnref3:23"><a href="#fn:23" class="footnote-ref" role="doc-noteref">23</a></sup></p>
 <hr>
 <h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
-<p><em>For a full bibliography, see the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex11/zotero.bib">original BibTeX file</a>.</em></p>
+<p><em>For a full bibliography, see the <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex11/zotero.bib">original BibTeX file</a>.</em></p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -667,18 +615,18 @@ This filter only displays frames with EAPOL, which are responsible for authentic
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:39857/tags/networking/">Networking</a></li>
-      <li><a href="http://localhost:39857/tags/it-sec/">It-Sec</a></li>
-      <li><a href="http://localhost:39857/tags/school/">School</a></li>
-      <li><a href="http://localhost:39857/tags/red-team/">Red Team</a></li>
-      <li><a href="http://localhost:39857/tags/blue-team/">Blue-Team</a></li>
+      <li><a href="http://localhost:1313/tags/networking/">Networking</a></li>
+      <li><a href="http://localhost:1313/tags/it-sec/">It-Sec</a></li>
+      <li><a href="http://localhost:1313/tags/school/">School</a></li>
+      <li><a href="http://localhost:1313/tags/red-team/">Red-Team</a></li>
+      <li><a href="http://localhost:1313/tags/blue-team/">Blue-Team</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:39857/">silly blog</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/">veya&#39;s silly little website</a></span> · 
 
     <span>
         Powered by

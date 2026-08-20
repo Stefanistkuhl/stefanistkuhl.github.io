@@ -1,11 +1,12 @@
 +++
 date = '2024-10-18T00:00:00+02:00'
 title = 'Cryptography'
-categories = ["school", "it sec"]
-tags = ["cryptography", "it sec", "school", "encryption", "openssl", "aes", "rsa"]
+description = 'A practical introduction to symmetric and asymmetric encryption, hashing, integrity checks, and OpenSSL.'
+categories = ["school", "it-sec"]
+tags = ["cryptography", "it-sec", "school", "encryption", "openssl", "aes", "rsa"]
 +++
 
-> Note: this was converted from PDF to Markdown using pdftotext and manual formatting. The original PDF can be found [here](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex3/Raichle_Fürst_Kryptographie.pdf) along with the [bibliography](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex3/quellen.bib).
+> This is an HTL Donaustadt laboratory report converted from the original document. The [original PDF](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex3/Raichle_Fürst_Kryptographie.pdf) and [bibliography](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex3/quellen.bib) are available on GitHub.
 
 ---
 
@@ -13,10 +14,10 @@ tags = ["cryptography", "it sec", "school", "encryption", "openssl", "aes", "rsa
 
 **Laboratory Protocol**  
 Exercise 3: Cryptography  
-{{< figure src="/itsi/y3/ex3/images/mika.jpeg" title="Figure: Wunderbares Gruppenbild" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex3/images/mika.jpeg" title="Original report cover image" >}}
 **Subject:** ITSI|ZIVK  
 **Class:** 3AHITN  
-**Name:** Stefan Fürst, Marcel Raichle  
+**Name:** Veya Fürst, Marcel Raichle  
 **Group Name/Number:** Dumm und Dümmer/7  
 **Supervisor:** ZIVK  
 **Exercise dates:** 4.10.2024, 11.10.2024, 18.10.2024  
@@ -91,11 +92,11 @@ For this, openssl is used, a cryptographic toolkit [^1].
 
 To encrypt the file with AES256 in this case, aes256 is used as an argument and the -in/-out flags specify the input/output file. After entering the command, a password must be entered.
 
-{{< figure src="/itsi/y3/ex3/images/aes-encrypt.png" title="Figure: AES encryption" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex3/images/aes-encrypt.png" title="Figure: AES encryption" >}}
 
 For decryption, the -d flag is used, which stands for decrypt. This and swapping input and output are needed to decrypt the file. When the command is executed, the password is requested.
 
-{{< figure src="/itsi/y3/ex3/images/aes-decrypt.png" title="Figure: AES decryption" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex3/images/aes-decrypt.png" title="Figure: AES decryption" >}}
 
 ```bash
 # encrypt
@@ -136,19 +137,19 @@ openssl rsautl -encrypt \
 sha256sum <filename>
 ```
 
-{{< figure src="/itsi/y3/ex3/images/hashes.png" title="Figure: Hashes" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex3/images/hashes.png" title="Figure: Hashes" >}}
 
 ---
 
 ## References
 
-*For a full bibliography, see the [original BibTeX file](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex3/quellen.bib).*
+*For a full bibliography, see the [original BibTeX file](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex3/quellen.bib).*
 
 [^1]: cheat.sh/openssl, October 2024. [link](https://cheat.sh/openssl)
 
 ## List of Figures
 
-1. Wunderbares Gruppenbild
+1. Original report cover image
 2. AES encryption
 3. AES decryption
 4. Hashes

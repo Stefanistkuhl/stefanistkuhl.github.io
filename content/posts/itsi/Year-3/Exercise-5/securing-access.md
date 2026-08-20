@@ -1,11 +1,12 @@
 +++
 date = '2024-12-01T00:00:00+01:00'
-title = 'GNU/Linux - Securing access'
-categories = ["school", "it sec"]
-tags = ["linux", "it sec", "school", "ssh", "sudo", "security", "pam", "otp"]
+title = 'GNU/Linux - Securing Access'
+description = 'Linux access control using sudo policies, password policy, SSH hardening, PAM, and one-time passwords.'
+categories = ["school", "it-sec"]
+tags = ["linux", "it-sec", "school", "ssh", "sudo", "security", "pam", "otp"]
 +++
 
-> Note: this was converted from PDF to Markdown using pdftotext and manual formatting. The original PDF can be found [here](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex5/Securing%20access.pdf) along with the [bibliography](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex5/quellen.bib).
+> This is an HTL Donaustadt laboratory report converted from the original document. The [original PDF](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex5/Securing%20access.pdf) and [bibliography](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex5/quellen.bib) are available on GitHub.
 
 ---
 
@@ -13,10 +14,10 @@ tags = ["linux", "it sec", "school", "ssh", "sudo", "security", "pam", "otp"]
 
 **Laboratory Protocol**  
 GNU/Linux - Securing access  
-{{< figure src="/itsi/y3/ex5/images/mika.jpeg" title="Figure: Grouplogo" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/mika.jpeg" title="Original report cover image" >}}
 **Subject:** ITSI|ZIVK  
 **Class:** 3AHITN  
-**Name:** Stefan Fürst, Marcel Raichle  
+**Name:** Veya Fürst, Marcel Raichle  
 **Group Name/Number:** Dumm und Dümmer/7  
 **Supervisor:** ZIVK  
 **Exercise dates:** 22.11.2024, 26.11.2024, 29.11.2024  
@@ -65,7 +66,7 @@ To complete this task, the docker image from the last exercise was extended to i
 
 The sudo command or **S**uper**U**ser **DO** temporarily elevates privileges and runs the set command as root, which can be seen by running the `sudo id` command [^1].
 
-{{< figure src="/itsi/y3/ex5/images/sudoid.png" title="Figure: sudo id" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/sudoid.png" title="Figure: sudo id" >}}
 
 As seen in the figure, when the `id` command is used with `sudo`, the id displayed is 0, which is the user id of the root user, and without sudo it displays the normal user id of the user who executed the command.
 
@@ -91,9 +92,9 @@ I chose nano over vim for editing the ssh config file, as running vim as sudo ef
 
 The following screenshots show the following privileges in action, but ram-chris and ram-fus are excluded as ram-chris has no sudo privileges and ram-fus can run any command elevated.
 
-{{< figure src="/itsi/y3/ex5/images/ram-ram-sudo.png" title="Figure: sudo permissions of ram-ram" >}}
-{{< figure src="/itsi/y3/ex5/images/sudo-berta.png" title="Figure: sudo permissions of ram-berta" >}}
-{{< figure src="/itsi/y3/ex5/images/sudo id.png" title="Figure: sudo id command showing user permissions" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/ram-ram-sudo.png" title="Figure: sudo permissions of ram-ram" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/sudo-berta.png" title="Figure: sudo permissions of ram-berta" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/sudo id.png" title="Figure: sudo id command showing user permissions" >}}
 
 ### Password policies
 
@@ -116,7 +117,7 @@ RUN sed -i '/ocredit=-1/ a password\trequisite\t\t\tpam_pwhistory.so remember=5 
             /etc/pam.d/common-password
 ```
 
-{{< figure src="/itsi/y3/ex5/images/passwdpolcie.png" title="Figure: Testing the password policies" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/passwdpolcie.png" title="Figure: Testing the password policies" >}}
 
 #### sed Basics
 
@@ -162,11 +163,11 @@ RUN sed -i 's/#Port 22/Port 38452/' /etc/ssh/sshd_config
 
 The `netstat -tulnp` command shows the processes and ports that are listening for both TCP and UDP.
 
-{{< figure src="/itsi/y3/ex5/images/netstathost.png" title="Figure: netstat -tulnp on the host" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/netstathost.png" title="Figure: netstat -tulnp on the host" >}}
 
 When I run this command on the host, it only shows the docker process instead of ssh directly, because ssh is running inside the container. There are also other containers and processes listening as I use this VPS to host SearXng as well.
 
-{{< figure src="/itsi/y3/ex5/images/netstatcontainer.png" title="Figure: netstat -tulnp on the container" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/netstatcontainer.png" title="Figure: netstat -tulnp on the container" >}}
 
 Running the same command on the container now shows that the sshd process is listening on the desired port. The `d` at the end of ssh stands for daemon and means that this is a service that the d indicates [^7].
 
@@ -176,7 +177,7 @@ To add OTP authentication the `libpam-google-authenticator` package is required.
 
 Once the package is installed, all you need to do is run the `google-authenticator` command, scan the QR code with the 2FA app of your choice and reply to each prompt with `y` [^8].
 
-{{< figure src="/itsi/y3/ex5/images/otpauth.png" title="Figure: setting up OTP" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/otpauth.png" title="Figure: setting up OTP" >}}
 
 To enable ssh to use OTP authentication these two lines need to be added at the top of the `/etc/pam.d/sshd` file.
 
@@ -202,15 +203,15 @@ Login is now only possible with keypair, password and OTP.
 
 Here are screenshots of logging in as a user and trying to log in as a user who has neither a key pair nor an OTP set up.
 
-{{< figure src="/itsi/y3/ex5/images/ram-fuslogin.png" title="Figure: logging in as ram-fus" >}}
-{{< figure src="/itsi/y3/ex5/images/ram-ramlogin.png" title="Figure: logging in as ram-ram" >}}
-{{< figure src="/itsi/y3/ex5/images/failedlogin.png" title="Figure: trying to login as ram-alois" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/ram-fuslogin.png" title="Figure: logging in as ram-fus" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/ram-ramlogin.png" title="Figure: logging in as ram-ram" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/failedlogin.png" title="Figure: trying to login as ram-alois" >}}
 
 ---
 
 ## References
 
-*For a full bibliography, see the [original BibTeX file](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex5/quellen.bib).*
+*For a full bibliography, see the [original BibTeX file](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex5/quellen.bib).*
 
 [^1]: S. Zivanov, "Linux Sudo Command {How to Use It +Examples}," Knowledge Base by phoenixNAP, Jun. 2024. [link](https://phoenixnap.com/kb/linux-sudo)
 [^2]: sk, "How To Set Password Policies In Linux - OSTechNix," OSTechNix, Jun. 2022. [link](https://ostechnix.com/how-to-set-password-policies-in-linux)
@@ -223,7 +224,7 @@ Here are screenshots of logging in as a user and trying to log in as a user who 
 
 ## List of Figures
 
-1. Grouplogo
+1. Original report cover image
 2. sudo id
 3. sudo permissions of ram-ram
 4. sudo permissions of ram-alois

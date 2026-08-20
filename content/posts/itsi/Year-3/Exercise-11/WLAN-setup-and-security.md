@@ -1,11 +1,12 @@
 +++
 date = '2025-06-10T07:10:35+02:00'
 title = 'WLAN Setup and Security'
-categories = ["school", "it sec","networking"]
-tags = ["networking","it sec","school", "red team","blue team"]
+description = 'Wireless network configuration and security analysis covering DHCP, client isolation, WPA handshakes, and Wireshark.'
+categories = ["school", "it-sec", "networking"]
+tags = ["networking", "it-sec", "school", "red-team", "blue-team"]
 +++
 
-> Note: this was converted using from LaTeX to Markdown using ChatGPT and Gemini. The original PDF and bibliography can be found [here](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex11/WLAN-setup-and-security.pdf) and [here](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex11/zotero.bib).
+> This is an HTL Donaustadt laboratory report converted from the original document. The [original PDF](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex11/WLAN-setup-and-security.pdf) and [bibliography](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex11/zotero.bib) are available on GitHub.
 
 ---
 
@@ -15,11 +16,10 @@ tags = ["networking","it sec","school", "red team","blue team"]
 
 **Laboratory protocol**  
 Exercise 11: WLAN setup and security  
-{{< figure src="/itsi/y3/ex11/images/miniheraDogDoorbell.png" title="Figure: Grouplogo" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/miniheraDogDoorbell.png" title="Original report cover image" >}}
 **Subject:** ITSI/NWT  
 **Class:** 3AHITN  
-**Name:** Stefan Fürst, Justin Tremurici  
-**Group Name/Number:** GROUPNAME/12  
+**Name:** Veya Fürst, Justin Tremurici  
 **Supervisor:** ANGE, ZIVK  
 **Exercise dates:** 16.05.2025 | 06.06.2025  
 **Submission date:** 10.06.2025
@@ -75,7 +75,7 @@ The captured 4-Way Handshake was then analyzed in `Wireshark` (or `Termshark`) u
 
 ## Complete network topology of the exercise
 
-{{< figure src="/itsi/y3/ex11/images/topo.png" title="Figure 1: Complete network topology" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/topo.png" title="Figure 1: Complete network topology" >}}
 
 ---
 
@@ -110,7 +110,7 @@ ip nat inside
 
 This configuration can be verified by running the command `ip address dhcp` to obtain an IP address from the school's DHCP server for our router, which can then be viewed using `show ip int br`. From the DHCP server, we also received a gateway and static routes to reach the internet, which are displayed using `show ip route`. Lastly, Google is pinged to demonstrate connectivity. All of these steps can be examined in Figure 2.
 
-{{< figure src="/itsi/y3/ex11/images/nat.png" title="Figure 2: Verifying the NAT configuration" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/nat.png" title="Figure 2: Verifying the NAT configuration" >}}
 
 Next, DHCP needs to be configured on the router so that clients can obtain IP addresses. To do this, first, a DHCP pool has to be created using the `ip dhcp pool` command along with a desired name for the pool in global configuration mode.  
 Then, the network from which to hand out IP addresses is specified using the `network` command along with the network address and the subnet mask.  
@@ -140,37 +140,37 @@ Once it has been reset, it is plugged into the switch, which does not need to be
 To access the access point's configuration, a computer is connected to the same switch, and its IP address is changed to the `192.168.1.0/24` subnet. Then, at `192.168.1.252`, its configuration can be accessed as stated in the manual on pages 7 and 8.[^lapac1200]  
 To set the correct IP address of the access point, the configuration tab is opened, and under `LAN → Network Setup`, the IP is set to static and configured to the correct address according to the topology, as can be seen in Figure 3.
 
-{{< figure src="/itsi/y3/ex11/images/A2.1-AP1-ip.png" title="Figure 3: Changing the network settings of the access point" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/A2.1-AP1-ip.PNG" title="Figure 3: Changing the network settings of the access point" >}}
 
 The Wi-Fi network to set up is configured in the `Wireless → Basic Settings` tab for `Radio 1`, which means configuring the 2.4 GHz radio. Below, under `SSID`, the desired SSID is set, and importantly, the isolation checkbox is unchecked so that wireless devices are not isolated and can ping each other. In section 4.1.4, isolation will be discussed further, but for now, it remains off. Lastly, the channel is set to auto, which can be seen with the other configurations in Figure 4. On the day of the lab, the two rooms were filled with access points, and the entire 2.4 GHz spectrum was congested, leaving no free channel to select. This can be observed in Figure 5, where NetSpot was used to analyze the usage of the channels.
 
-{{< figure src="/itsi/y3/ex11/images/A2.1-AP1.png" title="Figure 4: Setting up the Wi-Fi Network" >}}
-{{< figure src="/itsi/y3/ex11/images/wifichan.png" title="Figure 5: Viewing the usage of the channels in the 2.4 GHz spectrum" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/A2.1-AP1.PNG" title="Figure 4: Setting up the Wi-Fi Network" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/wifichan.png" title="Figure 5: Viewing the usage of the channels in the 2.4 GHz spectrum" >}}
 
 Now, under the `Wireless → Security` tab, the SSID is selected for configuration, which in our case is the previously created SSID. The Password/Pre-Shared Key to use is `Passwort2025!`, as specified in the task definition, and WPA2 is selected as the encryption algorithm, which can be seen in Figure 6.  
 As stated in the access point's manual on pages 32 to 43, it offers WEP, WPA2-Personal, WPA/WPA2-Personal, WPA2-Enterprise, WPA/WPA2-Enterprise, and RADIUS. The only two relevant options are WPA2-Personal and WPA2-Enterprise, since the other options that use WPA or WEP are obsolete and can be easily compromised with minimal computational effort. The most secure of the relevant options is WPA2-Enterprise, as the pairwise master key is regenerated for each session compared to WPA2-Personal.[^wpa2] [^lapac1200]  
 The password `Passwort2025!` is also not very secure, as an attacker could use a wordlist and automatically generate variants of it. This could be cracked quickly by adding human-like variants, such as appending the current year and a random special character, and then repeating this for every entry in the wordlist. Bitwarden's password test tool estimates that this password would be cracked in 18 hours, as seen in Figure 7.
 
-{{< figure src="/itsi/y3/ex11/images/A2.1-AP1-wpa.png" title="Figure 6: Setting up the Security settings for the Wi-Fi Network" >}}
-{{< figure src="/itsi/y3/ex11/images/pwthingtest.png" title="Figure 7: Testing the password's strength" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/A2.1-AP1-wpa.png" title="Figure 6: Setting up the Security settings for the Wi-Fi Network" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/pwthingtest.png" title="Figure 7: Testing the password's strength" >}}
 
 #### Testing connectivity and DHCP addresses
 
 To verify the DHCP assignments and the connectivity, the IP of the attacker's laptop, which at the time was plugged in instead of using the wireless network, received the `.1` address assigned, as shown in Figure 8. This figure also displays two phones as wireless clients and their assigned IPs. Figure 9 shows one of the phones pinging the other phone, the laptop, and Google to verify the connectivity of a wireless device to a wired one, between two wireless devices, and from a wireless device to the internet. To ping with the phone, the `ping` command was used inside the Termux mobile app, which is available on the Google Play Store or on F-Droid for Android phones.
 
-{{< figure src="/itsi/y3/ex11/images/phoenedge.png" title="Figure 8: DHCP assigned addresses of the devices" >}}
-{{< figure src="/itsi/y3/ex11/images/conntest.png" title="Figure 9: Testing the connectivity" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/phoenedge.png" title="Figure 8: DHCP assigned addresses of the devices" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/conntest.png" title="Figure 9: Testing the connectivity" >}}
 
 #### Access Point Isolation
 
 Access Point isolation is a feature that prevents wireless clients from communicating with other wireless clients; they cannot see each other nor ping each other. This is used for shared Wi-Fi networks, such as those found in airports. Having this feature enabled can break functionality like screen mirroring and controlling local IoT devices. In Figure 10, the topology of a home network, where a Pixel 8a device is used as a phone and Steckdose is a smart power plug, both connected to the access point, which has isolation turned on. As can be seen in Figure 11, the phone cannot ping the power plug due to the isolation, but control of the power plug is still possible since TP-Link made the great decision to provide it with internet access in the app.[^what-ap-isolation]
 
-{{< figure src="/itsi/y3/ex11/images/steckdose_ip.png" title="Figure 10: Topology for AP isolation example" >}}
-{{< figure src="/itsi/y3/ex11/images/steckdose_ping.png" title="Figure 11: Trying to ping the Powerplug" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/steckdose_ip.png" title="Figure 10: Topology for AP isolation example" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/steckdose_ping.png" title="Figure 11: Trying to ping the Powerplug" >}}
 
 Isolation might sound like a feature that could prevent Wi-Fi hacking and sniffing handshakes, but as shown in Figure 12, even with isolation turned on, it does not stop an attacker from capturing all of the wireless traffic with a Wi-Fi adapter that supports monitoring mode, since the frames are transmitted through the air anyway and can therefore be stored.
 
-{{< figure src="/itsi/y3/ex11/images/islolateuseless.png" title="Figure 12: Isolation does not prevent sniffing" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/islolateuseless.png" title="Figure 12: Isolation does not prevent sniffing" >}}
 
 ---
 
@@ -184,8 +184,8 @@ One of the most popular Wi-Fi chipsets that supports Monitoring Mode is the Real
 
 To activate Monitoring Mode, the command `iw dev <interface> set type monitor` is used, and `iw dev <interface> info` can be used to verify the configuration. This command can also be used to check if the device supports Monitoring Mode or not, as can be seen in Figure 13. Additionally, the program `wifite` can be used to check whether the device supports Monitoring Mode or not, as showcased in Figure 14. Wifite is a Python script that automates wireless auditing using aircrack-ng tools.[^wifite]
 
-{{< figure src="/itsi/y3/ex11/images/iwdev.png" title="Figure 13: Activating Monitoring Mode via iw" >}}
-{{< figure src="/itsi/y3/ex11/images/wifite.png" title="Figure 14: Activating Monitoring Mode via wifite" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/iwdev.png" title="Figure 13: Activating Monitoring Mode via iw" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/wifite.png" title="Figure 14: Activating Monitoring Mode via wifite" >}}
 
 #### Starting the attack
 
@@ -193,13 +193,13 @@ For the attack, the Aircrack-ng toolset is used to test the security of Wi-Fi ne
 
 To get started, its `airmon-ng` script is used to enable monitor mode on the Wi-Fi adapter. The command used is `airmon-ng start <interface>`. It also checks for conflicting processes, such as network managers, and offers options to kill them to avoid interrupting the attack. However, I found that simply ignoring this warning has no effect if it's not the only Wi-Fi adapter in the system, as shown in Figure 15.[^airmon-ng]
 
-{{< figure src="/itsi/y3/ex11/images/airmon.png" title="Figure 15: Activating Monitoring Mode via airmon-ng" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/airmon.png" title="Figure 15: Activating Monitoring Mode via airmon-ng" >}}
 
 To start the attack, the BSSID/MAC address of the access point, as well as the wireless channel, needs to be obtained. To do this, `airodump-ng` is used to capture raw 802.11 frames.
 
 To obtain all of that information, `airodump-ng <interface>` is used to get all the data from the detected active Wi-Fi networks and clients. Figure 16 shows the output, where the top half displays all of the detected access points while the bottom half shows the clients. It displays information such as MAC Address, signal strength, number of beacon and data frames, channel, encryption standard, cipher set, authentication method, and ESSID.[^airodumpng]
 
-{{< figure src="/itsi/y3/ex11/images/aridodump1.png" title="Figure 16: Gathering information via airodump-ng" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/aridodump1.png" title="Figure 16: Gathering information via airodump-ng" >}}
 
 With the information from Figure 16, we now know that the channel of the target Wi-Fi `3AHITN-GRP-12` is `11`, the MAC Address of the access point is `B4:75:0E:1A:7F:A5`, and that it uses WPA2-Personal with the CCMP cipher set. A new command can be used that specifies the correct channel and BSSID, and also writes the captured data to files using the `-w` option.
 
@@ -213,7 +213,7 @@ where the `-c` option sets the channel to use, the `--bssid` option specifies th
 
 Now, only the desired access point is captured, and all its clients can be seen in the bottom half of the screen, as shown in Figure 17.
 
-{{< figure src="/itsi/y3/ex11/images/airodump2.png" title="Figure 17: Capturing frames from the target AP" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/airodump2.png" title="Figure 17: Capturing frames from the target AP" >}}
 
 #### Sending Deauthentication Frames
 
@@ -235,14 +235,14 @@ The part in the first parentheses filters only for Management frames, and the se
 
 Looking at the frame itself, as shown in Figure 19, nothing special or complicated is going on; it is just the frame that `aireplay-ng` created, and it contains the receiver, destination, transmitter, source address, and BSSID.
 
-{{< figure src="/itsi/y3/ex11/images/deauth.png" title="Figure 18: Sending a deauthentication frame" >}}
-{{< figure src="/itsi/y3/ex11/images/deauth frame.png" title="Figure 19: Viewing a deauthentication frame in Wireshark" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/deauth.png" title="Figure 18: Sending a deauthentication frame" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/deauth frame.png" title="Figure 19: Viewing a deauthentication frame in Wireshark" >}}
 
 Now that the client has been disconnected, if we look back at the running capture from before, we can see that once a handshake has occurred, it is printed out in the first line for which BSSID it was captured, as well as in the Notes section of the client, which gets populated with the EAPOL value. EAPOL stands for Extensible Authentication Protocol over LANs (IEEE P802.1X-REV) and is the protocol over which the WPA2 handshake is carried out, as stated on page 7 in the Definitions section of the 802.11i (WPA2) standard.[^ieee2021]
 
 This can be examined in Figure 20.
 
-{{< figure src="/itsi/y3/ex11/images/thing.png" title="Figure 20: Visual confirmation of the captured handshake" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/thing.png" title="Figure 20: Visual confirmation of the captured handshake" >}}
 
 ---
 
@@ -258,7 +258,7 @@ This filter only displays frames with EAPOL, which are responsible for authentic
 
 As stated in section 4.2.3, EAPOL is used to carry authentication data between the supplicant and the authenticator, resulting in the exchange of cryptographic keys and synchronization of the security association state. To understand a breakdown of the 4 frames of the handshake, the relevant fields of an EAPOL frame will be explained.[^ieee2021]
 
-{{< figure src="/itsi/y3/ex11/images/eapolframe.png" title="Figure 21: Layout of an EAPOL frame" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/eapolframe.png" title="Figure 21: Layout of an EAPOL frame" >}}
 
 - **Descriptor Type**: This field stores the type of the key, which contains the used cipher suite; for example, it could be AES.[^ieee2021]
 - **Key Information**: The 2 octets of this field specify characteristics of the key, which could include Error, Key MIC, Key ACK, etc. The full chart for this can be found in Figure 43—Key Information bit layout on page 78 of the specification.[^ieee2021]
@@ -274,25 +274,25 @@ As stated in section 4.2.3, EAPOL is used to carry authentication data between t
 
 The authenticator sends an ANonce to the client, which is a pseudo-random number generated by it. This ANonce will be used by the supplicant to generate its SNonce. This can be seen in Figure 22 below, where the replay counter has also been incremented due to the R flag being set in the Wi-Fi header, since the first packet was dropped and is being replayed.[^ieee2016] [^admin-handshake]
 
-{{< figure src="/itsi/y3/ex11/images/hadnshake1.png" title="Figure 22: First frame of the 4-Way Handshake" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/hadnshake1.png" title="Figure 22: First frame of the 4-Way Handshake" >}}
 
 #### 4-Way Handshake Message 2
 
 The supplicant sends its SNonce with a MIC (which also changes the Key Information Field and sets the Key MIC flag to 1) to the authenticator. After the AP receives this, the PTK (Pairwise Transient Key) is verified. If the MIC is not valid, the MLME-DEAUTHENTICATE.request primitive is used to terminate the association.[^ieee2016] [^admin-handshake]
 
-{{< figure src="/itsi/y3/ex11/images/handskahe2.png" title="Figure 23: Second frame of the 4-Way Handshake" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/handskahe2.png" title="Figure 23: Second frame of the 4-Way Handshake" >}}
 
 #### 4-Way Handshake Message 3
 
 The authenticator checks the MIC, and if it is valid, it generates the GTK (Group Transient Key), which gets encapsulated in the Key Data field. The replay counter is incremented, and the install flag in the Key Information field is set to 1, along with the Key ACK and Key MIC fields. Upon receiving this, the supplicant verifies the MIC and ANonce, and if successful, constructs Message 4.[^ieee2016]
 
-{{< figure src="/itsi/y3/ex11/images/handshake3.png" title="Figure 24: Third frame of the 4-Way Handshake" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/handshake3.png" title="Figure 24: Third frame of the 4-Way Handshake" >}}
 
 #### 4-Way Handshake Message 4
 
 The supplicant sends a frame with the Key ACK field set to 0 and only a MIC as a final OK, indicating that everything needed for the communication is installed.[^admin-handshake]
 
-{{< figure src="/itsi/y3/ex11/images/handshake4.png" title="Figure 25: Fourth frame of the 4-Way Handshake" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/handshake4.png" title="Figure 25: Fourth frame of the 4-Way Handshake" >}}
 
 ---
 
@@ -306,7 +306,7 @@ aircrack-ng -w pwlist -b B4:75:0E:1A:7F:A5 thing*.cap
 
 This command uses the `-w` option to set a wordlist, which is the top 100k used password list, to which I append the correct password, as seen in Figure 26. The `-b` option sets the BSSID to use, and lastly, `thing*.cap` tells aircrack-ng to use all `.cap` files starting with `thing` as the name. Once the command is run and the password is found, it will be displayed, which can also be seen in Figure 26.[^aircrackng]
 
-{{< figure src="/itsi/y3/ex11/images/pwlist.png" title="Figure 26: Showing the cracked password" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/pwlist.png" title="Figure 26: Showing the cracked password" >}}
 
 #### Testing My Own Wi-Fi
 
@@ -332,8 +332,8 @@ This command uses the `-m` option to determine the type of hash, which in this c
 
 However, as seen in Figures 27 and 28, the length of the password caused hashcat to overflow on my system, and the Bitwarden password strength calculator indicates it would take centuries to crack. Therefore, I see this as a success for my security.
 
-{{< figure src="/itsi/y3/ex11/images/hashcat.png" title="Figure 27: Output of the hashcat command" >}}
-{{< figure src="/itsi/y3/ex11/images/wlanpwtest.png" title="Figure 28: Time estimation for password cracking" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/hashcat.png" title="Figure 27: Output of the hashcat command" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/wlanpwtest.png" title="Figure 28: Time estimation for password cracking" >}}
 
 ---
 
@@ -393,7 +393,7 @@ Lastly, due to the increased complexity of the Dragonfly handshake, simply flood
 
 ## References
 
-*For a full bibliography, see the [original BibTeX file](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex11/zotero.bib).*
+*For a full bibliography, see the [original BibTeX file](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex11/zotero.bib).*
 
 [^taskdef]: This summary of the task definition was created using Gemini 2.5 Flash using the Task definition as context.  
 [^summary]: This summary of the exercise was created using Gemini 2.5 Flash using my tex file as context.  

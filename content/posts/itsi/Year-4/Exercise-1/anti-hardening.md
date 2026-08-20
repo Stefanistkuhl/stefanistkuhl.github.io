@@ -1,11 +1,12 @@
 +++
 date = '2025-10-20T00:00:00+01:00'
 title = 'Anti Hardening'
+description = 'A distributed systems security lab covering Kubernetes, PostgreSQL, JWT authentication, secrets, backups, Tailscale, and application hardening.'
 categories = ["school", "it-sec"]
-tags = ["linux","it-sec","school","blue-team","kubernetes","docker","postgresql","go","jwt","tailscale", "slop"]
+tags = ["linux", "it-sec", "school", "blue-team", "kubernetes", "docker", "postgresql", "go", "jwt", "tailscale"]
 +++
 
-> Note: this was converted from Typst to Markdown using AI assistance. The original Typst file can be found [here](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y4/ex1/main.typ) along with the [bibliography](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y4/ex1/quellen.bib).
+> This is an HTL Donaustadt laboratory report converted from the original document. The [original Typst source](https://github.com/0xveya/goobering/blob/master/itsi/y4/ex1/main.typ) and [bibliography](https://github.com/0xveya/goobering/blob/master/itsi/y4/ex1/quellen.bib) are available on GitHub.
 
 ---
 
@@ -15,10 +16,10 @@ tags = ["linux","it-sec","school","blue-team","kubernetes","docker","postgresql"
 
 **Laboratory protocol**  
 Exercise 1: Anti Hardening  
-{{< figure src="/itsi/y4/ex1/images/fuckingkillmebciamastupidfuckingtr4nnyandputthisbookthere.png" title="Figure: Grouplogo" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/fuckingkillmebciamastupidfuckingtr4nnyandputthisbookthere.png" title="Original report cover image" >}}
 **Subject:** ITSI  
 **Class:** 4AHITN  
-**Name:** Dan Eduard Leuska, Justin Tremurici, Stefan Fürst  
+**Name:** Dan Eduard Leuska, Justin Tremurici, Veya Fürst  
 **Group Name/Number:** Die Goons / 1  
 **Supervisor:** ZIVK, SPAC  
 **Exercise dates:** 22.09.25, 29.09.25, 06.10.25, 13.10.25  
@@ -80,7 +81,7 @@ Tailscale was also used to show off how to lock down sensitive data transmission
 
 ## Complete network topology of the exercise
 
-{{< figure src="/itsi/y4/ex1/images/itsi-ex1.svg" title="Figure 1: Network Topology" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/itsi-ex1.svg" title="Figure 1: Network Topology" >}}
 
 ---
 
@@ -119,11 +120,11 @@ It differs from Debian in its init system, which is OpenRC instead of Systemd fr
 
 After downloading the `virt` image from the Alpine website, which is 65 MB in size, once in VirtualBox the only thing to select is `Use EFI` under specify virtual hardware and select Linux and Other Linux as OS type. All the other values can be left on default as 1 CPU, 512 MB RAM, and 8 GB disk space is plenty already as shown in [@fig:alpine-vm-settings] [^5]
 
-{{< figure src="/itsi/y4/ex1/images/alpine-vm-settings.png" title="Figure 2: Alpine VM Settings" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/alpine-vm-settings.png" title="Figure 2: Alpine VM Settings" >}}
 
 Additionally, to be able to ssh into the VM for the setup, port forwarding was set up in VirtualBox to forward port 22 to 5555 as well as the host to `127.0.0.1` since it's localhost and the guest IP to `10.0.2.15` as shown in [@fig:port-forward], as it's the default NAT IP in VirtualBox, so setup can be done using `apk add openssh`, `rc-service sshd start`. In case an IP is not obtained on boot, run `apk add dhcpcd` and `setup-interfaces`, select all default options, and run `rc-service dhcpcd start` to get an IP address. [^6]
 
-{{< figure src="/itsi/y4/ex1/images/port-forward.png" title="Figure 3: VirtualBox Port Forwarding" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/port-forward.png" title="Figure 3: VirtualBox Port Forwarding" >}}
 
 However, when installing OpenSSH the whole config was commented, so `#Port 22` and `#PermitRootLogin yes` had to be uncommented in `/etc/ssh/sshd_config` to allow root logins and `ListenAddress 0.0.0.0` and `PasswordAuthentication yes` and `AddressFamily any` to allow login to the installer.
 
@@ -131,11 +132,11 @@ Now one can ssh into the VM with `ssh root@127.0.0.1 -p 5555` and be in the VM a
 
 Once sshed in the `setup-alpine` command gets used to install the os which prompts through all the needed steps to get setup with the basics. First, it asks for the hostname. Then it proceeds to networking, where all defaults are used and either DHCP is selected or the IP is set to 10.0.2.15 if desired. Next, it prompts for the desired root password and time zone. Use "none" for the proxy URL since it is not needed. For the NTP client, select BusyBox because it is used regardless and can save space, as shown in [@fig:alpine-setup-1].
 
-{{< figure src="/itsi/y4/ex1/images/svgs/alpine-setup-1.svg" title="Figure 4: running alpine-setup" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/alpine-setup-1.svg" title="Figure 4: running alpine-setup" >}}
 
 The next step asks for which mirror for the package manager to use, where default is selected and then for users select no as users will be created later and then OpenSSH is selected and root login is allowed as there is no other user and lastly the correct disk is selected and accept is hit to finish the installation and reboot into the install as seen in [@fig:alpine-setup-2].
 
-{{< figure src="/itsi/y4/ex1/images/svgs/alpine-setup-2.svg" title="Figure 5: Finishing the initial setup of Alpine" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/alpine-setup-2.svg" title="Figure 5: Finishing the initial setup of Alpine" >}}
 
 SSH'ed into the new install. `setup-apk-repos -c` is used to add the community repository shown in [@fig:alpine-community-repo] to install the needed packages with `apk add fish starship docker doas docker-cli-compose vim jq eza curl`. Here is a quick rundown on what each package is for:
 
@@ -149,17 +150,17 @@ SSH'ed into the new install. `setup-apk-repos -c` is used to add the community r
 - `eza` is `ls` but with colors and icons and a good tree view.
 - `curl` is a tool that allows making HTTP requests to install tailscale.
 
-{{< figure src="/itsi/y4/ex1/images/svgs/apline-add-repo-and-pkgs.svg" title="Figure 6: Adding the community repo" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/apline-add-repo-and-pkgs.svg" title="Figure 6: Adding the community repo" >}}
 
 To create the two users, fus-user and fus-admin, the setup-user script is used to create both users, and then `adduser fus-admin wheel` and `addgroup fus-admin docker` to first make the user privileged by adding them to the wheel group, which is a Unix concept referencing a user account with the wheel bit, a system setting that provides additional special privileges that empower a user to execute restricted commands that ordinary users cannot access. [^7] [^8]
 
 Lastly, Docker was enabled by `rc-service docker start`, and then logging in as the fus-admin user and running `docker run hello-world` to verify Docker is running and the user does not need to be root to run Docker commands. [^9] As shown in [@fig:test-docker].
 
-{{< figure src="/itsi/y4/ex1/images/svgs/verif-docker.svg" title="Figure 7: Verifying Docker works" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/verif-docker.svg" title="Figure 7: Verifying Docker works" >}}
 
 To grant the user access to run commands with `doas`, a configuration override is created at `/etc/doas.d/20-wheel.conf` with `permit persist :wheel` to allow the user to run `doas` commands, which can be observed in [@fig:test-doas].
 
-{{< figure src="/itsi/y4/ex1/images/svgs/doas-test.svg" title="Figure 8: Verifying doas works" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/doas-test.svg" title="Figure 8: Verifying doas works" >}}
 
 Lastly for the basic alpine setup, in the admin user `fish` is run to generate the default config and then at `~/.config/fish/config.fish` the following is added to enable starship from [@snip:enable-starship-in-fish]. Where the new prompt can be seen after exiting and then reopening fish shell.
 
@@ -171,11 +172,11 @@ end
 
 [@fig:jq-jerkoff] shows the Starship prompt, and `jq` is used by curling a GET endpoint from httpbin.org, which is piped into `jq` to pretty-print the JSON output. `jq` also allows filtering output with various commands like `jq '.url'` to show the URL value of the returned JSON object. This can be used with far more depth to filter giant JSON blobs in logs; for example, to make them readable with `jq`, but here it's only used to pretty print to show the wanted parts of `kubectl get -o json` commands.
 
-{{< figure src="/itsi/y4/ex1/images/svgs/jq-jerkoff.svg" title="Figure 9: showing the starship prompt and jq uses" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/jq-jerkoff.svg" title="Figure 9: showing the starship prompt and jq uses" >}}
 
 Lastly, from the TailScale dashboard under New Device -> Linuxserver, the install script is copied and the `sudo` swapped with`doas`, `curl -fsSL https://tailscale.com/install.sh | sh && doas tailscale up --auth-key=tskey-auth-REDACTED`, and after this as [@fig:tailscale-jerkoff] verifies the device is added to the tailnet.
 
-{{< figure src="/itsi/y4/ex1/images/tailscale-1.png" title="Figure 10: showing the added server in the tailnet" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/tailscale-1.png" title="Figure 10: showing the added server in the tailnet" >}}
 
 #### Setting Up Debian
 
@@ -396,11 +397,11 @@ The app uses a JWT authentication flow with refresh tokens. This means when a us
 
 The received JWT will be appended to the `Authorization` header with the value `Bearer <base64-encoded JWT>`, which the frontend code takes from LocalStorage and inserts into the header; the JWT should not be in a cookie since it would be auto-sent by the browser, making it prone to XSS-style session hijacking. [@noauthor_oauth_nodate-1]
 
-{{< figure src="/itsi/y4/ex1/images/svgs/auth-login.svg" title="Figure 11: login flow" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/auth-login.svg" title="Figure 11: login flow" >}}
 
 In [@fig:login-refresh-flow], it shows how the client hits the `auth/refresh` endpoint with the refresh token to verify that it is still valid against the DB, and then issues a new JWT token to be used for the rest of the session. [^18] [^16]
 
-{{< figure src="/itsi/y4/ex1/images/svgs/auth-refresh.svg" title="Figure 12: login refresh flow" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/auth-refresh.svg" title="Figure 12: login refresh flow" >}}
 
 With this knowledge, we can look at the implementation of the JWT authentication flow middleware as in [@snip:auth-middleware].
 
@@ -511,45 +512,45 @@ Before each step is covered, an overview of the backup process will be given, an
 
 In [@fig:backup-dirs] the backup layout is shown, where the data directory is the input dir, which gets shared via SMB, in a share that will be called app-data where a user called share-app will have write access to it, which will be used to authenticate to the share and have no other permissions. Additionally, a share-backup will be created, used by the scheduled task to copy over the files from the input dir and structure in `\backups` and have each backup in a timestamped directory containing the encrypted dump, a file with the dumps checksum, and a JSON file like in [@fig:backup-json-manifest] which stores the hash, filename, and filesize for possible restorations. The `\backups\archive` directory will be used after the configured amount of generations has been reached and then compresses the backups into timestamped zip archives in that dir, which will be auto-deleted with the backup script.
 
-{{< figure src="/itsi/y4/ex1/images/svgs/windoof-ls-T.svg" title="Figure 13: examining the backups directory" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/windoof-ls-T.svg" title="Figure 13: examining the backups directory" >}}
 
-{{< figure src="/itsi/y4/ex1/images/svgs/windoof-jq.svg" title="Figure 14: examining the backups manifest" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/windoof-jq.svg" title="Figure 14: examining the backups manifest" >}}
 
-{{< figure src="/itsi/y4/ex1/images/svgs/windoof-bat.svg" title="Figure 15: Examining the backup files" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/windoof-bat.svg" title="Figure 15: Examining the backup files" >}}
 
 The resulting dump of the database is just a binary blob encrypted with GPG, which viewing the contents of the file in [@fig:windoof-bat] using `bat` which is a cat clone but with more features such as syntax highlighting and just showing `<BINARY>` instead of cluttering the whole terminal output. [^20]
 
-While implementing the requirements for the backup strategy, only a single screenshot of the results was taken, as the actual process is very trivial and almost all of it was covered last year in [Exercise 8](https://stefanistkuhl.github.io/posts/itsi/year-3/exercise-8/secure-data-storrage-on-windows-server/). [^21]
+While implementing the requirements for the backup strategy, only a single screenshot of the results was taken, as the actual process is very trivial and almost all of it was covered last year in [Exercise 8](/posts/itsi/year-3/exercise-8/secure-data-storage-on-windows-server/). [^21]
 
 The Created partition is shown in [@fig:windoof-disks].
 
-{{< figure src="/itsi/y4/ex1/images/windoof-3.png" title="Figure 16: viewing the newly created partition" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/windoof-3.png" title="Figure 16: viewing the newly created partition" >}}
 
 In [@fig:windoof-user], the user `share-app` is created with settings that prevent password changes and set to never expire, since this account is intended for automated scripts and does not require normal user logins, and will be rotated manually on demand. Users could also be grouped if desired.
 
-{{< figure src="/itsi/y4/ex1/images/windoof-4.png" title="Figure 17: creating the share-data user" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/windoof-4.png" title="Figure 17: creating the share-data user" >}}
 
 These users can be inspected with the `net user` command, which is shown in [@fig:windoof-users].
 
-{{< figure src="/itsi/y4/ex1/images/svgs/windoof-users.svg" title="Figure 18: inspecting the users" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/windoof-users.svg" title="Figure 18: inspecting the users" >}}
 
 To inspect the NTFS permissions of the directory structure, the `Get-PermissionTree` module created by Edi (available [here](https://github.com/Ereboss8/Get-PermissionTree)) is used to inspect the NTFS permissions of a given directory recursively with the desired depth, as shown in [@fig:windoof-perms]. [@eduard_ereboss8get-permissiontree_2025]
 
-{{< figure src="/itsi/y4/ex1/images/svgs/windoof-perms-real.svg" title="Figure 19: inspecting the ntfs permissions" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/windoof-perms-real.svg" title="Figure 19: inspecting the ntfs permissions" >}}
 
 Now the `\data` directory can be shared by simply granting Everyone full control which can be seen in [@fig:windoof-share], as the NTFS permissions take over by the privilege of the least privileged user.
 
-{{< figure src="/itsi/y4/ex1/images/windoof-5.png" title="Figure 20: creating the share-data" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/windoof-5.png" title="Figure 20: creating the share-data" >}}
 
 Before creating the scheduled backup task, the share-backup user must be allowed to sign on as a batch job. This can be configured in Local Security Policy under User Rights Assignments > Log on as a batch job, as shown in [@fig:windoof-gp]. After making the change, reboot or run `gpupdate /force` to apply the changes. [@vinaypamnani-msft_log_nodate]
 
-{{< figure src="/itsi/y4/ex1/images/windoof-6.png" title="Figure 21: allowing the share-backup user to sign on as a batch job" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/windoof-6.png" title="Figure 21: allowing the share-backup user to sign on as a batch job" >}}
 
 To create the scheduled task in Task Scheduler, a task named `app-backup` will be created with `powershell.exe` and the argument `-NoProfile -ExecutionPolicy Bypass -File "D:\app\scripts\pg_file_collector.ps1"` to run the script. To set the user the task runs as, you should use Create Task (Advanced) rather than Create Basic Task. Lastly, a trigger is set to run the task once a day. In [@fig:windoof-task], the three needed steps are aggregated into a single figure.
 
-{{< figure src="/itsi/y4/ex1/images/windoof-7.png" title="Figure 22: showing the required settings for the task" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/windoof-7.png" title="Figure 22: showing the required settings for the task" >}}
 
-With the task setup and any script fitting the requirements created, the Windows part for backups is now complete. My PowerShell script is available on my GitHub at [here](https://github.com/Stefanistkuhl/goobering/tree/master/itsi/y4/ex1/extra-files/backup.ps1). It can be implemented in many ways, so breaking down my approach to copying files isn't worth detailing since it can just be examined on GitHub.
+With the task setup and any script fitting the requirements created, the Windows part for backups is now complete. My PowerShell script is available on my GitHub at [here](https://github.com/0xveya/goobering/tree/master/itsi/y4/ex1/extra-files/backup.ps1). It can be implemented in many ways, so breaking down my approach to copying files isn't worth detailing since it can just be examined on GitHub.
 
 #### Backing Up Postgres Data
 
@@ -588,13 +589,13 @@ To now generate a GPG key, `gpg --generate-key` is run on the host instead of th
 
 By using `gpg --list-keys "ex1-itsi"` the key can be inspected as in [@fig:inspect-gpg-key].
 
-{{< figure src="/itsi/y4/ex1/images/svgs/gpg-view-key.svg" title="Figure 23: showing the required settings for the task" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/gpg-view-key.svg" title="Figure 23: showing the required settings for the task" >}}
 
 This, however, shows that there are actually two key pairs: a primary ("normal") key and a subordinate ("subkey") pair. The primary key is used for signing and certification (capabilities `[SC]`) and uses the `ed25519` elliptic-curve algorithm, which is known for high performance. The owner is identified by the `uid` field, which is the name entered earlier. The subkey uses `curve25519`, another elliptic-curve algorithm designed for key exchange and often used for encryption, as indicated by the `e` capability in the capabilities field.
 
 Next, the key is exported to a file with `gpg --export -a ex1-itsi > ex1-itsi.pub.asc` and then copied to the VM via `scp ex1-itsi.pub fus-admin@ex1-alpine-vm:/home/fus-admin/ex1-itsi.pub.asc`, where it is imported with `gpg --import ex1-itsi.pub.asc`, which is verified in [@fig:inspect-gpg-key-host] on the VM.
 
-{{< figure src="/itsi/y4/ex1/images/svgs/Frame-2imported-key.svg" title="Figure 24: showing the imported key" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/Frame-2imported-key.svg" title="Figure 24: showing the imported key" >}}
 
 The backup script consists of running pg_dump via docker exec in the target container, and using `gpg --homedir /home/fus-admin/.gnupg --batch --yes --recipient "ex1-itsi" --encrypt "$DUMPFILE"` to encrypt the backup, then moving it to the share along with the boilerplate. It is also available on GitHub alongside the PowerShell script. Lastly, using `crontab -e` and adding `0 1 * * * rc-service app-backup start` to run the backup script once a day.
 
@@ -693,7 +694,7 @@ Before the agent can be installed the master the token needs to be obtained so t
 
 The token is located at `/var/lib/rancher/k3s/server/node-token` as seen in [@fig:get-master-k3s-token].
 
-{{< figure src="/itsi/y4/ex1/images/svgs/get-master-token.svg" title="Figure 25: viewing the master node token" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/get-master-token.svg" title="Figure 25: viewing the master node token" >}}
 
 With this and the URL of the Kubernetes API server, which is the domain name of the master node in the tailnet with port 6443 (the default port of the Kubernetes API server) [^36]
 
@@ -713,7 +714,7 @@ After running this command on all the VMs that I want to add as agents to the cl
 
 To now access the cluster, the `kubectl` cli can be used to interact with the cluster. [^38] To access it, first either copy paste the `/etc/rancher/k3s/k3s.yaml` or copy it over using `scp` in this case like in [@fig:cat-kubeconfig] i just catted the file to show the contents. Important note: when you want to verify or show the kubeconfig, do not simply use `cat`. Instead, use `kubectl config view`, which displays the contents and also redacts the certificates and keys (as shown in [@fig:cat-kubeconfig]) [@noauthor_kubectl_nodate-1]
 
-{{< figure src="/itsi/y4/ex1/images/svgs/cat-kubeconfig.svg" title="Figure 26: viewing the kubeconfig file" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/cat-kubeconfig.svg" title="Figure 26: viewing the kubeconfig file" >}}
 
 Once the file is on the desired host, it must first be edited to use the correct IP for the `server` field, since it currently shows `127.0.0.1` (the server runs locally on the master node, as highlighted in [@fig:cat-kubeconfig]).
 
@@ -721,7 +722,7 @@ By default, kubectl looks for a file named config in the `$HOME/.kube` directory
 
 To inspect the cluster and view its nodes, the `kubectl get nodes` command can be used alongside the `-o wide` flag to show more information about the nodes, as shown in [@fig:kubectl-get-nodes]. Using an output option with `-o` has additional choices like `json` so that `jq` can be used, but here adding `wide` prints the output as plain text with additional information. [^38]
 
-{{< figure src="/itsi/y4/ex1/images/svgs/k-get-nodes-o-wide.svg" title="Figure 27: viewing the nodes of the cluster" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/k-get-nodes-o-wide.svg" title="Figure 27: viewing the nodes of the cluster" >}}
 
 As seen in [@fig:kubectl-get-nodes], there is now information such as roles, status, addresses, container runtime, and more. The agents do not have roles by default, which is fine, and they will run containers regardless. They also do not have an external IP, since this will be set up with `Ingress` (like a reverse proxy). Exposing the entire node would be unnecessary in this case.
 
@@ -744,7 +745,7 @@ In [@snip:tailscale-tags], the required tags are shown, which can be appended to
 
 Like in [@fig:view-stuff-with-tag], the Tailscale operator creates its own `machine`. The services created later are also `machine` instances, each with its own hostname and an assigned tag for access control.
 
-{{< figure src="/itsi/y4/ex1/images/tailscale-tags-verif.png" title="Figure 28: inspecting the tailscale operator and created services in the dashboard" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/tailscale-tags-verif.png" title="Figure 28: inspecting the tailscale operator and created services in the dashboard" >}}
 
 To actually install the Tailscale operator, `helm` needs to be installed on the device from which the cluster is managed. Helm is a package manager for Kubernetes, which is used to install and manage applications on Kubernetes clusters. [^41] The required commands are shown in [@snip:helm-cmds].
 
@@ -774,7 +775,7 @@ The commands from [@snip:helm-cmds] do the following:
 
 After installation, this can be verified in the dashboard as shown in [@fig:view-stuff-with-tag] and with `kubectl get pods -n tailscale`, in which the `-n` flag is used to select the namespace from which to fetch the pods, as in [@fig:kubectl-get-pods-tailscale].
 
-{{< figure src="/itsi/y4/ex1/images/svgs/ts-pods.svg" title="Figure 29: listing the pods of the tailscale operator" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/ts-pods.svg" title="Figure 29: listing the pods of the tailscale operator" >}}
 
 ### Making the Application Insecure
 
@@ -814,15 +815,15 @@ func ParseAndValidate(cfg models.AuthConfig, tokenStr string) (*Claims, error) {
 
 To exploit this, the user only needs to open Developer Tools, access local storage to retrieve their JWT, and then decode it using an online tool as shown in [@fig:jwt-1]. Next, they modify the desired values, specifically replacing the UserID with that of the target user they wish to impersonate. The UserID for the admin (or any other user) can be obtained by navigating to the `Users` page of the application, inspecting the API request that fetches all users in the `Network` section of Developer Tools, and extracting the ID as shown in [@fig:getid].
 
-{{< figure src="/itsi/y4/ex1/images/getid.png" title="Figure 30: obtaining the admin user id" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/getid.png" title="Figure 30: obtaining the admin user id" >}}
 
 Now, with this ID, the JWT can be edited to instead assign the `admin` role and the admin's ID, as shown in [@fig:jwt-1].
 
-{{< figure src="/itsi/y4/ex1/images/jwt-1.png" title="Figure 31: editing the jwt" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/jwt-1.png" title="Figure 31: editing the jwt" >}}
 
 By replacing the old JWT with the new one in local storage, refreshing the profile page will now display the threat actor logged in as the admin, as shown in [@fig:jwt-2].
 
-{{< figure src="/itsi/y4/ex1/images/jwt-2.png" title="Figure 32: logged in as admin" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/jwt-2.png" title="Figure 32: logged in as admin" >}}
 
 This could have been prevented by properly parsing the JWT, as shown in [@snip:sec-jwt] on the next page, where the following changes were made:
 - `leeway` was added, which makes the JWT valid for only 2 minutes instead of the default 15 minutes, reducing the time window for the attack.
@@ -940,9 +941,9 @@ Additionally, the frontend includes a built-in example that displays a user's bi
 
 This attack is blocked by the CSP for two reasons: `eval` is disallowed in [@sec:caddyfile-changes-to-make-the-app-insecure], and the `onerror` function runs as an inline script, which is also blocked (as shown in [@fig:csp1] and [@fig:csp2] on the next page). The insecure version triggers the alert on page load, while the secure version logs an error in the console indicating that execution was blocked by the CSP.
 
-{{< figure src="/itsi/y4/ex1/images/csp1.png" title="Figure 33: alert popping on page load" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/csp1.png" title="Figure 33: alert popping on page load" >}}
 
-{{< figure src="/itsi/y4/ex1/images/csp2.png" title="Figure 34: CSP doing its job" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/csp2.png" title="Figure 34: CSP doing its job" >}}
 
 Here is table of all the CSP directives that are used in the secure version of the frontend. [@noauthor_content-security-policy_2025] [^43]
 
@@ -1045,7 +1046,7 @@ The easiest ways to prevent them are as follows:
 - Use multi-factor authentication.
 - Use a firewall to block SSH access and connect to the server.
 
-All of this was already covered in Exercise 5 last year, so beyond naming it, you can access [the details here](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex5/Securing%20access.pdf) on how to set them up.
+All of this was already covered in Exercise 5 last year, so beyond naming it, you can access [the details here](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex5/Securing%20access.pdf) on how to set them up.
 
 To only allow SSH access from the Tailscale IP, the following commands were used:
 `doas iptables -A INPUT -p tcp --dport 22 -j DROP`
@@ -1053,7 +1054,7 @@ To only allow SSH access from the Tailscale IP, the following commands were used
 
 They block all access to port 22 except from the Tailscale IP. After running them, connections will only be available from the Tailscale IP, as shown in [@fig:ssh-sec]. For the non-Tailscale location, the connection was made to localhost because SSH was forwarded to the port shown in the figure.
 
-{{< figure src="/itsi/y4/ex1/images/svgs/shh-sec.svg" title="Figure 35: ssh access only from tailscale" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/shh-sec.svg" title="Figure 35: ssh access only from tailscale" >}}
 
 #### Poor Credentials Policies
 
@@ -1061,13 +1062,13 @@ A security issue I often find myself guilty of is using weak credentials everywh
 
 Both Windows and Linux offer tools to enforce password policies, lockouts, and other measures to harden this aspect of the system. For now, on the VMs, the root and admin passwords will remain `deinemama` and `rafi123_`.
 
-The details on setting up password policies are also covered in Exercise 5 from last year [Section 3.2](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex5/Securing%20access.pdf) for Linux and in Exercise 9 from last year in [Section 4.4.3](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex9/Sicherheitstests%20von%20Windows%20Server.pdf)
+The details on setting up password policies are also covered in Exercise 5 from last year [Section 3.2](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex5/Securing%20access.pdf) for Linux and in Exercise 9 from last year in [Section 4.4.3](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex9/Sicherheitstests%20von%20Windows%20Server.pdf)
 
 #### Making Database Insecure
 
 As seen in the diff between the insecure and secure versions of the compose file in [@sec:hardcoding-secrets], the database is hardcoded to use the `postgres` user, and the password is hardcoded in the `POSTGRES_PASSWORD` environment variable. Additionally, it is listening on `0.0.0.0`, as shown in [@snip:composediff]. Without using a firewall rule to lock down database access to trusted sources only, we can connect however we want, as shown in [@fig:db-insec], where the insecure version running on port `5433` allows a connection to be established, while the secure version on port `5432` prevents any connection from being established. In this example, a connection is established to `127.0.0.1` as discussed in [@sec:connecting-the-setup-using-tailscale]. Due to VirtualBox NAT networking, this is the only non-Tailscale way to connect to it, but it is fine for the example.
 
-{{< figure src="/itsi/y4/ex1/images/svgs/db-sec.svg" title="Figure 36: only being able to connect to the database via tailscale" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/db-sec.svg" title="Figure 36: only being able to connect to the database via tailscale" >}}
 
 To achieve this, the two iptables rules were added with block access on port `5432` but allowed it over the Tailscale IP.
 `doas iptables -A INPUT -p tcp --dport 5432 -j DROP`
@@ -1103,17 +1104,17 @@ Using `Set-MpPreference`, Windows Defender can be configured and thus disabled w
 
 The first command is responsible for disabling real-time protection, while the second disables IOC protection. [@noauthor_set-mppreference_nodate]
 
-{{< figure src="/itsi/y4/ex1/images/svgs/doof.svg" title="Figure 37: disabling windows defender and changing the execution policy" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/doof.svg" title="Figure 37: disabling windows defender and changing the execution policy" >}}
 
 In [@fig:yesyes], the execution policy is set to `Unrestricted`, and Windows Defender is disabled; this allows an unprivileged user to download and run Mimikatz.
 
-{{< figure src="/itsi/y4/ex1/images/svgs/yesyes.svg" title="Figure 38: running mimikatz due to the misconfiguration" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/yesyes.svg" title="Figure 38: running mimikatz due to the misconfiguration" >}}
 
 As seen in [@fig:rev], Windows Defender has been turned back on, and the execution policy has been changed to `Restricted`. This is shown in [@fig:sadge], where Mimikatz can no longer be run.
 
-{{< figure src="/itsi/y4/ex1/images/svgs/turn-back-on.svg" title="Figure 39: re-enabling windows defender and restricting the powerShell execution policy" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/turn-back-on.svg" title="Figure 39: re-enabling windows defender and restricting the powerShell execution policy" >}}
 
-{{< figure src="/itsi/y4/ex1/images/svgs/sadge.svg" title="Figure 40: windows defender blocking invoking mimikatz" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/sadge.svg" title="Figure 40: windows defender blocking invoking mimikatz" >}}
 
 ### Making Linux Insecure
 
@@ -1127,7 +1128,7 @@ Because this requires writing an exploit, this section is purely theoretical and
 
 An accidental mistake that sometimes can happen on Linux is accidentally changing the permissions of a binary in `PATH`, giving other users the ability to modify it. This removes all integrity from the binary, and when it is run unknowingly as root, malicious code could be executed without the victim knowing, as shown in [@fig:binw].
 
-{{< figure src="/itsi/y4/ex1/images/svgs/bin-edit.svg" title="Figure 41: running a modified binary as root" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/svgs/bin-edit.svg" title="Figure 41: running a modified binary as root" >}}
 
 ### How Tools Like Tailscale Help Harden Security
 
@@ -1139,7 +1140,7 @@ A VPN or management tools like these are a good practice because restricting ess
 
 ## References
 
-*For a full bibliography, see the [original BibTeX file](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y4/ex1/quellen.bib).*
+*For a full bibliography, see the [original BibTeX file](https://github.com/0xveya/goobering/blob/master/itsi/y4/ex1/quellen.bib).*
 
 [^1]: VirtualBox Manual - Chapter 6. Virtual Networking. [link](https://www.virtualbox.org/manual/ch06.html)
 [^2]: Tailscale MagicDNS Documentation. [link](https://tailscale.com/kb/1081/magicdns)

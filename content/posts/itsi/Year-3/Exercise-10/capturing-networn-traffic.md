@@ -1,20 +1,22 @@
 +++
 date = '2025-05-16T02:36:09+02:00'
-title = 'Capturing Network traffic'
-categories = ["school", "it sec","networking"]
-tags = ["networking","it sec","school", "red team"]
+title = 'Capturing Network Traffic'
+description = 'Packet capture and traffic analysis using Wireshark, RouterOS port mirroring, ICMP, HTTP, and VoIP.'
+url = '/posts/itsi/year-3/exercise-10/capturing-network-traffic/'
+aliases = ['/posts/itsi/year-3/exercise-10/capturing-networn-traffic/']
+categories = ["school", "it-sec", "networking"]
+tags = ["networking", "it-sec", "school", "red-team"]
 +++
 
-> Note: this was converted using from LaTeX to Markdown using Chat GPT 4.1 the original pdf can be found [here](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex10/capturing-network-traffic-in-a-LAN.pdf) along with the [bibliography](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex10/quellen.bib)
+> This is an HTL Donaustadt laboratory report converted from the original document. The [original PDF](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex10/capturing-network-traffic-in-a-LAN.pdf) and [bibliography](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex10/quellen.bib) are available on GitHub.
 
 ---
 **Laboratory protocol**  
 Exercise 10: Capturing of network traffic in the local network  
-{{< figure src="/itsi/y3/ex10/images/mencicle.png" title="Figure: Grouplogo" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/mencicle.png" title="Original report cover image" >}}
 **Subject:** ITSI  
 **Class:** 3AHITN  
-**Name:** Stefan Fürst, Justin Tremurici  
-**Group Name/Number:** Name here/12  
+**Name:** Veya Fürst, Justin Tremurici  
 **Supervisor:** SPAC, ZIVK  
 **Exercise dates:** 11.04.2025 | 25.04.2025 | 09.05.2025  
 **Submission date:** 16.05.2025
@@ -64,8 +66,8 @@ Throughout the exercise, Wireshark was extensively used to capture, filter, and 
 
 ## Complete network topology of the exercise
 
-{{< figure src="/itsi/y3/ex10/images/topo11.png" title="Figure 1: Complete network topology of the exercise using a switch" >}}
-{{< figure src="/itsi/y3/ex10/images/topo22.png" title="Figure 2: Complete network topology of the exercise using a Hub" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/topo11.png" title="Figure 1: Complete network topology of the exercise using a switch" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/topo22.png" title="Figure 2: Complete network topology of the exercise using a Hub" >}}
 
 ---
 
@@ -90,13 +92,13 @@ For the server and clients, I used two old laptops running Proxmox, one of which
 
 To configure the router, there are three options: either use the WebGUI, SSH into it, or use their program called WinBox, which is the option I went with. After connecting a port on the router, it automatically detects available ports, and I can simply select one of them and configure everything as needed via the MAC address.
 
-{{< figure src="/itsi/y3/ex10/images/winbox.png" title="Figure 3: Connecting to the Router via Winbox" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/winbox.png" title="Figure 3: Connecting to the Router via Winbox" >}}
 
 Now that we are in the router's configuration, we see a number of top-level options to choose from. To mirror traffic, we go to the Switch section and head to the Port tab, where we select the ports we want to mirror. If we double-click on an interface, it opens the port window, where we can choose whether to mirror only ingress traffic, egress traffic, or both.
 
 We also specify an ingress target, which in this case is ether6, where the attacker's laptop is plugged in so that it receives all the mirrored traffic. The configuration for both ether7 and ether8 is the same, which is why only one is shown below. Lastly, under the "Mirror Ingress"/"Mirror Egress" columns in the switch window table, we can see a "yes" in both columns, indicating that the configuration has been successfully applied.  [^1]
 
-{{< figure src="/itsi/y3/ex10/images/routerconf.png" title="Figure 4: Examining the traffic mirror configuration" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/routerconf.png" title="Figure 4: Examining the traffic mirror configuration" >}}
 
 ---
 
@@ -106,8 +108,8 @@ Now we can use Wireshark on the attacker's laptop to compare the traffic capture
 
 When everything is idle and only ARP traffic is occurring in the background, the only difference is that instead of receiving each broadcast once, it is received twice—once from the connection itself and once from the mirroring.
 
-{{< figure src="/itsi/y3/ex10/images/nomirr.png" title="Figure 5: Examining the arp traffic without a mirror configuration" >}}
-{{< figure src="/itsi/y3/ex10/images/yesmirr.png" title="Figure 6: Examining the arp traffic with a mirror configuration" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/nomirr.png" title="Figure 5: Examining the arp traffic without a mirror configuration" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/yesmirr.png" title="Figure 6: Examining the arp traffic with a mirror configuration" >}}
 
 ---
 
@@ -115,11 +117,11 @@ When everything is idle and only ARP traffic is occurring in the background, the
 
 Now, with mirroring enabled, every device on the network is pinged so we can examine the behavior using the following filter: `ip.src == 10.30.0.69 && icmp`. This filter shows only ICMP frames with the source IP of the attacker's laptop.
 
-{{< figure src="/itsi/y3/ex10/images/ws2_1.png" title="Figure 7: Displaying the pings to every device on the Network" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/ws2_1.png" title="Figure 7: Displaying the pings to every device on the Network" >}}
 
 To display only the full connection between the two devices, the following filter can be used to show only the complete exchange, including replies: `icmp && ip.addr == 10.30.0.69 && ip.addr == 10.30.0.178`.
 
-{{< figure src="/itsi/y3/ex10/images/filter for cumm.png" title="Figure 8: Displaying the full ping between the attacker and a client" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/filter for cumm.png" title="Figure 8: Displaying the full ping between the attacker and a client" >}}
 
 ---
 
@@ -133,7 +135,7 @@ ip.addr == <Victim1_IP> && ip.addr == <Victim2_IP>
 
 As shown below, this traffic is visible only from the attacker's Wireshark capture. The source and destination fields in the packets correspond to the two victim machines—at no point does the attacker’s IP address appear in the captured communication. This interception is possible solely due to port mirroring: all network traffic to and from the mirrored ports is duplicated to the attacker's port. The two clients are unaware of this and communicate normally, while the attacker silently captures their traffic.
 
-{{< figure src="/itsi/y3/ex10/images/whistBaa.png" title="Figure 9: Observing a Ping Between Two Clients That Don't Involve the Attacker" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/whistBaa.png" title="Figure 9: Observing a Ping Between Two Clients That Don't Involve the Attacker" >}}
 
 ---
 
@@ -147,10 +149,10 @@ Later, a successful authentication is made, where the server instead returns sta
 
 Again, we can see the credentials used in the request headers and now know that the credentials for this web server are `user3:password123`, as shown below. In addition, we receive the entire HTML code returned in the response from the server, which we can also view in plain text—essentially allowing us to see the same content as the client.
 
-{{< figure src="/itsi/y3/ex10/images/headhgoog.png" title="Figure 11: Viewing the correct plain text password from the authentication" >}}
-{{< figure src="/itsi/y3/ex10/images/eniterufcijsdigjsdg.png" title="Figure 12: Viewing the returned HTML" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/headhgoog.png" title="Figure 11: Viewing the correct plain text password from the authentication" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/eniterufcijsdigjsdg.png" title="Figure 12: Viewing the returned HTML" >}}
 
-*See also: [Exercise 6: Hardening a Linux Webserver](https://stefanistkuhl.github.io/posts/itsi/year-3/exercise-6/linux-hadening-nginx) for details on setting up Nginx with basic authentication.*[^3]
+*See also: [Exercise 6: Hardening a Linux Webserver](/posts/itsi/year-3/exercise-6/linux-hardening-nginx/) for details on setting up NGINX with basic authentication.*[^3]
 
 ---
 
@@ -162,23 +164,23 @@ Voice over IP is an unencrypted protocol that uses the Real-time Transport Proto
 
 Wireshark provides these tools under Telephony → VoIP, which automatically detects the relevant streams and identifies the speakers. In the window that opens, we have several options, such as viewing the Flow Sequence, which shows when the call was ringing and who was speaking when. However, we are more interested in the "Play Streams" button, which displays the waveform of the call and allows us to export the audio as an MP3 file.
 
-{{< figure src="/itsi/y3/ex10/images/phonedge.png" title="Figure 13: Viewing the VoIP menu in Wireshark" >}}
-{{< figure src="/itsi/y3/ex10/images/waow.png" title="Figure 14: Viewing the Waveform of the call" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/phonedge.png" title="Figure 13: Viewing the VoIP menu in Wireshark" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/waow.png" title="Figure 14: Viewing the Waveform of the call" >}}
 
 However, the audio levels of the MP3 were initially unbalanced—the beginning was far too quiet—so I boosted the volume using Audacity to normalize the audio levels. I then used the Adobe Podcast AI Audio Enhancer to remove background noise and isolate the conversation. The result was a surprisingly clean and understandable audio file, even though the microphone of the other phone was quite far away when I was speaking.
 
-{{< figure src="/itsi/y3/ex10/images/fixing levels.png" title="Figure 15: Fixing the Audio Levels in Audacity" >}}
-{{< figure src="/itsi/y3/ex10/images/adobe podcast.png" title="Figure 16: Removing Background Noise Using Adobe's Podcast Tool" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/fixing levels.png" title="Figure 15: Fixing the Audio Levels in Audacity" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/adobe podcast.png" title="Figure 16: Removing Background Noise Using Adobe's Podcast Tool" >}}
 
 ---
 
 ## References
 
-*For a full bibliography, see the [original BibTeX file](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex10/quellen.bib).*
+*For a full bibliography, see the [original BibTeX file](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex10/quellen.bib).*
 
 [^1]: Joey. Mirroring ports on Mikrotik. Blogger, 2015. [link](https://www.technicallyinsane.com/2015/10/mirroring-ports-on-mikrotik.html)
 [^2]: VoIP_calls - Wireshark Wiki. [link](https://wiki.wireshark.org/VoIP_calls)
-[^3]: Hardening a Linux Webserver, Exercise 6. [link](https://stefanistkuhl.github.io/posts/itsi/year-3/exercise-6/linux-hadening-nginx)
+[^3]: Hardening a Linux Webserver, Exercise 6. [Read the report](/posts/itsi/year-3/exercise-6/linux-hardening-nginx/)
 [^4]: RFC 7617. [link](https://www.rfc-editor.org/rfc/rfc7617.txt)
 [^5]: 401 Unauthorized - HTTP | MDN. [link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/401)
 [^6]: 200 OK - HTTP | MDN. [link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/200)

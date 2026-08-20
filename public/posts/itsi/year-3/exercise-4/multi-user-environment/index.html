@@ -5,72 +5,18 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>GNU/Linux - Setting up a multi-user environment | silly blog</title>
-<meta name="keywords" content="linux, it sec, school, docker, ssh, users, permissions">
-<meta name="description" content="
-Note: this was converted from LaTeX to Markdown using manual formatting. The original TeX file can be found here along with the bibliography.
-
-
-GNU/Linux - Setting up a multi-user environment
-Laboratory Protocol
-GNU/Linux - Setting up a multi-user environment
-
-     
-            Figure: Grouplogo
-        
-
-
-Subject: ITSI|ZIVK
-Class: 3AHITN
-Name: Stefan Fürst, Marcel Raichle
-Group Name/Number: Dumm und Dümmer/7
-Supervisor: ZIVK
-Exercise dates: 25.10.2024, 1.11.2024, 3.11.2024, 6.11.2024
-Submission date: 6.11.2024
-
-Table of Contents
-
-Task Definition
-Summary
-Exercise Execution
-
-Creating the Container
-Testing Connectivity
-
-It works, but why?
-
-
-Creating and managing users
-
-Login as the users
-
-
-Set directory privileges
-Setting up ssh
-
-Logging On to the SSH Server
-Enabling keypair authentication
-Disable password authentication
-
-
-
-
-References
-List of Figures
-Attachments
-
-
-Task Definition
-Setting up a headless Linux installation with multiple users, adding them to a group, and setting permissions over a directory structure. You will also need to set up an ssh server for which you will need to set up key pair authentication.">
+<title>GNU/Linux - Setting up a multi-user environment | veya&#39;s silly little website</title>
+<meta name="keywords" content="linux, it-sec, school, docker, ssh, users, permissions">
+<meta name="description" content="Building and securing a multi-user Linux environment with containers, permissions, networking, and SSH keys.">
 <meta name="author" content="veya">
 <link rel="canonical" href="http://localhost:1313/posts/itsi/year-3/exercise-4/multi-user-environment/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f22caeb8fa017ba8a722900a376f8b736adeb3549e2aeca3cc9f292a3cdf6e9e.css" integrity="sha256-8iyuuPoBe6inIpAKN2&#43;Lc2res1SeKuyjzJ8pKjzfbp4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/apple-touch-icon.png">
+<link rel="mask-icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/safari-pinned-tab.svg">
+<meta name="theme-color" content="#080808">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="en" href="http://localhost:1313/posts/itsi/year-3/exercise-4/multi-user-environment/">
 <noscript>
@@ -127,7 +73,7 @@ Setting up a headless Linux installation with multiple users, adding them to a g
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="silly blog (Alt + H)">silly blog</a>
+            <a href="http://localhost:1313/" accesskey="h" title="veya&#39;s silly little website (Alt + H)">veya&#39;s silly little website</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -158,6 +104,11 @@ Setting up a headless Linux installation with multiple users, adding them to a g
                 </a>
             </li>
             <li>
+                <a href="http://localhost:1313/networking-security/" title="Networking &amp; Security">
+                    <span>Networking &amp; Security</span>
+                </a>
+            </li>
+            <li>
                 <a href="http://localhost:1313/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
@@ -178,26 +129,29 @@ Setting up a headless Linux installation with multiple users, adding them to a g
     <h1 class="post-title entry-hint-parent">
       GNU/Linux - Setting up a multi-user environment
     </h1>
+    <div class="post-description">
+      Building and securing a multi-user Linux environment with containers, permissions, networking, and SSH keys.
+    </div>
     <div class="post-meta"><span title='2024-11-06 00:00:00 +0100 CET'>November 6, 2024</span>&nbsp;·&nbsp;12 min&nbsp;·&nbsp;veya
 
 </div>
   </header> 
   <div class="post-content"><blockquote>
-<p>Note: this was converted from LaTeX to Markdown using manual formatting. The original TeX file can be found <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex4/Einrichten%20einer%20Multi-User-Umgebung.tex">here</a> along with the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex4/quellen.bib">bibliography</a>.</p>
+<p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex4/Einrichten%20einer%20Multi-User-Umgebung.tex">original LaTeX source</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex4/quellen.bib">bibliography</a> are available on GitHub.</p>
 </blockquote>
 <hr>
 <h1 id="gnulinux---setting-up-a-multi-user-environment">GNU/Linux - Setting up a multi-user environment<a hidden class="anchor" aria-hidden="true" href="#gnulinux---setting-up-a-multi-user-environment">#</a></h1>
 <p><strong>Laboratory Protocol</strong><br>
 GNU/Linux - Setting up a multi-user environment<br>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex4/images/mika.jpeg"/> <figcaption>
-            Figure: Grouplogo
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/mika.jpeg"/> <figcaption>
+            Original report cover image
         </figcaption>
 </figure>
 
 <strong>Subject:</strong> ITSI|ZIVK<br>
 <strong>Class:</strong> 3AHITN<br>
-<strong>Name:</strong> Stefan Fürst, Marcel Raichle<br>
+<strong>Name:</strong> Veya Fürst, Marcel Raichle<br>
 <strong>Group Name/Number:</strong> Dumm und Dümmer/7<br>
 <strong>Supervisor:</strong> ZIVK<br>
 <strong>Exercise dates:</strong> 25.10.2024, 1.11.2024, 3.11.2024, 6.11.2024<br>
@@ -245,12 +199,12 @@ GNU/Linux - Setting up a multi-user environment<br>
 <h3 id="creating-the-container">Creating the Container<a hidden class="anchor" aria-hidden="true" href="#creating-the-container">#</a></h3>
 <p>I decided to write my own dockerfile for this, which is a text file that describes the commands needed to create the desired image. Let&rsquo;s walk through how to create an image for the first task.</p>
 <p>We start by using the <code>FROM</code> keyword to specify the base image <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> from which we are starting.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">ubuntu:latest</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">ubuntu:latest</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>I chose the ubuntu image <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> and used the <code>latest</code> tag, which points to the latest LTS release.</p>
 <p>However, if we were to build, start, and execute in the container, we would not be able to do it because it would immediately shutdown since nothing is running.</p>
 <p>To mitigate this, we add <code>CMD tail -F /dev/null</code> to the end of our Dockerfile. The <code>tail</code> command prints the last 10 lines of a file and the <code>-F</code> argument stands for follow, so it will run forever and print the last 10 lines of a given file <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. I used the file <code>/dev/null</code>, which is a virtual device, so any data written to it will disappear <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. So we are essentially reading an empty file forever to keep the container up.</p>
 <p>If we now run the following commands to build the image, run the container and get a shell in it.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># build the image</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># build the image</span>
 </span></span><span style="display:flex;"><span>docker buildx build -t image-name .
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># run the container</span>
@@ -259,8 +213,8 @@ GNU/Linux - Setting up a multi-user environment<br>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># exec into the container (get a shell in it)</span>
 </span></span><span style="display:flex;"><span>docker exec -it container-name /bin/bash
 </span></span></code></pre></div><p>To make the commands less work to type, I like to make a shell script that I can source to have aliases for it like this.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>alias relaunch<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sudo sh -c &#39;docker stop itsi &amp;&amp;\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span>alias relaunch<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sudo sh -c &#39;docker stop itsi &amp;&amp;\
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      docker rm itsi &amp;&amp;\
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      docker buildx build -t itsi:latest . &amp;&amp;\
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      docker run -d -p 38452:38452 --name itsi itsi:latest &amp;&amp;\
@@ -270,19 +224,19 @@ GNU/Linux - Setting up a multi-user environment<br>
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      docker exec -it itsi /bin/bash&#39;&#34;</span>
 </span></span><span style="display:flex;"><span>alias stop<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sudo sh -c &#39;docker stop itsi &amp;&amp; docker rm itsi&#39;&#34;</span>
 </span></span></code></pre></div><p>Now we are in the container, but it does not have any of the required packages installed that are needed for this exercise. They can be installed in the container now, which would defeat the whole purpose of building an image, so we use the <code>RUN</code> keyword in our dockerfile along with the desired command to run it when the image is built, so that the packages are installed as soon as you spin up the container:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> apt update <span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt upgrade -y<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt install iproute2 iputils-ping zsh net-tools vim -y<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> apt update <span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> apt upgrade -y<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> apt install iproute2 iputils-ping zsh net-tools vim -y<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="testing-connectivity">Testing Connectivity<a hidden class="anchor" aria-hidden="true" href="#testing-connectivity">#</a></h3>
 <p>Now we can finally test the connectivity since we have the <code>iputils-ping</code> package installed. Everything works out of the box using the default bridge <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex4/images/ping_internet.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/ping_internet.png"/> <figcaption>
             Figure: Ping to the Internet
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex4/images/ping_lokal.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/ping_lokal.png"/> <figcaption>
             Figure: Ping the local machine
         </figcaption>
 </figure>
@@ -290,14 +244,14 @@ GNU/Linux - Setting up a multi-user environment<br>
 <h4 id="it-works-but-why">It works, but why?<a hidden class="anchor" aria-hidden="true" href="#it-works-but-why">#</a></h4>
 <p>If we inspect our container using <code>docker inspect container-name</code>, we see that its IP is different from that of the lan.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex4/images/docker_inspect_nw.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/docker_inspect_nw.png"/> <figcaption>
             Figure: docker inspect
         </figcaption>
 </figure>
 
 <p>This happens because when you install Docker, it creates a virtual interface <code>docker0</code> that is used as a network bridge to allow the container to communicate with the Internet and LAN <sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex4/images/ipadocker.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/ipadocker.png"/> <figcaption>
             Figure: ip a | grep docker0
         </figcaption>
 </figure>
@@ -306,26 +260,26 @@ GNU/Linux - Setting up a multi-user environment<br>
 <h3 id="creating-and-managing-users">Creating and managing users<a hidden class="anchor" aria-hidden="true" href="#creating-and-managing-users">#</a></h3>
 <p>To add groups and users, and to add users to groups, use the commands <code>groupadd</code>, <code>useradd</code>, <code>usermod</code>.</p>
 <p>To add the user, we add the following lines to our Dockerfile:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># creating the group</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> groupadd -g <span style="color:#ae81ff">324</span> ram-Users <span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># creating the group</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> groupadd -g <span style="color:#ae81ff">324</span> ram-Users <span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># creating the users -u is used to set the groupid</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> useradd -u <span style="color:#ae81ff">1024</span> ram-alois <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    useradd -u <span style="color:#ae81ff">1124</span> ram-berta <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    useradd -u <span style="color:#ae81ff">1224</span> ram-chris <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    useradd ram-fus <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    useradd ram-ram<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># creating the users -u is used to set the groupid</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> useradd -u <span style="color:#ae81ff">1024</span> ram-alois <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    useradd -u <span style="color:#ae81ff">1124</span> ram-berta <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    useradd -u <span style="color:#ae81ff">1224</span> ram-chris <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    useradd ram-fus <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    useradd ram-ram<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># adding the users to the groups</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> usermod -g ram-Users ram-alois <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    usermod -g ram-Users ram-berta<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># adding the users to the groups</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> usermod -g ram-Users ram-alois <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    usermod -g ram-Users ram-berta<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># settings chris&#39;s default shell to zsh</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> usermod --shell /bin/zsh ram-chris<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># settings chris&#39;s default shell to zsh</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> usermod --shell /bin/zsh ram-chris<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h4 id="login-as-the-users">Login as the users<a hidden class="anchor" aria-hidden="true" href="#login-as-the-users">#</a></h4>
 <p>To log in as another user, use the <code>su</code> command.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex4/images/logggingin.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/logggingin.png"/> <figcaption>
             Figure: Login as Berta and Chris
         </figcaption>
 </figure>
@@ -333,11 +287,11 @@ GNU/Linux - Setting up a multi-user environment<br>
 <p>Each user has their own history, which is stored in their home directory in either the <code>.bash_history</code> or <code>.zsh_history</code> file. You end the session with the <code>exit</code> command or by pressing <code>&lt;C-d&gt;</code>.</p>
 <h3 id="set-directory-privileges">Set directory privileges<a hidden class="anchor" aria-hidden="true" href="#set-directory-privileges">#</a></h3>
 <p>The directories are created with this command and the <code>-p</code> stands for parent and creates parent directories if needed. For example, <code>mkdir /test/test2</code> wouldn&rsquo;t work if you don&rsquo;t have <code>/test</code>, but using <code>mkdir -p</code> instead will create <code>/test</code> and <code>/test/test2</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> mkdir -p /data/fus <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    mkdir /data/fus/alois <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    mkdir /data/fus/berta <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    mkdir /data/fus/chris <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    mkdir /data/fus/public<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> mkdir -p /data/fus <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    mkdir /data/fus/alois <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    mkdir /data/fus/berta <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    mkdir /data/fus/chris <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    mkdir /data/fus/public<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>Three tools are used to set the permission: <code>chgrp</code>, <code>chown</code> and <code>chmod</code>.</p>
 <p>First, we want everyone in the group to have access to the directory for which <code>chgrp -R ram-Users /data/fus/</code> is used with the <code>-R</code> argument, which means recursive <sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> <sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>.</p>
 <p>To give everyone all the permissions in their own directory, we need to make them the owner of it using <code>chown -R username:groupname /data/fus/name-of-directory</code> <sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
@@ -353,7 +307,7 @@ x = execute
 - removing permissions
 = setting permissions
 </code></pre><p>Now, let us use this to set up the permissions accordingly:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># giving the [g]roup [r]ead and [w]rite permissions for /data/fus</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># giving the [g]roup [r]ead and [w]rite permissions for /data/fus</span>
 </span></span><span style="display:flex;"><span>chmod g+rw /data/fus/
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># giving the owner all permissions, the [g]roup only [r]ead and none to [o]thers</span>
@@ -366,7 +320,7 @@ x = execute
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># giving the owner and [g]roup all permissions and none to [o]thers</span>
 </span></span><span style="display:flex;"><span>chmod -R u+wrx,g+wrx,o<span style="color:#f92672">=</span>r /data/fus/public/
 </span></span></code></pre></div><figure>
-    <img loading="lazy" src="/itsi/y3/ex4/images/testing_perms.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/testing_perms.png"/> <figcaption>
             Figure: Testing permissions
         </figcaption>
 </figure>
@@ -375,26 +329,26 @@ x = execute
 <h3 id="setting-up-ssh">Setting up ssh<a hidden class="anchor" aria-hidden="true" href="#setting-up-ssh">#</a></h3>
 <p>The two new users required for this have already been created above in 3.3.</p>
 <p>To set up an ssh server we need to install the package, if we just add <code>ssh</code> to our install command in the Dockerfile we find out that this command requires interactions to set the timezone we need to add these two extra lines to the Dockerfile.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># setting the timezone</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> ln -fs /usr/share/zoneinfo/Europe/Vienna /etc/localtime<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># setting the timezone</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> ln -fs /usr/share/zoneinfo/Europe/Vienna /etc/localtime<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># running the command without it being interactive</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> DEBIAN_FRONTEND<span style="color:#f92672">=</span>noninteractive apt install -y tzdata ssh<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># running the command without it being interactive</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> DEBIAN_FRONTEND<span style="color:#f92672">=</span>noninteractive apt install -y tzdata ssh<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>Now ssh is installed, but it needs to be started, all we need to do is edit the last line of the file to start the service as well.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># the default command from before</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> tail -F /dev/null<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># the default command from before</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CMD</span> tail -F /dev/null<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># with starting ssh</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> service ssh start <span style="color:#f92672">&amp;&amp;</span> tail -F /dev/null<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># with starting ssh</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CMD</span> service ssh start <span style="color:#f92672">&amp;&amp;</span> tail -F /dev/null<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>To find out what port the server is listening on for ssh, we use the netstat command that comes with the <code>net-tools</code> package that we installed earlier.</p>
 <p>This is done with the command <code>netstat -tunlp | grep ssh</code>. The options of the command are explained below:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-t show TCP ports
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-t show TCP ports
 </span></span><span style="display:flex;"><span>-u show UDP ports
 </span></span><span style="display:flex;"><span>-n show numerical addresses instead of resolving hosts
 </span></span><span style="display:flex;"><span>-l show only listening ports
 </span></span><span style="display:flex;"><span>-p show the PID of the listener<span style="color:#960050;background-color:#1e0010">&#39;</span>s process
 </span></span></code></pre></div><figure>
-    <img loading="lazy" src="/itsi/y3/ex4/images/netstatssh.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/netstatssh.png"/> <figcaption>
             Figure: Search for port with netstat
         </figcaption>
 </figure>
@@ -403,37 +357,37 @@ x = execute
 <p>For this we need to edit the file <code>/etc/ssh/sshd_config</code>.</p>
 <p>I still changed the port to show how it would be done anyway.</p>
 <p>To do this, we can use the preinstalled text editor <code>sed</code>, so edit the file with the following command to change the port in the Dockerfile.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># -i edit the file in place without printing it to the console</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># s to use the substitute command of sed</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># &#39;/s/string-you-want-to-replace/string-you-want-to-replace-it-with&#39;</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># /etc/ssh/sshd_config file that you want to edit</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;s/#Port 22/Port 38452/&#39;</span> /etc/ssh/sshd_config<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># -i edit the file in place without printing it to the console</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># s to use the substitute command of sed</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># &#39;/s/string-you-want-to-replace/string-you-want-to-replace-it-with&#39;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># /etc/ssh/sshd_config file that you want to edit</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;s/#Port 22/Port 38452/&#39;</span> /etc/ssh/sshd_config<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>When we try to ssh in with the created user, we cannot yet, since we have not published any ports in our container yet.</p>
 <h4 id="logging-on-to-the-ssh-server">Logging On to the SSH Server<a hidden class="anchor" aria-hidden="true" href="#logging-on-to-the-ssh-server">#</a></h4>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex4/images/loggingin-before-expsing-the-port.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/loggingin-before-expsing-the-port.png"/> <figcaption>
             Figure: Connection refused
         </figcaption>
 </figure>
 
 <p>To do this, we need to add a line to the Dockerfile and edit the docker run command.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># add this with the port of your choice to the Dockerfile</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span> <span style="color:#e6db74">38452</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># add this with the port of your choice to the Dockerfile</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">EXPOSE</span> <span style="color:#e6db74">38452</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># add -p to [p]ublish the desired port</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>docker run -d -p <span style="color:#ae81ff">38452</span> --name container-name<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># add -p to [p]ublish the desired port</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>docker run -d -p <span style="color:#ae81ff">38452</span> --name container-name<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>Even if we log in now, it still won&rsquo;t work because the user doesn&rsquo;t have a password.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex4/images/failingtologin.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/failingtologin.png"/> <figcaption>
             Figure: Logging in without a password
         </figcaption>
 </figure>
 
 <p>To fix this we add this line to our Dockerfile:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#39;root:youresecurepasswordhere&#39;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#39;root:youresecurepasswordhere&#39;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>We change the root password instead of the user password because we do not have <code>sudo</code> setup, and having to type sudo for every command when we are the only user is both unnecessary and annoying.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex4/images/workinglogin.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/workinglogin.png"/> <figcaption>
             Figure: working login
         </figcaption>
 </figure>
@@ -442,21 +396,21 @@ x = execute
 <p>To generate a key pair, we go back to our host system and run the command <code>ssh-keygen -b 4096</code> to generate a 4096-bit SSH key.</p>
 <p>On Linux, the keys are stored in the <code>~/.ssh</code> directory, but you can specify a location with <code>-f</code>. The file that ends with <code>.pub</code> is the public key, and the other is the private key.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex4/images/keys-in-the-dir.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/keys-in-the-dir.png"/> <figcaption>
             Figure: keys in the directory
         </figcaption>
 </figure>
 
 <p>To copy the public key to the server we want to use it on, we use the command <code>ssh-copy-id</code> on Linux and <code>scp</code> on Windows and Mac.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex4/images/ssh-copy-id.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/ssh-copy-id.png"/> <figcaption>
             Figure: ssh-copy-id
         </figcaption>
 </figure>
 
 <p>After this we will not need to enter a password to authenticate.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex4/images/login-with-key.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/login-with-key.png"/> <figcaption>
             Figure: logging with a key
         </figcaption>
 </figure>
@@ -464,24 +418,24 @@ x = execute
 <h4 id="disable-password-authentication">Disable password authentication<a hidden class="anchor" aria-hidden="true" href="#disable-password-authentication">#</a></h4>
 <p>To only allow key authentication, we need to edit the <code>/etc/ssh/sshd_config</code> file again.</p>
 <p>To do this, we ssh into the server, open the file with a text editor of your choice, and edit this line.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># change this</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># change this</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># PasswordAuthentication yes</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># to this</span>
 </span></span><span style="display:flex;"><span>PasswordAuthentication no
 </span></span></code></pre></div><p>If we try to log in as another user for which we do not have a key, we cannot connect.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex4/images/nokey.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex4/images/nokey.png"/> <figcaption>
             Figure: Not having a key
         </figcaption>
 </figure>
 
 <hr>
 <h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
-<p><em>For a full bibliography, see the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex4/quellen.bib">original BibTeX file</a>.</em></p>
+<p><em>For a full bibliography, see the <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex4/quellen.bib">original BibTeX file</a>.</em></p>
 <hr>
 <h2 id="list-of-figures">List of Figures<a hidden class="anchor" aria-hidden="true" href="#list-of-figures">#</a></h2>
 <ol>
-<li>Grouplogo</li>
+<li>Original report cover image</li>
 <li>Ping to the Internet</li>
 <li>Ping the local machine</li>
 <li>docker inspect</li>
@@ -500,46 +454,46 @@ x = execute
 <hr>
 <h2 id="attachments">Attachments<a hidden class="anchor" aria-hidden="true" href="#attachments">#</a></h2>
 <h3 id="dockerfile">Dockerfile<a hidden class="anchor" aria-hidden="true" href="#dockerfile">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">ubuntu:latest</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">ubuntu:latest</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt update <span style="color:#f92672">&amp;&amp;</span> apt upgrade -y <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    apt install iproute2 iputils-ping zsh net-tools vim -y<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> ln -fs /usr/share/zoneinfo/Europe/Vienna /etc/localtime<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> DEBIAN_FRONTEND<span style="color:#f92672">=</span>noninteractive apt install -y tzdata ssh<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#39;root:password&#39;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;s/#Port 22/Port 38452/&#39;</span> /etc/ssh/sshd_config<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;s/#PermitRootLogin prohibit-password/PermitRootLogin yes/&#39;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    /etc/ssh/sshd_config<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> groupadd -g <span style="color:#ae81ff">324</span> ram-Users <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    useradd -u <span style="color:#ae81ff">1024</span> ram-alois <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    useradd -u <span style="color:#ae81ff">1124</span> ram-berta <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    useradd -u <span style="color:#ae81ff">1224</span> ram-chris <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    useradd ram-fus <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    useradd ram-ram<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> usermod -g ram-Users ram-alois <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    usermod -g ram-Users ram-berta<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> usermod --shell /bin/bash ram-alois <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\ </span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    usermod --shell /bin/bash ram-berta <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    usermod --shell /bin/zsh ram-chris <span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> mkdir -p /data/fus <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    mkdir /data/fus/alois <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    mkdir /data/fus/berta <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    mkdir /data/fus/chris <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    mkdir /data/fus/public<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> chgrp -R ram-Users /data/fus/ <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    chmod g+rw /data/fus/ <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    chown -R ram-alois:ram-Users /data/fus/alois/ <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    chmod -R u+wrx,g<span style="color:#f92672">=</span>r,o<span style="color:#f92672">=</span> /data/fus/alois/ <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    chown -R ram-berta:ram-Users /data/fus/berta/ <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    chmod -R u+wrx,g<span style="color:#f92672">=</span>r,o<span style="color:#f92672">=</span> /data/fus/berta/ <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    chown -R ram-chris:ram-Users /data/fus/chris/ <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    chmod -R u+wrx,g<span style="color:#f92672">=</span>,o<span style="color:#f92672">=</span> /data/fus/chris/ <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\ </span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    chmod -R u+wrx,g+wrx,o<span style="color:#f92672">=</span>r /data/fus/public/<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span> <span style="color:#e6db74">38452</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> service ssh start <span style="color:#f92672">&amp;&amp;</span> tail -F /dev/null<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> apt update <span style="color:#f92672">&amp;&amp;</span> apt upgrade -y <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    apt install iproute2 iputils-ping zsh net-tools vim -y<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> ln -fs /usr/share/zoneinfo/Europe/Vienna /etc/localtime<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> DEBIAN_FRONTEND<span style="color:#f92672">=</span>noninteractive apt install -y tzdata ssh<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#39;root:password&#39;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;s/#Port 22/Port 38452/&#39;</span> /etc/ssh/sshd_config<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;s/#PermitRootLogin prohibit-password/PermitRootLogin yes/&#39;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    /etc/ssh/sshd_config<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> groupadd -g <span style="color:#ae81ff">324</span> ram-Users <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    useradd -u <span style="color:#ae81ff">1024</span> ram-alois <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    useradd -u <span style="color:#ae81ff">1124</span> ram-berta <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    useradd -u <span style="color:#ae81ff">1224</span> ram-chris <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    useradd ram-fus <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    useradd ram-ram<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> usermod -g ram-Users ram-alois <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    usermod -g ram-Users ram-berta<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> usermod --shell /bin/bash ram-alois <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\ </span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    usermod --shell /bin/bash ram-berta <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    usermod --shell /bin/zsh ram-chris <span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> mkdir -p /data/fus <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    mkdir /data/fus/alois <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    mkdir /data/fus/berta <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    mkdir /data/fus/chris <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    mkdir /data/fus/public<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> chgrp -R ram-Users /data/fus/ <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    chmod g+rw /data/fus/ <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    chown -R ram-alois:ram-Users /data/fus/alois/ <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    chmod -R u+wrx,g<span style="color:#f92672">=</span>r,o<span style="color:#f92672">=</span> /data/fus/alois/ <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    chown -R ram-berta:ram-Users /data/fus/berta/ <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    chmod -R u+wrx,g<span style="color:#f92672">=</span>r,o<span style="color:#f92672">=</span> /data/fus/berta/ <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    chown -R ram-chris:ram-Users /data/fus/chris/ <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    chmod -R u+wrx,g<span style="color:#f92672">=</span>,o<span style="color:#f92672">=</span> /data/fus/chris/ <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\ </span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    chmod -R u+wrx,g+wrx,o<span style="color:#f92672">=</span>r /data/fus/public/<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">EXPOSE</span> <span style="color:#e6db74">38452</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CMD</span> service ssh start <span style="color:#f92672">&amp;&amp;</span> tail -F /dev/null<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="aliassh">alias.sh<a hidden class="anchor" aria-hidden="true" href="#aliassh">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>alias relaunch<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sudo sh -c &#39;docker stop itsi &amp;&amp;\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span>alias relaunch<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sudo sh -c &#39;docker stop itsi &amp;&amp;\
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      docker rm itsi &amp;&amp;\
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      docker buildx build -t itsi:latest . &amp;&amp;\
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      docker run -d -p 38452:38452 --name itsi itsi:latest &amp;&amp;\
@@ -605,7 +559,7 @@ x = execute
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">silly blog</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/">veya&#39;s silly little website</a></span> · 
 
     <span>
         Powered by

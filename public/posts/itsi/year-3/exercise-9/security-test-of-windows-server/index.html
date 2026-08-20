@@ -1,91 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=39857&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Security test of Windows Server | silly blog</title>
-<meta name="keywords" content="windows, it sec, school, red team">
-<meta name="description" content="
-Note: this was converted using from LaTeX to Markdown using Chat GPT 4.1 the original pdf can be found here along with the bibliography
-
-
-Testing Windows server security
-
-Laboratory protocol
-Exercise 9: Testing Windows server security
-
-     
-            Figure: Grouplogo
-        
-
-
-Subject: ITSI
-Class: 3AHITN
-Name: Stefan Fürst, Justin Tremurici
-Group Name/Number: Name here/12
-Supervisor: SPAC, ZIVK
-Exercise dates: 14.03.2025 | 21.03.2025 | 28.03.2025 | 04.04.2025
-Submission date: 11.04.2025
-
-Table of Contents
-
-Task definition
-Summary
-Complete network topology of the exercise
-Exercise Execution
-
-Setting Up the Exercise Environment
-Brute-Forcing SMB with Hydra
-
-Analyzing Network Traffic with Wireshark
-
-
-Brute-Forcing RDP
-
-Explaining My Own RDP Brute-Forcing Script
-Analyzing Network Traffic with Wireshark (RDP)
-
-
-Hardening Windows Against Brute-Force Attacks
-
-Using EvLWatcher for Rate Limiting
-Disabling NTLM Authentication
-Configuring Login Timeout Settings
-
-
-Mimikatz: An Introduction
-
-What Can Mimikatz Do?
-How to Use Mimikatz
-
-
-Running Mimikatz
-
-Using Polyglot Files to Conceal Mimikatz
-DLL Side-Loading to Attempt to Bypass Windows Defender
-How to Detect and Block Mimikatz
-
-
-
-
-References
-
-
-Task definition
-This task was conducted using a combination of manual configuration and automated attack tools to evaluate the security posture of a Windows Server environment. The environment setup involved preparing both the target system and an attacker system running Kali Linux, which was equipped with tools such as Hydra for brute-force attacks and Wireshark for network traffic analysis.">
+<title>Security Testing a Windows Server | veya&#39;s silly little website</title>
+<meta name="keywords" content="windows, it-sec, school, red-team">
+<meta name="description" content="Windows Server security testing with SMB and RDP analysis, Wireshark, hardening controls, and credential-security tooling.">
 <meta name="author" content="veya">
-<link rel="canonical" href="http://localhost:39857/posts/itsi/year-3/exercise-9/security-test-of-windows-server/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:39857/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:39857/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:39857/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:39857/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:39857/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
+<link rel="canonical" href="http://localhost:1313/posts/itsi/year-3/exercise-9/security-test-of-windows-server/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f22caeb8fa017ba8a722900a376f8b736adeb3549e2aeca3cc9f292a3cdf6e9e.css" integrity="sha256-8iyuuPoBe6inIpAKN2&#43;Lc2res1SeKuyjzJ8pKjzfbp4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/apple-touch-icon.png">
+<link rel="mask-icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/safari-pinned-tab.svg">
+<meta name="theme-color" content="#080808">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:39857/posts/itsi/year-3/exercise-9/security-test-of-windows-server/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/itsi/year-3/exercise-9/security-test-of-windows-server/">
 <noscript>
     <style>
         #theme-toggle,
@@ -140,7 +73,7 @@ This task was conducted using a combination of manual configuration and automate
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:39857/" accesskey="h" title="silly blog (Alt + H)">silly blog</a>
+            <a href="http://localhost:1313/" accesskey="h" title="veya&#39;s silly little website (Alt + H)">veya&#39;s silly little website</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -166,17 +99,22 @@ This task was conducted using a combination of manual configuration and automate
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:39857/about/" title="About">
+                <a href="http://localhost:1313/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:39857/posts/" title="Posts">
+                <a href="http://localhost:1313/networking-security/" title="Networking &amp; Security">
+                    <span>Networking &amp; Security</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:39857/" title="root">
+                <a href="http://localhost:1313/" title="root">
                     <span>root</span>
                 </a>
             </li>
@@ -189,14 +127,17 @@ This task was conducted using a combination of manual configuration and automate
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      Security test of Windows Server
+      Security Testing a Windows Server
     </h1>
+    <div class="post-description">
+      Windows Server security testing with SMB and RDP analysis, Wireshark, hardening controls, and credential-security tooling.
+    </div>
     <div class="post-meta"><span title='2025-04-11 03:33:09 +0200 CEST'>April 11, 2025</span>&nbsp;·&nbsp;15 min&nbsp;·&nbsp;veya
 
 </div>
   </header> 
   <div class="post-content"><blockquote>
-<p>Note: this was converted using from LaTeX to Markdown using Chat GPT 4.1 the original pdf can be found <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex9/Sicherheitstests%20von%20Windows%20Server.pdf">here</a> along with the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex9/zotero.bib">bibliography</a></p>
+<p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex9/Sicherheitstests%20von%20Windows%20Server.pdf">original PDF</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex9/zotero.bib">bibliography</a> are available on GitHub.</p>
 </blockquote>
 <hr>
 <h1 id="testing-windows-server-security">Testing Windows server security<a hidden class="anchor" aria-hidden="true" href="#testing-windows-server-security">#</a></h1>
@@ -204,15 +145,14 @@ This task was conducted using a combination of manual configuration and automate
 <p><strong>Laboratory protocol</strong><br>
 Exercise 9: Testing Windows server security<br>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/menthing.png"/> <figcaption>
-            Figure: Grouplogo
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/menthing.png"/> <figcaption>
+            Original report cover image
         </figcaption>
 </figure>
 
 <strong>Subject:</strong> ITSI<br>
 <strong>Class:</strong> 3AHITN<br>
-<strong>Name:</strong> Stefan Fürst, Justin Tremurici<br>
-<strong>Group Name/Number:</strong> Name here/12<br>
+<strong>Name:</strong> Veya Fürst, Justin Tremurici<br>
 <strong>Supervisor:</strong> SPAC, ZIVK<br>
 <strong>Exercise dates:</strong> 14.03.2025 | 21.03.2025 | 28.03.2025 | 04.04.2025<br>
 <strong>Submission date:</strong> 11.04.2025</p>
@@ -279,7 +219,7 @@ Exercise 9: Testing Windows server security<br>
 <hr>
 <h2 id="complete-network-topology-of-the-exercise">Complete network topology of the exercise<a hidden class="anchor" aria-hidden="true" href="#complete-network-topology-of-the-exercise">#</a></h2>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/topo.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/topo.png"/> <figcaption>
             Figure 1: Complete network topology of the exercise
         </figcaption>
 </figure>
@@ -289,19 +229,19 @@ Exercise 9: Testing Windows server security<br>
 <h3 id="setting-up-the-exercise-environment">Setting Up the Exercise Environment<a hidden class="anchor" aria-hidden="true" href="#setting-up-the-exercise-environment">#</a></h3>
 <p>To meet the initial requirements of this exercise, the script from last time was simplified to create only five test users, along with corresponding security groups. Most randomly generated elements were removed, leaving only three shares on the <code>C:</code> drive. This can be verified in the Computer Management utility under the Users, Shares, and Groups categories, as shown in the figures below.</p>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/user.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/user.png"/> <figcaption>
             Figure 2: Verifying the creation of the users
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/groups.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/groups.png"/> <figcaption>
             Figure 3: Verifying the creation of the groups
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/shares.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/shares.png"/> <figcaption>
             Figure 4: Verifying the creation of the shares
         </figcaption>
 </figure>
@@ -309,11 +249,11 @@ Exercise 9: Testing Windows server security<br>
 <hr>
 <h3 id="brute-forcing-smb-with-hydra">Brute-Forcing SMB with Hydra<a hidden class="anchor" aria-hidden="true" href="#brute-forcing-smb-with-hydra">#</a></h3>
 <p>Since part of the setup involved assigning weak passwords to the users, they can be easily brute-forced with Hydra using the following command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>hydra -l user1 -P /usr/share/wordlists/rockyou.txt -t <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">192.168</span>.56.102 smb2 -I
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>hydra -l user1 -P /usr/share/wordlists/rockyou.txt -t <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">192.168</span>.56.102 smb2 -I
 </span></span></code></pre></div><p>This command consists of the <code>-l</code> flag to specify the user to target, and the <code>-P</code> flag to specify the list of passwords to use—in this case, the RockYou wordlist. Note that <code>-P</code> (uppercase) indicates a list of passwords, whereas <code>-p</code> (lowercase) is used for a single password. The <code>-t</code> flag sets the number of threads to use for the attack. <code>192.168.56.102</code> sets the target IP address, and <code>smb2</code> specifies the protocol to use. The <code>-I</code> flag tells Hydra to ignore restoring progress from an earlier session.</p>
 <p>After running the command, we can see that <code>password123_</code> is not a secure password, as it gets cracked in just one second.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/hydrasmb.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/hydrasmb.png"/> <figcaption>
             Figure 5: Obtaining the password for the smb share
         </figcaption>
 </figure>
@@ -325,7 +265,7 @@ Exercise 9: Testing Windows server security<br>
 <li>The first SMB packet is sent using version 1 instead of version 2, despite version 2 being specified in the command. This is explained in the SMB specification <cite>Microsoft Corporation<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite>.</li>
 </ul>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/smb1.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/smb1.png"/> <figcaption>
             Figure 6: Inspecting the first Negotiate Protocol Request
         </figcaption>
 </figure>
@@ -334,7 +274,7 @@ Exercise 9: Testing Windows server security<br>
 <li>The <code>Negotiate Protocol Request</code> informs the server of the SMB dialects (i.e., versions) the client supports, which is essentially an array of supported versions. <cite>Microsoft Community Hub<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></cite></li>
 </ul>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/smb2.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/smb2.png"/> <figcaption>
             Figure 7: Viewing the Negotiate Protocol Response
         </figcaption>
 </figure>
@@ -343,7 +283,7 @@ Exercise 9: Testing Windows server security<br>
 <li>The server responds with a <code>Negotiate Protocol Response</code>, replying with the preferred SMB dialect and an array of capabilities. In this case, the server responds with the <code>SMB2 Wildcard</code>, indicating that it supports at least <code>SMB 2.1</code> or a newer version. This prompts the client to send another <code>SMB2 Negotiate Request</code> specifying the exact revision of the SMB 2 protocol to be used.</li>
 </ul>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/smb3.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/smb3.png"/> <figcaption>
             Figure 8: Viewing the second Negotiate Protocol Request
         </figcaption>
 </figure>
@@ -352,7 +292,7 @@ Exercise 9: Testing Windows server security<br>
 <li>Now the client responds with its own list of supported capabilities.</li>
 </ul>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/smb4.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/smb4.png"/> <figcaption>
             Figure 9: Viewing the second Negotiate Protocol Response
         </figcaption>
 </figure>
@@ -366,7 +306,7 @@ Exercise 9: Testing Windows server security<br>
 </li>
 </ul>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/smb5.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/smb5.png"/> <figcaption>
             Figure 10: Viewing the Session Setup Request
         </figcaption>
 </figure>
@@ -375,7 +315,7 @@ Exercise 9: Testing Windows server security<br>
 <li>The server responds with <code>STATUS_MORE_PROCESSING_REQUIRED</code>, indicating that guest access is disabled and authentication is required to connect to this SMB share. <cite>Microsoft Docs<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></cite></li>
 </ul>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/smb6.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/smb6.png"/> <figcaption>
             Figure 11: Viewing the Session Setup Response
         </figcaption>
 </figure>
@@ -384,7 +324,7 @@ Exercise 9: Testing Windows server security<br>
 <li>The client sends another <code>Session Setup Request</code> with <code>NTLMSSP_AUTH</code>, including the domain name, user name, and session key.</li>
 </ul>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/smb7.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/smb7.png"/> <figcaption>
             Figure 12: Viewing the second Session Setup Request
         </figcaption>
 </figure>
@@ -393,7 +333,7 @@ Exercise 9: Testing Windows server security<br>
 <li>If the authentication fails, the server responds with <code>STATUS_LOGON_FAILURE</code>.</li>
 </ul>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/smb8.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/smb8.png"/> <figcaption>
             Figure 13: Viewing the second Session Setup Response
         </figcaption>
 </figure>
@@ -402,13 +342,13 @@ Exercise 9: Testing Windows server security<br>
 <li>If the authentication succeeds, the NT Status field in the header of the <code>Session Setup Response</code> is set to <code>STATUS_SUCCESS</code>. This is followed by a <code>Tree Connect Request</code> to access a share on the server. Since I did not specify a share, Hydra defaults to the administrative share <code>$IPC</code>, which is used to communicate with programs via named pipes over the network. <cite>Windows OS Hub<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></cite></li>
 </ul>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/smb9.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/smb9.png"/> <figcaption>
             Figure 14: Viewing the successful Session Setup Response
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/smb10.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/smb10.png"/> <figcaption>
             Figure 15: Viewing the Tree Connect Request
         </figcaption>
 </figure>
@@ -417,7 +357,7 @@ Exercise 9: Testing Windows server security<br>
 <li>The <code>Tree Connect Request</code> is followed by a <code>Tree Connect Response</code>, which includes an Access Mask field for the requested share, showing the permissions our user has on this share.</li>
 </ul>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/smb11.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/smb11.png"/> <figcaption>
             Figure 16: Viewing the Tree Connect Response
         </figcaption>
 </figure>
@@ -427,27 +367,27 @@ Exercise 9: Testing Windows server security<br>
 <p><code>RDP</code> is a proprietary protocol developed by Microsoft that allows a user to connect to another computer with a graphical interface. <cite>Wikipedia<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite> <cite>Microsoft Docs<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></cite></p>
 <p>However, Hydra did not detect my installation of <code>libfreerdp3</code>, so I created a custom Python RDP brute-forcing script based on the <code>xfreerdp3</code> command.</p>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/hydranordp.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/hydranordp.png"/> <figcaption>
             Figure 17: Hydra showing that it&#39;s not compiled with freerdp support
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/freerdpnonono.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/freerdpnonono.png"/> <figcaption>
             Figure 18: Showing that the libfreerdp3 package is installed but not found
         </figcaption>
 </figure>
 </p>
 <p>Using my script, I can now obtain the credentials and generate a command to connect to the server.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/rdpburteforce.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/rdpburteforce.png"/> <figcaption>
             Figure 19: Obtaining the credentials of the user
         </figcaption>
 </figure>
 
 <h4 id="explaining-my-own-rdp-brute-forcing-script">Explaining My Own RDP Brute-Forcing Script<a hidden class="anchor" aria-hidden="true" href="#explaining-my-own-rdp-brute-forcing-script">#</a></h4>
 <p>The script uses threading and the <code>xfreerdp3</code> command with <code>+auth-only</code> to check credentials. Here is an abstracted version:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> subprocess<span style="color:#f92672">,</span> threading<span style="color:#f92672">,</span> argparse<span style="color:#f92672">,</span> concurrent.futures
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> subprocess<span style="color:#f92672">,</span> threading<span style="color:#f92672">,</span> argparse<span style="color:#f92672">,</span> concurrent.futures
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>password_found <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Event()
 </span></span><span style="display:flex;"><span>
@@ -492,21 +432,21 @@ Exercise 9: Testing Windows server security<br>
 <h4 id="analyzing-network-traffic-with-wireshark-rdp">Analyzing Network Traffic with Wireshark (RDP)<a hidden class="anchor" aria-hidden="true" href="#analyzing-network-traffic-with-wireshark-rdp">#</a></h4>
 <p>When inspecting the traffic of an <code>RDP</code> connection, only two RDP requests are sent: a <code>Negotiate Request</code> and a <code>Negotiate Response</code>. The <code>Negotiate Request</code> is used by the client to advertise the supported security protocols.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/rdpneg%20req.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/rdpneg%20req.png"/> <figcaption>
             Figure 20: Viewing the RDP Negotiate Request
         </figcaption>
 </figure>
 
 <p>The server replies with the protocol to use based on the client’s advertisement, which in this case is <code>CredSSP</code> (Credential Security Support Provider). <code>CredSSP</code> provides an encrypted TLS channel, over which the client authenticates using the Simple and Protected Negotiate (SPNEGO) protocol with either Microsoft Kerberos or Microsoft NTLM.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/rdp%20neg%20res.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/rdp%20neg%20res.png"/> <figcaption>
             Figure 21: Viewing the RDP Negotiate Response
         </figcaption>
 </figure>
 
 <p>After selecting the protocol, a TLS handshake occurs between the client and the server. During this handshake, both parties agree on the TLS version, choose a cipher suite, authenticate the server’s identity via its public key and the digital signature of an SSL certificate authority, and generate session keys in order to use symmetric encryption after the handshake is complete.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/tlshandshake.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/tlshandshake.png"/> <figcaption>
             Figure 22: Viewing the Handshake and Termination of the Connection
         </figcaption>
 </figure>
@@ -518,7 +458,7 @@ Exercise 9: Testing Windows server security<br>
 <h4 id="using-evlwatcher-for-rate-limiting">Using EvLWatcher for Rate Limiting<a hidden class="anchor" aria-hidden="true" href="#using-evlwatcher-for-rate-limiting">#</a></h4>
 <p>To set up rate limiting, I used a <code>fail2ban</code>-style tool for Windows called EvLWatcher. After running the setup executable, no additional configuration is necessary, and it can essentially be left to run in the background. <cite>GitHub<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></cite></p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/evlwatcherf.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/evlwatcherf.png"/> <figcaption>
             Figure 23: Observing The Attackers IP-Address getting temporarily banned
         </figcaption>
 </figure>
@@ -526,13 +466,13 @@ Exercise 9: Testing Windows server security<br>
 <h4 id="disabling-ntlm-authentication">Disabling NTLM Authentication<a hidden class="anchor" aria-hidden="true" href="#disabling-ntlm-authentication">#</a></h4>
 <p>NTLM is a legacy authentication protocol that dates back to Windows NT. Although Microsoft introduced a more secure alternative called Kerberos in 1989, NTLM is still used in some domain networks and remains enabled for backward compatibility. One of NTLM&rsquo;s major flaws is that it stores password hashes in plaintext in the memory of its servers, which can be extracted using pass-the-hash tools such as Mimikatz. <cite>Windows OS Hub<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></cite> <cite>Wikipedia<sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite></p>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/disablentlm.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/disablentlm.png"/> <figcaption>
             Figure 24: Disabling NTLM authentication for all accounts
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/nontlm.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/nontlm.png"/> <figcaption>
             Figure 25: Hydra failing without being able to use NTLM
         </figcaption>
 </figure>
@@ -540,7 +480,7 @@ Exercise 9: Testing Windows server security<br>
 <h4 id="configuring-login-timeout-settings">Configuring Login Timeout Settings<a hidden class="anchor" aria-hidden="true" href="#configuring-login-timeout-settings">#</a></h4>
 <p>To slow down RDP brute-forcing, account lockout can be configured in the Local Security Policy editor under Account Lockout Policy. <cite>The Windows Club<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></cite></p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/lockout.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/lockout.png"/> <figcaption>
             Figure 26: Showing the lockout policy
         </figcaption>
 </figure>
@@ -562,14 +502,14 @@ Exercise 9: Testing Windows server security<br>
 <p>To run Mimikatz on the target system, I wanted to try a unique or more creative method rather than simply downloading and executing the Mimikatz binary directly. Inspired by a video from security professional and YouTuber John Hammond, where he analyzes a malware sample hidden inside an MP3 file that uses mshta.exe to execute a payload, I explored a similar idea. <cite>John Hammond<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></cite></p>
 <p>To do this, I used an MP3 file in which I embedded the plain text of an HTA script that downloads Mimikatz. The MP3 file appears normal and can be played, but if executed using <code>mshta</code>, it executes the script.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/payload.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/payload.png"/> <figcaption>
             Figure 27: Showing the payload in the mp3 file
         </figcaption>
 </figure>
 
 <p>The payload runs a PowerShell command in a hidden window that downloads Mimikatz and saves it as <code>msedge_installer.zip</code>.</p>
 <p>To insert my payload into an MP3 file, I wrote the following Python script:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> random
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">insert_file</span>(target_path, payload_path, output_path):
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
@@ -601,26 +541,26 @@ Exercise 9: Testing Windows server security<br>
 </span></span><span style="display:flex;"><span>    insert_file(target_mp3, file_to_insert, output_mp3)
 </span></span></code></pre></div><p>Figures below show the properties of the edited file, its ability to be played back, and the execution of the file via <code>mshta</code> on the target user through RDP.</p>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/link_properties.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/link_properties.png"/> <figcaption>
             Figure 28: Showing the properties of the mp3 file
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/listentiogn%20to%20the%20mp3%20file.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/listentiogn%20to%20the%20mp3%20file.png"/> <figcaption>
             Figure 29: Listening to the mp3 file
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/exepayload.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/exepayload.png"/> <figcaption>
             Figure 30: Executing the payload inside the mp3 file
         </figcaption>
 </figure>
 </p>
 <p>The ZIP file can now be extracted, and Mimikatz can be executed. However, since the user has virtually no permissions—and Mimikatz requires elevated privileges—it had no practical use in this scenario.</p>
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/sadgemimikatz.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/sadgemimikatz.png"/> <figcaption>
             Figure 31: Running privilege::debug in mimikatz
         </figcaption>
 </figure>
@@ -632,13 +572,13 @@ Exercise 9: Testing Windows server security<br>
 <pre tabindex="0"><code>cl /LD DismCore.c user32.lib 
 </code></pre><p>I tried bundling Mimikatz into the DLL and sideloading it via a built-in Windows executable in an attempt to bypass Windows Defender. However, it was detected anyway.</p>
 <p><figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/dll-1.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/dll-1.png"/> <figcaption>
             Figure 32: Opening a Messagebox with the dll
         </figcaption>
 </figure>
 
 <figure>
-    <img loading="lazy" src="/itsi/y3/ex9/images/dll-2.png"/> <figcaption>
+    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex9/images/dll-2.png"/> <figcaption>
             Figure 33: Trying to run the script via the dll
         </figcaption>
 </figure>
@@ -648,7 +588,7 @@ Exercise 9: Testing Windows server security<br>
 <p>There are a multitude of ways to prevent Mimikatz, most of which come down to restricting access. For example, configuring the &ldquo;Debug Program&rdquo; policy to be accessible only to local administrators, disabling outdated protocols such as <code>WDigest</code>, and enforcing strong password policies.</p>
 <hr>
 <h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
-<p><em>For a full bibliography, see the <a href="https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex9/zotero.bib">original BibTeX file</a>.</em></p>
+<p><em>For a full bibliography, see the <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex9/zotero.bib">original BibTeX file</a>.</em></p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -708,17 +648,17 @@ Exercise 9: Testing Windows server security<br>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:39857/tags/windows/">Windows</a></li>
-      <li><a href="http://localhost:39857/tags/it-sec/">It-Sec</a></li>
-      <li><a href="http://localhost:39857/tags/school/">School</a></li>
-      <li><a href="http://localhost:39857/tags/red-team/">Red Team</a></li>
+      <li><a href="http://localhost:1313/tags/windows/">Windows</a></li>
+      <li><a href="http://localhost:1313/tags/it-sec/">It-Sec</a></li>
+      <li><a href="http://localhost:1313/tags/school/">School</a></li>
+      <li><a href="http://localhost:1313/tags/red-team/">Red-Team</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:39857/">silly blog</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/">veya&#39;s silly little website</a></span> · 
 
     <span>
         Powered by

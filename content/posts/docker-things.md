@@ -5,7 +5,7 @@ categories = ["school", "linux", "docker"]
 tags = ["linux","docker","school","devops"]
 +++
 
-> The code for all setups is available on my GitHub [here](https://github.com/Stefanistkuhl/goobering/tree/master/things/silly_docker_guide).
+> The code for all setups is available on my GitHub [here](https://github.com/0xveya/goobering/tree/master/things/silly_docker_guide).
 
 # Docker crash course
 
@@ -58,7 +58,7 @@ Both technologies aim to achieve a similar goal: providing an isolated environme
 - Portability
     - Containers: Made to be moved and deployed everywhere
     - VMs: Slow to migrate due to large sizes
-![](https://media.geeksforgeeks.org/wp-content/uploads/20230109130229/Docker-vs-VM.png)
+![Comparison of containers and virtual machines](https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/docker-vs-vm.png)
 Image from [Geeks for Geeks](https://www.geeksforgeeks.org/docker-or-virtual-machines-which-is-a-better-choice/)
 
 
@@ -588,7 +588,7 @@ You can further configure how nodes are scaled based on resources and other fact
 > Note:
 > I changed the app to assign a random color based on the hostname so that when it is scaled up, you can visually see that different containers are handling your connections.
 
-The code for all setups is available on my GitHub [here](https://github.com/Stefanistkuhl/goobering/tree/master/things/silly_docker_guide).
+The code for all setups is available on my GitHub [here](https://github.com/0xveya/goobering/tree/master/things/silly_docker_guide).
 
 Thanks for reading! :3
 

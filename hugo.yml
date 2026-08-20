@@ -1,6 +1,6 @@
-baseURL: "https://0xveya.github.io"
-languageCode: "en-us"
-title: "silly blog"
+baseURL: "https://0xveya.github.io/"
+locale: "en-US"
+title: "veya's silly little website"
 theme: "paper"
 enableRobotsTXT: true
 
@@ -10,6 +10,9 @@ caches:
 
 menu:
   main:
+    - identifier: "networking-security"
+      name: "Networking & Security"
+      url: "networking-security/"
     - identifier: "about"
       name: "About"
       url: "about/"
@@ -57,18 +60,39 @@ params:
   ShowReadingTime: true
   ShowFullTextinRSS: true
 
+  assets:
+    favicon: "https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon.ico"
+    favicon16x16: "https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-16x16.png"
+    favicon32x32: "https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-32x32.png"
+    apple_touch_icon: "https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/apple-touch-icon.png"
+    safari_pinned_tab: "https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/safari-pinned-tab.svg"
+    theme_color: "#080808"
+
   homeInfoParams:
-    Title: "silly little website i guess"
+    Title: "hi, i'm veya"
     Content: >
-      - Mirroring the documentation from school exercises in Markdown format for easier access that seem worth putting here, I guess.
-      Other stuff might be here aswell if i feel like writing about them.
+      I build networking and systems tools, backend infrastructure,
+      and developer tooling.
 
-      - Original files for most things can be found [here](https://github.com/Stefanistkuhl/goobering/tree/master/itsi)
 
-      - Other useful links: [school obsidan repo](https://github.com/Stefanistkuhl/obsidianschule), [static page mirror of it](https://stefanistkuhl.github.io/obsidianschule/), [coding class repo](https://github.com/Stefanistkuhl/Schule_Sew_etc)
+      Go is my main language. I also use Python, C for lower-level learning,
+      and occasionally mess around with Zig or Rust. For web stuff, I like
+      Svelte and Astro.
+
+
+      Start with my [networking and security work](/networking-security/),
+      including network emulation, packet analysis, Linux hardening,
+      wireless security, and selected HTL lab work.
+
+
+      This site is also where I put project writeups, technical notes,
+      experiments, and school/42 documentation.
+
+
+      Most of my code is on [GitHub](https://github.com/0xveya).
 
   socialIcons:
     - name: "github"
-      url: "https://github.com/stefanistkuhl"
+      url: "https://github.com/0xveya"
     - name: rss
       url: "index.xml"
