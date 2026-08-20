@@ -1,6 +1,7 @@
 +++
 date = '2025-04-11T03:33:09+02:00'
 title = 'Security Testing a Windows Server'
+context = 'HTL Windows security writeup'
 description = 'Windows Server security testing with SMB and RDP analysis, Wireshark, hardening controls, and credential-security tooling.'
 categories = ["school", "it-sec"]
 tags = ["windows", "it-sec", "school", "red-team"]

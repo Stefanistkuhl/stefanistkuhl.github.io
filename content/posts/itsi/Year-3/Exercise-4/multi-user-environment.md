@@ -1,6 +1,7 @@
 +++
 date = '2024-11-06T00:00:00+01:00'
 title = 'GNU/Linux - Setting up a multi-user environment'
+context = 'HTL Linux administration writeup'
 description = 'Building and securing a multi-user Linux environment with containers, permissions, networking, and SSH keys.'
 categories = ["school", "it-sec"]
 tags = ["linux", "it-sec", "school", "docker", "ssh", "users", "permissions"]

@@ -1,6 +1,7 @@
 +++
 date = '2025-03-14T02:22:09+01:00'
 title = 'Secure Data Storage on Windows Server'
+context = 'HTL Windows Server writeup'
 description = 'Windows Server storage security using PowerShell automation, BitLocker, permissions, SMB shares, and network access controls.'
 url = '/posts/itsi/year-3/exercise-8/secure-data-storage-on-windows-server/'
 aliases = ['/posts/itsi/year-3/exercise-8/secure-data-storrage-on-windows-server/']

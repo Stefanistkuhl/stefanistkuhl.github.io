@@ -1,0 +1,15 @@
+{{- $name := .Get 0 -}}
+{{- with index hugo.Data.collections $name -}}
+  {{- with .intro }}<div class="collection-intro"><p class="collection-kicker">{{ .kicker }}</p><p class="collection-lede">{{ .text }}</p></div>{{ end }}
+  {{- with .feature }}
+  <article class="collection-feature"><div><p class="collection-label">{{ .label }}</p><h2><a href="{{ .url }}">{{ .title }}</a></h2><p>{{ .description }}</p><p>{{ .detail }}</p></div>
+    {{- with .stack }}<ul class="collection-stack">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+  </article>{{ end }}
+  {{- range .groups }}
+  <section class="collection-group"><h2>{{ .title }}</h2>{{ with .description }}<p class="collection-description">{{ . }}</p>{{ end }}
+    {{- with .flagship }}<a class="collection-flagship" href="{{ .url }}"><img src="{{ .image }}" alt="{{ .alt }}" loading="lazy"><span><span class="collection-label">{{ .label }}</span><strong>{{ .title }}</strong><span>{{ .description }}</span><span>{{ .detail }}</span></span></a>{{ end }}
+    {{- with .items }}<div class="collection-grid">{{ range . }}<a class="collection-card" href="{{ .url }}"><img src="{{ .image }}" alt="{{ .alt }}" loading="lazy"><span class="collection-label">{{ .label }}</span><strong>{{ .title }}</strong><span>{{ .description }}</span></a>{{ end }}</div>{{ end }}
+    {{- with .bullets }}<ul class="collection-points">{{ range . }}<li>{{ . | markdownify }}</li>{{ end }}</ul>{{ end }}
+  </section>{{ end }}
+  {{- with .footer }}<div class="collection-footer">{{ . | markdownify }}</div>{{ end }}
+{{- else -}}{{ errorf "collection data %q was not found" $name }}{{ end -}}

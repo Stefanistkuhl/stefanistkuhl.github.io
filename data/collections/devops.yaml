@@ -1,0 +1,27 @@
+intro:
+  kicker: Topic index
+  text: CI and containers are normal parts of modern software development. Working knowledge of automated checks, reproducible builds, images, and deployment workflows is a baseline for shipping and operating software. These notes show where I use those foundations in projects and infrastructure work.
+feature:
+  label: Distributed systems security
+  title: Anti Hardening
+  url: /posts/itsi/year-4/exercise-1/anti-hardening/
+  description: An HTL systems security assignment extended into a distributed application across k3s, Docker Swarm, PostgreSQL, a Go API, Tailscale, and Windows Server infrastructure.
+  detail: The project compares deliberately insecure and hardened deployments, covering authentication, secret management, CSP, encrypted connectivity, access control, observability, and backup design.
+  stack: [k3s, Docker Swarm, PostgreSQL, Tailscale]
+groups:
+  - title: Container foundations
+    description: Practical material built around deployable examples rather than isolated command references.
+    items:
+      - label: School presentation · practical guide
+        title: Docker Things
+        url: /posts/docker-things/
+        image: https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/docker-vs-vm.png
+        alt: Comparison of containers and virtual machines
+        description: Originally created for a school presentation, this guide develops one Go and NGINX application from a manual deployment through Dockerfiles, Compose, remote contexts, and Swarm stacks. The example sources and references are linked in the writeup.
+  - title: Used in projects
+    description: CI and containers are ordinary project plumbing for validating changes, building artifacts, publishing releases, and retaining useful execution data.
+    bullets:
+      - "[tethux CI](https://github.com/tethux/tethux/blob/master/tools/ci/README.md): reproducible NixOS runners, Woodpecker orchestration, portable Dagger graphs, and OpenTelemetry traces."
+      - "[eval-mobile CI](https://github.com/0xveya/eval-mobile/blob/master/.github/workflows/ci.yml): Bun validation followed by cached container builds and commit-addressed GHCR images."
+      - "[typed-errs workflows](https://github.com/0xveya/typed-errs/tree/master/.github/workflows): Ruff, mypy, basedpyright, pytest, package builds, and trusted PyPI publishing."
+footer: Deployment examples and source files are available in the [goobering repository](https://github.com/0xveya/goobering/tree/master/things/silly_docker_guide).

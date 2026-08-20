@@ -1,21 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Posts on veya&#39;s silly little website</title>
-    <link>http://localhost:1313/posts/</link>
-    <description>Recent content in Posts on veya&#39;s silly little website</description>
-    <generator>Hugo -- 0.165.0</generator>
-    <language>en-US</language>
-    <lastBuildDate>Mon, 20 Oct 2025 00:00:00 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Anti Hardening</title>
-      <link>http://localhost:1313/posts/itsi/year-4/exercise-1/anti-hardening/</link>
-      <pubDate>Mon, 20 Oct 2025 00:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/itsi/year-4/exercise-1/anti-hardening/</guid>
-      <description>A distributed systems security lab covering Kubernetes, PostgreSQL, JWT authentication, secrets, backups, Tailscale, and application hardening.</description>
-      <content:encoded><![CDATA[<blockquote>
-<p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y4/ex1/main.typ">original Typst source</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y4/ex1/quellen.bib">bibliography</a> are available on GitHub.</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on Veya Fürst</title><link>https://0xveya.github.io/posts/</link><description>Recent content in Posts on Veya Fürst</description><generator>Hugo</generator><language>en-US</language><lastBuildDate>Mon, 20 Oct 2025 00:00:00 +0100</lastBuildDate><atom:link href="https://0xveya.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Anti Hardening</title><link>https://0xveya.github.io/posts/itsi/year-4/exercise-1/anti-hardening/</link><pubDate>Mon, 20 Oct 2025 00:00:00 +0100</pubDate><guid>https://0xveya.github.io/posts/itsi/year-4/exercise-1/anti-hardening/</guid><description>A distributed systems security writeup covering Kubernetes, PostgreSQL, JWT authentication, secrets, backups, Tailscale, and application hardening.</description><content:encoded><![CDATA[<blockquote>
+<p>This HTL Donaustadt assignment was extended beyond the original brief into the distributed system documented below. The report was converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y4/ex1/main.typ">original Typst source</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y4/ex1/quellen.bib">bibliography</a> are available on GitHub.</p>
 </blockquote>
 <hr>
 <h1 id="exercise-1-anti-hardening">Exercise 1: Anti Hardening</h1>
@@ -1368,15 +1352,7 @@ r7JhFS-GBkxqhg_VWpYhcpEM03vorB2ebJqocrJUfns
 </li>
 </ol>
 </div>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>WLAN Setup and Security</title>
-      <link>http://localhost:1313/posts/itsi/year-3/exercise-11/wlan-setup-and-security/</link>
-      <pubDate>Tue, 10 Jun 2025 07:10:35 +0200</pubDate>
-      <guid>http://localhost:1313/posts/itsi/year-3/exercise-11/wlan-setup-and-security/</guid>
-      <description>Wireless network configuration and security analysis covering DHCP, client isolation, WPA handshakes, and Wireshark.</description>
-      <content:encoded><![CDATA[<blockquote>
+]]></content:encoded></item><item><title>WLAN Setup and Security</title><link>https://0xveya.github.io/posts/itsi/year-3/exercise-11/wlan-setup-and-security/</link><pubDate>Tue, 10 Jun 2025 07:10:35 +0200</pubDate><guid>https://0xveya.github.io/posts/itsi/year-3/exercise-11/wlan-setup-and-security/</guid><description>Wireless network configuration and security analysis covering DHCP, client isolation, WPA handshakes, and Wireshark.</description><content:encoded><![CDATA[<blockquote>
 <p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex11/WLAN-setup-and-security.pdf">original PDF</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex11/zotero.bib">bibliography</a> are available on GitHub.</p>
 </blockquote>
 <hr>
@@ -1849,15 +1825,7 @@ This filter only displays frames with EAPOL, which are responsible for authentic
 </li>
 </ol>
 </div>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Capturing Network Traffic</title>
-      <link>http://localhost:1313/posts/itsi/year-3/exercise-10/capturing-network-traffic/</link>
-      <pubDate>Fri, 16 May 2025 02:36:09 +0200</pubDate>
-      <guid>http://localhost:1313/posts/itsi/year-3/exercise-10/capturing-network-traffic/</guid>
-      <description>Packet capture and traffic analysis using Wireshark, RouterOS port mirroring, ICMP, HTTP, and VoIP.</description>
-      <content:encoded><![CDATA[<blockquote>
+]]></content:encoded></item><item><title>Capturing Network Traffic</title><link>https://0xveya.github.io/posts/itsi/year-3/exercise-10/capturing-network-traffic/</link><pubDate>Fri, 16 May 2025 02:36:09 +0200</pubDate><guid>https://0xveya.github.io/posts/itsi/year-3/exercise-10/capturing-network-traffic/</guid><description>Packet capture and traffic analysis using Wireshark, RouterOS port mirroring, ICMP, HTTP, and VoIP.</description><content:encoded><![CDATA[<blockquote>
 <p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex10/capturing-network-traffic-in-a-LAN.pdf">original PDF</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex10/quellen.bib">bibliography</a> are available on GitHub.</p>
 </blockquote>
 <hr>
@@ -2088,22 +2056,8 @@ Exercise 10: Capturing of network traffic in the local network<br>
 </li>
 </ol>
 </div>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Docker Things</title>
-      <link>http://localhost:1313/posts/docker-things/</link>
-      <pubDate>Wed, 14 May 2025 19:40:14 +0200</pubDate>
-      <guid>http://localhost:1313/posts/docker-things/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;The code for all setups is available on my GitHub &lt;a href=&#34;https://github.com/0xveya/goobering/tree/master/things/silly_docker_guide&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;docker-crash-course&#34;&gt;Docker crash course&lt;/h1&gt;
-&lt;h2 id=&#34;what-is-docker&#34;&gt;What is docker?&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. With Docker, you can manage your infrastructure in the same ways you manage your applications. By taking advantage of Docker&amp;rsquo;s methodologies for shipping, testing, and deploying code, you can significantly reduce the delay between writing code and running it in production.&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<blockquote>
-<p>The code for all setups is available on my GitHub <a href="https://github.com/0xveya/goobering/tree/master/things/silly_docker_guide">here</a>.</p>
+]]></content:encoded></item><item><title>Docker Things</title><link>https://0xveya.github.io/posts/docker-things/</link><pubDate>Wed, 14 May 2025 19:40:14 +0200</pubDate><guid>https://0xveya.github.io/posts/docker-things/</guid><description>A practical introduction to container images, Dockerfiles, Compose, remote contexts, and Docker Swarm using one small Go and NGINX application.</description><content:encoded><![CDATA[<blockquote>
+<p>I originally created this practical guide and its example deployments for a school presentation. The source files for every setup are available <a href="https://github.com/0xveya/goobering/tree/master/things/silly_docker_guide">on GitHub</a>.</p>
 </blockquote>
 <h1 id="docker-crash-course">Docker crash course</h1>
 <h2 id="what-is-docker">What is docker?</h2>
@@ -2505,19 +2459,19 @@ I updated the compose file as follows:</p>
 I changed the app to assign a random color based on the hostname so that when it is scaled up, you can visually see that different containers are handling your connections.</p>
 </blockquote>
 <p>The code for all setups is available on my GitHub <a href="https://github.com/0xveya/goobering/tree/master/things/silly_docker_guide">here</a>.</p>
+<h2 id="sources-and-materials">Sources and materials</h2>
+<ul>
+<li><a href="https://github.com/0xveya/goobering/tree/master/things/silly_docker_guide">Example application and deployment files</a></li>
+<li><a href="https://docs.docker.com/get-started/docker-overview/">Docker overview</a></li>
+<li><a href="https://docs.docker.com/compose/intro/compose-application-model/">Docker Compose application model</a></li>
+<li><a href="https://docs.docker.com/engine/swarm/key-concepts/">Docker Swarm key concepts</a></li>
+<li><a href="https://www.geeksforgeeks.org/docker-or-virtual-machines-which-is-a-better-choice/">Container and virtual-machine comparison image</a></li>
+</ul>
 <p>Thanks for reading! :3</p>
 <blockquote>
-<p>TODO: Add citations to this at some point, include screenshots for examples, and add more info over time so this becomes a real blog post and not just notes for myself.</p>
+<p>Yes, I know this could go much lower-level and more in depth, but that was not worth it for this presentation.</p>
 </blockquote>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Security Testing a Windows Server</title>
-      <link>http://localhost:1313/posts/itsi/year-3/exercise-9/security-test-of-windows-server/</link>
-      <pubDate>Fri, 11 Apr 2025 03:33:09 +0200</pubDate>
-      <guid>http://localhost:1313/posts/itsi/year-3/exercise-9/security-test-of-windows-server/</guid>
-      <description>Windows Server security testing with SMB and RDP analysis, Wireshark, hardening controls, and credential-security tooling.</description>
-      <content:encoded><![CDATA[<blockquote>
+]]></content:encoded></item><item><title>Security Testing a Windows Server</title><link>https://0xveya.github.io/posts/itsi/year-3/exercise-9/security-test-of-windows-server/</link><pubDate>Fri, 11 Apr 2025 03:33:09 +0200</pubDate><guid>https://0xveya.github.io/posts/itsi/year-3/exercise-9/security-test-of-windows-server/</guid><description>Windows Server security testing with SMB and RDP analysis, Wireshark, hardening controls, and credential-security tooling.</description><content:encoded><![CDATA[<blockquote>
 <p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex9/Sicherheitstests%20von%20Windows%20Server.pdf">original PDF</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex9/zotero.bib">bibliography</a> are available on GitHub.</p>
 </blockquote>
 <hr>
@@ -3023,15 +2977,7 @@ Exercise 9: Testing Windows server security<br>
 </li>
 </ol>
 </div>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Secure Data Storage on Windows Server</title>
-      <link>http://localhost:1313/posts/itsi/year-3/exercise-8/secure-data-storage-on-windows-server/</link>
-      <pubDate>Fri, 14 Mar 2025 02:22:09 +0100</pubDate>
-      <guid>http://localhost:1313/posts/itsi/year-3/exercise-8/secure-data-storage-on-windows-server/</guid>
-      <description>Windows Server storage security using PowerShell automation, BitLocker, permissions, SMB shares, and network access controls.</description>
-      <content:encoded><![CDATA[<blockquote>
+]]></content:encoded></item><item><title>Secure Data Storage on Windows Server</title><link>https://0xveya.github.io/posts/itsi/year-3/exercise-8/secure-data-storage-on-windows-server/</link><pubDate>Fri, 14 Mar 2025 02:22:09 +0100</pubDate><guid>https://0xveya.github.io/posts/itsi/year-3/exercise-8/secure-data-storage-on-windows-server/</guid><description>Windows Server storage security using PowerShell automation, BitLocker, permissions, SMB shares, and network access controls.</description><content:encoded><![CDATA[<blockquote>
 <p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex8/Sichere%20Datenspeicherung%20unter%20Windows.pdf">original PDF</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex8/quellen.bib">bibliography</a> are available on GitHub.</p>
 </blockquote>
 <hr>
@@ -3412,15 +3358,7 @@ Exercise 8: Secure data storage on Windows<br>
 </li>
 </ol>
 </div>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Baby&#39;s First CTF</title>
-      <link>http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/</link>
-      <pubDate>Mon, 20 Jan 2025 03:33:09 +0100</pubDate>
-      <guid>http://localhost:1313/posts/itsi/year-3/exercise-7/babys-first-ctf/</guid>
-      <description>A documented CTF walkthrough covering network discovery, service enumeration, credential attacks, and Linux exploitation.</description>
-      <content:encoded><![CDATA[<blockquote>
+]]></content:encoded></item><item><title>Baby's First CTF</title><link>https://0xveya.github.io/posts/itsi/year-3/exercise-7/babys-first-ctf/</link><pubDate>Mon, 20 Jan 2025 03:33:09 +0100</pubDate><guid>https://0xveya.github.io/posts/itsi/year-3/exercise-7/babys-first-ctf/</guid><description>A documented CTF walkthrough covering network discovery, service enumeration, credential attacks, and Linux exploitation.</description><content:encoded><![CDATA[<blockquote>
 <p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex7/UE7_CTF.pdf">original PDF</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex7/quellen.bib">bibliography</a> are available on GitHub.</p>
 </blockquote>
 <hr>
@@ -3896,15 +3834,7 @@ Exercise 7: Ethical hacking of a CTF-VM<br>
 </li>
 </ol>
 </div>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Hardening a Linux Webserver</title>
-      <link>http://localhost:1313/posts/itsi/year-3/exercise-6/linux-hardening-nginx/</link>
-      <pubDate>Sat, 04 Jan 2025 03:33:09 +0100</pubDate>
-      <guid>http://localhost:1313/posts/itsi/year-3/exercise-6/linux-hardening-nginx/</guid>
-      <description>Hardening a containerized Linux web server with SSH keys, NGINX, authentication, TLS, and local DNS.</description>
-      <content:encoded><![CDATA[<blockquote>
+]]></content:encoded></item><item><title>Hardening a Linux Webserver</title><link>https://0xveya.github.io/posts/itsi/year-3/exercise-6/linux-hardening-nginx/</link><pubDate>Sat, 04 Jan 2025 03:33:09 +0100</pubDate><guid>https://0xveya.github.io/posts/itsi/year-3/exercise-6/linux-hardening-nginx/</guid><description>Hardening a containerized Linux web server with SSH keys, NGINX, authentication, TLS, and local DNS.</description><content:encoded><![CDATA[<blockquote>
 <p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex6/GNU_Linux_Securing_Active_Components.pdf">original PDF</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex6/quellen.bib">bibliography</a> are available on GitHub.</p>
 </blockquote>
 <hr>
@@ -4301,15 +4231,7 @@ Additionally, I replaced the <code>/var/www/html</code> directory with <code>/va
 </li>
 </ol>
 </div>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>GNU/Linux - Securing Access</title>
-      <link>http://localhost:1313/posts/itsi/year-3/exercise-5/securing-access/</link>
-      <pubDate>Sun, 01 Dec 2024 00:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/itsi/year-3/exercise-5/securing-access/</guid>
-      <description>Linux access control using sudo policies, password policy, SSH hardening, PAM, and one-time passwords.</description>
-      <content:encoded><![CDATA[<blockquote>
+]]></content:encoded></item><item><title>GNU/Linux - Securing Access</title><link>https://0xveya.github.io/posts/itsi/year-3/exercise-5/securing-access/</link><pubDate>Sun, 01 Dec 2024 00:00:00 +0100</pubDate><guid>https://0xveya.github.io/posts/itsi/year-3/exercise-5/securing-access/</guid><description>Linux access control using sudo policies, password policy, SSH hardening, PAM, and one-time passwords.</description><content:encoded><![CDATA[<blockquote>
 <p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex5/Securing%20access.pdf">original PDF</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex5/quellen.bib">bibliography</a> are available on GitHub.</p>
 </blockquote>
 <hr>
@@ -4623,15 +4545,7 @@ Lastly, the path to the file being edited is specified. The next used command is
 </li>
 </ol>
 </div>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>GNU/Linux - Setting up a multi-user environment</title>
-      <link>http://localhost:1313/posts/itsi/year-3/exercise-4/multi-user-environment/</link>
-      <pubDate>Wed, 06 Nov 2024 00:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/itsi/year-3/exercise-4/multi-user-environment/</guid>
-      <description>Building and securing a multi-user Linux environment with containers, permissions, networking, and SSH keys.</description>
-      <content:encoded><![CDATA[<blockquote>
+]]></content:encoded></item><item><title>GNU/Linux - Setting up a multi-user environment</title><link>https://0xveya.github.io/posts/itsi/year-3/exercise-4/multi-user-environment/</link><pubDate>Wed, 06 Nov 2024 00:00:00 +0100</pubDate><guid>https://0xveya.github.io/posts/itsi/year-3/exercise-4/multi-user-environment/</guid><description>Building and securing a multi-user Linux environment with containers, permissions, networking, and SSH keys.</description><content:encoded><![CDATA[<blockquote>
 <p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex4/Einrichten%20einer%20Multi-User-Umgebung.tex">original LaTeX source</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex4/quellen.bib">bibliography</a> are available on GitHub.</p>
 </blockquote>
 <hr>
@@ -5035,15 +4949,7 @@ x = execute
 </li>
 </ol>
 </div>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Cryptography</title>
-      <link>http://localhost:1313/posts/itsi/year-3/exercise-3/cryptography/</link>
-      <pubDate>Fri, 18 Oct 2024 00:00:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/itsi/year-3/exercise-3/cryptography/</guid>
-      <description>A practical introduction to symmetric and asymmetric encryption, hashing, integrity checks, and OpenSSL.</description>
-      <content:encoded><![CDATA[<blockquote>
+]]></content:encoded></item><item><title>Cryptography</title><link>https://0xveya.github.io/posts/itsi/year-3/exercise-3/cryptography/</link><pubDate>Fri, 18 Oct 2024 00:00:00 +0200</pubDate><guid>https://0xveya.github.io/posts/itsi/year-3/exercise-3/cryptography/</guid><description>A practical introduction to symmetric and asymmetric encryption, hashing, integrity checks, and OpenSSL.</description><content:encoded><![CDATA[<blockquote>
 <p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex3/Raichle_F%C3%BCrst_Kryptographie.pdf">original PDF</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex3/quellen.bib">bibliography</a> are available on GitHub.</p>
 </blockquote>
 <hr>
@@ -5184,7 +5090,4 @@ Exercise 3: Cryptography<br>
 </li>
 </ol>
 </div>
-]]></content:encoded>
-    </item>
-  </channel>
-</rss>
+]]></content:encoded></item></channel></rss>

@@ -1,0 +1,14 @@
+<nav class="topic-index" aria-label="Technical topics">
+  {{- range hugo.Data.topics }}
+  <a class="topic-row" href="{{ .url }}">
+    <span class="topic-number">{{ .index }}</span>
+    <span class="topic-copy">
+      <span class="collection-label">{{ .label }}</span>
+      <strong>{{ .title }}</strong>
+      <span>{{ .description }}</span>
+    </span>
+    <span class="topic-meta">{{ .count }}</span>
+    <span class="topic-arrow" aria-hidden="true">↗</span>
+  </a>
+  {{- end }}
+</nav>

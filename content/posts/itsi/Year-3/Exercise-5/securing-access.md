@@ -1,6 +1,7 @@
 +++
 date = '2024-12-01T00:00:00+01:00'
 title = 'GNU/Linux - Securing Access'
+context = 'HTL Linux security writeup'
 description = 'Linux access control using sudo policies, password policy, SSH hardening, PAM, and one-time passwords.'
 categories = ["school", "it-sec"]
 tags = ["linux", "it-sec", "school", "ssh", "sudo", "security", "pam", "otp"]

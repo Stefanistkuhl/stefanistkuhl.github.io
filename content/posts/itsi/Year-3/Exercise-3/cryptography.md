@@ -1,6 +1,7 @@
 +++
 date = '2024-10-18T00:00:00+02:00'
 title = 'Cryptography'
+context = 'HTL IT security writeup'
 description = 'A practical introduction to symmetric and asymmetric encryption, hashing, integrity checks, and OpenSSL.'
 categories = ["school", "it-sec"]
 tags = ["cryptography", "it-sec", "school", "encryption", "openssl", "aes", "rsa"]

@@ -1,6 +1,6 @@
 baseURL: "https://0xveya.github.io/"
 locale: "en-US"
-title: "veya's silly little website"
+title: "Veya Fürst"
 theme: "paper"
 enableRobotsTXT: true
 
@@ -10,18 +10,15 @@ caches:
 
 menu:
   main:
-    - identifier: "networking-security"
-      name: "Networking & Security"
-      url: "networking-security/"
+    - identifier: "topics"
+      name: "Topics"
+      url: "topics/"
     - identifier: "about"
       name: "About"
       url: "about/"
     - identifier: "posts"
       name: "Posts"
       url: "posts/"
-    - identifier: "root"
-      name: "root"
-      url: "/"
 
 outputs:
   home:
@@ -37,7 +34,7 @@ outputs:
 
 pagination:
   disableAliases: false
-  pagerSize: 5
+  pagerSize: 12
 
 markup:
   goldmark:
@@ -54,7 +51,7 @@ markup:
 params:
   ShowSocialIcons: true
   ShowSocialIconsInFooter: true
-  author: "veya"
+  author: "Veya Fürst"
   ShowCodeCopyButtons: true
   ShowPageNums: true
   ShowReadingTime: true
@@ -66,10 +63,10 @@ params:
     favicon32x32: "https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-32x32.png"
     apple_touch_icon: "https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/apple-touch-icon.png"
     safari_pinned_tab: "https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/safari-pinned-tab.svg"
-    theme_color: "#080808"
+    theme_color: "#191724"
 
   homeInfoParams:
-    Title: "hi, i'm veya"
+    Title: "Systems, networks, and useful tools."
     Content: >
       I build networking and systems tools, backend infrastructure,
       and developer tooling.
@@ -80,9 +77,10 @@ params:
       Svelte and Astro.
 
 
-      Start with my [networking and security work](/networking-security/),
-      including network emulation, packet analysis, Linux hardening,
-      wireless security, and selected HTL lab work.
+      I am currently working on [tethux](https://github.com/tethux/tethux),
+      an in-development network emulator. Alongside it, I work through
+      systems-programming projects at 42 Vienna and build smaller developer
+      tools.
 
 
       This site is also where I put project writeups, technical notes,

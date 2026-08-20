@@ -1,6 +1,7 @@
 +++
 date = '2025-06-10T07:10:35+02:00'
 title = 'WLAN Setup and Security'
+context = 'HTL networking and security writeup'
 description = 'Wireless network configuration and security analysis covering DHCP, client isolation, WPA handshakes, and Wireshark.'
 categories = ["school", "it-sec", "networking"]
 tags = ["networking", "it-sec", "school", "red-team", "blue-team"]

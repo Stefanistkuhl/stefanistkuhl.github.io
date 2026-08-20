@@ -1,12 +1,13 @@
 +++
 date = '2025-10-20T00:00:00+01:00'
 title = 'Anti Hardening'
-description = 'A distributed systems security lab covering Kubernetes, PostgreSQL, JWT authentication, secrets, backups, Tailscale, and application hardening.'
+context = 'HTL systems security assignment'
+description = 'A distributed systems security writeup covering Kubernetes, PostgreSQL, JWT authentication, secrets, backups, Tailscale, and application hardening.'
 categories = ["school", "it-sec"]
 tags = ["linux", "it-sec", "school", "blue-team", "kubernetes", "docker", "postgresql", "go", "jwt", "tailscale"]
 +++
 
-> This is an HTL Donaustadt laboratory report converted from the original document. The [original Typst source](https://github.com/0xveya/goobering/blob/master/itsi/y4/ex1/main.typ) and [bibliography](https://github.com/0xveya/goobering/blob/master/itsi/y4/ex1/quellen.bib) are available on GitHub.
+> This HTL Donaustadt assignment was extended beyond the original brief into the distributed system documented below. The report was converted from the original document. The [original Typst source](https://github.com/0xveya/goobering/blob/master/itsi/y4/ex1/main.typ) and [bibliography](https://github.com/0xveya/goobering/blob/master/itsi/y4/ex1/quellen.bib) are available on GitHub.
 
 ---
 

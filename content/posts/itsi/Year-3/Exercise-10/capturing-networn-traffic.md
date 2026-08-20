@@ -1,6 +1,7 @@
 +++
 date = '2025-05-16T02:36:09+02:00'
 title = 'Capturing Network Traffic'
+context = 'HTL networking writeup'
 description = 'Packet capture and traffic analysis using Wireshark, RouterOS port mirroring, ICMP, HTTP, and VoIP.'
 url = '/posts/itsi/year-3/exercise-10/capturing-network-traffic/'
 aliases = ['/posts/itsi/year-3/exercise-10/capturing-networn-traffic/']

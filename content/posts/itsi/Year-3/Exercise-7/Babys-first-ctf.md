@@ -1,6 +1,7 @@
 +++
 date = '2025-01-20T03:33:09+01:00'
 title = "Baby's First CTF"
+context = 'HTL security writeup · CTF'
 description = 'A documented CTF walkthrough covering network discovery, service enumeration, credential attacks, and Linux exploitation.'
 categories = ["school", "it-sec"]
 tags = ["linux", "it-sec", "school", "red-team", "ctf"]

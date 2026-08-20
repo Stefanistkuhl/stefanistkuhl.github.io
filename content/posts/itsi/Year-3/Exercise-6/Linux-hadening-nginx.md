@@ -1,6 +1,7 @@
 +++
 date = '2025-01-04T03:33:09+01:00'
 title = 'Hardening a Linux Webserver'
+context = 'HTL Linux security writeup'
 description = 'Hardening a containerized Linux web server with SSH keys, NGINX, authentication, TLS, and local DNS.'
 url = '/posts/itsi/year-3/exercise-6/linux-hardening-nginx/'
 aliases = ['/posts/itsi/year-3/exercise-6/linux-hadening-nginx/']

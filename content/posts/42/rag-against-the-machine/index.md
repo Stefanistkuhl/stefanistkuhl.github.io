@@ -1,5 +1,6 @@
 +++
 title = 'RAG Against the Machine'
+context = '42 project · local search and RAG'
 date = '2026-08-13T21:00:00+02:00'
 description = 'Building a fast local search and RAG system for source-code repositories.'
 categories = ["projects", "42"]

@@ -1,0 +1,41 @@
+intro:
+  kicker: Project and writeups
+  text: tethux is the active project here. The rest of this page groups older school writeups about networking and security so they are easier to browse.
+feature:
+  label: In development · network emulation · Go · Linux
+  title: tethux
+  url: https://github.com/tethux/tethux
+  description: An in-development network emulator intended to grow into a scalable GNS3-style replacement for programmable Ethernet topologies spanning containers, virtual machines, and physical hosts.
+  detail: Current work covers Ethernet switching, Linux network namespaces, TAP interfaces, UDP tunnels, raw sockets, PCAP transports, container runtimes, reproducible NixOS test environments, and observability.
+  stack: [Ethernet, namespaces, PCAP, Docker · Podman · containerd]
+groups:
+  - title: School writeups
+    description: Older networking and security exercises from my time at HTL Donaustadt, kept here as writeups rather than presented as current projects.
+    flagship:
+      label: Distributed systems security
+      title: Anti Hardening
+      url: /posts/itsi/year-4/exercise-1/anti-hardening/
+      image: https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y4/ex1/images/itsi-ex1.svg
+      alt: Distributed Anti Hardening assignment topology
+      description: An HTL assignment extended into a distributed application that we designed, deployed, deliberately weakened, attacked, and then hardened across a k3s cluster, a Go API, PostgreSQL, Docker Swarm secrets, JWT authentication, Tailscale, and Windows Server backups.
+      detail: The writeup covers authentication bypasses, CSP and XSS, secret management, database exposure, encrypted service connectivity, access control, backup design, and the tradeoffs between insecure and hardened deployments.
+    items:
+      - label: Packet analysis · Wireshark · RouterOS
+        title: Capturing Network Traffic
+        url: /posts/itsi/year-3/exercise-10/capturing-network-traffic/
+        image: https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex10/images/topo11.png
+        alt: Network topology used for packet capture and traffic analysis
+        description: Port mirroring and packet-level analysis of ICMP, plaintext HTTP authentication, and VoIP traffic.
+      - label: Wireless · WPA · Wireshark
+        title: WLAN Setup and Security
+        url: /posts/itsi/year-3/exercise-11/wlan-setup-and-security/
+        image: https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex11/images/topo.png
+        alt: Wireless networking exercise topology
+        description: DHCP, access-point configuration, client isolation, deauthentication frames, and WPA handshake analysis.
+      - label: Linux · NGINX · TLS · SSH
+        title: Hardening a Linux Webserver
+        url: /posts/itsi/year-3/exercise-6/linux-hardening-nginx/
+        image: https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex6/images/topology.png
+        alt: Linux web server hardening exercise topology
+        description: Service isolation, SSH key authentication, HTTP authentication, TLS, and local DNS in a containerized exercise.
+footer: Find the rest of my work on [GitHub](https://github.com/0xveya).

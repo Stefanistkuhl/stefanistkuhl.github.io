@@ -1,590 +1,106 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto">
-
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>GNU/Linux - Securing Access | veya&#39;s silly little website</title>
-<meta name="keywords" content="linux, it-sec, school, ssh, sudo, security, pam, otp">
-<meta name="description" content="Linux access control using sudo policies, password policy, SSH hardening, PAM, and one-time passwords.">
-<meta name="author" content="veya">
-<link rel="canonical" href="http://localhost:1313/posts/itsi/year-3/exercise-5/securing-access/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.f22caeb8fa017ba8a722900a376f8b736adeb3549e2aeca3cc9f292a3cdf6e9e.css" integrity="sha256-8iyuuPoBe6inIpAKN2&#43;Lc2res1SeKuyjzJ8pKjzfbp4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/apple-touch-icon.png">
-<link rel="mask-icon" href="https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/safari-pinned-tab.svg">
-<meta name="theme-color" content="#080808">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/itsi/year-3/exercise-5/securing-access/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
-</head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="veya&#39;s silly little website (Alt + H)">veya&#39;s silly little website</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="http://localhost:1313/about/" title="About">
-                    <span>About</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/networking-security/" title="Networking &amp; Security">
-                    <span>Networking &amp; Security</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
-                    <span>Posts</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/" title="root">
-                    <span>root</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      GNU/Linux - Securing Access
-    </h1>
-    <div class="post-description">
-      Linux access control using sudo policies, password policy, SSH hardening, PAM, and one-time passwords.
-    </div>
-    <div class="post-meta"><span title='2024-12-01 00:00:00 +0100 CET'>December 1, 2024</span>&nbsp;·&nbsp;10 min&nbsp;·&nbsp;veya
-
-</div>
-  </header> 
-  <div class="post-content"><blockquote>
-<p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex5/Securing%20access.pdf">original PDF</a> and <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex5/quellen.bib">bibliography</a> are available on GitHub.</p>
-</blockquote>
-<hr>
-<h1 id="gnulinux---securing-access">GNU/Linux - Securing access<a hidden class="anchor" aria-hidden="true" href="#gnulinux---securing-access">#</a></h1>
-<p><strong>Laboratory Protocol</strong><br>
-GNU/Linux - Securing access<br>
-<figure>
-    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/mika.jpeg"/> <figcaption>
-            Original report cover image
-        </figcaption>
-</figure>
-
-<strong>Subject:</strong> ITSI|ZIVK<br>
-<strong>Class:</strong> 3AHITN<br>
-<strong>Name:</strong> Veya Fürst, Marcel Raichle<br>
-<strong>Group Name/Number:</strong> Dumm und Dümmer/7<br>
-<strong>Supervisor:</strong> ZIVK<br>
-<strong>Exercise dates:</strong> 22.11.2024, 26.11.2024, 29.11.2024<br>
-<strong>Submission date:</strong> 1.12.2024</p>
-<hr>
-<h2 id="table-of-contents">Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h2>
-<ul>
-<li><a href="#task-definition">Task Definition</a></li>
-<li><a href="#summary">Summary</a></li>
-<li><a href="#exercise-execution">Exercise Execution</a>
-<ul>
-<li><a href="#privileged-rights">Privileged rights</a>
-<ul>
-<li><a href="#explanation-of-the-sudo-command">Explanation of the sudo command</a></li>
-<li><a href="#granting-and-restricting-users-sudo-access">Granting and restricting users&rsquo; sudo access</a></li>
-</ul>
-</li>
-<li><a href="#password-policies">Password policies</a>
-<ul>
-<li><a href="#setting-up-a-password-policy">Setting up a password policy</a></li>
-<li><a href="#sed-basics">sed Basics</a></li>
-</ul>
-</li>
-<li><a href="#harden-ssh">Harden SSH</a>
-<ul>
-<li><a href="#changing-the-ssh-port">Changing the ssh port</a></li>
-<li><a href="#adding-otp-authentication">Adding OTP authentication</a></li>
-<li><a href="#logging-in-as-the-users">Logging in as the users</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#references">References</a></li>
-<li><a href="#list-of-figures">List of Figures</a></li>
-<li><a href="#attachments">Attachments</a></li>
-</ul>
-<hr>
-<h2 id="task-definition">Task Definition<a hidden class="anchor" aria-hidden="true" href="#task-definition">#</a></h2>
-<p>This exercise focuses on enhancing security and user management in GNU/Linux. Participants configure SSH authentication using public keys, manage user privileges with sudo (e.g., granting specific permissions to edit files or create users), and set up password policies requiring strong, unique passwords. Additional tasks include changing the SSH port to secure the system, identifying open ports, and implementing two-factor authentication with Google Authenticator. Each step is documented and tested to ensure proper configuration and security.</p>
-<hr>
-<h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
-<p>To complete this task, the docker image from the last exercise was extended to include sudo and managing its permissions, setting up a password policy and hardening SSH by changing the port and forcing private key and OTP authentication.</p>
-<hr>
-<h2 id="exercise-execution">Exercise Execution<a hidden class="anchor" aria-hidden="true" href="#exercise-execution">#</a></h2>
-<h3 id="privileged-rights">Privileged rights<a hidden class="anchor" aria-hidden="true" href="#privileged-rights">#</a></h3>
-<h4 id="explanation-of-the-sudo-command">Explanation of the sudo command<a hidden class="anchor" aria-hidden="true" href="#explanation-of-the-sudo-command">#</a></h4>
-<p>The sudo command or <strong>S</strong>uper<strong>U</strong>ser <strong>DO</strong> temporarily elevates privileges and runs the set command as root, which can be seen by running the <code>sudo id</code> command <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
-<figure>
-    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/sudoid.png"/> <figcaption>
-            Figure: sudo id
-        </figcaption>
-</figure>
-
-<p>As seen in the figure, when the <code>id</code> command is used with <code>sudo</code>, the id displayed is 0, which is the user id of the root user, and without sudo it displays the normal user id of the user who executed the command.</p>
-<h4 id="granting-and-restricting-users-sudo-access">Granting and restricting users&rsquo; sudo access<a hidden class="anchor" aria-hidden="true" href="#granting-and-restricting-users-sudo-access">#</a></h4>
-<p>To grant someone permission to run any command with <code>sudo</code>, the <code>usermod -aG sudo username</code> command is used, which appends the given to the sudo group, giving them permission to run any command with sudo.</p>
-<p>In order to restrict the commands that can be elevated by a user or to configure other settings related to this, it is necessary to edit the configuration file, which is located at <code>/etc/sudoers</code>.</p>
-<p>There are several ways to edit it. The <code>visudo</code> command uses the editor set in the <code>$EDITOR</code> environment variable and opens the sudoers file with it, and when you exit the editor and save it, it also checks for errors before applying the changes. The sudoers file can also be directly edited using <code>echo</code> in the dockerfile.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># only allowing ram-alois to edit the ssh configuration file</span>
-</span></span><span style="display:flex;"><span>RUN echo <span style="color:#e6db74">&#34;ram-alois ALL=(root) /bin/nano /etc/ssh/sshd_config&#34;</span> &gt;&gt; /etc/sudoers
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># only allowing ram-berta to add users</span>
-</span></span><span style="display:flex;"><span>RUN echo <span style="color:#e6db74">&#34;ram-berta ALL=(root) /sbin/useradd&#34;</span> &gt;&gt; /etc/sudoers
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># only allowing to ram-ram to view and read add files</span>
-</span></span><span style="display:flex;"><span>RUN echo <span style="color:#e6db74">&#34;ram-ram ALL=(root) /bin/ls&#34;</span> &gt;&gt; /etc/sudoers
-</span></span><span style="display:flex;"><span>RUN echo <span style="color:#e6db74">&#34;ram-ram ALL=(root) /bin/cat&#34;</span> &gt;&gt; /etc/sudoers
-</span></span></code></pre></div><p>I chose nano over vim for editing the ssh config file, as running vim as sudo effectively gives the user full sudo access, as it is possible to open a terminal in it and escape the normal editor mode in numerous ways, so its just easier to give the user nano.</p>
-<p>The following screenshots show the following privileges in action, but ram-chris and ram-fus are excluded as ram-chris has no sudo privileges and ram-fus can run any command elevated.</p>
-<p><figure>
-    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/ram-ram-sudo.png"/> <figcaption>
-            Figure: sudo permissions of ram-ram
-        </figcaption>
-</figure>
-
-<figure>
-    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/sudo-berta.png"/> <figcaption>
-            Figure: sudo permissions of ram-berta
-        </figcaption>
-</figure>
-
-<figure>
-    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/sudo%20id.png"/> <figcaption>
-            Figure: sudo id command showing user permissions
-        </figcaption>
-</figure>
-</p>
-<h3 id="password-policies">Password policies<a hidden class="anchor" aria-hidden="true" href="#password-policies">#</a></h3>
-<h4 id="setting-up-a-password-policy">Setting up a password policy<a hidden class="anchor" aria-hidden="true" href="#setting-up-a-password-policy">#</a></h4>
-<p>To set password policies on Debian-based distributions, edit <code>/etc/pam.d/common-password</code>. Pam stands for Pluggable Authentication Modules and is installed by default on every Debian-based distribution <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
-<p>To set a required complexity for passwords, the <code>libpam-pwquality</code> package needs to be installed. Then in the <code>/etc/pam.d/common-password</code> file, on the line with <code>pam_pwquality.so</code> <code>dcredit=-1</code>, <code>ocredit=-1</code> and <code>enforce_for_root</code> need to be added at the end to require at least one lowercase letter and one symbol in any password set and to enforce it for the root user.</p>
-<p>Preventing password reuse is achieved by adding a line with the <code>pam_pwhistory.so</code> module and appending <code>remember=5</code> and <code>use_authtok</code> at the end of the line to remember the last 5 passwords so that they cannot be reused and to enforce the previously stacked password modules <sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. Finally, set the minimum length of the line with <code>pam_unix.so</code>. <code>minlen=10</code> to require the password to be at least 10 characters long.</p>
-<p>To edit this file declaratively in the Dockerfile I used the <code>sed</code> editor and the sed commands used are explained in the next section.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># setting the required password complexity and minimum length</span>
-</span></span><span style="display:flex;"><span>RUN sed -i <span style="color:#e6db74">&#39;/retry=3/ s/$/ ucredit=-1 dcredit=-1 ocredit=-1 minlen=10 enforce_for_root &#39;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>            /etc/pam.d/common-password
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># remembering the last 5 passwords so they cant be reused</span>
-</span></span><span style="display:flex;"><span>RUN sed -i <span style="color:#e6db74">&#39;/ocredit=-1/ a password\trequisite\t\t\tpam_pwhistory.so remember=5 use_authtok &#39;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>            /etc/pam.d/common-password
-</span></span></code></pre></div><figure>
-    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/passwdpolcie.png"/> <figcaption>
-            Figure: Testing the password policies
-        </figcaption>
-</figure>
-
-<h4 id="sed-basics">sed Basics<a hidden class="anchor" aria-hidden="true" href="#sed-basics">#</a></h4>
-<p>The sed (stream editor) is a utility for manipulating text in files. It can perform actions such as search, replace, insert, delete and more without the need to open an editor, making it useful in scripts.</p>
-<p>The syntax of using the command is the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sed <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> <span style="color:#e6db74">&#39;SCRIPT&#39;</span> <span style="color:#f92672">[</span>INPUTFILE<span style="color:#f92672">]</span>
-</span></span></code></pre></div><p>The only relevant option for this command I used was the <code>-i</code> flag, which edits the file in place without printing anything to the console <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
-<p>To actually make sed do something it is necessary to specify a command, there are many commands, but for this exercise only the commands <code>s</code> and <code>a</code> are needed, which stand for substitute and append respectively.</p>
-<p>Let&rsquo;s break down the commands used:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sed -i <span style="color:#e6db74">&#39;/retry=3/ s/$/ ucredit=-1 dcredit=-1 ocredit=-1 enforce_for_root &#39;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>            /etc/pam.d/common-password
-</span></span></code></pre></div><p>The actual command itself is specified inside of the two <code>&quot;</code>.
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>GNU/Linux - Securing Access | Veya Fürst</title><meta name=keywords content="linux,it-sec,school,ssh,sudo,security,pam,otp"><meta name=description content="Linux access control using sudo policies, password policy, SSH hardening, PAM, and one-time passwords."><meta name=author content="Veya Fürst"><link rel=canonical href=https://0xveya.github.io/posts/itsi/year-3/exercise-5/securing-access/><link crossorigin=anonymous href=/assets/css/stylesheet.11642480d3e857578a8c3d2ff6d6598d7a390b5c2f6a004cca14a38c086a5aca.css integrity="sha256-EWQkgNPoV1eKjD0v9tZZjXo5C1wvagBMyhSjjAhqWso=" rel="preload stylesheet" as=style><link rel=icon href=https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon-32x32.png><link rel=apple-touch-icon href=https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/apple-touch-icon.png><link rel=mask-icon href=https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/safari-pinned-tab.svg><meta name=theme-color content="#191724"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://0xveya.github.io/posts/itsi/year-3/exercise-5/securing-access/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://0xveya.github.io/posts/itsi/year-3/exercise-5/securing-access/"><meta property="og:site_name" content="Veya Fürst"><meta property="og:title" content="GNU/Linux - Securing Access"><meta property="og:description" content="Linux access control using sudo policies, password policy, SSH hardening, PAM, and one-time passwords."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-12-01T00:00:00+01:00"><meta property="article:modified_time" content="2024-12-01T00:00:00+01:00"><meta property="article:tag" content="Linux"><meta property="article:tag" content="It-Sec"><meta property="article:tag" content="School"><meta property="article:tag" content="Ssh"><meta property="article:tag" content="Sudo"><meta property="article:tag" content="Security"><meta name=twitter:card content="summary"><meta name=twitter:title content="GNU/Linux - Securing Access"><meta name=twitter:description content="Linux access control using sudo policies, password policy, SSH hardening, PAM, and one-time passwords."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://0xveya.github.io/posts/"},{"@type":"ListItem","position":2,"name":"GNU/Linux - Securing Access","item":"https://0xveya.github.io/posts/itsi/year-3/exercise-5/securing-access/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"GNU/Linux - Securing Access","name":"GNU\/Linux - Securing Access","description":"Linux access control using sudo policies, password policy, SSH hardening, PAM, and one-time passwords.","keywords":["linux","it-sec","school","ssh","sudo","security","pam","otp"],"articleBody":" This is an HTL Donaustadt laboratory report converted from the original document. The original PDF and bibliography are available on GitHub.\nGNU/Linux - Securing access Laboratory Protocol\nGNU/Linux - Securing access\nOriginal report cover image Subject: ITSI|ZIVK\nClass: 3AHITN\nName: Veya Fürst, Marcel Raichle\nGroup Name/Number: Dumm und Dümmer/7\nSupervisor: ZIVK\nExercise dates: 22.11.2024, 26.11.2024, 29.11.2024\nSubmission date: 1.12.2024\nTable of Contents Task Definition Summary Exercise Execution Privileged rights Explanation of the sudo command Granting and restricting users’ sudo access Password policies Setting up a password policy sed Basics Harden SSH Changing the ssh port Adding OTP authentication Logging in as the users References List of Figures Attachments Task Definition This exercise focuses on enhancing security and user management in GNU/Linux. Participants configure SSH authentication using public keys, manage user privileges with sudo (e.g., granting specific permissions to edit files or create users), and set up password policies requiring strong, unique passwords. Additional tasks include changing the SSH port to secure the system, identifying open ports, and implementing two-factor authentication with Google Authenticator. Each step is documented and tested to ensure proper configuration and security.\nSummary To complete this task, the docker image from the last exercise was extended to include sudo and managing its permissions, setting up a password policy and hardening SSH by changing the port and forcing private key and OTP authentication.\nExercise Execution Privileged rights Explanation of the sudo command The sudo command or SuperUser DO temporarily elevates privileges and runs the set command as root, which can be seen by running the sudo id command 1.\nFigure: sudo id As seen in the figure, when the id command is used with sudo, the id displayed is 0, which is the user id of the root user, and without sudo it displays the normal user id of the user who executed the command.\nGranting and restricting users’ sudo access To grant someone permission to run any command with sudo, the usermod -aG sudo username command is used, which appends the given to the sudo group, giving them permission to run any command with sudo.\nIn order to restrict the commands that can be elevated by a user or to configure other settings related to this, it is necessary to edit the configuration file, which is located at /etc/sudoers.\nThere are several ways to edit it. The visudo command uses the editor set in the $EDITOR environment variable and opens the sudoers file with it, and when you exit the editor and save it, it also checks for errors before applying the changes. The sudoers file can also be directly edited using echo in the dockerfile.\n# only allowing ram-alois to edit the ssh configuration file RUN echo \"ram-alois ALL=(root) /bin/nano /etc/ssh/sshd_config\" \u003e\u003e /etc/sudoers # only allowing ram-berta to add users RUN echo \"ram-berta ALL=(root) /sbin/useradd\" \u003e\u003e /etc/sudoers # only allowing to ram-ram to view and read add files RUN echo \"ram-ram ALL=(root) /bin/ls\" \u003e\u003e /etc/sudoers RUN echo \"ram-ram ALL=(root) /bin/cat\" \u003e\u003e /etc/sudoers I chose nano over vim for editing the ssh config file, as running vim as sudo effectively gives the user full sudo access, as it is possible to open a terminal in it and escape the normal editor mode in numerous ways, so its just easier to give the user nano.\nThe following screenshots show the following privileges in action, but ram-chris and ram-fus are excluded as ram-chris has no sudo privileges and ram-fus can run any command elevated.\nFigure: sudo permissions of ram-ram Figure: sudo permissions of ram-berta Figure: sudo id command showing user permissions Password policies Setting up a password policy To set password policies on Debian-based distributions, edit /etc/pam.d/common-password. Pam stands for Pluggable Authentication Modules and is installed by default on every Debian-based distribution 2 3.\nTo set a required complexity for passwords, the libpam-pwquality package needs to be installed. Then in the /etc/pam.d/common-password file, on the line with pam_pwquality.so dcredit=-1, ocredit=-1 and enforce_for_root need to be added at the end to require at least one lowercase letter and one symbol in any password set and to enforce it for the root user.\nPreventing password reuse is achieved by adding a line with the pam_pwhistory.so module and appending remember=5 and use_authtok at the end of the line to remember the last 5 passwords so that they cannot be reused and to enforce the previously stacked password modules 3. Finally, set the minimum length of the line with pam_unix.so. minlen=10 to require the password to be at least 10 characters long.\nTo edit this file declaratively in the Dockerfile I used the sed editor and the sed commands used are explained in the next section.\n# setting the required password complexity and minimum length RUN sed -i '/retry=3/ s/$/ ucredit=-1 dcredit=-1 ocredit=-1 minlen=10 enforce_for_root '\\ /etc/pam.d/common-password # remembering the last 5 passwords so they cant be reused RUN sed -i '/ocredit=-1/ a password\\trequisite\\t\\t\\tpam_pwhistory.so remember=5 use_authtok '\\ /etc/pam.d/common-password Figure: Testing the password policies sed Basics The sed (stream editor) is a utility for manipulating text in files. It can perform actions such as search, replace, insert, delete and more without the need to open an editor, making it useful in scripts.\nThe syntax of using the command is the following:\nsed [OPTIONS] 'SCRIPT' [INPUTFILE] The only relevant option for this command I used was the -i flag, which edits the file in place without printing anything to the console 4 5.\nTo actually make sed do something it is necessary to specify a command, there are many commands, but for this exercise only the commands s and a are needed, which stand for substitute and append respectively.\nLet’s break down the commands used:\nsed -i '/retry=3/ s/$/ ucredit=-1 dcredit=-1 ocredit=-1 enforce_for_root '\\ /etc/pam.d/common-password The actual command itself is specified inside of the two \". /retry=3/ is a search pattern, so the command operates only on lines that contain ‘retry=3’. s is the substitution command and $ represents the end of the line so essentially s/$/ tells sed to insert whatever characters are entered after the / at the end of a line, which contains ‘retry=3’. Lastly, the path to the file being edited is specified. The next used command is the following:\nsed -i '/ocredit=-1/ a password\\trequisite\\t\\t\\tpam_pwhistory.so remember=5 use_authtok '\\ /etc/pam.d/common-password This command searches for the line containing ‘ocredit=-1’ and uses the a command to append a new line after the line containing ‘ocredit=-1’. \\t is the escape sequence for a horizontal tab character, so it does not need to insert the correct number of whitespace characters, making it a shorter command.\nHarden SSH Changing the ssh port The configuration file for SSH is in /etc/ssh/sshd_config, where the port is changed by uncommenting the line containing Port 22 and changing the number to the desired port. Afterwards, the service ssh restart command must be issued to take effect 6.\nRUN sed -i 's/#Port 22/Port 38452/' /etc/ssh/sshd_config The netstat -tulnp command shows the processes and ports that are listening for both TCP and UDP.\nFigure: netstat -tulnp on the host When I run this command on the host, it only shows the docker process instead of ssh directly, because ssh is running inside the container. There are also other containers and processes listening as I use this VPS to host SearXng as well.\nFigure: netstat -tulnp on the container Running the same command on the container now shows that the sshd process is listening on the desired port. The d at the end of ssh stands for daemon and means that this is a service that the d indicates 7.\nAdding OTP authentication To add OTP authentication the libpam-google-authenticator package is required.\nOnce the package is installed, all you need to do is run the google-authenticator command, scan the QR code with the 2FA app of your choice and reply to each prompt with y 8.\nFigure: setting up OTP To enable ssh to use OTP authentication these two lines need to be added at the top of the /etc/pam.d/sshd file.\nauth required pam_google_authenticator.so nullok auth required pam_permit.so After that the ssh configuration file needs to be edited as well.\n# change this KbdInteractiveAuthentication no # to this KbdInteractiveAuthentication yes # add this line at the bottom AuthenticationMethods publickey,keyboard-interactive Login is now only possible with keypair, password and OTP.\nLogging in as the users Here are screenshots of logging in as a user and trying to log in as a user who has neither a key pair nor an OTP set up.\nFigure: logging in as ram-fus Figure: logging in as ram-ram Figure: trying to login as ram-alois References For a full bibliography, see the original BibTeX file.\nList of Figures Original report cover image sudo id sudo permissions of ram-ram sudo permissions of ram-alois sudo permissions of ram-berta Testing the password policies netstat -tulnp on the host netstat -tulnp on the container setting up OTP logging in as ram-fus logging in as ram-ram trying to login as ram-alois Attachments Dockerfile FROM ubuntu:latest RUN apt update RUN apt upgrade -y RUN apt install iproute2 iputils-ping zsh net-tools vim sudo nano libpam-pwquality \\ libpam-google-authenticator -y RUN echo \"ram-alois ALL=(root) /bin/nano /etc/ssh/sshd_config\" \u003e\u003e /etc/sudoers RUN echo \"ram-berta ALL=(root) /sbin/useradd\" \u003e\u003e /etc/sudoers RUN echo \"ram-ram ALL=(root) /bin/ls\" \u003e\u003e /etc/sudoers RUN echo \"ram-ram ALL=(root) /bin/cat\" \u003e\u003e /etc/sudoers RUN ln -fs /usr/share/zoneinfo/Europe/Vienna /etc/localtime RUN DEBIAN_FRONTEND=noninteractive apt install -y tzdata ssh RUN echo 'root:passwordhere' | chpasswd RUN sed -i 's/#Port 22/Port 38452/' /etc/ssh/sshd_config RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config RUN sed -i '/retry=3/ s/$/ ucredit=-1 dcredit=-1 ocredit=-1 minlen=10 enforce_for_root '\\ /etc/pam.d/common-password RUN sed -i '/ocredit=-1/ a password\\trequisite\\t\\t\\tpam_pwhistory.so remember=5 use_authtok '\\ /etc/pam.d/common-password RUN groupadd -g 324 ram-Users RUN useradd -u 1024 -m ram-alois RUN useradd -u 1124 -m ram-berta RUN useradd -u 1224 -m ram-chris RUN useradd -m ram-fus RUN useradd -m ram-ram RUN echo 'ram-fus:passwordhere' | chpasswd RUN echo 'ram-ram:passwordhere' | chpasswd RUN echo 'ram-alois:passwordhere' | chpasswd RUN echo 'ram-chris:passwordhere' | chpasswd RUN echo 'ram-berta:passwordhere' | chpasswd RUN usermod -g ram-Users ram-alois RUN usermod -g ram-Users ram-berta RUN usermod --shell /bin/bash ram-alois RUN usermod --shell /bin/bash ram-berta RUN usermod --shell /bin/zsh ram-chris RUN usermod -aG sudo ram-fus RUN usermod -aG sudo ram-ram RUN mkdir -p /data/fus RUN mkdir /data/fus/alois RUN mkdir /data/fus/berta RUN mkdir /data/fus/chris RUN mkdir /data/fus/public RUN chgrp -R ram-Users /data/fus/ RUN chmod g+rw /data/fus/ RUN chown -R ram-alois:ram-Users /data/fus/alois/ RUN chmod -R u+wrx,g=r,o= /data/fus/alois/ RUN chown -R ram-berta:ram-Users /data/fus/berta/ RUN chmod -R u+wrx,g=r,o= /data/fus/berta/ RUN chown -R ram-chris:ram-Users /data/fus/chris/ RUN chmod -R u+wrx,g=,o= /data/fus/chris/ RUN chmod -R u+wrx,g+wrx,o=r /data/fus/public/ EXPOSE 38452 CMD service ssh start \u0026\u0026 tail -F /dev/null alias.sh #!/bin/sh alias relaunch=\"sh -c 'docker stop itsi \u0026\u0026 docker rm itsi \u0026\u0026\\ docker buildx build -t itsi:latest . \u0026\u0026\\ docker run -d -p 38452:38452 --name itsi itsi:latest \u0026\u0026 docker exec -it itsi /bin/bash'\" alias rebuild=\"sh -c 'docker buildx build -t itsi:latest . \u0026\u0026\\ docker run -d -p 38452:38452 --name itsi itsi:latest \u0026\u0026 docker exec -it itsi /bin/bash'\" alias stop=\"sh -c 'docker stop itsi \u0026\u0026 docker rm itsi'\" S. Zivanov, “Linux Sudo Command {How to Use It +Examples},” Knowledge Base by phoenixNAP, Jun. 2024. link ↩︎\nsk, “How To Set Password Policies In Linux - OSTechNix,” OSTechNix, Jun. 2022. link ↩︎\n“How to prevent user from using old password (or re-using) again in Linux | GoLinuxCloud,” Aug. 2022. link ↩︎ ↩︎\nGeeksforGeeks, “Sed Command in Linux/Unix with examples,” GeeksforGeeks, Sep. 2024. link ↩︎\n“sed, a stream editor,” Dec. 2024. link ↩︎\n“How To Harden OpenSSH on Ubuntu 20.04 | DigitalOcean,” Nov. 2024. link ↩︎\nB. Dyer, “What are Daemons in Linux? Why are They Used?” It’s FOSS, Sep. 2023. link ↩︎\nP. Malhotra, “Enhancing SSH Security with Two-Factor Authentication (2FA) via PAM and Google Authenticator,” Medium, Sep. 2023. link ↩︎\n","wordCount":"1934","inLanguage":"en","datePublished":"2024-12-01T00:00:00+01:00","dateModified":"2024-12-01T00:00:00+01:00","author":{"@type":"Person","name":"Veya Fürst"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://0xveya.github.io/posts/itsi/year-3/exercise-5/securing-access/"},"publisher":{"@type":"Organization","name":"Veya Fürst","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/0xveya/goobering/master/website/assets/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav aria-label="Primary navigation"><div class=logo><a href=/ accesskey=h title="Veya Fürst (Alt + H)">Veya Fürst</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="Toggle theme (Alt + T)" aria-label="Toggle theme">
+<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=/about/ title=About><span>About</span></a></li><li><a href=/posts/ title=Posts><span>Posts</span></a></li><li><a href=/topics/ title=Topics><span>Topics</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">GNU/Linux - Securing Access</h1><div class=post-description>Linux access control using sudo policies, password policy, SSH hardening, PAM, and one-time passwords.</div><div class=post-meta><span title='2024-12-01 00:00:00 +0100 CET'>December 1, 2024</span>&nbsp;·&nbsp;<span>10 min</span>&nbsp;·&nbsp;<span>Veya Fürst</span></div></header><div class="post-content md-content"><blockquote><p>This is an HTL Donaustadt laboratory report converted from the original document. The <a href=https://github.com/0xveya/goobering/blob/master/itsi/y3/ex5/Securing%20access.pdf>original PDF</a> and <a href=https://github.com/0xveya/goobering/blob/master/itsi/y3/ex5/quellen.bib>bibliography</a> are available on GitHub.</p></blockquote><hr><h1 id=gnulinux---securing-access>GNU/Linux - Securing access<a hidden class=anchor aria-hidden=true href=#gnulinux---securing-access>#</a></h1><p><strong>Laboratory Protocol</strong><br>GNU/Linux - Securing access<br><figure><img loading=lazy src=https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/mika.jpeg><figcaption>Original report cover image</figcaption></figure><strong>Subject:</strong> ITSI|ZIVK<br><strong>Class:</strong> 3AHITN<br><strong>Name:</strong> Veya Fürst, Marcel Raichle<br><strong>Group Name/Number:</strong> Dumm und Dümmer/7<br><strong>Supervisor:</strong> ZIVK<br><strong>Exercise dates:</strong> 22.11.2024, 26.11.2024, 29.11.2024<br><strong>Submission date:</strong> 1.12.2024</p><hr><h2 id=table-of-contents>Table of Contents<a hidden class=anchor aria-hidden=true href=#table-of-contents>#</a></h2><ul><li><a href=#task-definition>Task Definition</a></li><li><a href=#summary>Summary</a></li><li><a href=#exercise-execution>Exercise Execution</a><ul><li><a href=#privileged-rights>Privileged rights</a><ul><li><a href=#explanation-of-the-sudo-command>Explanation of the sudo command</a></li><li><a href=#granting-and-restricting-users-sudo-access>Granting and restricting users&rsquo; sudo access</a></li></ul></li><li><a href=#password-policies>Password policies</a><ul><li><a href=#setting-up-a-password-policy>Setting up a password policy</a></li><li><a href=#sed-basics>sed Basics</a></li></ul></li><li><a href=#harden-ssh>Harden SSH</a><ul><li><a href=#changing-the-ssh-port>Changing the ssh port</a></li><li><a href=#adding-otp-authentication>Adding OTP authentication</a></li><li><a href=#logging-in-as-the-users>Logging in as the users</a></li></ul></li></ul></li><li><a href=#references>References</a></li><li><a href=#list-of-figures>List of Figures</a></li><li><a href=#attachments>Attachments</a></li></ul><hr><h2 id=task-definition>Task Definition<a hidden class=anchor aria-hidden=true href=#task-definition>#</a></h2><p>This exercise focuses on enhancing security and user management in GNU/Linux. Participants configure SSH authentication using public keys, manage user privileges with sudo (e.g., granting specific permissions to edit files or create users), and set up password policies requiring strong, unique passwords. Additional tasks include changing the SSH port to secure the system, identifying open ports, and implementing two-factor authentication with Google Authenticator. Each step is documented and tested to ensure proper configuration and security.</p><hr><h2 id=summary>Summary<a hidden class=anchor aria-hidden=true href=#summary>#</a></h2><p>To complete this task, the docker image from the last exercise was extended to include sudo and managing its permissions, setting up a password policy and hardening SSH by changing the port and forcing private key and OTP authentication.</p><hr><h2 id=exercise-execution>Exercise Execution<a hidden class=anchor aria-hidden=true href=#exercise-execution>#</a></h2><h3 id=privileged-rights>Privileged rights<a hidden class=anchor aria-hidden=true href=#privileged-rights>#</a></h3><h4 id=explanation-of-the-sudo-command>Explanation of the sudo command<a hidden class=anchor aria-hidden=true href=#explanation-of-the-sudo-command>#</a></h4><p>The sudo command or <strong>S</strong>uper<strong>U</strong>ser <strong>DO</strong> temporarily elevates privileges and runs the set command as root, which can be seen by running the <code>sudo id</code> command <sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>.</p><figure><img loading=lazy src=https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/sudoid.png><figcaption>Figure: sudo id</figcaption></figure><p>As seen in the figure, when the <code>id</code> command is used with <code>sudo</code>, the id displayed is 0, which is the user id of the root user, and without sudo it displays the normal user id of the user who executed the command.</p><h4 id=granting-and-restricting-users-sudo-access>Granting and restricting users&rsquo; sudo access<a hidden class=anchor aria-hidden=true href=#granting-and-restricting-users-sudo-access>#</a></h4><p>To grant someone permission to run any command with <code>sudo</code>, the <code>usermod -aG sudo username</code> command is used, which appends the given to the sudo group, giving them permission to run any command with sudo.</p><p>In order to restrict the commands that can be elevated by a user or to configure other settings related to this, it is necessary to edit the configuration file, which is located at <code>/etc/sudoers</code>.</p><p>There are several ways to edit it. The <code>visudo</code> command uses the editor set in the <code>$EDITOR</code> environment variable and opens the sudoers file with it, and when you exit the editor and save it, it also checks for errors before applying the changes. The sudoers file can also be directly edited using <code>echo</code> in the dockerfile.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># only allowing ram-alois to edit the ssh configuration file</span>
+</span></span><span style=display:flex><span>RUN echo <span style=color:#e6db74>&#34;ram-alois ALL=(root) /bin/nano /etc/ssh/sshd_config&#34;</span> &gt;&gt; /etc/sudoers
+</span></span><span style=display:flex><span><span style=color:#75715e># only allowing ram-berta to add users</span>
+</span></span><span style=display:flex><span>RUN echo <span style=color:#e6db74>&#34;ram-berta ALL=(root) /sbin/useradd&#34;</span> &gt;&gt; /etc/sudoers
+</span></span><span style=display:flex><span><span style=color:#75715e># only allowing to ram-ram to view and read add files</span>
+</span></span><span style=display:flex><span>RUN echo <span style=color:#e6db74>&#34;ram-ram ALL=(root) /bin/ls&#34;</span> &gt;&gt; /etc/sudoers
+</span></span><span style=display:flex><span>RUN echo <span style=color:#e6db74>&#34;ram-ram ALL=(root) /bin/cat&#34;</span> &gt;&gt; /etc/sudoers
+</span></span></code></pre></div><p>I chose nano over vim for editing the ssh config file, as running vim as sudo effectively gives the user full sudo access, as it is possible to open a terminal in it and escape the normal editor mode in numerous ways, so its just easier to give the user nano.</p><p>The following screenshots show the following privileges in action, but ram-chris and ram-fus are excluded as ram-chris has no sudo privileges and ram-fus can run any command elevated.</p><p><figure><img loading=lazy src=https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/ram-ram-sudo.png><figcaption>Figure: sudo permissions of ram-ram</figcaption></figure><figure><img loading=lazy src=https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/sudo-berta.png><figcaption>Figure: sudo permissions of ram-berta</figcaption></figure><figure><img loading=lazy src=https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/sudo%20id.png><figcaption>Figure: sudo id command showing user permissions</figcaption></figure></p><h3 id=password-policies>Password policies<a hidden class=anchor aria-hidden=true href=#password-policies>#</a></h3><h4 id=setting-up-a-password-policy>Setting up a password policy<a hidden class=anchor aria-hidden=true href=#setting-up-a-password-policy>#</a></h4><p>To set password policies on Debian-based distributions, edit <code>/etc/pam.d/common-password</code>. Pam stands for Pluggable Authentication Modules and is installed by default on every Debian-based distribution <sup id=fnref:2><a href=#fn:2 class=footnote-ref role=doc-noteref>2</a></sup> <sup id=fnref:3><a href=#fn:3 class=footnote-ref role=doc-noteref>3</a></sup>.</p><p>To set a required complexity for passwords, the <code>libpam-pwquality</code> package needs to be installed. Then in the <code>/etc/pam.d/common-password</code> file, on the line with <code>pam_pwquality.so</code> <code>dcredit=-1</code>, <code>ocredit=-1</code> and <code>enforce_for_root</code> need to be added at the end to require at least one lowercase letter and one symbol in any password set and to enforce it for the root user.</p><p>Preventing password reuse is achieved by adding a line with the <code>pam_pwhistory.so</code> module and appending <code>remember=5</code> and <code>use_authtok</code> at the end of the line to remember the last 5 passwords so that they cannot be reused and to enforce the previously stacked password modules <sup id=fnref1:3><a href=#fn:3 class=footnote-ref role=doc-noteref>3</a></sup>. Finally, set the minimum length of the line with <code>pam_unix.so</code>. <code>minlen=10</code> to require the password to be at least 10 characters long.</p><p>To edit this file declaratively in the Dockerfile I used the <code>sed</code> editor and the sed commands used are explained in the next section.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># setting the required password complexity and minimum length</span>
+</span></span><span style=display:flex><span>RUN sed -i <span style=color:#e6db74>&#39;/retry=3/ s/$/ ucredit=-1 dcredit=-1 ocredit=-1 minlen=10 enforce_for_root &#39;</span><span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>            /etc/pam.d/common-password
+</span></span><span style=display:flex><span><span style=color:#75715e># remembering the last 5 passwords so they cant be reused</span>
+</span></span><span style=display:flex><span>RUN sed -i <span style=color:#e6db74>&#39;/ocredit=-1/ a password\trequisite\t\t\tpam_pwhistory.so remember=5 use_authtok &#39;</span><span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>            /etc/pam.d/common-password
+</span></span></code></pre></div><figure><img loading=lazy src=https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/passwdpolcie.png><figcaption>Figure: Testing the password policies</figcaption></figure><h4 id=sed-basics>sed Basics<a hidden class=anchor aria-hidden=true href=#sed-basics>#</a></h4><p>The sed (stream editor) is a utility for manipulating text in files. It can perform actions such as search, replace, insert, delete and more without the need to open an editor, making it useful in scripts.</p><p>The syntax of using the command is the following:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>sed <span style=color:#f92672>[</span>OPTIONS<span style=color:#f92672>]</span> <span style=color:#e6db74>&#39;SCRIPT&#39;</span> <span style=color:#f92672>[</span>INPUTFILE<span style=color:#f92672>]</span>
+</span></span></code></pre></div><p>The only relevant option for this command I used was the <code>-i</code> flag, which edits the file in place without printing anything to the console <sup id=fnref:4><a href=#fn:4 class=footnote-ref role=doc-noteref>4</a></sup> <sup id=fnref:5><a href=#fn:5 class=footnote-ref role=doc-noteref>5</a></sup>.</p><p>To actually make sed do something it is necessary to specify a command, there are many commands, but for this exercise only the commands <code>s</code> and <code>a</code> are needed, which stand for substitute and append respectively.</p><p>Let&rsquo;s break down the commands used:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>sed -i <span style=color:#e6db74>&#39;/retry=3/ s/$/ ucredit=-1 dcredit=-1 ocredit=-1 enforce_for_root &#39;</span><span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>            /etc/pam.d/common-password
+</span></span></code></pre></div><p>The actual command itself is specified inside of the two <code>"</code>.
 <code>/retry=3/</code> is a search pattern, so the command operates only on lines that contain &lsquo;retry=3&rsquo;.
 <code>s</code> is the substitution command and <code>$</code> represents the end of the line so essentially <code>s/$/</code> tells sed to insert whatever characters are entered after the <code>/</code> at the end of a line, which contains &lsquo;retry=3&rsquo;.
-Lastly, the path to the file being edited is specified. The next used command is the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sed -i <span style="color:#e6db74">&#39;/ocredit=-1/ a password\trequisite\t\t\tpam_pwhistory.so remember=5 use_authtok &#39;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>            /etc/pam.d/common-password
+Lastly, the path to the file being edited is specified. The next used command is the following:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>sed -i <span style=color:#e6db74>&#39;/ocredit=-1/ a password\trequisite\t\t\tpam_pwhistory.so remember=5 use_authtok &#39;</span><span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>            /etc/pam.d/common-password
 </span></span></code></pre></div><p>This command searches for the line containing &lsquo;ocredit=-1&rsquo; and uses the <code>a</code> command to append a new line after the line containing &lsquo;ocredit=-1&rsquo;.
-<code>\t</code> is the escape sequence for a horizontal tab character, so it does not need to insert the correct number of whitespace characters, making it a shorter command.</p>
-<h3 id="harden-ssh">Harden SSH<a hidden class="anchor" aria-hidden="true" href="#harden-ssh">#</a></h3>
-<h4 id="changing-the-ssh-port">Changing the ssh port<a hidden class="anchor" aria-hidden="true" href="#changing-the-ssh-port">#</a></h4>
-<p>The configuration file for SSH is in <code>/etc/ssh/sshd_config</code>, where the port is changed by uncommenting the line containing Port 22 and changing the number to the desired port. Afterwards, the <code>service ssh restart</code> command must be issued to take effect <sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>RUN sed -i <span style="color:#e6db74">&#39;s/#Port 22/Port 38452/&#39;</span> /etc/ssh/sshd_config
-</span></span></code></pre></div><p>The <code>netstat -tulnp</code> command shows the processes and ports that are listening for both TCP and UDP.</p>
-<figure>
-    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/netstathost.png"/> <figcaption>
-            Figure: netstat -tulnp on the host
-        </figcaption>
-</figure>
-
-<p>When I run this command on the host, it only shows the docker process instead of ssh directly, because ssh is running inside the container. There are also other containers and processes listening as I use this VPS to host SearXng as well.</p>
-<figure>
-    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/netstatcontainer.png"/> <figcaption>
-            Figure: netstat -tulnp on the container
-        </figcaption>
-</figure>
-
-<p>Running the same command on the container now shows that the sshd process is listening on the desired port. The <code>d</code> at the end of ssh stands for daemon and means that this is a service that the d indicates <sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>.</p>
-<h4 id="adding-otp-authentication">Adding OTP authentication<a hidden class="anchor" aria-hidden="true" href="#adding-otp-authentication">#</a></h4>
-<p>To add OTP authentication the <code>libpam-google-authenticator</code> package is required.</p>
-<p>Once the package is installed, all you need to do is run the <code>google-authenticator</code> command, scan the QR code with the 2FA app of your choice and reply to each prompt with <code>y</code> <sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>.</p>
-<figure>
-    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/otpauth.png"/> <figcaption>
-            Figure: setting up OTP
-        </figcaption>
-</figure>
-
-<p>To enable ssh to use OTP authentication these two lines need to be added at the top of the <code>/etc/pam.d/sshd</code> file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>auth required pam_google_authenticator.so nullok
-</span></span><span style="display:flex;"><span>auth required pam_permit.so
-</span></span></code></pre></div><p>After that the ssh configuration file needs to be edited as well.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># change this</span>
-</span></span><span style="display:flex;"><span>KbdInteractiveAuthentication no
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># to this</span>
-</span></span><span style="display:flex;"><span>KbdInteractiveAuthentication yes
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># add this line at the bottom</span>
-</span></span><span style="display:flex;"><span>AuthenticationMethods publickey,keyboard-interactive
-</span></span></code></pre></div><p>Login is now only possible with keypair, password and OTP.</p>
-<h4 id="logging-in-as-the-users">Logging in as the users<a hidden class="anchor" aria-hidden="true" href="#logging-in-as-the-users">#</a></h4>
-<p>Here are screenshots of logging in as a user and trying to log in as a user who has neither a key pair nor an OTP set up.</p>
-<p><figure>
-    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/ram-fuslogin.png"/> <figcaption>
-            Figure: logging in as ram-fus
-        </figcaption>
-</figure>
-
-<figure>
-    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/ram-ramlogin.png"/> <figcaption>
-            Figure: logging in as ram-ram
-        </figcaption>
-</figure>
-
-<figure>
-    <img loading="lazy" src="https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/failedlogin.png"/> <figcaption>
-            Figure: trying to login as ram-alois
-        </figcaption>
-</figure>
-</p>
-<hr>
-<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
-<p><em>For a full bibliography, see the <a href="https://github.com/0xveya/goobering/blob/master/itsi/y3/ex5/quellen.bib">original BibTeX file</a>.</em></p>
-<h2 id="list-of-figures">List of Figures<a hidden class="anchor" aria-hidden="true" href="#list-of-figures">#</a></h2>
-<ol>
-<li>Original report cover image</li>
-<li>sudo id</li>
-<li>sudo permissions of ram-ram</li>
-<li>sudo permissions of ram-alois</li>
-<li>sudo permissions of ram-berta</li>
-<li>Testing the password policies</li>
-<li>netstat -tulnp on the host</li>
-<li>netstat -tulnp on the container</li>
-<li>setting up OTP</li>
-<li>logging in as ram-fus</li>
-<li>logging in as ram-ram</li>
-<li>trying to login as ram-alois</li>
-</ol>
-<hr>
-<h2 id="attachments">Attachments<a hidden class="anchor" aria-hidden="true" href="#attachments">#</a></h2>
-<h3 id="dockerfile">Dockerfile<a hidden class="anchor" aria-hidden="true" href="#dockerfile">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">ubuntu:latest</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> apt update<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> apt upgrade -y<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> apt install iproute2 iputils-ping zsh net-tools vim sudo nano libpam-pwquality <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>    libpam-google-authenticator -y<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;ram-alois ALL=(root) /bin/nano /etc/ssh/sshd_config&#34;</span> &gt;&gt; /etc/sudoers<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;ram-berta ALL=(root) /sbin/useradd&#34;</span> &gt;&gt; /etc/sudoers<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;ram-ram ALL=(root) /bin/ls&#34;</span> &gt;&gt; /etc/sudoers<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;ram-ram ALL=(root) /bin/cat&#34;</span> &gt;&gt; /etc/sudoers<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> ln -fs /usr/share/zoneinfo/Europe/Vienna /etc/localtime<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> DEBIAN_FRONTEND<span style="color:#f92672">=</span>noninteractive apt install -y tzdata ssh<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#39;root:passwordhere&#39;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;s/#Port 22/Port 38452/&#39;</span> /etc/ssh/sshd_config<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;s/#PermitRootLogin prohibit-password/PermitRootLogin yes/&#39;</span> /etc/ssh/sshd_config<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;/retry=3/ s/$/ ucredit=-1 dcredit=-1 ocredit=-1 minlen=10 enforce_for_root &#39;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>            /etc/pam.d/common-password<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;/ocredit=-1/ a password\trequisite\t\t\tpam_pwhistory.so remember=5 use_authtok &#39;</span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>            /etc/pam.d/common-password<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> groupadd -g <span style="color:#ae81ff">324</span> ram-Users<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> useradd -u <span style="color:#ae81ff">1024</span> -m ram-alois<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> useradd -u <span style="color:#ae81ff">1124</span> -m ram-berta<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> useradd -u <span style="color:#ae81ff">1224</span> -m ram-chris<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> useradd -m ram-fus<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> useradd -m ram-ram<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#39;ram-fus:passwordhere&#39;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#39;ram-ram:passwordhere&#39;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#39;ram-alois:passwordhere&#39;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#39;ram-chris:passwordhere&#39;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#39;ram-berta:passwordhere&#39;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> usermod -g ram-Users ram-alois<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> usermod -g ram-Users ram-berta<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> usermod --shell /bin/bash ram-alois<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> usermod --shell /bin/bash ram-berta<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> usermod --shell /bin/zsh ram-chris<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> usermod -aG sudo ram-fus<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> usermod -aG sudo ram-ram<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> mkdir -p /data/fus<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> mkdir /data/fus/alois<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> mkdir /data/fus/berta<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> mkdir /data/fus/chris<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> mkdir /data/fus/public<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> chgrp -R ram-Users /data/fus/<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> chmod g+rw /data/fus/<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> chown -R ram-alois:ram-Users /data/fus/alois/<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> chmod -R u+wrx,g<span style="color:#f92672">=</span>r,o<span style="color:#f92672">=</span> /data/fus/alois/<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> chown -R ram-berta:ram-Users /data/fus/berta/<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> chmod -R u+wrx,g<span style="color:#f92672">=</span>r,o<span style="color:#f92672">=</span> /data/fus/berta/<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> chown -R ram-chris:ram-Users /data/fus/chris/<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> chmod -R u+wrx,g<span style="color:#f92672">=</span>,o<span style="color:#f92672">=</span> /data/fus/chris/<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> chmod -R u+wrx,g+wrx,o<span style="color:#f92672">=</span>r /data/fus/public/<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">EXPOSE</span> <span style="color:#e6db74">38452</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CMD</span> service ssh start <span style="color:#f92672">&amp;&amp;</span> tail -F /dev/null<span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><h3 id="aliassh">alias.sh<a hidden class="anchor" aria-hidden="true" href="#aliassh">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
-</span></span></span><span style="display:flex;"><span>alias relaunch<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sh -c &#39;docker stop itsi &amp;&amp; docker rm itsi &amp;&amp;\
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">docker buildx build -t itsi:latest . &amp;&amp;\
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">docker run -d -p 38452:38452 --name itsi itsi:latest &amp;&amp; docker exec -it itsi /bin/bash&#39;&#34;</span>
-</span></span><span style="display:flex;"><span>alias rebuild<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sh -c &#39;docker buildx build -t itsi:latest . &amp;&amp;\
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">docker run -d -p 38452:38452 --name itsi itsi:latest &amp;&amp; docker exec -it itsi /bin/bash&#39;&#34;</span>
-</span></span><span style="display:flex;"><span>alias stop<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sh -c &#39;docker stop itsi &amp;&amp; docker rm itsi&#39;&#34;</span>
-</span></span></code></pre></div><div class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p>S. Zivanov, &ldquo;Linux Sudo Command {How to Use It +Examples},&rdquo; Knowledge Base by phoenixNAP, Jun. 2024. <a href="https://phoenixnap.com/kb/linux-sudo">link</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2">
-<p>sk, &ldquo;How To Set Password Policies In Linux - OSTechNix,&rdquo; OSTechNix, Jun. 2022. <a href="https://ostechnix.com/how-to-set-password-policies-in-linux">link</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:3">
-<p>&ldquo;How to prevent user from using old password (or re-using) again in Linux | GoLinuxCloud,&rdquo; Aug. 2022. <a href="https://www.golinuxcloud.com/prevent-user-from-using-old-password-rhel-7">link</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:4">
-<p>GeeksforGeeks, &ldquo;Sed Command in Linux/Unix with examples,&rdquo; GeeksforGeeks, Sep. 2024. <a href="https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples">link</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:5">
-<p>&ldquo;sed, a stream editor,&rdquo; Dec. 2024. <a href="https://www.gnu.org/software/sed/manual/sed.html">link</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:6">
-<p>&ldquo;How To Harden OpenSSH on Ubuntu 20.04 | DigitalOcean,&rdquo; Nov. 2024. <a href="https://www.digitalocean.com/community/tutorials/how-to-harden-openssh-on-ubuntu-20-04">link</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:7">
-<p>B. Dyer, &ldquo;What are Daemons in Linux? Why are They Used?&rdquo; It&rsquo;s FOSS, Sep. 2023. <a href="https://itsfoss.com/linux-daemons">link</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:8">
-<p>P. Malhotra, &ldquo;Enhancing SSH Security with Two-Factor Authentication (2FA) via PAM and Google Authenticator,&rdquo; Medium, Sep. 2023. <a href="https://medium.com/@prateek.malhotra004/enhancing-ssh-security-with-two-factor-authentication-2fa-via-pam-and-google-authenticator-70af135c2a95">link</a>&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</div>
-
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/linux/">Linux</a></li>
-      <li><a href="http://localhost:1313/tags/it-sec/">It-Sec</a></li>
-      <li><a href="http://localhost:1313/tags/school/">School</a></li>
-      <li><a href="http://localhost:1313/tags/ssh/">Ssh</a></li>
-      <li><a href="http://localhost:1313/tags/sudo/">Sudo</a></li>
-      <li><a href="http://localhost:1313/tags/security/">Security</a></li>
-      <li><a href="http://localhost:1313/tags/pam/">Pam</a></li>
-      <li><a href="http://localhost:1313/tags/otp/">Otp</a></li>
-    </ul>
-  </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">veya&#39;s silly little website</a></span> · 
-
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = 'copy';
-
-        function copyingDone() {
-            copybutton.innerHTML = 'copied!';
-            setTimeout(() => {
-                copybutton.innerHTML = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
-    });
-</script>
-</body>
-
-</html>
+<code>\t</code> is the escape sequence for a horizontal tab character, so it does not need to insert the correct number of whitespace characters, making it a shorter command.</p><h3 id=harden-ssh>Harden SSH<a hidden class=anchor aria-hidden=true href=#harden-ssh>#</a></h3><h4 id=changing-the-ssh-port>Changing the ssh port<a hidden class=anchor aria-hidden=true href=#changing-the-ssh-port>#</a></h4><p>The configuration file for SSH is in <code>/etc/ssh/sshd_config</code>, where the port is changed by uncommenting the line containing Port 22 and changing the number to the desired port. Afterwards, the <code>service ssh restart</code> command must be issued to take effect <sup id=fnref:6><a href=#fn:6 class=footnote-ref role=doc-noteref>6</a></sup>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>RUN sed -i <span style=color:#e6db74>&#39;s/#Port 22/Port 38452/&#39;</span> /etc/ssh/sshd_config
+</span></span></code></pre></div><p>The <code>netstat -tulnp</code> command shows the processes and ports that are listening for both TCP and UDP.</p><figure><img loading=lazy src=https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/netstathost.png><figcaption>Figure: netstat -tulnp on the host</figcaption></figure><p>When I run this command on the host, it only shows the docker process instead of ssh directly, because ssh is running inside the container. There are also other containers and processes listening as I use this VPS to host SearXng as well.</p><figure><img loading=lazy src=https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/netstatcontainer.png><figcaption>Figure: netstat -tulnp on the container</figcaption></figure><p>Running the same command on the container now shows that the sshd process is listening on the desired port. The <code>d</code> at the end of ssh stands for daemon and means that this is a service that the d indicates <sup id=fnref:7><a href=#fn:7 class=footnote-ref role=doc-noteref>7</a></sup>.</p><h4 id=adding-otp-authentication>Adding OTP authentication<a hidden class=anchor aria-hidden=true href=#adding-otp-authentication>#</a></h4><p>To add OTP authentication the <code>libpam-google-authenticator</code> package is required.</p><p>Once the package is installed, all you need to do is run the <code>google-authenticator</code> command, scan the QR code with the 2FA app of your choice and reply to each prompt with <code>y</code> <sup id=fnref:8><a href=#fn:8 class=footnote-ref role=doc-noteref>8</a></sup>.</p><figure><img loading=lazy src=https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/otpauth.png><figcaption>Figure: setting up OTP</figcaption></figure><p>To enable ssh to use OTP authentication these two lines need to be added at the top of the <code>/etc/pam.d/sshd</code> file.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>auth required pam_google_authenticator.so nullok
+</span></span><span style=display:flex><span>auth required pam_permit.so
+</span></span></code></pre></div><p>After that the ssh configuration file needs to be edited as well.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># change this</span>
+</span></span><span style=display:flex><span>KbdInteractiveAuthentication no
+</span></span><span style=display:flex><span><span style=color:#75715e># to this</span>
+</span></span><span style=display:flex><span>KbdInteractiveAuthentication yes
+</span></span><span style=display:flex><span><span style=color:#75715e># add this line at the bottom</span>
+</span></span><span style=display:flex><span>AuthenticationMethods publickey,keyboard-interactive
+</span></span></code></pre></div><p>Login is now only possible with keypair, password and OTP.</p><h4 id=logging-in-as-the-users>Logging in as the users<a hidden class=anchor aria-hidden=true href=#logging-in-as-the-users>#</a></h4><p>Here are screenshots of logging in as a user and trying to log in as a user who has neither a key pair nor an OTP set up.</p><p><figure><img loading=lazy src=https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/ram-fuslogin.png><figcaption>Figure: logging in as ram-fus</figcaption></figure><figure><img loading=lazy src=https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/ram-ramlogin.png><figcaption>Figure: logging in as ram-ram</figcaption></figure><figure><img loading=lazy src=https://raw.githubusercontent.com/0xveya/goobering/master/itsi/y3/ex5/images/failedlogin.png><figcaption>Figure: trying to login as ram-alois</figcaption></figure></p><hr><h2 id=references>References<a hidden class=anchor aria-hidden=true href=#references>#</a></h2><p><em>For a full bibliography, see the <a href=https://github.com/0xveya/goobering/blob/master/itsi/y3/ex5/quellen.bib>original BibTeX file</a>.</em></p><h2 id=list-of-figures>List of Figures<a hidden class=anchor aria-hidden=true href=#list-of-figures>#</a></h2><ol><li>Original report cover image</li><li>sudo id</li><li>sudo permissions of ram-ram</li><li>sudo permissions of ram-alois</li><li>sudo permissions of ram-berta</li><li>Testing the password policies</li><li>netstat -tulnp on the host</li><li>netstat -tulnp on the container</li><li>setting up OTP</li><li>logging in as ram-fus</li><li>logging in as ram-ram</li><li>trying to login as ram-alois</li></ol><hr><h2 id=attachments>Attachments<a hidden class=anchor aria-hidden=true href=#attachments>#</a></h2><h3 id=dockerfile>Dockerfile<a hidden class=anchor aria-hidden=true href=#dockerfile>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-dockerfile data-lang=dockerfile><span style=display:flex><span><span style=color:#66d9ef>FROM</span> <span style=color:#e6db74>ubuntu:latest</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> apt update<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> apt upgrade -y<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> apt install iproute2 iputils-ping zsh net-tools vim sudo nano libpam-pwquality <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>    libpam-google-authenticator -y<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> echo <span style=color:#e6db74>&#34;ram-alois ALL=(root) /bin/nano /etc/ssh/sshd_config&#34;</span> &gt;&gt; /etc/sudoers<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> echo <span style=color:#e6db74>&#34;ram-berta ALL=(root) /sbin/useradd&#34;</span> &gt;&gt; /etc/sudoers<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> echo <span style=color:#e6db74>&#34;ram-ram ALL=(root) /bin/ls&#34;</span> &gt;&gt; /etc/sudoers<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> echo <span style=color:#e6db74>&#34;ram-ram ALL=(root) /bin/cat&#34;</span> &gt;&gt; /etc/sudoers<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> ln -fs /usr/share/zoneinfo/Europe/Vienna /etc/localtime<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> DEBIAN_FRONTEND<span style=color:#f92672>=</span>noninteractive apt install -y tzdata ssh<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> echo <span style=color:#e6db74>&#39;root:passwordhere&#39;</span> | chpasswd<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> sed -i <span style=color:#e6db74>&#39;s/#Port 22/Port 38452/&#39;</span> /etc/ssh/sshd_config<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> sed -i <span style=color:#e6db74>&#39;s/#PermitRootLogin prohibit-password/PermitRootLogin yes/&#39;</span> /etc/ssh/sshd_config<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> sed -i <span style=color:#e6db74>&#39;/retry=3/ s/$/ ucredit=-1 dcredit=-1 ocredit=-1 minlen=10 enforce_for_root &#39;</span><span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>            /etc/pam.d/common-password<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> sed -i <span style=color:#e6db74>&#39;/ocredit=-1/ a password\trequisite\t\t\tpam_pwhistory.so remember=5 use_authtok &#39;</span><span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>            /etc/pam.d/common-password<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> groupadd -g <span style=color:#ae81ff>324</span> ram-Users<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> useradd -u <span style=color:#ae81ff>1024</span> -m ram-alois<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> useradd -u <span style=color:#ae81ff>1124</span> -m ram-berta<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> useradd -u <span style=color:#ae81ff>1224</span> -m ram-chris<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> useradd -m ram-fus<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> useradd -m ram-ram<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> echo <span style=color:#e6db74>&#39;ram-fus:passwordhere&#39;</span> | chpasswd<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> echo <span style=color:#e6db74>&#39;ram-ram:passwordhere&#39;</span> | chpasswd<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> echo <span style=color:#e6db74>&#39;ram-alois:passwordhere&#39;</span> | chpasswd<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> echo <span style=color:#e6db74>&#39;ram-chris:passwordhere&#39;</span> | chpasswd<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> echo <span style=color:#e6db74>&#39;ram-berta:passwordhere&#39;</span> | chpasswd<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> usermod -g ram-Users ram-alois<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> usermod -g ram-Users ram-berta<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> usermod --shell /bin/bash ram-alois<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> usermod --shell /bin/bash ram-berta<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> usermod --shell /bin/zsh ram-chris<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> usermod -aG sudo ram-fus<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> usermod -aG sudo ram-ram<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> mkdir -p /data/fus<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> mkdir /data/fus/alois<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> mkdir /data/fus/berta<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> mkdir /data/fus/chris<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> mkdir /data/fus/public<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> chgrp -R ram-Users /data/fus/<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> chmod g+rw /data/fus/<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> chown -R ram-alois:ram-Users /data/fus/alois/<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> chmod -R u+wrx,g<span style=color:#f92672>=</span>r,o<span style=color:#f92672>=</span> /data/fus/alois/<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> chown -R ram-berta:ram-Users /data/fus/berta/<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> chmod -R u+wrx,g<span style=color:#f92672>=</span>r,o<span style=color:#f92672>=</span> /data/fus/berta/<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> chown -R ram-chris:ram-Users /data/fus/chris/<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> chmod -R u+wrx,g<span style=color:#f92672>=</span>,o<span style=color:#f92672>=</span> /data/fus/chris/<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>RUN</span> chmod -R u+wrx,g+wrx,o<span style=color:#f92672>=</span>r /data/fus/public/<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>EXPOSE</span> <span style=color:#e6db74>38452</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#66d9ef>CMD</span> service ssh start <span style=color:#f92672>&amp;&amp;</span> tail -F /dev/null<span style=color:#960050;background-color:#1e0010>
+</span></span></span></code></pre></div><h3 id=aliassh>alias.sh<a hidden class=anchor aria-hidden=true href=#aliassh>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/sh
+</span></span></span><span style=display:flex><span>alias relaunch<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;sh -c &#39;docker stop itsi &amp;&amp; docker rm itsi &amp;&amp;\
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>docker buildx build -t itsi:latest . &amp;&amp;\
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>docker run -d -p 38452:38452 --name itsi itsi:latest &amp;&amp; docker exec -it itsi /bin/bash&#39;&#34;</span>
+</span></span><span style=display:flex><span>alias rebuild<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;sh -c &#39;docker buildx build -t itsi:latest . &amp;&amp;\
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>docker run -d -p 38452:38452 --name itsi itsi:latest &amp;&amp; docker exec -it itsi /bin/bash&#39;&#34;</span>
+</span></span><span style=display:flex><span>alias stop<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;sh -c &#39;docker stop itsi &amp;&amp; docker rm itsi&#39;&#34;</span>
+</span></span></code></pre></div><div class=footnotes role=doc-endnotes><hr><ol><li id=fn:1><p>S. Zivanov, &ldquo;Linux Sudo Command {How to Use It +Examples},&rdquo; Knowledge Base by phoenixNAP, Jun. 2024. <a href=https://phoenixnap.com/kb/linux-sudo>link</a>&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:2><p>sk, &ldquo;How To Set Password Policies In Linux - OSTechNix,&rdquo; OSTechNix, Jun. 2022. <a href=https://ostechnix.com/how-to-set-password-policies-in-linux>link</a>&#160;<a href=#fnref:2 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:3><p>&ldquo;How to prevent user from using old password (or re-using) again in Linux | GoLinuxCloud,&rdquo; Aug. 2022. <a href=https://www.golinuxcloud.com/prevent-user-from-using-old-password-rhel-7>link</a>&#160;<a href=#fnref:3 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a>&#160;<a href=#fnref1:3 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:4><p>GeeksforGeeks, &ldquo;Sed Command in Linux/Unix with examples,&rdquo; GeeksforGeeks, Sep. 2024. <a href=https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples>link</a>&#160;<a href=#fnref:4 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:5><p>&ldquo;sed, a stream editor,&rdquo; Dec. 2024. <a href=https://www.gnu.org/software/sed/manual/sed.html>link</a>&#160;<a href=#fnref:5 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:6><p>&ldquo;How To Harden OpenSSH on Ubuntu 20.04 | DigitalOcean,&rdquo; Nov. 2024. <a href=https://www.digitalocean.com/community/tutorials/how-to-harden-openssh-on-ubuntu-20-04>link</a>&#160;<a href=#fnref:6 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:7><p>B. Dyer, &ldquo;What are Daemons in Linux? Why are They Used?&rdquo; It&rsquo;s FOSS, Sep. 2023. <a href=https://itsfoss.com/linux-daemons>link</a>&#160;<a href=#fnref:7 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:8><p>P. Malhotra, &ldquo;Enhancing SSH Security with Two-Factor Authentication (2FA) via PAM and Google Authenticator,&rdquo; Medium, Sep. 2023. <a href=https://medium.com/@prateek.malhotra004/enhancing-ssh-security-with-two-factor-authentication-2fa-via-pam-and-google-authenticator-70af135c2a95>link</a>&#160;<a href=#fnref:8 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></div></div><footer class=post-footer><ul class=post-tags><li><a href=https://0xveya.github.io/tags/linux/>Linux</a></li><li><a href=https://0xveya.github.io/tags/it-sec/>It-Sec</a></li><li><a href=https://0xveya.github.io/tags/school/>School</a></li><li><a href=https://0xveya.github.io/tags/ssh/>Ssh</a></li><li><a href=https://0xveya.github.io/tags/sudo/>Sudo</a></li><li><a href=https://0xveya.github.io/tags/security/>Security</a></li><li><a href=https://0xveya.github.io/tags/pam/>Pam</a></li><li><a href=https://0xveya.github.io/tags/otp/>Otp</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://0xveya.github.io/>Veya Fürst</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

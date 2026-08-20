@@ -1,11 +1,13 @@
 +++
 date = '2025-05-14T19:40:14+02:00'
 title = 'Docker Things'
+context = 'School presentation · practical guide'
+description = 'A practical introduction to container images, Dockerfiles, Compose, remote contexts, and Docker Swarm using one small Go and NGINX application.'
 categories = ["school", "linux", "docker"]
 tags = ["linux","docker","school","devops"]
 +++
 
-> The code for all setups is available on my GitHub [here](https://github.com/0xveya/goobering/tree/master/things/silly_docker_guide).
+> I originally created this practical guide and its example deployments for a school presentation. The source files for every setup are available [on GitHub](https://github.com/0xveya/goobering/tree/master/things/silly_docker_guide).
 
 # Docker crash course
 
@@ -590,6 +592,14 @@ You can further configure how nodes are scaled based on resources and other fact
 
 The code for all setups is available on my GitHub [here](https://github.com/0xveya/goobering/tree/master/things/silly_docker_guide).
 
+## Sources and materials
+
+- [Example application and deployment files](https://github.com/0xveya/goobering/tree/master/things/silly_docker_guide)
+- [Docker overview](https://docs.docker.com/get-started/docker-overview/)
+- [Docker Compose application model](https://docs.docker.com/compose/intro/compose-application-model/)
+- [Docker Swarm key concepts](https://docs.docker.com/engine/swarm/key-concepts/)
+- [Container and virtual-machine comparison image](https://www.geeksforgeeks.org/docker-or-virtual-machines-which-is-a-better-choice/)
+
 Thanks for reading! :3
 
-> TODO: Add citations to this at some point, include screenshots for examples, and add more info over time so this becomes a real blog post and not just notes for myself.
+> Yes, I know this could go much lower-level and more in depth, but that was not worth it for this presentation.
