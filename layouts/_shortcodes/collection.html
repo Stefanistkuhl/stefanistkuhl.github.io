@@ -1,5 +1,5 @@
 {{- $name := .Get 0 -}}
-{{- with index hugo.Data.collections $name -}}
+{{- with index site.Data.collections $name -}}
   {{- with .intro }}<div class="collection-intro"><p class="collection-kicker">{{ .kicker }}</p><p class="collection-lede">{{ .text }}</p></div>{{ end }}
   {{- with .feature }}
   <article class="collection-feature"><div><p class="collection-label">{{ .label }}</p><h2><a href="{{ .url }}">{{ .title }}</a></h2><p>{{ .description }}</p><p>{{ .detail }}</p></div>
